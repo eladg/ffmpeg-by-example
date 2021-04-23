@@ -1,0 +1,19 @@
+title = "FFmpeg By Example"
+enableRobotsTXT = true
+
+BaseURL = "https://www.ffmpegbyexample.com/"
+
+[params]
+  #Favicon for site
+  favicon = "/favicon.ico"
+
+[permalinks]
+  posts = "/:title/"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[outputs]
+  home = ["HTML", "AMP", "RSS"]
+  page = ["HTML"]

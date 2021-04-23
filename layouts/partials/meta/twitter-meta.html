@@ -1,0 +1,15 @@
+<meta name="twitter:site" content="@elad_g">
+<meta name="twitter:creator" content="@elad_g">
+{{ if .IsPage }}
+<meta name="twitter:description" content="{{ default .Summary .Description }}" />
+<meta name="twitter:title" content="{{ .Title }}" />
+
+
+{{ if .Params.image }}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="{{ .Permalink }}{{ .Params.image }}" />
+{{ end }}
+
+{{ else }}
+<meta name="twitter:title" content="{{ .Site.Title }}" />
+<meta name="twitter:description" content="{{ .Description }}" />{{ end }}

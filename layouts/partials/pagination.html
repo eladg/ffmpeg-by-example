@@ -1,0 +1,33 @@
+{{ with $.Paginator }}
+
+  {{ if gt .TotalPages 1 }}
+
+    <hr style="margin-top: 1em; margin-bottom: 1em;">
+
+      <ul class="pagination">
+    
+        {{ with .Prev }}
+        <li class="pagination-item">
+          <a class="pagination-link" href="{{ .URL }}">
+            <
+          </a>
+        </li>
+        {{ end }}
+        {{ range .Pagers }}
+        <li class="pagination-item{{ if eq .PageNumber $.Paginator.PageNumber }} active{{ end }}">
+          <a class="pagination-link" href="{{ .URL }}">
+            {{ .PageNumber }}
+          </a> 
+        </li>
+        {{ end }}
+        {{ with .Next }}
+        <li class="pagination-item">
+          <a class="pagination-link" href="{{ .URL }}">
+            >
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+
+  {{ end }}
+{{ end }}

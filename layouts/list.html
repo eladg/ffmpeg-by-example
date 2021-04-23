@@ -1,0 +1,21 @@
+{{ define "main" }}
+
+  <article class="list">
+
+    <div>
+      <div class="posts-title">{{ .Type | humanize | title }}: {{ .Title | humanize | title}}</div>
+    </div>
+
+    <ul class="posts-list">
+      {{ range $index, $page := .Paginator.Pages }}
+
+        {{ partial "list/item.html" $page }}
+
+      {{ end }}
+    </ul>
+
+    {{ partial "pagination.html" $ }}
+
+  </article>
+
+{{ end }}

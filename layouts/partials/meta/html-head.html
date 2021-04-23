@@ -1,0 +1,33 @@
+<head>
+  <link rel="canonical" href="{{ .Permalink }}" />
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Elad Gariany" />
+
+  <!-- title -->
+  {{- if .IsHome -}}
+    <title>{{ .Site.Title }}</title>
+    <meta name="description" content="{{ .Site.Params.description }}" />
+    <meta name="og:description" content="{{ .Site.Params.description }}" />
+  {{- else -}}
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <meta name="description" content="{{ default .Summary .Description }}" />
+    <meta name="og:description" content="{{ default .Summary .Description }}" />
+  {{- end }}
+
+  <!-- favicon -->
+  {{ if .Site.Params.favicon }}
+    <link rel="shortcut icon" href="{{ .Site.Params.favicon }}" type="image/x-png" />
+  {{ end }}
+
+  {{ partial "meta/seo" . }}
+
+  {{ partial "meta/facebook-meta" . }}
+  {{ partial "meta/twitter-meta" . }}
+
+  <link rel="stylesheet" href="{{ "css/flexboxgrid.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  <link href="{{ "index.xml" | relURL }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}">
+</head>

@@ -1,0 +1,12 @@
+{{ $isHome := true }}
+
+<article>
+  {{ range .Data.Pages }}
+
+    <!-- ... list posts, not static pages ... -->
+    {{ if eq .Type "posts"}}
+      {{ partial "list/list.html" . }}
+    {{ end }}
+
+  {{ end }}
+</article>

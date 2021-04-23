@@ -1,0 +1,15 @@
+<meta property="og:url" content="{{ .Permalink }}" />
+
+{{- if .IsHome -}}
+  <meta property="og:title" content="{{ .Site.Title }}" />
+  <meta property="og:type" content="website" />
+{{- else -}}
+  <meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}" />
+  <meta property="og:type" content="article" />
+{{- end }}
+
+{{ if .Params.image }}
+  <meta property="og:image" content="{{ .Permalink }}{{ .Params.image_url }}"/>
+{{ else }}
+  <meta property="og:image" content="https://ffmpegbyexample.com/img/ffmpeg-by-example.png" />
+{{ end }}
