@@ -1,10 +1,10 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
+description: ""
 date: {{ .Date }}
 categories: [""]
 tags: ["", ""]
 author: ""
 image_url: ""
-discussionId: "{{ replace .Name " " "-" }}"
 disable_comments: true
 ---

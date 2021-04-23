@@ -4,7 +4,6 @@ date: 2021-04-22T17:15:57-07:00
 categories: ["filters"]
 tags: ["mask"]
 author: "Elad Gariany"
-discussionId: "chromakey-green-screen-masking"
 disable_comments: true
 ---
 
