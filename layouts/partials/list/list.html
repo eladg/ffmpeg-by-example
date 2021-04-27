@@ -1,13 +1,9 @@
-<div class="row">
-  <div class="col-xs" style="display: flex;justify-content: center;flex-wrap: wrap;">
-      <ul class="posts-list">
-          {{ range .Pages }}
-            {{ if not .Params.is_site_static_page }}
-
-              {{ partial "list/item.html" . }}
-
-            {{ end }}
-          {{ end }}
-      </ul>
-  </div>
+<div>
+  <ul class="post-list">
+    {{ range .Pages }}
+      {{ if not .Params.is_site_static_page }} 
+        {{ partial "list/item.html" . }}
+      {{ end }}
+    {{ end }}
+  </ul>
 </div>

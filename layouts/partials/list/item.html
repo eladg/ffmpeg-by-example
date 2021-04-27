@@ -1,15 +1,15 @@
 {{ $baseUrl := .Site.BaseURL }}
 
 <li class="posts-list-item">
-
   <div>
-    <a href="{{ .Permalink }}index.html">{{ .Title }}</a>
+    ⬆/⬇ <a href="{{ .Permalink }}index.html">{{ .Title }}</a>
   </div>
 
   <div>
     <span class="posts-list-item-description">
-      tags:
-    
+      >
+
+      tags:    
         {{ range $key, $value := .Params.tags }}
           <a class="posts-list-tags" href="{{ $baseUrl }}tags/{{ . }}">#{{ $value }}</a>
         {{ end }}

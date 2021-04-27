@@ -1,12 +1,20 @@
 {{ $isHome := true }}
 
 <article>
-  {{ range .Data.Pages }}
+  <div class="homepage-top-message">
+    <div>
+      <img src="img/ffmpeg-by-example.png" alt="FFmpeg by Example" style="width: 250px;"></img>
+    </div>
+    FFmpeg By Example is a simple documentation website to present all the unique and different ways to use FFmpeg. Got a cool idea to share with the community?
+    <a href="contribute">Send your contribution here!</a>
+  </div>
 
-    <!-- ... list posts, not static pages ... -->
-    {{ if eq .Type "posts"}}
-      {{ partial "list/list.html" . }}
+  <div class="homepage-recent">
+    {{ range .Data.Pages }}
+      {{ if eq .Type "examples"}}
+        {{ partial "list/list.html" . }}
+      {{ end }}
     {{ end }}
-
-  {{ end }}
+  </div>
+  
 </article>

@@ -1,9 +1,8 @@
 {{ $baseUrl := .Site.BaseURL }}
 
-<div class="sidebar_pad">
-
-  <div class="sidebar_navigation">
-    <ul class="show-on-desktop">
+<div class="sidebar">
+  <nav>
+    <ul>
       <li>
         <a href='/'><span>Home</span></a>
       </li>
@@ -16,17 +15,13 @@
         <a href='https://github.com/eladg/ffmpeg-by-example' target="_blank"><span>Contribute</span></a>
       </li>
     </ul>
-  </div>
+  </nav>
 
-  <div class="bottom-xs">
-    <div class="row center-xs">
-      <div class="tags-list" style="width: 100%">
-        <ul>
-        {{ range $key, $value := .Site.Taxonomies.tags }}
-          <li><a href="{{ $baseUrl }}tags/{{ $key | urlize  }}">#{{ $key | lower }}</a></li>
-        {{ end }}
-        </ul>
-      </div>
-    </div>
+  <div class="tag-list">
+    <ul>
+    {{ range $key, $value := .Site.Taxonomies.tags }}
+      <li><a href="{{ $baseUrl }}tags/{{ $key | urlize  }}">#{{ $key | lower }}</a></li>
+    {{ end }}
+    </ul>
   </div>
 </div>

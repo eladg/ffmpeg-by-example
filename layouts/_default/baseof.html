@@ -6,19 +6,15 @@
   {{- partial "meta/html-head.html" . -}}
 
   <body>
-    <div class="row">
-
-      <div class="col-xs-3 col-sm-3 col-md-3">
-        <div class="sidebar-left">
-          {{ partial "sidebar.html" . }}
-        </div>
+    <div class="root">
+      <div class="side-container">
+        {{ partial "sidebar.html" . }}
       </div>
-
-      <div class="col-xs-12 col-sm-12 col-md-9">
+  
+      <div class="content-container">
         {{- block "main" . -}}
         {{- end -}}
-      </div>
-
+      </div>  
     </div>
   </body>
 </html>

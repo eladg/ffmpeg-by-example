@@ -1,0 +1,24 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100vw;
+  height: 100vh;  
+}
+
+.side-container {
+  flex: 0 0 250px;
+  background: #222222;
+}
+
+.content-container {
+  background: #f0f0f0;
+  flex-grow: 1;
+  padding-left: 3em;
+  padding-right: 3em;
+  padding-top: 3em;
+}
+
+article {
+  /*  */
+}
