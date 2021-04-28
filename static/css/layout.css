@@ -38,7 +38,7 @@ body {
 }
   
 
-@media screen and (max-width: 581px) {
+@media screen and (max-width: 720px) {
   .root {
     flex-direction: column;
   }
@@ -70,4 +70,20 @@ body {
     font-size: 14px;
     font-weight: 500;
   }
+
+  .content-container {
+    padding: 0;
+  }
+
+  .content__thumb_container {
+    display: none;
+  }
+
+  .highlight {
+    width: inherit;
+  }
+
+  article {
+    width: 700px;
+  }  
 }

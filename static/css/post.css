@@ -1,5 +1,6 @@
 .container {
   margin: 1em;
+  max-width: 96%;
 }
 
 .content__container {
@@ -20,14 +21,23 @@
   align-self: flex-end;
 }
 
+.content__thumb_container {
+  align-self: flex-end;
+}
+
 .content__thumb_container img {
   width: 150px;
   max-height: 150px;
 }
 
-pre {
+.highlight {
   border: blueviolet;
   border-width: 0.5em;
   border-style: solid;
-  padding: 1em;
+  padding: 0;
+}
+
+pre {
+  padding: 40px;
+  width: inherit;
 }
