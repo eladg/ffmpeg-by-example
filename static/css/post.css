@@ -1,0 +1,33 @@
+.container {
+  margin: 1em;
+}
+
+.content__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.content__top {
+  display: flex;
+  flex-direction: row;
+}
+
+.content__desc {
+  flex: 1;
+  align-self: flex-end;
+}
+
+.content__thumb_container img {
+  width: 150px;
+  max-height: 150px;
+}
+
+pre {
+  border: blueviolet;
+  border-width: 0.5em;
+  border-style: solid;
+  padding: 1em;
+}

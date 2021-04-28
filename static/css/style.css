@@ -67,6 +67,12 @@ figure {
   margin-top: 52px;
 }
 
+hr {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  opacity: 0.5;
+}
+
 /* ======== homepage ======== */
 .homepage-top-message {
   border: 3px;
@@ -83,14 +89,6 @@ figure {
 }
 
 /* ======== sidebar  ======== */
-.sidebar {
-  padding: 3em 1em 1em 1em;
-}
-
-.sidebar nav {
-  padding-bottom: 3em;
-}
-
 .sidebar ul {
   list-style: none;  
 }
@@ -152,4 +150,9 @@ figure {
   opacity: 0.8;
   font-family: monospace;
   vertical-align: top;
+}
+
+/* ======== syntax highlighting ======== */
+pre a {
+  color: #c57d7d;
 }

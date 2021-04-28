@@ -17,3 +17,17 @@ BaseURL = "https://www.ffmpegbyexample.com/"
 [outputs]
   home = ["HTML", "AMP", "RSS"]
   page = ["HTML"]
+
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineAnchors = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "monokai"
+    tabWidth = 4
