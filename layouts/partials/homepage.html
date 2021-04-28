@@ -11,9 +11,7 @@
 
   <div class="homepage-recent">
     {{ range .Data.Pages }}
-      {{ if eq .Type "examples"}}
-        {{ partial "list/list.html" . }}
-      {{ end }}
+      {{ partial "list/list.html" . }}
     {{ end }}
   </div>
 </article>
