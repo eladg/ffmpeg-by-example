@@ -10,7 +10,7 @@
   </div>
 
   <div class="homepage-recent">
-    {{ range .Pages }}
+    {{ range .Paginator.Pages }}
       {{ partial "list/list.html" . }}
     {{ end }}
   </div>

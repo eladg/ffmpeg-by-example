@@ -128,9 +128,10 @@ hr {
 }
 
 /* ======== lists ======== */
-.post-list {
+.posts-list {
   width: 100%;
   list-style-type: none;
+  list-style: none;
 }
 
 .posts-list-item a {
