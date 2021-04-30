@@ -10,8 +10,8 @@ disable_comments: true
 ---
 
 ## Inputs:
-1. {{<static_video "video/yoga.mp4" >}}
-2. {{<static_video "video/sharks.mp4" >}}
+1. {{<static_video src="video/yoga.mp4" width="480" >}}
+2. {{<static_video src="video/sharks.mp4" width="480" >}}
 
 ## Process
 

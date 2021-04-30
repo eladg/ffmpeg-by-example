@@ -1,9 +1,7 @@
 <div>
   <ul class="post-list">
     {{ range .Pages }}
-      {{ if not .Params.is_site_static_page }} 
-        {{ partial "list/item.html" . }}
-      {{ end }}
+      {{ partial "list/item.html" . }}
     {{ end }}
   </ul>
 </div>
