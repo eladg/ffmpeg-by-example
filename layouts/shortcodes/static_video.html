@@ -1,0 +1,8 @@
+{{ $width := "100%" }}
+{{ $video_src := .Get 0 }}
+{{ $poster := .Get 0 }}
+
+<video {{ if ne (.Get "controls") "false" }}controls {{ end }}preload="auto" width="{{ or (.Get "width") $width }}" {{ if eq (.Get "autoplay") "true" }}autoplay {{ end }}{{ if eq (.Get "loop") "true" }}loop {{ end }}{{ if eq (.Get "muted") "true" }}muted {{ end }}{{ with $poster }}poster="" {{ end }}class="html-video" style="max-height: 600px;">
+  <source src="{{ .Get 0 | relURL }}" type="video/mp4" }}></source>
+  <p>Unsupported Browser.</p>
+</video>
