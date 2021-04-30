@@ -11,14 +11,28 @@
   flex-grow: 0;
 }
 
+.content__title h2 {
+  margin-bottom: 0;
+}
+
 .content__top {
   display: flex;
   flex-direction: row;
+  border-bottom: 1px solid #9d9d9d;
+  width: 100%;
 }
 
 .content__desc {
   flex: 1;
   align-self: flex-end;
+}
+
+.content__meta {
+  font-size: 12px;
+  color: #9d9d9d;
+  opacity: 0.8;
+  font-family: monospace;
+  text-align: left;
 }
 
 .content__thumb_container {
@@ -30,6 +44,8 @@
   max-height: 150px;
 }
 
+/* ======== syntax highlighting ======== */
+
 .highlight {
   border: blueviolet;
   border-width: 0.5em;
@@ -40,4 +56,9 @@
 pre {
   padding: 40px;
   width: inherit;
+  margin: 0;
+}
+
+pre a {
+  color: #c57d7d;
 }

@@ -1,11 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
 body {
   line-height: 1.42857143;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -78,14 +75,16 @@ hr {
   border: 3px;
   border-style: dotted;
   border-color: red;
-  padding: 30px;
+  margin: 30px;
+  padding: 1em;
   font-size: 21px;
   font-weight: 500;
   margin-bottom: 2em;
 }
 
 .homepage-recent {
-  width: 100%;
+  /* width: 100%; */
+  padding: 2em;
 }
 
 /* ======== sidebar  ======== */
@@ -150,9 +149,4 @@ hr {
   opacity: 0.8;
   font-family: monospace;
   vertical-align: top;
-}
-
-/* ======== syntax highlighting ======== */
-pre a {
-  color: #c57d7d;
 }

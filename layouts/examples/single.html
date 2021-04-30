@@ -1,23 +1,26 @@
 {{ define "main" }}
 <article>
   <div class="content__container container">
-    <div class="content__top container">
+    <div class="content__top">
+      {{ if isset .Params "Thumbnail_URL" }}
       <div class="content__thumb_container">
         <div>
           <img src="{{ .Params.Thumbnail_URL }}"></img>
         </div>
       </div>
-      <div class="content__desc container">
+      {{ end}}
+      <div class="content__desc">
         <div class="content__title">
           <h2>{{ .Title }}</h2>
         </div>
-        <div class="posts-list-item-description" style=" border-bottom: 1px solid;
-        display: flex;">
+        <div class="content__meta">
+          <span style="padding-left: 5px;"></span>
+            <span>
+              ► by {{ .Params.Author }},&nbsp
+            </span>
+              ⌗ Updated on: 
           <span>
-            by {{ .Params.Author }},&nbsp
-          </span>
-          <span>
-            {{ .Date.Format "January 2, 2006" }}
+           {{ .Date.Format "January 2, 2006" }}
           </span>
         </div>        
       </div>  
