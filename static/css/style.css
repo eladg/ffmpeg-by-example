@@ -30,9 +30,6 @@ h3 {
 }
 
 h4 {
-  font-size: 14px;
-  text-align: center;
-  font-weight: 600;
   color: #aaa;
 }
 
@@ -45,7 +42,7 @@ p, ul, li, a {
 
 p {
   display: block;
-  margin-top: 38px;
+  margin-top: 1em;
   line-height: 1.58;
 }
 
