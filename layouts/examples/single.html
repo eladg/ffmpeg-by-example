@@ -2,10 +2,10 @@
 <article>
   <div class="content__container container">
     <div class="content__top">
-      {{ if isset .Params "Thumbnail_URL" }}
+      {{ if isset .Params "thumbnail_url" }}
       <div class="content__thumb_container">
         <div>
-          <img src="{{ .Params.Thumbnail_URL }}"></img>
+          <img src="{{ .Params.thumbnail_url }}"></img>
         </div>
       </div>
       {{ end}}
@@ -26,15 +26,43 @@
       </div>  
     </div>
 
-    <div class="content__main container">
-      {{ .Content }}
+    <div class="content__main">      
+      <!-- example code -->
+      <p/>
+      {{ if isset .Params "example_code" }}
+        {{ highlight .Params.example_code "bash" "" }}
+      {{ end }}
+      
+      <!--  description -->
+      {{ if isset .Params "description" }}
+        {{ .Params.Description | markdownify }}
+      {{ end }}
+
+      <!-- output videos -->
+      {{ if isset .Params "output_videos" }}
+        <hr/>
+        <h4>Result Video</h4>
+        {{ range .Params.output_videos }}
+          {{ partial "examples/video.html" . }}
+        {{ end }}
+      {{ end }}
+
+      <!-- input videos -->
+      {{ if isset .Params "input_videos" }}
+        <hr/>
+        <h4>Input Videos</h4>
+        {{ range .Params.input_videos }}
+          {{ partial "examples/video.html" . }}
+        {{ end }}
+      {{ end }}
+
+      {{ if eq 0 1 }}
+        <hr />
+        {{ partial "meta/comments.html" . }}
+      {{ end }}
+        
     </div>
   </div>
-
-  {{ if isset .Params "disable_comments" }}
-  {{ else }}
-    {{ partial "meta/comments.html" . }}
-  {{ end }}
 
 </article>
 {{ end }}

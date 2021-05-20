@@ -1,0 +1,28 @@
+{{ $width := "480" }}
+{{ $height := "300" }}
+{{ $video_type := $.type }}
+{{ $video_src := $.src }}
+
+{{ if eq $video_type "static"}}
+<video preload="auto" width="{{ $width }}" height="{{ $height }}" autoplay loop muted style="max-height: 600px;">
+  <source src="{{ $video_src | relURL }}" type="video/mp4" }}></source>
+</video>
+{{ end }}
+
+{{ if eq $video_type "youtube_embed"}}
+<div class="embed video-player">
+  <iframe 
+    class="youtube-player" 
+    type="text/html" 
+    width="{{ $width }}" 
+    height="{{ $height }}" 
+    src="{{ $video_src }}" 
+    allowfullscreen 
+    frameborder="0">
+  </iframe>
+</div>
+{{ end }}
+
+{{ if eq $video_type "image"}}
+  <img src="{{ $video_src }}"></img>
+{{ end }}
