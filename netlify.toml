@@ -1,7 +1,7 @@
 [build]
   command = "hugo"
+  functions = "api"
   publish = "public"
 
 [build.environment]
   HUGO_VERSION = "0.75.1"
-
