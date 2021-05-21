@@ -1,3 +1,8 @@
+:root {
+  --side-length: 16rem;
+  --side-height: 4rem;
+}
+
 body {
   background: #f0f0f0;
 }
@@ -5,32 +10,24 @@ body {
 .root {
   display: flex;
   flex-wrap: nowrap;
+  flex-direction: row;
   width: 100vw;
   height: 100vh;  
 }
 
 .side-container {
+  position: fixed;
+  flex: 0 0 250px;
+  height: 100vh;
+  width: var(--side-length);
   background: #2d2d2d;
 }
 
 .content-container {
-  width: fit-content;
-}
-
-.root {
-  flex-direction: row;
-}
-
-.side-container {
-  flex: 0 0 250px;
-}
-
-.content-container {
+  margin-left: var(--side-length);
+  max-width: calc(100% - var(--side-length));
   flex-grow: 1;
-  padding-left: 3em;
-  padding-right: 3em;
-  padding-top: 3em;
-  max-width: 1080px;
+  padding: 3em;
 }
 
 .sidebar {
@@ -45,7 +42,9 @@ body {
 
   .side-container {
     flex: 0;
-    height: 4em;
+    position: initial;
+    width: 100vw;
+    height: var(--side-height);
   }
 
   .tag-list {
@@ -53,7 +52,7 @@ body {
   }
 
   .sidebar {
-    padding: 0.5em 0 0.5em 0;
+    padding: 0.5em 0;
   }
   
   .sidebar hr {
@@ -73,6 +72,8 @@ body {
 
   .content-container {
     padding: 0;
+    margin-left: 0;
+    max-width: 100%;
   }
 
   .content__thumb_container {
