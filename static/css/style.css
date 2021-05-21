@@ -1,5 +1,6 @@
 :root {
   --main-color: #ed1c24;
+  --example-color: blueviolet;
   --mc-serif-font: "medium-content-serif-font", Georgia, Cambria, "Times New Roman", Times, serif;
   --monospace-font: monospace;
 }
@@ -36,12 +37,21 @@ h3 {
 }
 
 h4 {
-  color: #aaa;
+  color: var(--example-color);
+  opacity: 0.8;
+}
+
+p > code, p > a > code {
+  padding: 0.2rem 0.4rem;
+  font-size: 1rem !important;
+  background: #8a2be233;
+  border: 1px solid #8a2be233;
+  border-radius: 0.4rem;
 }
 
 p, ul, li, a {
   margin: 0;
-  font-size: 21px;
+  font-size: 1.5rem;
   padding-inline-start: 0;
   font-family: var(--mc-serif-font);
 }
@@ -57,7 +67,11 @@ p img {
 }
 
 a {
-  color: #000;
+  color: #000c;
+}
+
+p > a {
+  color: var(--example-color);
 }
 
 figure {
@@ -70,7 +84,8 @@ figure {
 hr {
   margin-top: 1em;
   margin-bottom: 1em;
-  opacity: 0.5;
+  color: var(--example-color);
+  opacity: 0.8;
 }
 
 /* ======== homepage ======== */

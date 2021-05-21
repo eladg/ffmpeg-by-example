@@ -29,7 +29,7 @@
 
 .content__meta {
   font-size: 12px;
-  color: #9d9d9d;
+  color: blueviolet;
   opacity: 0.8;
   font-family: monospace;
   text-align: left;
@@ -46,15 +46,13 @@
 
 /* ======== syntax highlighting ======== */
 
-.highlight {
-  border: blueviolet;
-  border-width: 0.5em;
-  border-style: solid;
-  padding: 0;
+.highlight > pre {
+  border: 2px solid blueviolet;
+  border-radius: 0.5rem;
 }
 
 pre {
-  padding: 40px;
+  padding: 10px;
   width: inherit;
   margin: 0;
 }

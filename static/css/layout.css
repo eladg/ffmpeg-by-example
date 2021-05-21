@@ -1,6 +1,6 @@
 :root {
   --side-length: 16rem;
-  --side-height: 4rem;
+  --side-height: 3.6rem;
 }
 
 body {
@@ -16,6 +16,7 @@ body {
 }
 
 .side-container {
+  z-index: 100;
   position: fixed;
   flex: 0 0 250px;
   height: 100vh;
@@ -33,7 +34,7 @@ body {
 .sidebar {
   padding: 3em 1em 1em 1em;
 }
-  
+
 
 @media screen and (max-width: 720px) {
   .root {
@@ -42,7 +43,6 @@ body {
 
   .side-container {
     flex: 0;
-    position: initial;
     width: 100vw;
     height: var(--side-height);
   }
@@ -72,16 +72,13 @@ body {
 
   .content-container {
     padding: 0;
+    margin-top: var(--side-height);
     margin-left: 0;
     max-width: 100%;
   }
 
   .content__thumb_container {
     display: none;
-  }
-
-  .highlight {
-    width: inherit;
   }
 
   article {
