@@ -1,3 +1,8 @@
+# Node.js
+node_modules/
+yarn.lock
+package-lock.json
+
 # Hugo default output directory
 resources/
 public/
