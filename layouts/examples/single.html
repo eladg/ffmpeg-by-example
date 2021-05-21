@@ -39,19 +39,19 @@
       {{ end }}
 
       <!-- output videos -->
-      {{ if isset .Params "output_videos" }}
+      {{ if isset .Params "output_media" }}
         <hr/>
         <h4>Result Video</h4>
-        {{ range .Params.output_videos }}
+        {{ range .Params.output_media }}
           {{ partial "examples/video.html" . }}
         {{ end }}
       {{ end }}
 
       <!-- input videos -->
-      {{ if isset .Params "input_videos" }}
+      {{ if isset .Params "input_media" }}
         <hr/>
         <h4>Input Videos</h4>
-        {{ range .Params.input_videos }}
+        {{ range .Params.input_media }}
           {{ partial "examples/video.html" . }}
         {{ end }}
       {{ end }}
