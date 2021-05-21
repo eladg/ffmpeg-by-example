@@ -35,6 +35,10 @@
   text-align: left;
 }
 
+.content__main {
+  margin-bottom: 5rem;
+}
+
 .content__thumb_container {
   align-self: flex-end;
 }
