@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "netlify-lambda": "^2.0.6"
-  }
+  },
+  "scripts": {
+    "postinstall": "netlify-lambda install"
+  }  
 }

@@ -10,12 +10,12 @@ public/
 # OSX
 .DS_Store
 
-
 # Local Netlify folder
 .netlify
+public-api/
 
 # node modules
 *node_modules*
 
 # dotEnv
-*.env*
+*.env

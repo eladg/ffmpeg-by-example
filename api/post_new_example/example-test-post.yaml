@@ -1,9 +1,7 @@
----
 title: 'MacOS: Generate QR Code using ''CIQRCodeGenerator'''
 description: >-
   Use 'CIQRCodeGenerator' to create a QR code for the FFmpeg homepage, given as
   complete and escaped command-line for Apple’s standard bash shell.
-
 
   More info on the FFmpeg documentation:
   https://ffmpeg.org/ffmpeg-filters.html#coreimagesrc-1
@@ -20,4 +18,3 @@ example_code: >-
   ffmpeg -f lavfi -i
   coreimagesrc=s=250x250:filter=CIQRCodeGenerator@inputMessage=https\\\\\\://ffmpegbyexample.com
   -frames:v 1 qr_code.png
----
