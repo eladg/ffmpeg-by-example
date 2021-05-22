@@ -1,0 +1,14 @@
+{
+  "name": "post_new_example",
+  "version": "0.1.0",
+  "description": "Post new example to ffmpegbyexample.com",
+  "main": "index.js",
+  "repository": "https://github.com:eladg/ffmpeg-by-example",
+  "author": "Elad Gariany <elad@gariany.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^9.0.2",
+    "js-yaml": "^4.1.0",
+    "octonode": "^0.10.2"
+  }
+}
