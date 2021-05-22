@@ -13,4 +13,4 @@ public/
 *node_modules*
 
 # dotEnv
-*.env*
+*.env
