@@ -1,6 +1,6 @@
 [build]
   command = "hugo"
-  functions = "public-api"
+  functions = "api"
   publish = "public"
 
 [build.environment]
