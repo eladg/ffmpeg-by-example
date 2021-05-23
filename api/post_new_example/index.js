@@ -7,18 +7,27 @@ const STAGING_BRANCH = "staging";
 const MASTER_BRANCH = "main"
 
 const validateInput = (params) => {
-  if (
-    ('title' in params) &&
-    ('description' in params) && (params.description.length > 10 ) &&
-    ('author_name' in params) &&
-    ('categories' in params) && params.categories.length > 0 &&
-    ('tags' in params) && params.tags.length > 0 &&
-    ('example_code' in params) && (params.example_code.length > 10)
-  ) {
-    return true;
-  } else {
-    return false;
+  
+  if ('title' in params) {
+    throw new Error("Invalid data given! ('title' is missing)")
   }
+  if ('description' in params) && (params.description.length > 10 ) {
+    throw new Error("Invalid data given! ('description' is missing or too short)")
+  }
+  if ('author_name' in params) {
+    throw new Error("Invalid data given! ('author_name' is missing)")
+  }
+  if ('categories' in params) && params.categories.length > 0 {
+    throw new Error("Invalid data given! ('categories' array must have at least one category)")
+  }
+  if ('tags' in params) && params.tags.length > 0 {
+    throw new Error("Invalid data given! ('tags' array must have at least one tag)")
+  }
+  if ('example_code' in params) && (params.example_code.length > 10) {
+    throw new Error("Invalid data given! ('example_code' is missing or too short)")
+  }
+
+  return true;
 }
 
 const getFilenameFromTitle = (title) => {
@@ -46,11 +55,9 @@ const handler = async (event, context) => {
   let ref, yamlText, resp_2, resp_3, resp_4;
 
   try {
-    body = JSON.parse(event.body)
+    body = JSON.parse(event.body);
+    validateInput(body);
 
-    if (!validateInput(body)) {
-      return responses.failedValidateInputResponse(new Error("Failed validating input fields"));
-    }
     // filename
     filename   = getFilenameFromTitle(body.title);
     author     = getAuthorDisplayName(body.author_name, body.author_email);
@@ -58,7 +65,7 @@ const handler = async (event, context) => {
 
   } catch (error) {
     console.error(error);
-    return responses.failedValidateDataResponse(new Error("Could not validate request"));
+    return responses.failedValidateDataResponse(error.message);
   }
 
   // 
