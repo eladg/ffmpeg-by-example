@@ -17,13 +17,13 @@ const validateInput = (params) => {
   if ('author_name' in params) {
     throw new Error("Invalid data given! ('author_name' is missing)")
   }
-  if ('categories' in params) && params.categories.length > 0 {
+  if (('categories' in params) && (params.categories.length > 0)) {
     throw new Error("Invalid data given! ('categories' array must have at least one category)")
   }
-  if ('tags' in params) && params.tags.length > 0 {
+  if (('tags' in params) && (params.tags.length > 0)) {
     throw new Error("Invalid data given! ('tags' array must have at least one tag)")
   }
-  if ('example_code' in params) && (params.example_code.length > 10) {
+  if (('example_code' in params) && (params.example_code.length > 10)) {
     throw new Error("Invalid data given! ('example_code' is missing or too short)")
   }
 
