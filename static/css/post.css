@@ -40,12 +40,13 @@
 }
 
 .content__thumb_container {
+  margin-right: 1rem;
   align-self: flex-end;
 }
 
 .content__thumb_container img {
-  width: 150px;
-  max-height: 150px;
+  width: 80px;
+  max-height: 80px;
 }
 
 /* ======== syntax highlighting ======== */
