@@ -29,5 +29,5 @@ BaseURL = "https://www.ffmpegbyexample.com/"
     lineNos = false
     lineNumbersInTable = true
     noClasses = true
-    style = "monokai"
+    style = "dracula"
     tabWidth = 4

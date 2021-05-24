@@ -29,32 +29,35 @@
 
 .content__meta {
   font-size: 12px;
-  color: #9d9d9d;
+  color: #707070;
   opacity: 0.8;
   font-family: monospace;
   text-align: left;
 }
 
+.content__main {
+  margin-bottom: 5rem;
+}
+
 .content__thumb_container {
+  margin-right: 1rem;
   align-self: flex-end;
 }
 
 .content__thumb_container img {
-  width: 150px;
-  max-height: 150px;
+  width: 80px;
+  max-height: 80px;
 }
 
 /* ======== syntax highlighting ======== */
 
-.highlight {
-  border: blueviolet;
-  border-width: 0.5em;
-  border-style: solid;
-  padding: 0;
+.highlight > pre {
+  border: 2px solid blueviolet;
+  border-radius: 0.5rem;
 }
 
 pre {
-  padding: 40px;
+  padding: 10px;
   width: inherit;
   margin: 0;
 }

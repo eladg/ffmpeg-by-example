@@ -1,3 +1,10 @@
+:root {
+  --main-color: #ed1c24;
+  --example-color: blueviolet;
+  --mc-serif-font: "medium-content-serif-font", Georgia, Cambria, "Times New Roman", Times, serif;
+  --monospace-font: monospace;
+}
+
 body {
   line-height: 1.42857143;
   overflow-x: hidden;
@@ -6,7 +13,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "medium-content-serif-font", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: var(--mc-serif-font);
   text-rendering: optimizelegibility;
   letter-spacing: 0px;
 }
@@ -30,14 +37,23 @@ h3 {
 }
 
 h4 {
-  color: #aaa;
+  color: var(--example-color);
+  opacity: 0.8;
+}
+
+p > code, p > a > code {
+  padding: 0.2rem 0.4rem;
+  font-size: 1rem !important;
+  background: #8a2be233;
+  border: 1px solid #8a2be233;
+  border-radius: 0.4rem;
 }
 
 p, ul, li, a {
   margin: 0;
-  font-size: 21px;
+  font-size: 1.5rem;
   padding-inline-start: 0;
-  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: var(--mc-serif-font);
 }
 
 p {
@@ -51,7 +67,11 @@ p img {
 }
 
 a {
-  color: #000;
+  color: #000c;
+}
+
+p > a {
+  color: var(--example-color);
 }
 
 figure {
@@ -64,14 +84,17 @@ figure {
 hr {
   margin-top: 1em;
   margin-bottom: 1em;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 /* ======== homepage ======== */
 .homepage-top-message {
-  border: 3px;
-  border-style: dotted;
-  border-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #0004;
+  border-radius: 1rem;
+  max-width: 42rem;
   margin: 30px;
   padding: 1em;
   font-size: 21px;
@@ -82,6 +105,7 @@ hr {
 .homepage-recent {
   /* width: 100%; */
   padding: 2em;
+  margin-bottom: 5rem;
 }
 
 /* ======== sidebar  ======== */
@@ -98,7 +122,7 @@ hr {
   font-size: 28px;
   font-weight: 300;
   letter-spacing: 1px;
-  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: var(--mc-serif-font);
 }
 
 .tag-list {
@@ -121,7 +145,7 @@ hr {
 .tag-list li a {
   color: #aaa;
   font-size: inherit;
-  font-family: monospace;
+  font-family: var(--monospace-font);
 }
 
 /* ======== lists ======== */
@@ -131,10 +155,15 @@ hr {
   list-style: none;
 }
 
+.posts-list-tags {
+  color: var(--main-color);
+  font-family: var(--monospace-font) !important;
+}
+
 .posts-list-item a {
   font-size: 1em;
   text-decoration: none;
-  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: var(--mc-serif-font);
 }
 
 .posts-list-item a:hover {
@@ -145,6 +174,6 @@ hr {
   font-size: 12px;
   color: #373636;
   opacity: 0.8;
-  font-family: monospace;
+  font-family: var(--monospace-font);
   vertical-align: top;
 }
