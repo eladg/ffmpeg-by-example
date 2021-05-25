@@ -14,7 +14,7 @@ const validateInput = (params) => {
   if (!("description" in params) || (params.description.length < 10 )) {
     throw new Error("Invalid data given! ('description' is missing or too short)")
   }
-  if (!("author_name" in params)) || (params.author_name.length < 3) {
+  if (!("author_name" in params) || (params.author_name.length < 3)) {
     throw new Error("Invalid data given! ('author_name' is missing or too short)")
   }
   
