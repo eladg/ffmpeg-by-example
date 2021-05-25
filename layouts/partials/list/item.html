@@ -7,12 +7,16 @@
 
   <div>
     <span class="posts-list-item-description">
-      >
+      {{ if isset .Params "tags" }}
+        {{ if gt (len .Params.tags) 0 }}
+        >
 
-      tags:    
-        {{ range $key, $value := .Params.tags }}
-          <a class="posts-list-tags" href="{{ $baseUrl }}tags/{{ . }}">#{{ $value }}</a>
+        tags:    
+          {{ range $key, $value := .Params.tags }}
+            <a class="posts-list-tags" href="{{ $baseUrl }}tags/{{ . }}">#{{ $value }}</a>
+          {{ end }}
         {{ end }}
+      {{ end }}
     </span>    
   </div>
 
