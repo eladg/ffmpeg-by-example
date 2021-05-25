@@ -2,7 +2,7 @@
 
 <li class="posts-list-item">
   <div>
-    ► <a href="{{ .Permalink }}index.html">{{ .Title }}</a>
+    ► <a href="{{ .Permalink }}">{{ .Title | title }}</a>
   </div>
 
   <div>
@@ -12,12 +12,14 @@
         >
 
         tags:    
-          {{ range $key, $value := .Params.tags }}
-            <a class="posts-list-tags" href="{{ $baseUrl }}tags/{{ . }}">#{{ $value }}</a>
-          {{ end }}
+          {{ range $value := .Params.tags }}
+          {{ $tagUrl := (printf "/%s/%s" "tags" $value) }}
+
+            <!-- <a class="posts-list-tags" href="{{ $baseUrl }}tags/{{ . }}">#{{ $value }}</a> -->
+            <a class="posts-list-tags" href="{{ $tagUrl | absURL }}">#{{ $value }}</a>
+            {{ end }}
         {{ end }}
       {{ end }}
     </span>    
   </div>
-
 </li>

@@ -10,8 +10,14 @@
   </div>
 
   <div class="homepage-recent">
-    {{ range .Paginator.Pages }}
-      {{ partial "list/list.html" . }}
+
+    {{ $paginator := .Paginate (where .Site.RegularPages "Type" "examples") }}
+
+    {{ range $index, $page := .Paginator.Pages }}
+      <ul class="posts-list">
+        {{ partial "list/item.html" $page }}
+      </ul>
     {{ end }}
+    
   </div>
 </article>
