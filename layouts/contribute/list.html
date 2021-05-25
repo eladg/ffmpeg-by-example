@@ -1,0 +1,155 @@
+{{ define "main" }}
+
+  {{ $postSubmitUrl := ".netlify/functions/post_new_example" | absURL }}
+
+  <h1>Submit a new Example using the form bellow:</h1>
+  <form id="submit-example-form" class="pure-form">
+    <fieldset>
+      <div class="pure-group">
+        <input type="text" id="example-title" class="pure-input-1" placeholder="Your example's title" required />
+        <textarea id="example-description" name="description" class="pure-input-1" placeholder="What does this example do? How does it works?" required></textarea>
+      </div>
+
+      <div class="pure-group">
+        <textarea id="example-code" name="example_code" class="pure-input-1" placeholder="ffmpeg -i movie.mov -c copy video.mp4" required></textarea>
+      </div>
+
+      <div class="pure-group">
+        <select id="example-category" name="category" class="pure-input-3-5" required>
+          <option value="no-category" selected>Select Category</option>
+        {{ range $key, $value := .Site.Taxonomies.categories }}
+          <option value="{{ $key }}">{{ $key | humanize }}</option>
+        {{ end }}
+        </select>
+        <select id="example-tag1" name="tag1" class="pure-input-2-5">
+          <option value="no-tag">Tag</option>
+        {{ range $key, $value := .Site.Taxonomies.tags }}
+          <option value="{{ $key }}">{{ $key | humanize }}</option>
+        {{ end }}
+        </select>
+        <select id="example-tag2" name="tag2" class="pure-input-2-5">
+          <option value="no-tag2">Tag</option>
+        {{ range $key, $value := .Site.Taxonomies.tags }}
+          <option value="{{ $key }}">{{ $key | humanize }}</option>
+        {{ end }}
+        </select>
+      </div>
+
+      <br>
+
+      <div class="pure-group">
+        <input type="text" id="example-output-media" name="output-media" class="pure-input-1" placeholder="https://youtu.be/jJWDPs3oduw">
+        <input type="text" id="example-thumbnail-url" name="output-media" class="pure-input-1" placeholder="https://ffmpeg-by-example.s3.amazonaws.com/example-thumbnail.png"><br>
+      </div>
+
+      <div class="pure-group">
+        <input type="text" id="example-author-name" class="pure-input-1-2" placeholder="Your name" required />
+        <input type="text" id="example-author-email" class="pure-input-1-2" placeholder="Your email (optional)" />
+      </div>
+
+      <div class="pure-group">
+        <button id="submit-btn" class="pure-button-primary pure-button">Submit</button>
+      </div>
+    </fieldset>
+  </form> 
+
+<script type="application/javascript">
+  var submitBtn = document.getElementById("submit-btn");
+  
+  var validateTitle = function(text) {
+    return text.length > 10;
+  }
+  var validateDescription = function(text) {
+    return text.length > 10;
+  }
+  var validateAutherName = function(text) {
+    return text.length > 3;
+  }
+  var validateCategory = function(category) {
+    return (category !== "no-category");
+  }
+  var validateExampleCode = function(text) {
+    return text.length > 10;
+  }
+  var validateAndCommunicate = function(options) {
+    var flag = true
+    if (!validateTitle(options.title)) {
+      alert("'title' is empty or too short");
+      flag = false;
+    }
+
+    if (!validateTitle(options.description)) {
+      alert("'description' is empty or too short");
+      flag = false;
+    }
+
+    if (!validateExampleCode(options.example_code)) {
+      alert("'example code' is empty or too short");
+      flag = false;
+    }
+
+    if (!validateCategory(options.categories[0])) {
+      alert("'category' is empty or too short");
+      flag = false;
+    }
+
+    return flag;
+  }
+
+  var optionsFromForm = function() {
+    var formTitle = document.getElementById("example-title");
+    var formDescription = document.getElementById("example-description");
+    var formCode = document.getElementById("example-code");
+    var formCategory = document.getElementById("example-category");
+    var formTag1 = document.getElementById("example-tag1");
+    var formTag2 = document.getElementById("example-tag2");
+    var formOutputMedia = document.getElementById("example-output-media");
+    var formThumbnailUrl = document.getElementById("example-thumbnail-url");
+    var formAuthorName = document.getElementById("example-author-name");
+    var formAuthorEmail = document.getElementById("example-author-email");
+
+    return {
+      title: formTitle.value,
+      description: formDescription.value,
+      example_code: formCode.value,
+      author_name: formAuthorName.value,
+      author_email: formAuthorEmail.value,
+      categories: [formCategory.value],
+      tags: [formTag1.value, formTag2.value],
+      output_media: formOutputMedia.value,
+      thumbnail_url: formThumbnailUrl.value,
+    }
+  }
+
+  var postRequest = function(options, callback) {
+    var request = new XMLHttpRequest();
+    request.open("POST", "{{ $postSubmitUrl }}");
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    request.send(JSON.stringify(options));
+
+    request.onreadystatechange = callback;
+  }
+
+  var handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("handle...");
+    submitBtn.disabled = true;
+
+    var options = optionsFromForm();
+    console.log(options);
+    console.log("{{ $postSubmitUrl }}");
+
+    if (validateAndCommunicate(options)) {
+      postRequest(options, function(data) {
+        console.log("================================");
+        console.log(data);
+      });
+    } else {
+      submitBtn.disabled = false;
+    }    
+  }
+
+  submitBtn.onclick = handleSubmit;
+</script>
+
+{{ end }}
