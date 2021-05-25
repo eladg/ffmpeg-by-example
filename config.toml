@@ -2,6 +2,7 @@ title = "FFmpeg By Example"
 enableRobotsTXT = true
 
 BaseURL = "https://www.ffmpegbyexample.com/"
+googleAnalytics = "G-NVHSTNVELB"
 
 [params]
   #Favicon for site
