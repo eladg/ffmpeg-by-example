@@ -1,8 +1,6 @@
 title = "FFmpeg By Example"
 enableRobotsTXT = true
 
-googleAnalytics = "G-NVHSTNVELB"
-
 [params]
   #Favicon for site
   favicon = "/favicon.ico"
