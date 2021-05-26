@@ -1,5 +1,3 @@
-{{ $baseUrl := .Site.BaseURL }}
-
 <div class="sidebar">
   <nav>
     <ul>
@@ -15,7 +13,8 @@
   <div class="tag-list">
     <ul>
     {{ range $key, $value := .Site.Taxonomies.tags }}
-      <li><a href="{{ $baseUrl }}tags/{{ $key | urlize  }}">#{{ $key | lower }}</a></li>
+      {{ $tagUrl := (printf "/%s/%s" "tags" $key) }}
+      <li><a href="{{ $tagUrl | absURL }}">#{{ $key | lower }}</a></li>
     {{ end }}
     </ul>
   </div>
