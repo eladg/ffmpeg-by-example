@@ -14,10 +14,10 @@ categories:
   - video-filters
 tags:
   - video-source
-  - no-tag2
 thumbnail_url: https://ffmpeg-by-example.s3.amazonaws.com/solid.jpg
 example_code: >-
   ffmpeg -f lavfi -i "color=c=0x336699" -s 1440x1080 -r 30 -c:v libx264 -crf 31
   -t 10 solid.mp4
-
+output_media:
+  - { type: "youtube_embed", src: "https://www.youtube.com/embed/fM1NxBax9Jo" }
 ---
