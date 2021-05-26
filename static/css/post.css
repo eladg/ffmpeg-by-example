@@ -56,6 +56,11 @@
   border-radius: 0.5rem;
 }
 
+.highlight > pre > code {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 pre {
   padding: 10px;
   width: inherit;
