@@ -13,9 +13,7 @@ description: >-
   the output value will be: 
 
   ```
-
   red=red*rr + blue*rb + green*rg + alpha*ra
-
   ```
 
 
@@ -25,12 +23,14 @@ description: >-
 categories:
   - video-filters
 tags:
-  - no-tag
-  - no-tag2
+  - filters
+  - colorchannelmixer
 thumbnail_url: https://ffmpeg-by-example.s3.amazonaws.com/sepia-tones.jpg
 example_code: >-
   ffmpeg -i sharks.mp4 -vf
   "colorchannelmixer=.393:.769:.189:0:.349:.686:.168:0:.272:.534:.131" -c:v
   libx264 -crf 21 -pix_fmt yuv420p sepia-tones.mp4
+output_media:
+  - { type: "youtube_embed", src: "https://www.youtube.com/embed/hhkprgsuIAQ" }
 
 ---
