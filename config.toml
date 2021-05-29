@@ -2,8 +2,8 @@ title = "FFmpeg By Example"
 enableRobotsTXT = true
 
 [params]
-  #Favicon for site
   favicon = "/favicon.ico"
+  description = "Explore the depth of FFmpeg with Examples"
 
 [permalinks]
   posts = "/:title/"

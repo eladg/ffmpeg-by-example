@@ -5,7 +5,7 @@
       {{ if isset .Params "thumbnail_url" }}
       <div class="content__thumb_container">
         <div>
-          <img src="{{ .Params.thumbnail_url }}"></img>
+          <img src="{{ .Params.thumbnail_url }}" alt="{{ .Params.title }}"></img>
         </div>
       </div>
       {{ end}}
