@@ -22,5 +22,9 @@
   {{ if (eq .Params.example_type "audio") }}
     {{ partial "posts/players/audio.html" . }}
   {{ end }}
+  
+  {{ if not (isset .Params "example_type") }}
+    {{ partial "posts/players/no-preview.html" . }}
+  {{ end }}
 
 </div>
