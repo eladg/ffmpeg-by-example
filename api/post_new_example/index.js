@@ -35,10 +35,9 @@ const validateInput = (params) => {
 }
 
 const getFilename = (options) => {
-  const { title, id } = options
-  
-  const filename = title.replace(/[^a-z0-9_\-]/gi, '_').toLowerCase();
-  const filepath = id + "/" + filename + ".md"
+  const { title, id } = options  
+  let filename = title.replace(/[^a-z0-9_\-]/gi, '_').toLowerCase().split("_").filter(word => word.length > 1).join("_");
+  let filepath = id + "/" + filename + ".md"
 
   return filepath;
 }
