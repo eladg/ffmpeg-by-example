@@ -29,7 +29,7 @@
     padding-right: 4em;
   }
 
-  input, textarea, select {
+  input, textarea, select, datalist {
     padding: 8px;
   }
 
@@ -66,30 +66,21 @@
       </div>
 
       <div class="container row">
-        <select id="category" name="category" required class="right-1em">
-          <option value="no-category" selected>Select Category</option>
-        {{ range $key, $value := .Site.Taxonomies.categories }}
-          <option value="{{ $key }}">{{ $key | humanize }}</option>
-        {{ end }}
-        </select>
-        <select id="tag1" name="tag1" class="right-1em">
-          <option value="no-tag">Tag</option>
-        {{ range $key, $value := .Site.Taxonomies.tags }}
-          <option value="{{ $key }}">{{ $key | humanize }}</option>
-        {{ end }}
-        </select>
-        <select id="tag2" name="tag2" class="right-1em">
-          <option value="no-tag2">Tag</option>
-        {{ range $key, $value := .Site.Taxonomies.tags }}
-          <option value="{{ $key }}">{{ $key | humanize }}</option>
-        {{ end }}
-        </select>
-        <select id="tag3" name="tag3" class="right-1em">
-          <option value="no-tag3">Tag</option>
-        {{ range $key, $value := .Site.Taxonomies.tags }}
-          <option value="{{ $key }}">{{ $key | humanize }}</option>
-        {{ end }}
-        </select>
+        <datalist id="categories">
+          {{ range $key, $value := .Site.Taxonomies.categories }}
+            <option value="{{ $key }}">
+          {{ end }}
+        </datalist>
+        <datalist id="tags">
+          {{ range $key, $value := .Site.Taxonomies.tags }}
+            <option value="{{ $key }}">
+          {{ end }}
+        </datalist>
+    
+        <input class="right-1em" list="categories" name="category" id="category" placeholder="video-filters">
+        <input class="right-1em" list="tags" name="tag1" id="tag1" placeholder="no-tag">
+        <input class="right-1em" list="tags" name="tag2" id="tag2" placeholder="no-tag">
+        <input class="right-1em" list="tags" name="tag3" id="tag3" placeholder="no-tag">
       </div>
 
       <div class="container column">
@@ -188,6 +179,7 @@
       version: VERSION,
       enabled: enabled,
       example_type: formExampleType.value,
+      example_player_data: formPlayerData.value,
       title: formTitle.value,
       description: formDescription.value,
       author_name: formName.value,
@@ -196,7 +188,6 @@
       categories: [formCategory.value],
       tags: [formTag1.value, formTag2.value, formTag3.value],
       thumbnail_url: formThumbnailUrl.value,
-      player_data: formPlayerData.value,
     }
   }
 
@@ -220,8 +211,11 @@
 
     if (validateAndCommunicate(options)) {
       postRequest(options, (data) => {
-        console.log("================================");
+        console.log("=== received response:");
         console.log(data);
+
+        alert("Pull request submitted succesfully 🎉")
+        submitBtn.disabled = false;
       });
     } else {
       submitBtn.disabled = false;
