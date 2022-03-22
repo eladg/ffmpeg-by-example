@@ -1,0 +1,31 @@
+<style>
+  .content__meta_propreties ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .content__meta_propreties ul li {
+    font-family: monospace;
+    padding-left: 1em;
+    text-indent: -1em;  
+  }
+
+  .content__meta_propreties ul li:before {
+    content: ">";
+    padding-right: 0.3em;  
+  }
+</style>
+
+<div class="content__meta_propreties">
+  <ul>
+    <li>by {{ .Params.Author }}</li>
+    <li>Updated on: {{ .Date.Format "January 2, 2006" }}</li>
+    <li>tags: 
+      {{ range $key, $value := .Params.Tags }}
+        {{ $tagUrl := (printf "/%s/%s" "tags" $value) }}
+        <a href="{{ $tagUrl | absURL }}">#{{ $value | lower }}</a>
+      {{ end }}
+    </li>
+  </ul>
+</div>

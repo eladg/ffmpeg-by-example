@@ -1,7 +1,7 @@
 {{ define "main" }}
   <article class="list">
     <div>
-      <h1>{{ .Type | title }}</h1>
+      <h1>List of examples with: <code>'{{ .Name }}'</code> (_default/list.html)</h1>
     </div>
 
     <ul class="posts-list">
@@ -11,6 +11,5 @@
     </ul>
 
     {{ partial "pagination.html" $ }}
-
   </article>
 {{ end }}

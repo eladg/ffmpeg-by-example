@@ -1,0 +1,36 @@
+<div style="width: 100%; margin-bottom: 5rem;">
+  <div style="display: flex; flex-grow: 0; flex-shrink: 0;">
+    
+    <!-- content voting -->
+    {{ partial "posts/voting.html" . }}
+
+    <div style="
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      gap: 1em;
+    ">
+      <div style="width: 100%; display: flex; gap: 1em;">
+        <!-- video player -->
+        {{ partial "posts/players/player.html" . }}
+
+        <div style="
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;      
+        ">
+          <!-- post description -->
+          {{ partial "posts/description.html" . }}
+
+          <!-- post meta -->
+          {{ partial "posts/post_meta.html" . }}
+        </div>
+      </div>
+      <div>
+        <!-- terminal code -->
+        {{ partial "posts/terminal/highlight.html" . }}
+      </div>
+    </div>
+  </div>
+</div>

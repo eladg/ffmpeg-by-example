@@ -1,0 +1,12 @@
+<style>
+  .content__meta_description p {
+    font-family: monospace;
+    margin-bottom: 2em;
+  }  
+</style>
+
+<div class="content__meta_description">
+  {{ if isset .Params "description" }}
+    {{ .Params.Description | markdownify }}
+  {{ end }}
+</div>

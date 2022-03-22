@@ -1,68 +1,20 @@
 {{ define "main" }}
+
+<script type="text/javascript">
+  amplitude.getInstance().logEvent('example-page', { example_id: {{ .Params.id }} } );
+</script>
+
 <article>
-  <div class="content__container container">
-    <div class="content__top">
-      {{ if isset .Params "thumbnail_url" }}
-      <div class="content__thumb_container">
-        <div>
-          <img src="{{ .Params.thumbnail_url }}"></img>
-        </div>
-      </div>
-      {{ end}}
-      <div class="content__desc">
-        <div class="content__title">
-          <h2>{{ .Title }}</h2>
-        </div>
-        <div class="content__meta">
-          <span style="padding-left: 5px;"></span>
-            <span>
-              ► by {{ .Params.Author }},&nbsp
-            </span>
-              ⌗ Updated on: 
-          <span>
-           {{ .Date.Format "January 2, 2006" }}
-          </span>
-        </div>        
-      </div>  
+    <div class="content__container">
+      {{ partial "posts/top.html" . }}
+
+      {{ partial "posts/main.html" . }}
     </div>
 
-    <div class="content__main">      
-      <!-- example code -->
-      <p/>
-      {{ if isset .Params "example_code" }}
-        {{ highlight .Params.example_code "bash" "" }}
-      {{ end }}
-      
-      <!--  description -->
-      {{ if isset .Params "description" }}
-        {{ .Params.Description | markdownify }}
-      {{ end }}
+    {{ if eq 0 1 }}
+      <hr/>
+      {{ partial "meta/comments.html" . }}
+    {{ end }}
 
-      <!-- output videos -->
-      {{ if isset .Params "output_media" }}
-        <hr/>
-        <h4>Result Video</h4>
-        {{ range .Params.output_media }}
-          {{ partial "examples/video.html" . }}
-        {{ end }}
-      {{ end }}
-
-      <!-- input videos -->
-      {{ if isset .Params "input_media" }}
-        <hr/>
-        <h4>Input Videos</h4>
-        {{ range .Params.input_media }}
-          {{ partial "examples/video.html" . }}
-        {{ end }}
-      {{ end }}
-
-      {{ if eq 0 1 }}
-        <hr />
-        {{ partial "meta/comments.html" . }}
-      {{ end }}
-        
-    </div>
-  </div>
-
-</article>
+  </article>
 {{ end }}

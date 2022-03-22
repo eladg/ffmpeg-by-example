@@ -1,77 +1,148 @@
 {{ define "main" }}
 
-  {{ $postSubmitUrl := ".netlify/functions/post_new_example" | absURL }}
+{{$apiUrl := "https://www.ffmpegbyexample.com/"}}
+{{ $postNewExamplePath := ".netlify/functions/post_new_example" }}
 
-  <h1>Submit a new Example using the form below:</h1>
-  <form id="submit-example-form" class="pure-form">
-    <fieldset>
-      <div class="pure-group">
-        <input type="text" id="example-title" class="pure-input-1" placeholder="Your example's title" required />
-        <textarea id="example-description" name="description" class="pure-input-1" placeholder="What does this example do? How does it works?" required></textarea>
+{{ $postSubmitUrl := $postNewExamplePath | printf "%s%s" $apiUrl | printf "%s" }}
+
+<style>
+  .container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
+  .column {
+    flex-direction: column;
+  }
+
+  .row {
+    flex-direction: row;
+  }
+
+  .right-1em {
+    margin-right: 1em;
+  }
+
+  .large-padding {
+    padding-left: 4em;
+    padding-right: 4em;
+  }
+
+  input, textarea, select {
+    padding: 8px;
+  }
+
+  #submit-btn {
+    font-size: 1em;
+    font-weight: 800;
+    background-color: #bd93f9;
+    color: white;
+    padding: 15px;
+  }
+</style>
+
+<div>
+  <div class="container column large-padding">
+    <h2 style="font-size: 24px; ">
+      Help "FFmpeg by Example" grow by adding your example! ✌️
+    </h2>
+  </div>
+
+  <form id="submit-example-form">
+    <fieldset class="large-padding" style="border: 0;">
+
+      <div class="container column">
+        <input type="text" id="title" placeholder="Your example's title" required />
       </div>
 
-      <div class="pure-group">
-        <textarea id="example-code" name="example_code" class="pure-input-1" placeholder="ffmpeg -i movie.mov -c copy video.mp4" required></textarea>
+      <div class="container column">
+        <textarea id="description" name="description" placeholder="What does this example do? How does it works?" required></textarea>
       </div>
 
-      <div class="pure-group">
-        <select id="example-category" name="category" class="pure-input-3-5" required>
+      <div class="container row">
+        <input class="right-1em" type="text" id="name" placeholder="Your name" required />
+        <input class="right-1em" type="text" id="email" placeholder="Your email (optional)" />
+      </div>
+
+      <div class="container row">
+        <select id="category" name="category" required class="right-1em">
           <option value="no-category" selected>Select Category</option>
         {{ range $key, $value := .Site.Taxonomies.categories }}
           <option value="{{ $key }}">{{ $key | humanize }}</option>
         {{ end }}
         </select>
-        <select id="example-tag1" name="tag1" class="pure-input-2-5">
+        <select id="tag1" name="tag1" class="right-1em">
           <option value="no-tag">Tag</option>
         {{ range $key, $value := .Site.Taxonomies.tags }}
           <option value="{{ $key }}">{{ $key | humanize }}</option>
         {{ end }}
         </select>
-        <select id="example-tag2" name="tag2" class="pure-input-2-5">
+        <select id="tag2" name="tag2" class="right-1em">
           <option value="no-tag2">Tag</option>
+        {{ range $key, $value := .Site.Taxonomies.tags }}
+          <option value="{{ $key }}">{{ $key | humanize }}</option>
+        {{ end }}
+        </select>
+        <select id="tag3" name="tag3" class="right-1em">
+          <option value="no-tag3">Tag</option>
         {{ range $key, $value := .Site.Taxonomies.tags }}
           <option value="{{ $key }}">{{ $key | humanize }}</option>
         {{ end }}
         </select>
       </div>
 
-      <br>
-
-      <div class="pure-group">
-        <input type="text" id="example-output-media" name="output-media" class="pure-input-1" placeholder="https://youtu.be/jJWDPs3oduw">
-        <input type="text" id="example-thumbnail-url" name="output-media" class="pure-input-1" placeholder="https://ffmpeg-by-example.s3.amazonaws.com/example-thumbnail.png"><br>
+      <div class="container column">
+        <textarea id="terminal_command" name="terminal_command" placeholder="ffmpeg -i movie.mov -c copy video.mp4" required></textarea>
       </div>
 
-      <div class="pure-group">
-        <input type="text" id="example-author-name" class="pure-input-1-2" placeholder="Your name" required />
-        <input type="text" id="example-author-email" class="pure-input-1-2" placeholder="Your email (optional)" />
+      <div class="container row">
+        <select id="example_type" name="example_type" required class="right-1em">
+          {{ range $key, $value := .Site.Params.examplestypes }}
+            <option value="{{ $value }}">{{ $value | humanize }}</option>
+          {{ end }}
+        </select>
+        <input type="text" id="player_data" name="player_data" style="flex-grow: 1;"
+          placeholder="https://ffmpeg-by-example.s3.amazonaws.com/example-video.mp4"
+        >
       </div>
 
-      <div class="pure-group">
-        <button id="submit-btn" class="pure-button-primary pure-button">Submit</button>
+      <div class="container column">
+        <input type="text" id="thumbnail_url" name="thumbnail_url" placeholder="https://ffmpeg-by-example.s3.amazonaws.com/example-thumbnail.png"><br>
+      </div>
+
+      <div class="container column" style="align-items: end;">
+        <button id="submit-btn">Send a Pull Request</button>
       </div>
     </fieldset>
   </form> 
+</div>
 
 <script type="application/javascript">
+  const VERSION="1.0"
+
   var submitBtn = document.getElementById("submit-btn");
   
-  var validateTitle = function(text) {
+  var generateNewId = () => {
+    return Math.random().toString(36).substr(2, 8).toUpperCase();
+  }
+
+  var validateTitle = (text) => {
     return text.length > 10;
   }
-  var validateDescription = function(text) {
+  var validateDescription = (text) => {
     return text.length > 10;
   }
-  var validateAutherName = function(text) {
+  var validateAutherName = (text) => {
     return text.length > 3;
   }
-  var validateCategory = function(category) {
+  var validateCategory = (category) => {
     return (category !== "no-category");
   }
-  var validateExampleCode = function(text) {
-    return text.length > 10;
+  var validateExampleCode = (text) => {
+    return text?.length > 10;
   }
-  var validateAndCommunicate = function(options) {
+  var validateAndCommunicate = (options) => {
     var flag = true
     if (!validateTitle(options.title)) {
       alert("'title' is empty or too short");
@@ -83,7 +154,7 @@
       flag = false;
     }
 
-    if (!validateExampleCode(options.example_code)) {
+    if (!validateExampleCode(options.terminal_command)) {
       alert("'example code' is empty or too short");
       flag = false;
     }
@@ -96,32 +167,40 @@
     return flag;
   }
 
-  var optionsFromForm = function() {
-    var formTitle = document.getElementById("example-title");
-    var formDescription = document.getElementById("example-description");
-    var formCode = document.getElementById("example-code");
-    var formCategory = document.getElementById("example-category");
-    var formTag1 = document.getElementById("example-tag1");
-    var formTag2 = document.getElementById("example-tag2");
-    var formOutputMedia = document.getElementById("example-output-media");
-    var formThumbnailUrl = document.getElementById("example-thumbnail-url");
-    var formAuthorName = document.getElementById("example-author-name");
-    var formAuthorEmail = document.getElementById("example-author-email");
+  var optionsFromForm = () => {
+    var id = generateNewId()
+    var enabled = true
+    var formTitle = document.getElementById("title");
+    var formExampleType = document.getElementById("example_type")
+    var formDescription = document.getElementById("description");
+    var formName = document.getElementById("name");
+    var formEmail = document.getElementById("email");
+    var formTerminalCmd = document.getElementById("terminal_command");
+    var formCategory = document.getElementById("category");
+    var formTag1 = document.getElementById("tag1");
+    var formTag2 = document.getElementById("tag2");
+    var formTag3 = document.getElementById("tag3");
+    var formThumbnailUrl = document.getElementById("thumbnail_url");
+    var formPlayerData = document.getElementById("player_data");
 
     return {
+      id: id,
+      version: VERSION,
+      enabled: enabled,
+      example_type: formExampleType.value,
       title: formTitle.value,
       description: formDescription.value,
-      example_code: formCode.value,
-      author_name: formAuthorName.value,
-      author_email: formAuthorEmail.value,
+      author_name: formName.value,
+      author_email: formEmail.value,
+      terminal_command: formTerminalCmd.value,
       categories: [formCategory.value],
-      tags: [formTag1.value, formTag2.value],
-      output_media: formOutputMedia.value,
+      tags: [formTag1.value, formTag2.value, formTag3.value],
       thumbnail_url: formThumbnailUrl.value,
+      player_data: formPlayerData.value,
     }
   }
 
-  var postRequest = function(options, callback) {
+  var postRequest = (options, callback) => {
     var request = new XMLHttpRequest();
     request.open("POST", "{{ $postSubmitUrl }}");
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -140,7 +219,7 @@
     console.log("{{ $postSubmitUrl }}");
 
     if (validateAndCommunicate(options)) {
-      postRequest(options, function(data) {
+      postRequest(options, (data) => {
         console.log("================================");
         console.log(data);
       });
@@ -153,3 +232,4 @@
 </script>
 
 {{ end }}
+

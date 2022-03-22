@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
   {{- partial "meta/html-head.html" . -}}
 
   <body>
     <div class="root">
-      <div class="side-container">
-        {{ partial "sidebar.html" . }}
+      <div class="menubar-container">
+        <div class="menubar-child">
+          {{ partial "menubar.html" . }}
+        </div>
       </div>
   
       <div class="content-container">
-        {{- block "main" . -}}
-        {{- end -}}
+        <div class="content-child">
+          {{ block "main" . }}
+          {{ end }}  
+        </div>
       </div>  
     </div>
   </body>

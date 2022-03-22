@@ -1,6 +1,6 @@
 :root {
   --side-length: 16rem;
-  --side-height: 3.6rem;
+  --side-height: 3rem;
 }
 
 body {
@@ -8,31 +8,40 @@ body {
 }
 
 .root {
-  display: flex;
+  display: block;
   flex-wrap: nowrap;
   flex-direction: row;
   width: 100vw;
   height: 100%;
 }
 
-.side-container {
+/* ======== menubar ======== */
+
+.menubar-container {
   z-index: 100;
   position: fixed;
-  flex: 0 0 250px;
-  height: 100vh;
-  width: var(--side-length);
-  background: #2d2d2d;
+  display: table;
+  width: 100vw;
+  height: var(--side-height);
+  top: 0;
 }
+
+.menubar-child {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* ======== content ======== */
 
 .content-container {
-  margin-left: var(--side-length);
-  max-width: calc(100% - var(--side-length));
-  flex-grow: 1;
-  padding: 3em;
+  margin-top: var(--side-height);
+  display: block;
+  width: 100%;
 }
 
-.sidebar {
-  padding: 3em 1em 1em 1em;
+.content-child {
+  max-width: 960px;
+  margin: auto;
 }
 
 
@@ -41,47 +50,17 @@ body {
     flex-direction: column;
   }
 
-  .side-container {
-    flex: 0;
-    width: 100vw;
-    height: var(--side-height);
-  }
-
-  .tag-list {
-    display: none;
-  }
-
-  .sidebar {
-    padding: 0.5em 0;
-  }
-  
-  .sidebar hr {
-    display: none;
-  }
-
-  .sidebar nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-  }
-
-  .sidebar nav span {
-    font-size: 14px;
-    font-weight: 500;
+  .menubar-container {
+    min-width: 480px;
   }
 
   .content-container {
     padding: 0;
-    margin-top: var(--side-height);
-    margin-left: 0;
     max-width: 100%;
   }
 
-  .content__thumb_container {
-    display: none;
-  }
-
   article {
+    min-width: 480px;
     width: 100%;
   }  
 }

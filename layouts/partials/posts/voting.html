@@ -1,0 +1,35 @@
+<style>
+  .content__voting {
+    display: flex;
+    justify-content: flex-start;
+    width: 7%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .content__voting img {
+    max-width: 20px;
+  }
+
+  .content__voting_items {
+    display: flex; 
+    flex-direction: row;
+  }
+
+  .content__voting_items span {
+    padding: 0 12px;
+    color: rgb(110, 118, 125);
+  }
+</style>
+
+<div class="content__voting">
+  <div class="content__voting_items">
+    <img src="/img/heart-solid.svg" alt="favorite"></img>
+    <span>{{ .Params.likes }}</span>
+  </div>
+  <div class="content__voting_items">
+    <img src="/img/eye-solid.svg" alt="views"></img>
+    <span>{{ .Params.views }}</span>
+  </div>
+</div>

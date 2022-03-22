@@ -7,7 +7,10 @@ const STAGING_BRANCH = "staging";
 const MASTER_BRANCH = "main"
 
 const validateInput = (params) => {
-  
+  if (!("id" in params)) {
+    throw new Error("Invalid data given! ('id' is missing)")
+  }
+
   if (!("title" in params)) {
     throw new Error("Invalid data given! ('title' is missing)")
   }
@@ -24,18 +27,19 @@ const validateInput = (params) => {
   if (!("tags" in params) || (params.tags.length < 0)) {
     throw new Error("Invalid data given! ('tags' array must have at least one tag)")
   }
-  if (!("example_code" in params) || (params.example_code.length < 10)) {
-    throw new Error("Invalid data given! ('example_code' is missing or too short)")
+  if (!("terminal_command" in params) || (params.terminal_command.length < 10)) {
+    throw new Error("Invalid data given! ('terminal_command' is missing or too short)")
   }
 
   return true;
 }
 
-const getFilenameFromTitle = (title) => {
-  let filename = title.replace(/[^a-z0-9_\-]/gi, '_').toLowerCase();
-  filename += `-${Math.random().toString(36).substring(2, 5)}`;
-  filename += ".md";
-  return filename;
+const getFilename = (options) => {
+  const { title, id } = options  
+  let filename = title.replace(/[^a-z0-9_\-]/gi, '_').toLowerCase().split("_").filter(word => word.length > 1).join("_");
+  let filepath = id + "/" + filename + ".md"
+
+  return filepath;
 }
 
 const getAuthorDisplayName = (name, email) => {
@@ -47,8 +51,19 @@ const getAuthorDisplayName = (name, email) => {
   return author;
 }
 
-const getMergeToBranchName = (filename) => {
-  return `${BRANCH_PREFIX}/${filename}`;
+const getMergeToBranchName = (id) => {
+  return `${BRANCH_PREFIX}/${id}`;
+}
+
+const getTags = (tags) => {
+  let exampleTags = []
+  for (let i = 0; i < tags.length; i++) {
+    if (!tags[i].includes("no-tag")) {
+      exampleTags.push(tags[i])
+    }
+  }
+
+  return exampleTags
 }
 
 const handler = async (event, context) => {
@@ -60,9 +75,10 @@ const handler = async (event, context) => {
     validateInput(body);
 
     // filename
-    filename   = getFilenameFromTitle(body.title);
+    filename   = getFilename(body);
     author     = getAuthorDisplayName(body.author_name, body.author_email);
-    branchName = getMergeToBranchName(filename);
+    branchName = getMergeToBranchName(body.id);
+    tags       = getTags(body.tags)
 
   } catch (error) {
     console.error(error);
@@ -71,15 +87,20 @@ const handler = async (event, context) => {
 
   // 
   const options = {
+    // example options
+    id: body.id,
+    version: body.version,
+    enabled: body.enabled || false,
     date: new Date().toISOString(),
     author: author,
     title: body.title,
-    filename: filename,
     description: body.description,
     categories: body.categories,
-    tags: body.tags || [],
+    tags: tags,
     thumbnail_url: body.thumbnail_url || null,
-    example_code: body.example_code,
+    terminal_command: body.terminal_command,
+    views: 0,
+    likes: 0,    
   }
   yamlText = (`---\n${yaml.dump(options)}\n---\n`);
 

@@ -1,12 +1,10 @@
 title = "FFmpeg By Example"
 enableRobotsTXT = true
 
-googleAnalytics = "G-NVHSTNVELB"
-
 [params]
-  #Favicon for site
   favicon = "/favicon.ico"
-
+  description = "Explore the depth of FFmpeg with Examples"
+  examplestypes = ["no-preview", "video-url", "youtube-embed", "audio"]
 [permalinks]
   posts = "/:title/"
 
@@ -17,6 +15,8 @@ googleAnalytics = "G-NVHSTNVELB"
 [outputs]
   home = ["HTML", "AMP", "RSS"]
   page = ["HTML"]
+
+[examples]
 
 [markup]
   [markup.highlight]
