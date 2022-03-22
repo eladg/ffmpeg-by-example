@@ -3,8 +3,7 @@ const repo_api = require('./repo_api');
 const yaml     = require('js-yaml');
 
 const BRANCH_PREFIX  = "examples"
-const STAGING_BRANCH = "staging";
-const MASTER_BRANCH = "main"
+const PR_TO_BRANCH = "main";
 
 const validateInput = (params) => {
   if (!("id" in params)) {
@@ -108,10 +107,10 @@ const handler = async (event, context) => {
 
   try {
     // step 1: Get ref for 'staging'
-    ref = await repo_api.getRefHeadOfBranch(STAGING_BRANCH);
+    ref = await repo_api.getRefHeadOfBranch(PR_TO_BRANCH);
   } catch (error) {
     console.error(error);
-    return responses.failedRequestToGithub(new Error(`Could not find ${STAGING_BRANCH}`));
+    return responses.failedRequestToGithub(new Error(`Could not find ${PR_TO_BRANCH}`));
   }
 
   console.log("======================");
@@ -144,10 +143,10 @@ const handler = async (event, context) => {
 
   try {
     // step 4: 
-    const resp_4 = await repo_api.createNewPullRequest(filename, branchName, STAGING_BRANCH);
+    const resp_4 = await repo_api.createNewPullRequest(filename, branchName, PR_TO_BRANCH);
   } catch (error) {
     console.error(error);
-    return responses.failedRequestToGithub(new Error(`Failed Creating from ${branchName} into ${STAGING_BRANCH}`));
+    return responses.failedRequestToGithub(new Error(`Failed Creating from ${branchName} into ${PR_TO_BRANCH}`));
   }
 
   console.log("======================");
