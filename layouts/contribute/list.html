@@ -123,26 +123,26 @@
 
   var submitBtn = document.getElementById("submit-btn");
   
-  var generateNewId = function() {
+  var generateNewId = () => {
     return Math.random().toString(36).substr(2, 8).toUpperCase();
   }
 
-  var validateTitle = function(text) {
+  var validateTitle = (text) => {
     return text.length > 10;
   }
-  var validateDescription = function(text) {
+  var validateDescription = (text) => {
     return text.length > 10;
   }
-  var validateAutherName = function(text) {
+  var validateAutherName = (text) => {
     return text.length > 3;
   }
-  var validateCategory = function(category) {
+  var validateCategory = (category) => {
     return (category !== "no-category");
   }
-  var validateExampleCode = function(text) {
+  var validateExampleCode = (text) => {
     return text?.length > 10;
   }
-  var validateAndCommunicate = function(options) {
+  var validateAndCommunicate = (options) => {
     var flag = true
     if (!validateTitle(options.title)) {
       alert("'title' is empty or too short");
@@ -167,7 +167,7 @@
     return flag;
   }
 
-  var optionsFromForm = function() {
+  var optionsFromForm = () => {
     var id = generateNewId()
     var enabled = true
     var formTitle = document.getElementById("title");
@@ -184,6 +184,7 @@
     var formPlayerData = document.getElementById("player_data");
 
     return {
+      id: id,
       version: VERSION,
       enabled: enabled,
       example_type: formExampleType.value,
@@ -199,7 +200,7 @@
     }
   }
 
-  var postRequest = function(options, callback) {
+  var postRequest = (options, callback) => {
     var request = new XMLHttpRequest();
     request.open("POST", "{{ $postSubmitUrl }}");
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -218,7 +219,7 @@
     console.log("{{ $postSubmitUrl }}");
 
     if (validateAndCommunicate(options)) {
-      postRequest(options, function(data) {
+      postRequest(options, (data) => {
         console.log("================================");
         console.log(data);
       });

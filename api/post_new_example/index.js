@@ -7,7 +7,10 @@ const STAGING_BRANCH = "staging";
 const MASTER_BRANCH = "main"
 
 const validateInput = (params) => {
-  
+  if (!("id" in params)) {
+    throw new Error("Invalid data given! ('id' is missing)")
+  }
+
   if (!("title" in params)) {
     throw new Error("Invalid data given! ('title' is missing)")
   }
