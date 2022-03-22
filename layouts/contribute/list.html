@@ -2,7 +2,6 @@
 
 {{$apiUrl := "https://www.ffmpegbyexample.com/"}}
 {{ $postNewExamplePath := ".netlify/functions/post_new_example" }}
-
 {{ $postSubmitUrl := $postNewExamplePath | printf "%s%s" $apiUrl | printf "%s" }}
 
 <style>
@@ -179,7 +178,7 @@
       version: VERSION,
       enabled: enabled,
       example_type: formExampleType.value,
-      example_player_data: [ formPlayerData.value ],
+      example_player_data: formPlayerData.value,
       title: formTitle.value,
       description: formDescription.value,
       author_name: formName.value,

@@ -99,7 +99,9 @@ const handler = async (event, context) => {
     thumbnail_url: body.thumbnail_url || null,
     terminal_command: body.terminal_command,
     example_type: body.example_type,
-    example_player_data: body.example_player_data,
+    example_player_data: [ 
+      body.example_player_data 
+    ],
     views: 0,
     likes: 0,    
   }
