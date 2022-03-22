@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <script type="text/javascript">
-  amplitude.getInstance().logEvent('show-example', { example_id: {{ .Params.id }} } );
+  amplitude.getInstance().logEvent('example-page', { example_id: {{ .Params.id }} } );
 </script>
 
 <article>

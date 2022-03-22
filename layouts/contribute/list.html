@@ -1,7 +1,6 @@
 {{ define "main" }}
 
 {{$apiUrl := "https://www.ffmpegbyexample.com/"}}
-{{/* $apiUrl := "http://localhost:8888" */}}
 {{ $postNewExamplePath := ".netlify/functions/post_new_example" }}
 
 {{ $postSubmitUrl := $postNewExamplePath | printf "%s%s" $apiUrl | printf "%s" }}
@@ -124,6 +123,10 @@
 
   var submitBtn = document.getElementById("submit-btn");
   
+  var generateNewId = function() {
+    return Math.random().toString(36).substr(2, 8).toUpperCase();
+  }
+
   var validateTitle = function(text) {
     return text.length > 10;
   }
@@ -167,6 +170,8 @@
   }
 
   var optionsFromForm = function() {
+    var id = generateNewId()
+    var enabled = true
     var formTitle = document.getElementById("title");
     var formExampleType = document.getElementById("example_type")
     var formDescription = document.getElementById("description");
@@ -182,6 +187,7 @@
 
     return {
       version: VERSION,
+      enabled: enabled,
       example_type: formExampleType.value,
       title: formTitle.value,
       description: formDescription.value,

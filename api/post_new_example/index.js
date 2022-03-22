@@ -31,11 +31,13 @@ const validateInput = (params) => {
   return true;
 }
 
-const getFilenameFromTitle = (title) => {
-  let filename = title.replace(/[^a-z0-9_\-]/gi, '_').toLowerCase();
-  filename += `-${Math.random().toString(36).substring(2, 5)}`;
-  filename += ".md";
-  return filename;
+const getFilename = (options) => {
+  const { title, id } = options
+  
+  const filename = title.replace(/[^a-z0-9_\-]/gi, '_').toLowerCase();
+  const filepath = id + "/" + filename + ".md"
+
+  return filepath;
 }
 
 const getAuthorDisplayName = (name, email) => {
@@ -47,8 +49,19 @@ const getAuthorDisplayName = (name, email) => {
   return author;
 }
 
-const getMergeToBranchName = (filename) => {
-  return `${BRANCH_PREFIX}/${filename}`;
+const getMergeToBranchName = (id) => {
+  return `${BRANCH_PREFIX}/${id}`;
+}
+
+const getTags = (tags) => {
+  let exampleTags = []
+  for (let i = 0; i < tags.length; i++) {
+    if (!tags[i].includes("no-tag")) {
+      exampleTags.push(tags[i])
+    }
+  }
+
+  return exampleTags
 }
 
 const handler = async (event, context) => {
@@ -60,9 +73,10 @@ const handler = async (event, context) => {
     validateInput(body);
 
     // filename
-    filename   = getFilenameFromTitle(body.title);
+    filename   = getFilename(body);
     author     = getAuthorDisplayName(body.author_name, body.author_email);
-    branchName = getMergeToBranchName(filename);
+    branchName = getMergeToBranchName(body.id);
+    tags       = getTags(body.tags)
 
   } catch (error) {
     console.error(error);
@@ -72,18 +86,19 @@ const handler = async (event, context) => {
   // 
   const options = {
     // example options
+    id: body.id,
     version: body.version,
+    enabled: body.enabled || false,
     date: new Date().toISOString(),
     author: author,
     title: body.title,
     description: body.description,
     categories: body.categories,
-    tags: body.tags || [],
+    tags: tags,
     thumbnail_url: body.thumbnail_url || null,
     terminal_command: body.terminal_command,
-    
-    // meta options
-    filename: filename,
+    views: 0,
+    likes: 0,    
   }
   yamlText = (`---\n${yaml.dump(options)}\n---\n`);
 
