@@ -6,7 +6,7 @@ date: '2022-03-22T10:52:26.576Z'
 author: Elad Gariany <elad@gariany.com>
 title: Generate "Game of Life" Video using lavfi video source
 description: >-
-  [Conway's Game ofLife](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life),
+  [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life),
   also known
 
   simply as Life, is a cellular automaton devised by the British mathematician
