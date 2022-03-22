@@ -23,6 +23,7 @@
     <li>Updated on: {{ .Date.Format "January 2, 2006" }}</li>
     <li>tags: 
       {{ range $key, $value := .Params.Tags }}
+      
         {{ $tagUrl := (printf "/%s/%s" "tags" $value) }}
         <a href="{{ $tagUrl | absURL }}">#{{ $value | lower }}</a>
       {{ end }}

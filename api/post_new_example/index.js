@@ -102,8 +102,9 @@ const handler = async (event, context) => {
     example_player_data: [ 
       body.example_player_data 
     ],
+    filename: filename,
     views: 0,
-    likes: 0,    
+    likes: 0,
   }
   yamlText = (`---\n${yaml.dump(options)}\n---\n`);
 
