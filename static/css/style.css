@@ -1,6 +1,7 @@
 :root {
   --main-color: #ed1c24;
   --example-color: blueviolet;
+  --link-color: blueviolet;
   --mc-serif-font: "medium-content-serif-font", Georgia, Cambria, "Times New Roman", Times, serif;
   --monospace-font: monospace;
 }
@@ -41,9 +42,12 @@ h4 {
   opacity: 0.8;
 }
 
+article {
+  padding: 1em;
+}
+
 p > code, p > a > code {
   padding: 0.2rem 0.4rem;
-  font-size: 1rem !important;
   background: #8a2be233;
   border: 1px solid #8a2be233;
   border-radius: 0.4rem;
@@ -51,14 +55,11 @@ p > code, p > a > code {
 
 p, ul, li, a {
   margin: 0;
-  font-size: 1.5rem;
   padding-inline-start: 0;
-  font-family: var(--mc-serif-font);
 }
 
 p {
   display: block;
-  margin-top: 1em;
   line-height: 1.58;
 }
 
@@ -66,8 +67,8 @@ p img {
   margin: 0;
 }
 
-a {
-  color: #000c;
+p a {
+  color: #000;
 }
 
 p > a {
@@ -87,65 +88,8 @@ hr {
   opacity: 0.8;
 }
 
-/* ======== homepage ======== */
-.homepage-top-message {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 2px solid #0004;
-  border-radius: 1rem;
-  max-width: 42rem;
-  margin: 30px;
-  padding: 1em;
-  font-size: 21px;
-  font-weight: 500;
-  margin-bottom: 2em;
-}
-
-.homepage-recent {
-  /* width: 100%; */
-  padding: 2em;
-  margin-bottom: 5rem;
-}
-
-/* ======== sidebar  ======== */
-.sidebar ul {
-  list-style: none;  
-}
-
-.sidebar a {
-  text-decoration: none;
-}
-
-.sidebar nav span {
-  color: #ffffff;
-  font-size: 28px;
-  font-weight: 300;
-  letter-spacing: 1px;
-  font-family: var(--mc-serif-font);
-}
-
-.tag-list {
-  font-size: 13px;
-}
-
-.tag-list ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-  font-size: inherit;
-}
-
-.tag-list li {
-  list-style-type: none;
-  padding-right: 7px;
-  font-size: inherit;
-}
-
-.tag-list li a {
-  color: #aaa;
-  font-size: inherit;
-  font-family: var(--monospace-font);
+video {
+  max-width: 100%;
 }
 
 /* ======== lists ======== */
@@ -156,7 +100,7 @@ hr {
 }
 
 .posts-list-tags {
-  color: var(--main-color);
+  color: var(--link-color);
   font-family: var(--monospace-font) !important;
 }
 
@@ -177,3 +121,4 @@ hr {
   font-family: var(--monospace-font);
   vertical-align: top;
 }
+

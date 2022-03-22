@@ -1,16 +1,23 @@
 {{ $isHome := true }}
 
-<article>
+<style>
+  .homepage-top-message {
+    padding: 4em;
+  }
+
+  .homepage-top-message b {
+    font-weight: 800;
+  }
+</style>
+
+
+<article>  
   <div class="homepage-top-message">
-    <div>
-      <img src="img/ffmpeg-by-example.png" alt="FFmpeg by Example" style="width: 250px;"></img>
-    </div>
-    FFmpeg By Example is a simple documentation website to present all the unique and different ways to use FFmpeg. Got a cool idea to share with the community?
+    <b>FFmpeg By Example</b> is a simple documentation website to present all the unique and different ways to use FFmpeg. </br>Got a cool idea to share with the community?
     <a href="contribute">Send your contribution here!</a>
   </div>
 
   <div class="homepage-recent">
-
     {{ $paginator := .Paginate (where .Site.RegularPages "Type" "examples") }}
 
     {{ range $index, $page := .Paginator.Pages }}
@@ -18,6 +25,5 @@
         {{ partial "list/item.html" $page }}
       </ul>
     {{ end }}
-    
   </div>
 </article>

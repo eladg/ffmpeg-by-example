@@ -1,0 +1,27 @@
+.content__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.content__meta {
+  font-size: 12px;
+  color: #707070;
+  opacity: 0.8;
+  font-family: monospace;
+  text-align: left;
+}
+
+.content__thumb_container {
+  margin-right: 1rem;
+  align-self: flex-end;
+}
+
+.content__thumb_container img {
+  width: 80px;
+  max-height: 80px;
+}
+
+/* ======== syntax highlighting ======== */

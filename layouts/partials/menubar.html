@@ -1,0 +1,85 @@
+<style>
+  .menubar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2d2d2d;
+    height: var(--side-height);
+  }
+
+  .menubar div {
+    display: flex;
+    flex-grow: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  .menubar .search-container {
+    flex-grow: 2;
+    max-width: 500px;
+  }
+
+  .menubar .logo {
+    width: 150px;
+  }
+  .menubar .logo img {
+    max-width: 120px;
+  }
+
+  .menubar .search {
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 100%;
+  }
+
+  .menubar .logo a {
+    color: #e2e2e2;
+    font-size: 14px;
+  }
+
+  .menubar a {
+    text-decoration: none;
+  }
+
+  .menubar nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;  
+    justify-content: space-evenly;
+  }
+
+  .menubar nav ul li {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .menubar nav span {
+    font-size: 14px;
+    color: #e2e2e2;
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 630px) {
+    .menubar .search {
+      display: none;
+    }
+  }
+</style>
+
+<div class="menubar">
+  <div class="logo">
+    <a href="/"><img src="/img/ffmpeg-by-example.png" alt="ffmpegbyexample.com"></img></a>
+  </div>
+  <div class="search-container">
+    <input class="search" type="text" placeholder="Search...">
+  </div>
+  <div class="menu-items">
+    <nav>
+      <ul>
+        <li><a href='/about'><span>About</span></a></li>
+        <li><a href="https://discord.gg/NDZ4m9ZdqF" target="_blank" rel="noopener"><span>Community</span></a></li>
+        <li><a href='/contribute'><span>Add New</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</div>

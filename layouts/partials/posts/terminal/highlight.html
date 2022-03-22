@@ -1,0 +1,29 @@
+<style>
+  .highlight > pre {
+    border: 2px solid blueviolet;
+    border-radius: 0.5rem;
+    white-space: normal;
+  }
+
+  .highlight > pre > code {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+
+  pre {
+    padding: 10px;
+    width: inherit;
+    margin: 0;
+  }
+
+  pre a {
+    color: #c57d7d;
+  }
+</style>
+
+<div class="content__example_command">
+  {{ if isset .Params "terminal_command" }}
+    {{ highlight .Params.terminal_command "bash" "" }}
+  {{ end }}
+</div>

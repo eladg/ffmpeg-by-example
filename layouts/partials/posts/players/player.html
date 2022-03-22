@@ -1,0 +1,26 @@
+<style>
+  .content__example_video {
+    width: 100%;
+    max-width: 512px; 
+    padding: 0em 0.2em;
+  }
+</style>
+
+<div class="content__example_video">
+  {{ if (eq .Params.example_type "no-preview") }}
+    {{ partial "posts/players/no-preview.html" . }}
+  {{ end }}
+
+  {{ if (eq .Params.example_type "video-url") }}
+    {{ partial "posts/players/video-url.html" . }}
+  {{ end }}
+
+  {{ if (eq .Params.example_type "youtube-embed") }}
+    {{ partial "posts/players/youtube-embed.html" . }}
+  {{ end }}
+
+  {{ if (eq .Params.example_type "audio") }}
+    {{ partial "posts/players/audio.html" . }}
+  {{ end }}
+
+</div>

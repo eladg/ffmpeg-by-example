@@ -1,0 +1,31 @@
+<style>
+  .content__top {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #9d9d9d;
+    width: 100%;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 2em;
+  }
+
+  .content__actions a {
+    text-decoration: none;
+    padding: 5px 20px 5px 20px;
+    border: 1px solid;
+  }
+
+  .content__title h2 {
+    margin-bottom: 0;
+  }
+
+</style>
+
+<div class="content__top">
+  <div class="content__title">
+    <h2>{{ .Title }}</h2>
+  </div>
+  <div class="content__actions">
+    <a href="/edit/{{ .Params.id }}">Edit</a>
+  </div>
+</div>

@@ -4,4 +4,15 @@
   publish = "public"
 
 [build.environment]
-  HUGO_VERSION = "0.75.1"
+  HUGO_VERSION = "0.93.3"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
