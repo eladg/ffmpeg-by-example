@@ -143,8 +143,6 @@
     return text?.length > 10;
   }
   var validateAndCommunicate = function(options) {
-    return true
-    
     var flag = true
     if (!validateTitle(options.title)) {
       alert("'title' is empty or too short");
@@ -202,10 +200,6 @@
   }
 
   var postRequest = function(options, callback) {
-
-    const _options = {"version":"1.0","example_type":"no-preview","title":"This is a cool github hook that allows anyone from the internet to add contribute new example to ffmpeg by example by simily submitting an API request","description":"This is a cool github hook that allows anyone from the internet to add contribute new example to ffmpeg by example by simily submitting an API request","author_name":"Elad Gariany","author_email":"elad@gariany.com","terminal_command":"ffmpeg -i input-video.mp4 -c:a copy -vn audio-file.aac","categories":["metadata"],"tags":["blend","no-tag2","no-tag3"],"thumbnail_url":"","player_data":""}
-    options = _options
-
     var request = new XMLHttpRequest();
     request.open("POST", "{{ $postSubmitUrl }}");
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
