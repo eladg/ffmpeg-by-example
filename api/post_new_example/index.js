@@ -24,8 +24,8 @@ const validateInput = (params) => {
   if (!("tags" in params) || (params.tags.length < 0)) {
     throw new Error("Invalid data given! ('tags' array must have at least one tag)")
   }
-  if (!("example_code" in params) || (params.example_code.length < 10)) {
-    throw new Error("Invalid data given! ('example_code' is missing or too short)")
+  if (!("terminal_command" in params) || (params.terminal_command.length < 10)) {
+    throw new Error("Invalid data given! ('terminal_command' is missing or too short)")
   }
 
   return true;
@@ -71,15 +71,19 @@ const handler = async (event, context) => {
 
   // 
   const options = {
+    // example options
+    version: body.version,
     date: new Date().toISOString(),
     author: author,
     title: body.title,
-    filename: filename,
     description: body.description,
     categories: body.categories,
     tags: body.tags || [],
     thumbnail_url: body.thumbnail_url || null,
-    example_code: body.example_code,
+    terminal_command: body.terminal_command,
+    
+    // meta options
+    filename: filename,
   }
   yamlText = (`---\n${yaml.dump(options)}\n---\n`);
 
