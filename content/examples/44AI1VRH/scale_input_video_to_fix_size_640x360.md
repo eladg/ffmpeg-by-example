@@ -15,7 +15,7 @@ categories:
 tags:
   - filter
 thumbnail_url: null
-terminal_command: ffmpeg -i video.mp4 -vf scale=640:360 video640x360.mp4
+terminal_command: ffmpeg -i "video.mp4" -vf "scale=640:360" "video640x360.mp4"
 views: 0
 likes: 0
 example_type: no-preview
