@@ -1,4 +1,23 @@
+{{ $command := .Params.terminal_command }}
+
 <style>
+  .button {
+    padding: 1em;
+  }
+
+  .content__example_command {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5em;
+  }
+
+  .content__example_command .actions {
+    display: flex;
+    justify-content: end;
+    gap: 0.5em;
+  }
+
   .highlight > pre {
     border: 2px solid blueviolet;
     border-radius: 0.5rem;
@@ -24,6 +43,39 @@
 
 <div class="content__example_command">
   {{ if isset .Params "terminal_command" }}
-    {{ highlight .Params.terminal_command "bash" "" }}
+    {{ highlight $command "bash" "" }}
+    <div class="actions">
+      <button class="button" id="copy-command-btn">Copy to clipboard</button>
+      <button class="button" id="wasm-try-btn">Try it online</button>  
+    </div>
   {{ end }}
 </div>
+
+<script type="application/javascript">
+  var copyBtn = document.getElementById("copy-command-btn")
+  var wasmBtn = document.getElementById("wasm-try-btn")
+
+  var copy = (text) => {
+    window.navigator.clipboard.writeText(text)
+    .then(() => {
+      alert("Copied to clipboard!");
+    })
+    .catch(err => {
+      console.log('Something went wrong', err);
+    });
+  }
+
+  var handleCopy = (e) => {
+    e.preventDefault()
+    const cmd = {{ $command }};
+    copy(cmd)
+  }
+
+  var handleTryWasm = (e) => {
+    e.preventDefault()
+    alert("Our WebAssembly FFmpeg Player is currently under construction. With your support, we can make it happen sooner! ;)")
+  }
+
+  copyBtn.onclick = handleCopy;
+  wasmBtn.onclick = handleTryWasm;
+</script> 
