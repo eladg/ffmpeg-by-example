@@ -1,10 +1,20 @@
-<li class="posts-list-item">
+<style>
+  .li-description {
+    font-size: 12px;
+    color: #373636;
+    opacity: 0.8;
+    font-family: var(--monospace-font);
+    vertical-align: top;
+  }
+</style>
+
+<li style="list-style: none;">
   <div>
-    ► <a href="{{ .Permalink }}">{{ .Title | title }}</a>
+    <a href="{{ .Permalink }}">{{ .Title | title }}</a>
   </div>
 
   <div>
-    <span class="posts-list-item-description">
+    <span class="li-description">
       {{ if isset .Params "tags" }}
         {{ if gt (len .Params.tags) 0 }}
         >

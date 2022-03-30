@@ -1,6 +1,7 @@
 :root {
   --main-color: #ed1c24;
   --example-color: blueviolet;
+  --text-color: #000;
   --link-color: blueviolet;
   --mc-serif-font: "medium-content-serif-font", Georgia, Cambria, "Times New Roman", Times, serif;
   --monospace-font: monospace;
@@ -54,6 +55,7 @@ p > code, p > a > code {
 }
 
 p, ul, li, a {
+  color: #000;
   margin: 0;
   padding-inline-start: 0;
 }
@@ -91,34 +93,3 @@ hr {
 video {
   max-width: 100%;
 }
-
-/* ======== lists ======== */
-.posts-list {
-  width: 100%;
-  list-style-type: none;
-  list-style: none;
-}
-
-.posts-list-tags {
-  color: var(--link-color);
-  font-family: var(--monospace-font) !important;
-}
-
-.posts-list-item a {
-  font-size: 1em;
-  text-decoration: none;
-  font-family: var(--mc-serif-font);
-}
-
-.posts-list-item a:hover {
-  text-decoration: underline;
-}
-
-.posts-list-item-description {
-  font-size: 12px;
-  color: #373636;
-  opacity: 0.8;
-  font-family: var(--monospace-font);
-  vertical-align: top;
-}
-
