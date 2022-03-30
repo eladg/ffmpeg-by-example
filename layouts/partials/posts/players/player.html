@@ -3,6 +3,10 @@
     width: 100%;
     max-width: 512px; 
     padding: 0em 0.2em;
+
+    {{ if (eq .Params.example_type "no-preview") }}
+      display: none;
+    {{ end }}
   }
 </style>
 
