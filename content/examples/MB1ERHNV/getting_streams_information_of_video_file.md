@@ -11,35 +11,10 @@ description: >-
   their encoding, and other relevant metadata.
 
 
-  In the example below Input #0 `video.mp4` has 2 tracks, officially named
-  `Stream #0:0` and `Stream #0:1`. 
-
-
-  The first stream (`#0:0`) is a video stream encoded in [`h264`
-  encoding](https://trac.ffmpeg.org/wiki/Encode/H.264), has a [pixel
-  format](https://ffmpeg.org/doxygen/trunk/pixfmt_8h_source.html) of `yuv420p`
-  and frame size of `1920x1080 [SAR 1:1 DAR
-  16:9](https://en.wikipedia.org/wiki/Display_aspect_ratio)`. The average video
-  [bit rate](https://en.wikipedia.org/wiki/Bit_rate) is 2530 kb/s (2.4 megabytes
-  per second) and 25 [frames per
-  seconds](https://en.wikipedia.org/wiki/Frame_rate).
-
-
-  The second stream (`#0:1`) is an audio stream encoded in
-  [`aac`](https://trac.ffmpeg.org/wiki/Encode/AAC) stereo stream encoded at an
-  average of 128 kb/s and [sample
-  rate](https://en.wikipedia.org/wiki/Sampling_(signal_processing)) of 44100 Hz
-categories:
-  - metadata
-tags:
-  - metadata
-  - ''
-  - ''
-thumbnail_url: null
-terminal_command: |-
-  ffmpeg -i video.mp4 -hide_banner
-
-  Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'video.mp4':
+  Example output:
+  
+  ```
+    Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'video.mp4':
     Metadata:
       major_brand     : isom
       minor_version   : 512
@@ -54,12 +29,40 @@ terminal_command: |-
       Metadata:
         handler_name    : SoundHandler
         vendor_id       : [0][0][0][0]
-  At least one output file must be specified
+
+    At least one output file must be specified
+  
+  ```
+
+
+  In the example below Input #0 `video.mp4` has 2 tracks, officially named
+  `Stream #0:0` and `Stream #0:1`. 
+
+
+  The first stream (`#0:0`) is a video stream encoded in [`h264`](https://trac.ffmpeg.org/wiki/Encode/H.264) encoding, has a [pixel
+  format](https://ffmpeg.org/doxygen/trunk/pixfmt_8h_source.html) of `yuv420p`
+  and frame size of [`1920x1080 SAR 1:1 DAR
+  16:9`](https://en.wikipedia.org/wiki/Display_aspect_ratio). The average video
+  [bit rate](https://en.wikipedia.org/wiki/Bit_rate) is 2530 kb/s (2.4 megabytes
+  per second) and 25 [frames per
+  seconds](https://en.wikipedia.org/wiki/Frame_rate).
+
+
+  The second stream (`#0:1`) is an audio stream encoded in
+  [`aac`](https://trac.ffmpeg.org/wiki/Encode/AAC) stereo stream encoded at an
+  average of 128 kb/s and [sample
+  rate](https://en.wikipedia.org/wiki/Sampling_(signal_processing)) of 44100 Hz.
+categories:
+  - metadata
+tags:
+  - metadata
+thumbnail_url: null
+terminal_command: |-
+  ffmpeg -hide_banner -i video.mp4
 example_type: no-preview
 example_player_data:
   - ''
 filename: MB1ERHNV/getting_streams_information_of_video_file.md
 views: 0
 likes: 0
-
 ---
