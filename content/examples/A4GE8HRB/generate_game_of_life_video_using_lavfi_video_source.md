@@ -29,11 +29,10 @@ categories:
 tags:
   - video-source
   - lavfi
-  - ''
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -f lavfi -i
-  life=s=960x540:mold=10:r=60:ratio=0.1:death_color=#C83232:life_color=#00ff00,scale=960:540:flags=16
+  "life=s=960x540:mold=10:r=60:ratio=0.1:death_color=#C83232:life_color=#00ff00,scale=960:540:flags=16"
   -c:v libx264 -crf 41 -frames:v 1800 -r 60 -t 30 life.mp4
 example_type: youtube-embed
 example_player_data:
