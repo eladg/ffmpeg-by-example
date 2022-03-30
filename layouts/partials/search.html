@@ -1,0 +1,48 @@
+<script>
+  const searchData = {
+    {{ range .Site.RegularPages  }}
+      "{{ printf "%s" .Title }}": {{ printf "%s" .Permalink }},
+    {{ end }}
+  }
+
+  const config = {
+    selector: "#autoComplete",
+    placeHolder: "Search an example...",
+    data: {
+      src: Object.keys(searchData),
+      cache: false,
+    },
+    resultsList: {
+      element: (list, searchData) => {
+        if (!searchData.results.length) {
+          const message = document.createElement("div");
+          message.setAttribute("class", "no_result");
+          message.innerHTML = `<span>No results for "${searchData.query}"</span>`;
+          list.prepend(message);
+        }
+      },
+      noResults: true,
+    },
+    resultItem: {
+      highlight: {
+        render: true
+      }
+    },
+    events: {
+      input: {
+        selection: (event) => {
+          const selection = event.detail.selection.value;
+          window.location = searchData[selection];
+        }
+      }
+    }
+  }
+
+  require(['/js/autoComplete.min.js'], (autoComplete) => { 
+    window.autoComplete = new autoComplete(config)
+  });
+</script>
+
+<div class="search-container">
+  <input id="autoComplete" type="search" dir="ltr" spellcheck=false autocorrect="on" autocomplete="on" autocapitalize="off">
+</div>

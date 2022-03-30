@@ -1,7 +1,8 @@
 :root {
   --main-color: #ed1c24;
   --example-color: blueviolet;
-  --text-color: #000;
+  --text-color: #000000;
+  --gray-color: #797979;
   --link-color: blueviolet;
   --mc-serif-font: "medium-content-serif-font", Georgia, Cambria, "Times New Roman", Times, serif;
   --monospace-font: monospace;

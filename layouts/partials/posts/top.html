@@ -30,7 +30,7 @@
       {{ $editUrl := (printf "%s/%s" "https://github.com/eladg/ffmpeg-by-example/edit/main/content/examples/" .Params.Filename) }}
       <a href="{{$editUrl | absURL}}" target="_blank">Edit</a>
     {{ else }}
-      <!-- <a href="#">Edit</a> -->
+      <a href="#missing-filename">Edit</a>
     {{ end }}    
   </div>
 </div>
