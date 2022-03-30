@@ -21,9 +21,7 @@ description: >-
 
   Notice that the command will generate a video file without a given input file.
 
-  Read more about '[Video Sources on FFmpeg official
-
-  documentation](https://ffmpeg.org/ffmpeg-filters.html#Video-Sources)'
+  Read more about '[Video Sources on FFmpeg official documentation](https://ffmpeg.org/ffmpeg-filters.html#life)'
 categories:
   - video-filters
 tags:
