@@ -57,7 +57,7 @@ const getMergeToBranchName = (id) => {
 const getTags = (tags) => {
   let exampleTags = []
   for (let i = 0; i < tags.length; i++) {
-    if (!tags[i].includes("no-tag")) {
+    if (tags[i]) {
       exampleTags.push(tags[i])
     }
   }
@@ -72,12 +72,20 @@ const handler = async (event, context) => {
   try {
     body = JSON.parse(event.body);
     validateInput(body);
+    console.log("valid body", body, "\n")
 
     // filename
     filename   = getFilename(body);
+    console.log("filename", filename, "\n")
+
     author     = getAuthorDisplayName(body.author_name, body.author_email);
+    console.log("author", author, "\n")
+
     branchName = getMergeToBranchName(body.id);
+    console.log("branchName", branchName, "\n")
+
     tags       = getTags(body.tags)
+    console.log("tags", tags, "\n")
 
   } catch (error) {
     console.error(error);
@@ -108,7 +116,7 @@ const handler = async (event, context) => {
   }
   yamlText = (`---\n${yaml.dump(options)}\n---\n`);
 
-  console.log("======================");
+  console.log(`== step 1: Get ref for '${PR_TO_BRANCH}' ====================`);
 
   try {
     // step 1: Get ref for 'staging'
@@ -118,7 +126,7 @@ const handler = async (event, context) => {
     return responses.failedRequestToGithub(new Error(`Could not find ${PR_TO_BRANCH}`));
   }
 
-  console.log("======================");
+  console.log(`== step 2: branch out of '${branchName}' ====================`);
 
   try {
     // step 2: branch out of 'staging'
@@ -128,7 +136,7 @@ const handler = async (event, context) => {
     return responses.failedRequestToGithub(new Error(`Could not branch to ${branchName}`));
   }
 
-  console.log("======================");
+  console.log("== step 3: commit to new branch ====================");
 
   try {
     // step 3: commit to new branch
@@ -144,17 +152,17 @@ const handler = async (event, context) => {
     return responses.failedRequestToGithub(new Error(`Could not createContent to ${branchName}. Tried writing:\n${commitData}\n`));
   }
 
-  console.log("======================");
+  console.log("== step 4: create a new pull request on github.com ====================");
 
   try {
-    // step 4: 
+    // step 4: create a new pull request on github.com
     const resp_4 = await repo_api.createNewPullRequest(filename, branchName, PR_TO_BRANCH);
   } catch (error) {
     console.error(error);
     return responses.failedRequestToGithub(new Error(`Failed Creating from ${branchName} into ${PR_TO_BRANCH}`));
   }
 
-  console.log("======================");
+  console.log("== PR Created Succesfully! ====================");
 
   return responses.succsess("PR Created Succesfully!")
 }
