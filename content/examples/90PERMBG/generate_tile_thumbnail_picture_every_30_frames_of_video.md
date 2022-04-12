@@ -29,8 +29,7 @@ tags:
   - extract-thumbnails
 thumbnail_url: null
 terminal_command: >-
-  ffmpeg -i yoga.mp4 -vf select='not(mod(n\,30))',scale=160:120,tile -frames:v 1
-  yoga-tile-preview.jpg
+  ffmpeg -i yoga.mp4 -vf select='not(mod(n\,30))',scale=160:120,tile -frames:v 1 preview.jpg
 example_type: picture
 example_player_data:
   - https://ffmpeg-by-example.s3.amazonaws.com/yoga-tile-preview.jpg
