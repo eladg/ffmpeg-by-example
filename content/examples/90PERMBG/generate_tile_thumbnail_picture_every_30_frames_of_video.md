@@ -7,7 +7,7 @@ author: Elad Gariany <elad@gariany.com>
 title: Generate a 'tile' thumbnail picture every 30 frames of a video
 description: >-
   The following command will take any input video, in our case
-  [`yoga.mp4`](https://www.ffmpegbyexample.com/video/yoga.mp4), snap a frame
+  [`bunny.webm`](https://www.ffmpegbyexample.com/video/bunny.webm), snap a frame
   every 30 frames (using the filter `select='not(mod(n\,30))'`), scale it to
   160x120 (using the filter `scale=160:120`) and organize each frame in a tile
   using the `tile` filter.
@@ -29,10 +29,10 @@ tags:
   - extract-thumbnails
 thumbnail_url: null
 terminal_command: >-
-  ffmpeg -i yoga.mp4 -vf select='not(mod(n\,30))',scale=160:120,tile -frames:v 1 preview.jpg
+  ffmpeg -i bunny.webm -vf select='not(mod(n\,30))',scale=160:120,tile -frames:v 1 preview.jpg
 example_type: picture
 example_player_data:
-  - https://ffmpeg-by-example.s3.amazonaws.com/yoga-tile-preview.jpg
+  - https://ffmpeg-by-example.s3.amazonaws.com/bunny-tile-preview.jpg
 filename: 90PERMBG/generate_tile_thumbnail_picture_every_30_frames_of_video.md
 views: 0
 likes: 0
