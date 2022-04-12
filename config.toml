@@ -4,7 +4,7 @@ enableRobotsTXT = true
 [params]
   favicon = "/favicon.ico"
   description = "Explore the depth of FFmpeg with Examples"
-  examplestypes = ["no-preview", "video-url", "youtube-embed", "audio"]
+  examplestypes = ["no-preview", "picture", "video-url", "youtube-embed", "audio"]
 [permalinks]
   posts = "/:title/"
 
