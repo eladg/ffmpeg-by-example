@@ -29,7 +29,7 @@ tags:
   - extract-thumbnails
 thumbnail_url: null
 terminal_command: >-
-  ffmpeg -i bunny.webm -vf select='not(mod(n\,30))',scale=160:120,tile -frames:v 1 preview.jpg
+  ffmpeg -i bunny.webm -vf select='not(mod(n\,30))',scale=160:90,tile -frames:v 1 preview.jpg
 example_type: picture
 example_player_data:
   - https://ffmpeg-by-example.s3.amazonaws.com/bunny-tile-preview.jpg
