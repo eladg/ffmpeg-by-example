@@ -1,0 +1,11 @@
+{
+  "name": "update_view_counter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Elad Gariany",
+  "license": "private",
+  "private": true,
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
