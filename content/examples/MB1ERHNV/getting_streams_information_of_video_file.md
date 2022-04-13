@@ -12,7 +12,7 @@ description: >-
 
 
   Example output:
-  
+
   ```
     Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'video.mp4':
     Metadata:
@@ -31,7 +31,7 @@ description: >-
         vendor_id       : [0][0][0][0]
 
     At least one output file must be specified
-  
+
   ```
 
 
@@ -39,7 +39,8 @@ description: >-
   `Stream #0:0` and `Stream #0:1`. 
 
 
-  The first stream (`#0:0`) is a video stream encoded in [`h264`](https://trac.ffmpeg.org/wiki/Encode/H.264) encoding, has a [pixel
+  The first stream (`#0:0`) is a video stream encoded in
+  [`h264`](https://trac.ffmpeg.org/wiki/Encode/H.264) encoding, has a [pixel
   format](https://ffmpeg.org/doxygen/trunk/pixfmt_8h_source.html) of `yuv420p`
   and frame size of [`1920x1080 SAR 1:1 DAR
   16:9`](https://en.wikipedia.org/wiki/Display_aspect_ratio). The average video
@@ -57,12 +58,12 @@ categories:
 tags:
   - metadata
 thumbnail_url: null
-terminal_command: |-
-  ffmpeg -hide_banner -i video.mp4
+terminal_command: ffmpeg -hide_banner -i video.mp4
 example_type: no-preview
 example_player_data:
   - ''
 filename: MB1ERHNV/getting_streams_information_of_video_file.md
-views: 0
+views: 53
 likes: 0
+
 ---

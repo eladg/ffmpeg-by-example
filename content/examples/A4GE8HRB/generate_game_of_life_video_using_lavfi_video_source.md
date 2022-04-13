@@ -6,8 +6,8 @@ date: '2022-03-22T10:52:26.576Z'
 author: Elad Gariany <elad@gariany.com>
 title: Generate "Game of Life" Video using lavfi video source
 description: >-
-  [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life),
-  also known
+  [Conway's Game of
+  Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), also known
 
   simply as Life, is a cellular automaton devised by the British mathematician
 
@@ -21,7 +21,8 @@ description: >-
 
   Notice that the command will generate a video file without a given input file.
 
-  Read more about '[Video Sources on FFmpeg official documentation](https://ffmpeg.org/ffmpeg-filters.html#life)'
+  Read more about '[Video Sources on FFmpeg official
+  documentation](https://ffmpeg.org/ffmpeg-filters.html#life)'
 categories:
   - video-filters
 tags:
@@ -35,7 +36,8 @@ terminal_command: >-
 example_type: youtube-embed
 example_player_data:
   - XAoBe8eQjps
-views: 0
+views: 75
 likes: 0
 filename: A4GE8HRB/generate_game_of_life_video_using_lavfi_video_source.md
+
 ---
