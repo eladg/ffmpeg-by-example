@@ -15,7 +15,7 @@
     resultsList: {
       element: (list, searchData) => {
         if (!searchData.results.length) {
-          const message = document.createElement("div");
+          const message = document.createElement("li");
           message.setAttribute("class", "no_result");
           message.innerHTML = `<span>No results for "${searchData.query}"</span>`;
           list.prepend(message);

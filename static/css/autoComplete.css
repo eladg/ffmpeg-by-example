@@ -68,7 +68,7 @@
 
 .autoComplete_wrapper > ul > li::selection {
   /* color: rgba(#ffffff, 0); */
-  color: var(--link-color)
+  color: var(--link-color);
   background-color: rgba(#ffffff, 0);
 }
 
