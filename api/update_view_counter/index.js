@@ -1,7 +1,9 @@
-const fs = require('fs')
-const path = require('path');
-const contentRoot = "../../content/examples"
-const yaml = require('js-yaml');
+const CONTENT_ROOT = "../../content/examples"
+const { 
+  findMarkdownFileInFolder,
+  readExampleFromFile,
+  writeExampleToFile,
+} = require("../shared/models/example")
 
 const mapEventSegmentationCSVFileToData = (csv) => {
   let idCountsMap = {}
@@ -22,38 +24,28 @@ const mapEventSegmentationCSVFileToData = (csv) => {
   return idCountsMap
 }
 
-const findMarkdownFile = async (folderName) => {
-  let markdownFile
-  if (fs.existsSync(folderName)) {
-    fs.readdirSync(folderName).forEach(file => {
-      if (path.extname(file) === ".md") {
-        markdownFile = file
-      }
-    });  
-  }
-  return markdownFile
-}
-
 const handler = async (csvRawString) => {
   const idCountsMap = mapEventSegmentationCSVFileToData(csvRawString)
 
   for (let i = 0; i < Object.keys(idCountsMap).length; i++) {
     try {
+      // for each example id
       const id = Object.keys(idCountsMap)[i];
-      const folder = `${contentRoot}/${id}`
-      const markdownFile = await findMarkdownFile(folder)
-      const filepath = `${folder}/${markdownFile}`
-      console.log(`> working on: ${filepath}`)
-      const doc = await yaml.loadAll(fs.readFileSync(filepath, 'utf8'));
+      const folder = `${CONTENT_ROOT}/${id}`
+      const markdownFile = await findMarkdownFileInFolder(folder)
+      const markdownFilepath = `${folder}/${markdownFile}`
+
+      // try updating
+      console.log(`> working on: ${markdownFilepath}`)
+      const example = await readExampleFromFile(markdownFilepath)
       
-      console.log(`> found: ${doc[0]["views"]}, updating to: ${idCountsMap[id]}`)
-      doc[0]["views"] = idCountsMap[id]
+      // 
+      console.log(`> found: ${example["views"]}, updating to: ${idCountsMap[id]}`)
+      example["views"] = idCountsMap[id]
 
-      // write file
-      yamlText = (`---\n${yaml.dump(doc[0])}\n---\n`);
-      fs.writeFileSync(filepath, yamlText);
-
-      console.log(`updated views to: ${doc[0]["views"]}`)
+      if (await writeExampleToFile(example, markdownFilepath)) {
+        console.log(`succesfully updated views to: ${example["views"]}`)
+      }
     } catch (error) {
       console.log(error)
     }
