@@ -15,7 +15,6 @@ categories:
 tags:
   - audio-extract
   - no-video
-  - ''
 thumbnail_url: null
 terminal_command: ffmpeg -i video.mp4 -c:a copy -vn audio.aac
 example_type: no-preview

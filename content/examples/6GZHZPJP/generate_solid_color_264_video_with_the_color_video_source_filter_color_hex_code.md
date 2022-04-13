@@ -24,7 +24,6 @@ categories:
 tags:
   - lavfi
   - video-source
-  - ''
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -f lavfi -i "color=c=0x4d1a7f" -s 1280x720 -r 30 -c:v libx264 -crf 31
