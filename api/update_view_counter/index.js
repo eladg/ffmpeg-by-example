@@ -1,5 +1,5 @@
-const CONTENT_ROOT = "../../content/examples"
 const { 
+  CONTENT_ROOT,
   findMarkdownFileInFolder,
   readExampleFromFile,
   writeExampleToFile,

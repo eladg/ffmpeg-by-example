@@ -2,6 +2,8 @@ const fs = require('fs')
 const path = require('path');
 const yaml = require('js-yaml');
 
+const CONTENT_ROOT = "../../content/examples"
+
 const findMarkdownFileInFolder = async (folder) => {
   let markdownFile = null
   if (fs.existsSync(folder)) {
@@ -36,6 +38,7 @@ const writeExampleToFile = async (example, filepath) => {
 }
 
 module.exports = { 
+  CONTENT_ROOT,
   findMarkdownFileInFolder,
   readExampleFromFile, 
   writeExampleToFile

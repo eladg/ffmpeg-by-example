@@ -32,7 +32,7 @@
 
   <div class="homepage-random-example">
     {{ range first 1 ((where .Site.RegularPages "Type" "examples") | shuffle) }}
-      <h3>{{ .Title }}</h3>
+      <a href="{{ .Permalink }}"><h3>{{ .Title }}</h3></a>
       <div style="display: flex; flex-direction: column;">
         {{ partial "posts/players/player.html" . }}
         {{ partial "posts/terminal/highlight.html" . }}  
@@ -51,5 +51,11 @@
         {{ partial "list/item.html" $page }}
       </ul>
     {{ end }}
+  </div>
+
+  <div class="footer" style="margin-top: 4em;">
+    <hr/>
+    <p>Our server costs are currently at $19/mo. Please so us your love and support by <a href="https://ko-fi.com/ffmpegbyexample">donation here</a></p>
+    <p>Made with 💜 by <a href="https://www.gariany.com">Gariany</a> & the <a href="https://discord.gg/NDZ4m9ZdqF">FFmpeg Discord Community</a></p>
   </div>
 </article>
