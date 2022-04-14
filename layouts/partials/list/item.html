@@ -10,7 +10,7 @@
 
 <li style="list-style: none;">
   <div>
-    ⚙︎ <a href="{{ .Permalink }}">{{ .Title | title }}</a>
+    ▲ <a href="{{ .Permalink }}">{{ .Title | title }}</a>
   </div>
 
   <div>
@@ -18,7 +18,6 @@
       {{ if isset .Params "tags" }}
         {{ if gt (len .Params.tags) 0 }}
         
-
         tags:    
           {{ range $value := .Params.tags }}
           {{ $tagUrl := (printf "/%s/%s" "tags" $value) }}

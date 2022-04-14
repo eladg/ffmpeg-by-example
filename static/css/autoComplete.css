@@ -4,6 +4,7 @@
 }
 
 .autoComplete_wrapper > input {
+  display: block !important;
   width: 370px;
   height: 40px;
   padding-left: 20px;
