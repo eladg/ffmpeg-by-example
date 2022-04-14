@@ -29,12 +29,13 @@ tags:
   - extract-thumbnails
 thumbnail_url: null
 terminal_command: >-
-  ffmpeg -i bunny.webm -vf select='not(mod(n\,30))',scale=160:90,tile -frames:v 1 preview.jpg
+  ffmpeg -i bunny.webm -vf select='not(mod(n\,30))',scale=160:90,tile -frames:v
+  1 preview.jpg
 example_type: picture
 example_player_data:
   - https://ffmpeg-by-example.s3.amazonaws.com/bunny-tile-preview.jpg
 filename: 90PERMBG/generate_tile_thumbnail_picture_every_30_frames_of_video.md
-views: 0
+views: 273
 likes: 0
 
 ---

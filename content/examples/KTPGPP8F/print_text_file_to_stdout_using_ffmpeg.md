@@ -41,7 +41,7 @@ example_type: no-preview
 example_player_data:
   - ''
 filename: KTPGPP8F/print_text_file_to_stdout_using_ffmpeg.md
-views: 0
+views: 35
 likes: 4
 
 ---
