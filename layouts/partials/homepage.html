@@ -12,8 +12,16 @@
   .homepage-top-message b {
     font-weight: 800;
   }
-</style>
 
+  .homepage-random-example {
+    border: 2px solid ;
+    border-color: var(--link-color);
+    padding: 0em 2em 2em 2em;
+    background-color: var(--gray-color);
+    background-image: radial-gradient(var(--link-color) 0.5px, #e5e5f7 0.5px);
+    background-size: 10px 10px;
+  }
+</style>
 
 <article>  
   <div class="homepage-top-message">
@@ -21,7 +29,20 @@
     <a href="contribute">Send your contribution here!</a>
   </div>
 
+  <div class="homepage-random-example">
+    {{ range first 1 ((where .Site.RegularPages "Type" "examples") | shuffle) }}
+      <h3>{{ .Title }}</h3>
+      <div style="display: flex; flex-direction: column;">
+        {{ partial "posts/players/player.html" . }}
+        {{ partial "posts/terminal/highlight.html" . }}  
+      </div>
+    {{ end }}
+
+  </div>
+
   <div class="homepage-recent">
+    <h4>All Examples</h4>
+
     {{ $paginator := .Paginate (where .Site.RegularPages "Type" "examples") }}
 
     {{ range $index, $page := .Paginator.Pages }}

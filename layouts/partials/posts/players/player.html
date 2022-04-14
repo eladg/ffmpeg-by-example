@@ -1,38 +1,44 @@
 <style>
   .content__example_video {
-    width: 100%;
-    max-width: 512px; 
+    width: 99%;
     padding: 0em 0.2em;
-
-    {{ if (eq .Params.example_type "no-preview") }}
-      display: none;
-    {{ end }}
+    display: flex;
+    justify-content: center;
+    padding: 0.3em;
+    background-color: var(--gray-color);
+    background-image: radial-gradient(var(--link-color) 0.5px, #e5e5f7 0.5px);
+    background-size: 10px 10px;
   }
 </style>
 
-<div class="content__example_video">
-  {{ if (eq .Params.example_type "no-preview") }}
-    {{ partial "posts/players/no-preview.html" . }}
-  {{ end }}
+<div class="content__example_video" style="
+    {{ if (eq .Params.example_type "no-preview") }}
+      display: none;
+    {{ end }}
+">
+  <div style="max-width: 512px;">
+    {{ if (eq .Params.example_type "no-preview") }}
+      {{ partial "posts/players/no-preview.html" . }}
+    {{ end }}
 
-  {{ if (eq .Params.example_type "picture") }}
-    {{ partial "posts/players/picture.html" . }}
-  {{ end }}
+    {{ if (eq .Params.example_type "picture") }}
+      {{ partial "posts/players/picture.html" . }}
+    {{ end }}
 
-  {{ if (eq .Params.example_type "video-url") }}
-    {{ partial "posts/players/video-url.html" . }}
-  {{ end }}
+    {{ if (eq .Params.example_type "video-url") }}
+      {{ partial "posts/players/video-url.html" . }}
+    {{ end }}
 
-  {{ if (eq .Params.example_type "youtube-embed") }}
-    {{ partial "posts/players/youtube-embed.html" . }}
-  {{ end }}
+    {{ if (eq .Params.example_type "youtube-embed") }}
+      {{ partial "posts/players/youtube-embed.html" . }}
+    {{ end }}
 
-  {{ if (eq .Params.example_type "audio") }}
-    {{ partial "posts/players/audio.html" . }}
-  {{ end }}
-  
-  {{ if not (isset .Params "example_type") }}
-    {{ partial "posts/players/no-preview.html" . }}
-  {{ end }}
-
+    {{ if (eq .Params.example_type "audio") }}
+      {{ partial "posts/players/audio.html" . }}
+    {{ end }}
+    
+    {{ if not (isset .Params "example_type") }}
+      {{ partial "posts/players/no-preview.html" . }}
+    {{ end }}    
+  </div>
 </div>
