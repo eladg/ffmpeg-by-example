@@ -7,20 +7,16 @@ const EXAMPLES_PATH  = process.env.FFMPEG_BY_EXAMPLE_EXAMPLES_PATH;
 /**
  * @param {string} branchName - Name of the branch to get SHA ref for
  */
-var getRefHeadOfBranch = async function(branchName) {
+const getRefHeadOfBranch = async (branchName) => {
   const client = github.client(TOKEN);
   const ghrepo = client.repo(REPOSITORY);
 
   return new Promise((resolve, reject) => {
-    ghrepo.branches((err, data) => {
+    ghrepo.branch(branchName, (err, branch) => {
       if (err) {
         reject(err);
       } else {
-        data.forEach(branch => {
-          if (branch.name == branchName) {
-            resolve(branch.commit["sha"]);
-          }
-        });
+        resolve(branch.commit["sha"]);        
       }
     });
   });
@@ -30,7 +26,7 @@ var getRefHeadOfBranch = async function(branchName) {
  * @param {string} branchName - Name of the new branch
  * @param {string} ref - SHA ref to branch out of
  */
-var createNewBranchFromRef = async function(branchName, ref) {
+const createNewBranchFromRef = async (branchName, ref) => {
   const client = github.client(TOKEN);
   const ghrepo = client.repo(REPOSITORY);
 
@@ -51,10 +47,12 @@ var createNewBranchFromRef = async function(branchName, ref) {
  * @param {string} option.commit_msg - commit message to be pushed to repo
  * @param {Function} option.callback - callback function for `ghrepo.createContents`
  */
-var writeNewExampleToRepo = async function(options) {
+const writeNewExampleToRepo = async (options) => {
   const client     = github.client(TOKEN);
   const ghrepo     = client.repo(REPOSITORY);
   const new_filepath = `${EXAMPLES_PATH}/${options.filename}`;
+
+  const { commit_msg, data_yaml, branch } = options;
 
   return new Promise((resolve, reject) => {
     const createContentsCallback = ((err, data) => {
@@ -67,10 +65,10 @@ var writeNewExampleToRepo = async function(options) {
 
     ghrepo.createContents(
       new_filepath, 
-      options.commit_msg, 
-      options.data_yaml,
+      commit_msg, 
+      data_yaml,
       {
-        branch: options.branch,
+        branch: branch,
       }, 
       createContentsCallback
     );
@@ -78,11 +76,11 @@ var writeNewExampleToRepo = async function(options) {
 };
 
 /**
- * @param {string} fileName - name of the new example file 
+ * @param {string} filename - name of the new example file 
  * @param {string} fromBranch - name of the branch we want the PR to come from 
  * @param {string} fromBranch - name of the branch we want to merge to
  */
-var createNewPullRequest = async function(fileName, fromBranch, toBranch) {
+const createNewPullRequest = async (filename, fromBranch, toBranch) => {
   const client = github.client(TOKEN);
   const ghrepo = client.repo(REPOSITORY);
 
@@ -96,8 +94,8 @@ var createNewPullRequest = async function(fileName, fromBranch, toBranch) {
     });
 
     ghrepo.pr({
-      "title": `🎉 New Example: ${fileName}`,
-      "body": "New Example: ${fileName}\n\nPlease preview this example on the netlify deploy-preview bellow 🌻.\n",
+      "title": `🎉 New Example: ${filename}`,
+      "body": `New Example: ${filename}\n\nPlease preview this example on the netlify deploy-preview bellow 🌻.\n`,
       "head": fromBranch,
       "base": toBranch
     }, newPrCallback); //pull request  
