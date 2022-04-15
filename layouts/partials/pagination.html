@@ -5,9 +5,6 @@
     justify-content: center;
   }
 
-  .pagination li {
-  }
-
   .pagination-active {
     background-color: var(--link-color);
   }
@@ -25,8 +22,6 @@
 
 {{ with $.Paginator }}
   {{ if gt .TotalPages 1 }}
-    <hr style="margin-top: 1em; margin-bottom: 1em;">
-
       <ul class="pagination">
     
         {{ with .Prev }}
