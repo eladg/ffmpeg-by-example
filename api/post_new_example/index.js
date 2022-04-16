@@ -3,7 +3,7 @@ const repo_api = require('./repo_api');
 const yaml     = require('js-yaml');
 
 const BRANCH_PREFIX  = "examples"
-const PR_TO_BRANCH = "main";
+const PR_TO_BRANCH_FROM = "main";
 
 const validateInput = (params) => {
   if (!("id" in params)) {
@@ -97,7 +97,7 @@ const handler = async (event, context) => {
     // example options
     id: body.id,
     version: body.version,
-    enabled: body.enabled || false,
+    enabled: body.enabled || true,
     date: new Date().toISOString(),
     author: author,
     title: body.title,
@@ -116,20 +116,20 @@ const handler = async (event, context) => {
   }
   yamlText = (`---\n${yaml.dump(options)}\n---\n`);
 
-  console.log(`== step 1: Get ref for '${PR_TO_BRANCH}' ====================`);
+  console.log(`== step 1: Get ref for '${PR_TO_BRANCH_FROM}' ====================`);
 
   try {
     // step 1: Get ref for 'staging'
-    ref = await repo_api.getRefHeadOfBranch(PR_TO_BRANCH);
+    ref = await repo_api.getRefHeadOfBranch(PR_TO_BRANCH_FROM);
   } catch (error) {
     console.error(error);
-    return responses.failedRequestToGithub(new Error(`Could not find ${PR_TO_BRANCH}`));
+    return responses.failedRequestToGithub(new Error(`Could not find ${PR_TO_BRANCH_FROM}`));
   }
 
-  console.log(`== step 2: branch out of '${branchName}' ====================`);
+  console.log(`== step 2: create new branch '${branchName}' ====================`);
 
   try {
-    // step 2: branch out of 'staging'
+    // step 2: create new branch
     resp_2 = await repo_api.createNewBranchFromRef(branchName, ref);
   } catch (error) {
     console.error(error);
@@ -156,10 +156,10 @@ const handler = async (event, context) => {
 
   try {
     // step 4: create a new pull request on github.com
-    const resp_4 = await repo_api.createNewPullRequest(filename, branchName, PR_TO_BRANCH);
+    const resp_4 = await repo_api.createNewPullRequest(filename, branchName, PR_TO_BRANCH_FROM);
   } catch (error) {
     console.error(error);
-    return responses.failedRequestToGithub(new Error(`Failed Creating from ${branchName} into ${PR_TO_BRANCH}`));
+    return responses.failedRequestToGithub(new Error(`Failed Creating from ${branchName} into ${PR_TO_BRANCH_FROM}`));
   }
 
   console.log("== PR Created Succesfully! ====================");

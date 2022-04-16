@@ -1,0 +1,8 @@
+{
+  "name": "update_like_counter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Elad Gariany",
+  "license": "MIT",
+  "private": true
+}

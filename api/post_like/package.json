@@ -1,0 +1,11 @@
+{
+  "name": "post_like",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Elad Gariany",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "cloud-local-storage": "0.0.11"
+  }
+}
