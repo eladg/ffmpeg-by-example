@@ -1,228 +1,465 @@
 {{ define "main" }}
 
-{{$apiUrl := "https://www.ffmpegbyexample.com/"}}
+{{ $apiUrl := "https://www.ffmpegbyexample.com/" }}
+{{ $apiUrl := "http://localhost:8888/" }}
 {{ $postNewExamplePath := ".netlify/functions/post_new_example" }}
 {{ $postSubmitUrl := $postNewExamplePath | printf "%s%s" $apiUrl | printf "%s" }}
 
 <style>
-  .container {
-    display: flex;
-    width: 100%;
-    margin-bottom: 1em;
-  }
+.container {
+  display: flex;
+  margin-bottom: 1em;
+}
 
-  .column {
-    flex-direction: column;
-  }
+.column {
+  flex-direction: column;
+}
 
-  .row {
-    flex-direction: row;
-  }
+.row {
+  flex-direction: row;
+}
 
-  .right-1em {
-    margin-right: 1em;
-  }
+.gap05em {
+  gap: 0.5em;
+}
 
-  .large-padding {
-    padding-left: 4em;
-    padding-right: 4em;
-  }
+#category, 
+#tag1, 
+#tag2, 
+#tag3, 
+#authorName, 
+#authorEmail,
+#terminalCommand,
+#title,
+#description,
+#playerData,
+#exampleType {
+  height: 4em;
+  font-size: 18px;
+  text-align: left;
+  border-right: 3px solid var(--gray-color);
+  outline: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  resize: none;
+}
 
-  input, textarea, select, datalist {
-    padding: 8px;
-  }
+input, textarea, select, datalist {
+  padding: 8px;
+}
 
-  #submit-btn {
-    font-size: 1em;
-    font-weight: 800;
-    background-color: #bd93f9;
-    color: white;
-    padding: 15px;
-  }
-</style>
+.steps-top {
+  display: flex;
+  justify-content: space-between;
+}
 
-<div>
-  <div class="container column large-padding">
-    <h2 style="font-size: 24px; ">
-      Help our community by adding your example! ✌️
+.steps-indicators {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 0.5em;
+  margin-bottom: 2em;
+}
+
+.steps-indicators div {
+  width: 5em;
+  color: #000;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid var(--link-color);
+  background: var(--secondary-color);
+}
+
+.steps-indicators .current {
+  background: var(--main-color);
+  color: #fff;
+}
+
+.actions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: end;
+}
+
+.steps-container {
+  margin-bottom: 2em;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin-bottom: 2em;
+}
+
+.inputs-container input, textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inputs-container p {
+  color: var(--gray-color);
+}
+
+input:focus, textarea:focus {
+  background-color: var(--secondary-color);
+  border-left: 2px solid var(--gray-color);
+}
+
+</style>  
+
+<div id="new-form" class="container column" style="padding-left: 4em; padding-right: 4em;">
+  
+  <div style="margin-top: 2em;">
+    <h2>
+      Help our community grow by adding your example! ✌️
     </h2>
   </div>
 
-  <form id="submit-example-form">
-    <fieldset class="large-padding" style="border: 0;">
-
-      <div class="container column">
-        <input type="text" id="title" placeholder="Your example's title" required />
+  <div class="steps-top">
+    <div>
+      <div class="steps-indicators">
+        <div :class="{ current: currentStep == 1 }">FFmpeg</div>
+        <div :class="{ current: currentStep == 2 }">Post Meta</div>
+        <div :class="{ current: currentStep == 3 }">Media</div>
+        <div :class="{ current: currentStep == 4 }">Description</div>
+        <div :class="{ current: currentStep == 5 }">Preview</div>
       </div>
-
-      <div class="container column">
-        <textarea id="description" name="description" placeholder="What does this example do? How does it works?" required></textarea>
-      </div>
-
-      <div class="container row">
-        <input class="right-1em" type="text" id="name" placeholder="Your name" required />
-        <input class="right-1em" type="text" id="email" placeholder="Your email (optional)" />
-      </div>
-
-      <div class="container row">
-        <datalist id="categories">
-          {{ range $key, $value := .Site.Taxonomies.categories }}
-            <option value="{{ $key }}">
-          {{ end }}
-        </datalist>
-        <datalist id="tags">
-          {{ range $key, $value := .Site.Taxonomies.tags }}
-            <option value="{{ $key }}">
-          {{ end }}
-        </datalist>
-    
-        <input class="right-1em" list="categories" name="category" id="category" placeholder="video-filters">
-        <input class="right-1em" list="tags" name="tag1" id="tag1" placeholder="no-tag">
-        <input class="right-1em" list="tags" name="tag2" id="tag2" placeholder="no-tag">
-        <input class="right-1em" list="tags" name="tag3" id="tag3" placeholder="no-tag">
-      </div>
-
-      <div class="container column">
-        <textarea id="terminal_command" name="terminal_command" placeholder="ffmpeg -i movie.mov -c copy video.mp4" required></textarea>
-      </div>
-
-      <div class="container row">
-        <select id="example_type" name="example_type" required class="right-1em">
-          {{ range $key, $value := .Site.Params.examplestypes }}
-            <option value="{{ $value }}">{{ $value | humanize }}</option>
-          {{ end }}
-        </select>
-        <input type="text" id="player_data" name="player_data" style="flex-grow: 1;"
-          placeholder="https://ffmpeg-by-example.s3.amazonaws.com/example-video.mp4"
+    </div>
+  
+    <div class="actions-container">
+      <div>
+        <button 
+          class="action-btn"
+          @click="goBack"
+          :disabled="currentStep <= 1"
         >
+          < Back
+        </button>
+        <button 
+          class="action-btn"
+          @click="goNext"
+          v-if="currentStep < 5"
+        >
+          Next >
+        </button>
+        <button 
+          class="action-btn"
+          @click="submit"
+          v-if="currentStep == 5"
+        >
+          Submit PR
+        </button>        
       </div>
+    </div>  
+  </div>
 
-      <div class="container column">
-        <input type="text" id="thumbnail_url" name="thumbnail_url" placeholder="https://ffmpeg-by-example.s3.amazonaws.com/example-thumbnail.png"><br>
+  <div class="steps-container">
+    <!-------------------- step 1 -------------------->
+    <div v-if="currentStep == 1">
+      <div>
+        <textarea 
+          id="terminalCommand"
+          placeholder="ffmpeg -i movie.mov -c copy video.mp4" 
+          style="height: 8em;"
+          v-model="form.terminal_command"
+        >
+        </textarea>
       </div>
+      <p><b>Enter your ffmpeg command in the textfield.</b> <br/>Make sure to read our <a href="https://github.com/eladg/ffmpeg-by-example/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> community guidlines before adding your example.</p>
+      <div style="display: flex; justify-content: end;">
+        <button 
+          class="action-btn"
+          @click="tryWasmFfmpeg"
+        >
+          Try it Online
+      </button>
+      </div>
+    </div>
 
-      <div class="container column" style="align-items: end;">
-        <button id="submit-btn">Send a Pull Request</button>
+    <!-------------------- step 2 -------------------->
+    <div v-if="currentStep == 2">
+      <datalist id="categories">
+        {{ range $key, $value := .Site.Taxonomies.categories }}
+          <option value="{{ $key }}">
+        {{ end }}
+      </datalist>
+      <datalist id="tags">
+        {{ range $key, $value := .Site.Taxonomies.tags }}
+          <option value="{{ $key }}">
+        {{ end }}
+      </datalist>
+
+      <div class="inputs-container">
+        <div class="container row gap05em">
+          <input 
+            id="authorName" 
+            placeholder="Your Name"
+            v-model="form.author_name">
+          </input>
+          <input 
+            id="authorEmail" 
+            placeholder="Your Email (optional)"
+            v-model="form.author_email">
+          </input>  
+        </div>
+        <div class="container row gap05em">
+          <input 
+            id="category" 
+            list="categories" 
+            name="category" 
+            placeholder="select category"
+            v-model="form.category"
+          >
+          <input list="tags" name="tag1" id="tag1" placeholder="#tag" v-model="form.tag1">
+          <input list="tags" name="tag2" id="tag2" placeholder="#tag (optional)" v-model="form.tag2">
+          <input list="tags" name="tag3" id="tag3" placeholder="#tag (optional)" v-model="form.tag3">
+        </div>
+      </div>  
+    </div>
+
+    <!-------------------- step 3 -------------------->
+    <div v-if="currentStep == 3">
+      <div class="inputs-container">
+        <div>
+          <p>
+            If you would like us to host your example over on our private cloud storage, please reach out over on <a href="https://discord.gg/NDZ4m9ZdqF">discord</a><br/><br/>
+            <b>No Preview</b> - for examples that have no media assosiated with them.</br>
+            <b>Picture</b> - A URL to a picture hosted on an external source.</br>
+            <b>Video URL</b> - A URL to a video hosted on an external source.</br>
+            <b>Youtube Embed</b> - An id of a YouTube url to be embeded on the example page (e.g. 'HEARpyUdNFs')</br>
+            <b>Audio</b> - A URL to an audio file hosted on an external source.</br>
+          </p> 
+        </div>
+        <div class="container row">
+          <select id="exampleType" name="example_type" v-model="form.example_type" required style="margin-right: 1em;">
+            {{ range $key, $value := .Site.Params.examplestypes }}
+              <option value="{{ $value }}">{{ $value | humanize }}</option>
+            {{ end }}
+          </select>
+    
+          <input type="text" id="playerData" name="player_data" v-model="form.example_player_data"
+            placeholder="https://ffmpeg-by-example.s3.amazonaws.com/video.mp4"
+          >
+        </div>
       </div>
-    </fieldset>
-  </form> 
+    </div>
+
+    <!-------------------- step 4 -------------------->
+    <div v-if="currentStep == 4">
+      <div class="inputs-container">
+        <div>
+          <p>Nail your title, it will be cached by search engines!</p>
+          <input id="title" v-model="form.title" placeholder="Title your example"></input>
+        </div>
+
+        <div>
+          <textarea 
+            id="description" 
+            name="description" 
+            placeholder="
+Your markdown description goes here.
+Try to breakdown every parameter in your ffmpeg command. 
+
+How does it works?" 
+            v-model="form.description"
+            required
+            style="height: 16em;"
+          >
+          </textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-------------------- step 5 -------------------->
+    <div v-if="currentStep == 5">
+      <div>
+        <div>
+          <!-- player -->
+        </div>
+        <div style="margin-bottom: 2em;">
+          <!-- title -->
+          <h2>[[ form.title ]]</h2>
+
+          <!-- description -->
+          <div v-html="compiledDescription"></div>
+
+          <!-- post_meta -->
+        </div>
+
+        <div class="content__example_command">
+          <div class="highlight" v-html="compiledTerminal"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<script type="application/javascript">
-  const VERSION="1.0"
-
-  var submitBtn = document.getElementById("submit-btn");
-  
-  var generateNewId = () => {
+<script>
+  // globals
+  const generateNewId = () => {
     return Math.random().toString(36).substr(2, 8).toUpperCase();
   }
 
-  var validateTitle = (text) => {
-    return text.length > 10;
-  }
-  var validateDescription = (text) => {
-    return text.length > 10;
-  }
-  var validateAutherName = (text) => {
-    return text.length > 3;
-  }
-  var validateCategory = (category) => {
-    return (category !== "no-category");
-  }
-  var validateExampleCode = (text) => {
-    return text?.length > 10;
-  }
-  var validateAndCommunicate = (options) => {
-    var flag = true
-    if (!validateTitle(options.title)) {
-      alert("'title' is empty or too short");
-      flag = false;
-    }
+  const ID = generateNewId()
+  const VERSION="1.0"
+  const BYPASS_VALIDATION=false
 
-    if (!validateTitle(options.description)) {
-      alert("'description' is empty or too short");
-      flag = false;
-    }
+  // this is not suppose to be pretty ...
+  //  ... this is supposed to be functional
+  //  ... and completed 🌻
+  //                            - E.G
+  require([{{ "js/vue.js" | absURL }}], (vue) => { 
+    window.Vue = vue
+    require(['https://unpkg.com/marked@0.3.6'], (marked) => {
+      window.marked = marked
 
-    if (!validateExampleCode(options.terminal_command)) {
-      alert("'example code' is empty or too short");
-      flag = false;
-    }
+      new window.Vue({
+        delimiters: ['[[', ']]'],
+        el: '#new-form',
+        data: {
+          currentStep: 1,
+          form: {
+            example_type: "no-preview",
+            example_player_data: null,
+            title: null,
+            description: null,
+            author_name: null,
+            author_email: null,
+            terminal_command: null,
+            category: null,
+            tag1: null,
+            tag2: null,
+            tag3: null,
+          }
+        },
+        computed: {
+          compiledDescription: function () {
+            if (this.form.description) {
+              return marked(this.form.description, { sanitize: true }) 
+            } else {
+              return null
+            }
+          },
+          compiledTerminal: function() {
+            if (this.form.terminal_command) {
+              const md = `\`\`\`bash\n${this.form.terminal_command}\n\`\`\``;
+              return marked(md, { sanitize: false })
+            } else {
+              return null
+            }
+          }
+        },
+        methods: {
+          validateForm () {
+            if (BYPASS_VALIDATION) {
+              return true
+            }
+            switch (this.currentStep) {
+              case 1:
+                const cmd = this.form.terminal_command
+                if (cmd && cmd.length > 10) {
+                  return true
+                } else {
+                  alert("Your FFmpeg command is too short")
+                }
+                break;
+              case 2:
+                const { author_name, category, tag1 } = this.form
+                if (author_name && category && tag1) {
+                  return true
+                } else {
+                  alert("Name, category or tag must be set for every example")
+                }
+                break;
+              case 3:
+                return true;
+              case 4:
+                const { title, description } = this.form
+                if (!title || !description) {
+                  alert("Please provide title and description for your example")
+                  return false
+                }
+                if (title.length < 10 && description.length < 30) {
+                  alert("Title or Description is too short. Follow our CONTRIBUTION.md guidelines for more info!")
+                  return false
+                }
+                return true;
+              default:
+                break;
+            }
 
-    if (!validateCategory(options.categories[0])) {
-      alert("'category' is empty or too short");
-      flag = false;
-    }
+          },
+          goNext () {
+            if (this.validateForm()) {
+              this.currentStep += 1              
+            }
+          },
+          goBack () {
+            this.currentStep -= 1
+          },
+          async submit () {       
+            const postSubmitURL = {{ $postSubmitUrl }};
+            let postData = {
+              id: ID,
+              version: VERSION,
+              enabled: true,
+              example_type: this.form.example_type,
+              example_player_data: this.form.example_player_data,
+              title: this.form.title,
+              description: this.form.description,
+              author_name: this.form.author_name,
+              author_email: this.form.author_email,
+              terminal_command: this.form.terminal_command,
+              categories: [ this.form.category ],
+              tags: [ this.form.tag1, this.form.tag2, this.form.tag3 ]
+            }
 
-    return flag;
-  }
+            postData = JSON.parse(`{"id":"xxxxL2IBLY2V","version":"1.0","enabled":true,"example_type":"no-preview","example_player_data":null,"title":"Stitch two video files side by side","description":"Stitch [yoga.mp4](https://www.ffmpegbyexample.com/video/yoga.mp4) and [sharks.mp4](https://www.ffmpegbyexample.com/video/sharks.mp4) side-by-side and output to output.mp4","author_name":"Elad","author_email":null,"terminal_command":"  ffmpeg -y -i yoga.mp4 -i sharks.mp4 -filter_complex  [0:v]pad=iw+iw:ih[v1];[v1][1:v]overlay=overlay_w:0[vid] -an -map [vid]  -c:v libx264 -crf 23 -preset veryfast output.mp4","categories":["tests"],"tags":["test1",null,null]}`);
+    
+            const options = {
+              method: "POST",
+              headers: { "Content-Type": "application/json;charset=UTF-8" },
+              body: JSON.stringify(postData)
+            };
 
-  var optionsFromForm = () => {
-    var id = generateNewId()
-    var enabled = true
-    var formTitle = document.getElementById("title");
-    var formExampleType = document.getElementById("example_type")
-    var formDescription = document.getElementById("description");
-    var formName = document.getElementById("name");
-    var formEmail = document.getElementById("email");
-    var formTerminalCmd = document.getElementById("terminal_command");
-    var formCategory = document.getElementById("category");
-    var formTag1 = document.getElementById("tag1");
-    var formTag2 = document.getElementById("tag2");
-    var formTag3 = document.getElementById("tag3");
-    var formThumbnailUrl = document.getElementById("thumbnail_url");
-    var formPlayerData = document.getElementById("player_data");
+            try {
+              debugger;
+              const response = await fetch(postSubmitURL, options);              
+              console.log(response.status); // 200
+              console.log(response.statusText); // OK
+              debugger;
 
-    return {
-      id: id,
-      version: VERSION,
-      enabled: enabled,
-      example_type: formExampleType.value,
-      example_player_data: formPlayerData.value,
-      title: formTitle.value,
-      description: formDescription.value,
-      author_name: formName.value,
-      author_email: formEmail.value,
-      terminal_command: formTerminalCmd.value,
-      categories: [formCategory.value],
-      tags: [formTag1.value, formTag2.value, formTag3.value],
-      thumbnail_url: formThumbnailUrl.value,
-    }
-  }
+              if (response.status === 200) {
+                let data = await response.text();
 
-  var postRequest = (options, callback) => {
-    var request = new XMLHttpRequest();
-    request.open("POST", "{{ $postSubmitUrl }}");
-    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    request.send(JSON.stringify(options));
+                // handle data
+                if (!response.ok) {
+                  const error = (data && data.message) || response.status;
+                  alert(`failed submitting data. Got error: ${error}`)
+                } else {
+                  console.log("======= success =======")
+                  console.log(response)
+                  alert("success")
+                }
+              }
+            } catch (error) {
+              console.error(error)
+              debugger;              
+            }
 
-    request.onreadystatechange = callback;
-  }
-
-  var handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("handle...");
-    submitBtn.disabled = true;
-
-    var options = optionsFromForm();
-    console.log(options);
-    console.log("{{ $postSubmitUrl }}");
-
-    if (validateAndCommunicate(options)) {
-      postRequest(options, (data) => {
-        console.log("=== received response:");
-        console.log(data);
-
-        alert("Pull request submitted succesfully 🎉")
-        submitBtn.disabled = false;
+          },
+          tryWasmFfmpeg () {
+            alert("Our WebAssembly FFmpeg Player is currently under construction. With your support, we can make it happen sooner! ;)")            
+          }
+        }
       });
-    } else {
-      submitBtn.disabled = false;
-    }    
-  }
-
-  submitBtn.onclick = handleSubmit;
+    })
+  });
 </script>
 
-{{ end }}
 
+{{ end }}

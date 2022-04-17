@@ -1,0 +1,228 @@
+{{ define "main" }}
+
+{{ $apiUrl := "https://www.ffmpegbyexample.com/" }}
+{{ $postNewExamplePath := ".netlify/functions/post_new_example" }}
+{{ $postSubmitUrl := $postNewExamplePath | printf "%s%s" $apiUrl | printf "%s" }}
+
+<style>
+  .container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
+  .column {
+    flex-direction: column;
+  }
+
+  .row {
+    flex-direction: row;
+  }
+
+  .right-1em {
+    margin-right: 1em;
+  }
+
+  .large-padding {
+    padding-left: 4em;
+    padding-right: 4em;
+  }
+
+  input, textarea, select, datalist {
+    padding: 8px;
+  }
+
+  #submit-btn {
+    font-size: 1em;
+    font-weight: 800;
+    background-color: #bd93f9;
+    color: white;
+    padding: 15px;
+  }
+</style>
+
+<div>
+  <div class="container column large-padding">
+    <h2 style="font-size: 24px; ">
+      Help our community by adding your example! ✌️
+    </h2>
+  </div>
+
+  <form id="submit-example-form">
+    <fieldset class="large-padding" style="border: 0;">
+
+      <div class="container column">
+        <input type="text" id="title" placeholder="Your example's title" required />
+      </div>
+
+      <div class="container column">
+        <textarea id="description" name="description" placeholder="What does this example do? How does it works?" required></textarea>
+      </div>
+
+      <div class="container row">
+        <input class="right-1em" type="text" id="name" placeholder="Your name" required />
+        <input class="right-1em" type="text" id="email" placeholder="Your email (optional)" />
+      </div>
+
+      <div class="container row">
+        <datalist id="categories">
+          {{ range $key, $value := .Site.Taxonomies.categories }}
+            <option value="{{ $key }}">
+          {{ end }}
+        </datalist>
+        <datalist id="tags">
+          {{ range $key, $value := .Site.Taxonomies.tags }}
+            <option value="{{ $key }}">
+          {{ end }}
+        </datalist>
+    
+        <input class="right-1em" list="categories" name="category" id="category" placeholder="video-filters">
+        <input class="right-1em" list="tags" name="tag1" id="tag1" placeholder="no-tag">
+        <input class="right-1em" list="tags" name="tag2" id="tag2" placeholder="no-tag">
+        <input class="right-1em" list="tags" name="tag3" id="tag3" placeholder="no-tag">
+      </div>
+
+      <div class="container column">
+        <textarea id="terminal_command" name="terminal_command" placeholder="ffmpeg -i movie.mov -c copy video.mp4" required></textarea>
+      </div>
+
+      <div class="container row">
+        <select id="example_type" name="example_type" required class="right-1em">
+          {{ range $key, $value := .Site.Params.examplestypes }}
+            <option value="{{ $value }}">{{ $value | humanize }}</option>
+          {{ end }}
+        </select>
+        <input type="text" id="player_data" name="player_data" style="flex-grow: 1;"
+          placeholder="https://ffmpeg-by-example.s3.amazonaws.com/example-video.mp4"
+        >
+      </div>
+
+      <div class="container column">
+        <input type="text" id="thumbnail_url" name="thumbnail_url" placeholder="https://ffmpeg-by-example.s3.amazonaws.com/example-thumbnail.png"><br>
+      </div>
+
+      <div class="container column" style="align-items: end;">
+        <button id="submit-btn">Send a Pull Request</button>
+      </div>
+    </fieldset>
+  </form> 
+</div>
+
+<script type="application/javascript">
+  const VERSION="1.0"
+
+  var submitBtn = document.getElementById("submit-btn");
+  
+  var generateNewId = () => {
+    return Math.random().toString(36).substr(2, 8).toUpperCase();
+  }
+
+  var validateTitle = (text) => {
+    return text.length > 10;
+  }
+  var validateDescription = (text) => {
+    return text.length > 10;
+  }
+  var validateAutherName = (text) => {
+    return text.length > 3;
+  }
+  var validateCategory = (category) => {
+    return (category !== "no-category");
+  }
+  var validateExampleCode = (text) => {
+    return text?.length > 10;
+  }
+  var validateAndCommunicate = (options) => {
+    var flag = true
+    if (!validateTitle(options.title)) {
+      alert("'title' is empty or too short");
+      flag = false;
+    }
+
+    if (!validateTitle(options.description)) {
+      alert("'description' is empty or too short");
+      flag = false;
+    }
+
+    if (!validateExampleCode(options.terminal_command)) {
+      alert("'example code' is empty or too short");
+      flag = false;
+    }
+
+    if (!validateCategory(options.categories[0])) {
+      alert("'category' is empty or too short");
+      flag = false;
+    }
+
+    return flag;
+  }
+
+  var optionsFromForm = () => {
+    var id = generateNewId()
+    var enabled = true
+    var formTitle = document.getElementById("title");
+    var formExampleType = document.getElementById("example_type")
+    var formDescription = document.getElementById("description");
+    var formName = document.getElementById("name");
+    var formEmail = document.getElementById("email");
+    var formTerminalCmd = document.getElementById("terminal_command");
+    var formCategory = document.getElementById("category");
+    var formTag1 = document.getElementById("tag1");
+    var formTag2 = document.getElementById("tag2");
+    var formTag3 = document.getElementById("tag3");
+    var formThumbnailUrl = document.getElementById("thumbnail_url");
+    var formPlayerData = document.getElementById("player_data");
+
+    return {
+      id: id,
+      version: VERSION,
+      enabled: enabled,
+      example_type: formExampleType.value,
+      example_player_data: formPlayerData.value,
+      title: formTitle.value,
+      description: formDescription.value,
+      author_name: formName.value,
+      author_email: formEmail.value,
+      terminal_command: formTerminalCmd.value,
+      categories: [formCategory.value],
+      tags: [formTag1.value, formTag2.value, formTag3.value],
+      thumbnail_url: formThumbnailUrl.value,
+    }
+  }
+
+  var postRequest = (options, callback) => {
+    var request = new XMLHttpRequest();
+    request.open("POST", "{{ $postSubmitUrl }}");
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    request.send(JSON.stringify(options));
+
+    request.onreadystatechange = callback;
+  }
+
+  var handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("handle...");
+    submitBtn.disabled = true;
+
+    var options = optionsFromForm();
+    console.log(options);
+    console.log("{{ $postSubmitUrl }}");
+
+    if (validateAndCommunicate(options)) {
+      postRequest(options, (data) => {
+        console.log("=== received response:");
+        console.log(data);
+
+        alert("Pull request submitted succesfully 🎉")
+        submitBtn.disabled = false;
+      });
+    } else {
+      submitBtn.disabled = false;
+    }    
+  }
+
+  submitBtn.onclick = handleSubmit;
+</script>
+
+{{ end }}
+

@@ -1,8 +1,9 @@
 :root {
-  --main-color: #ed1c24;
-  --example-color: blueviolet;
+  --main-color: blueviolet;
+  --secondary-color: lavender;
+  --third-color: #bd93f9;
   --text-color: #000000;
-  --gray-color: #797979;
+  --gray-color: #4e4e4e;
   --link-color: blueviolet;
   --mc-serif-font: "medium-content-serif-font", Georgia, Cambria, "Times New Roman", Times, serif;
   --monospace-font: monospace;
@@ -23,14 +24,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 42px;
-  font-style: normal;
-  font-weight: 400;
+  font-size: 34px;
+  margin-bottom: 0;
 }
 
 h2 {
-  font-size: 34px;
-  margin-top: 56px;
+  font-size: 24px;
 }
 
 h3 {
@@ -41,7 +40,7 @@ h3 {
 }
 
 h4 {
-  color: var(--example-color);
+  color: var(--main-color);
   opacity: 0.8;
 }
 
@@ -76,7 +75,7 @@ p a {
 }
 
 p > a {
-  color: var(--example-color);
+  color: var(--main-color);
 }
 
 figure {
@@ -94,4 +93,25 @@ hr {
 
 video {
   max-width: 100%;
+}
+
+.action-btn {
+  font-size: 1em;
+  font-weight: 800;
+  background-color: var(--third-color);
+  color: white;
+  padding: 10px;
+}
+
+.action-btn2 {
+  font-size: 1em;
+  font-weight: 800;
+  background-color: var(--secondary-color);
+  color: black;
+  padding: 5px 20px 5px 20px;
+  border: 1px solid black;
+}
+
+.purple-border {
+  border: 2px solid var(--main-color);
 }

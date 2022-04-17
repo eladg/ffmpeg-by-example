@@ -2,8 +2,6 @@
 
 <style>
   .homepage-top-message {
-    border: 2px solid;
-    border-color: var(--link-color);
     padding: 2em;
     margin-top: 2em;
     margin-bottom: 2em;
@@ -14,8 +12,6 @@
   }
 
   .homepage-random-example {
-    border: 2px solid ;
-    border-color: var(--link-color);
     padding: 0em 2em 2em 2em;
 
     background-color: var(--gray-color);
@@ -25,12 +21,12 @@
 </style>
 
 <article>  
-  <div class="homepage-top-message">
+  <div class="purple-border homepage-top-message">
     <b>FFmpeg By Example</b> is a documentation website to showcase all the unique and different ways to use FFmpeg. </br>Got a cool idea to share with the community?
     <a href="contribute">Send your contribution here!</a>
   </div>
 
-  <div class="homepage-random-example">
+  <div class="purple-border homepage-random-example">
     {{ range first 1 ((where .Site.RegularPages "Type" "examples") | shuffle) }}
       <a href="{{ .Permalink }}"><h3>{{ .Title }}</h3></a>
       <div style="display: flex; flex-direction: column;">

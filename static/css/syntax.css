@@ -80,3 +80,41 @@
 /* GenericTraceback */ .chroma .gt {  }
 /* GenericUnderline */ .chroma .gl {  }
 /* TextWhitespace */ .chroma .w {  }
+
+.content__example_command {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5em;
+  width: 100%;
+}
+
+.content__example_command .actions {
+  display: flex;
+  justify-content: end;
+  gap: 0.5em;
+}
+
+.highlight > pre {
+  border: 2px solid blueviolet;
+  border-radius: 0.5rem;
+  white-space: normal;
+  background-color: #282a36;
+  color: #f8f8f2;
+}
+
+.highlight > pre > code {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+pre {
+  padding: 10px;
+  width: inherit;
+  margin: 0;
+}
+
+pre a {
+  color: #c57d7d;
+}

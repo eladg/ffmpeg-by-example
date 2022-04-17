@@ -1,53 +1,11 @@
 {{ $command := .Params.terminal_command }}
 
-<style>
-  .button {
-    padding: 1em;
-  }
-
-  .content__example_command {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.5em;
-    width: 100%;
-  }
-
-  .content__example_command .actions {
-    display: flex;
-    justify-content: end;
-    gap: 0.5em;
-  }
-
-  .highlight > pre {
-    border: 2px solid blueviolet;
-    border-radius: 0.5rem;
-    white-space: normal;
-  }
-
-  .highlight > pre > code {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 14px;
-  }
-
-  pre {
-    padding: 10px;
-    width: inherit;
-    margin: 0;
-  }
-
-  pre a {
-    color: #c57d7d;
-  }
-</style>
-
 <div class="content__example_command">
   {{ if isset .Params "terminal_command" }}
     {{ highlight $command "bash" "" }}
     <div class="actions">
-      <button class="button" id="copy-command-btn">Copy to clipboard</button>
-      <button class="button" id="wasm-try-btn">Try it online</button>  
+      <button class="action-btn" id="copy-command-btn">Copy to clipboard</button>
+      <button class="action-btn" id="wasm-try-btn">Try it online</button>  
     </div>
   {{ end }}
 </div>

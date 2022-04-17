@@ -8,29 +8,18 @@
     justify-content: space-between;
     margin-bottom: 2em;
   }
-
-  .content__actions a {
-    text-decoration: none;
-    padding: 5px 20px 5px 20px;
-    border: 1px solid;
-  }
-
-  .content__title h2 {
-    margin-bottom: 0;
-  }
-
 </style>
 
 <div class="content__top">
   <div class="content__title">
-    <h2>{{ .Title }}</h2>
+    <h1>{{ .Title }}</h1>
   </div>
   <div class="content__actions">
     {{ if isset .Params "filename" }}
       {{ $editUrl := (printf "%s/%s" "https://github.com/eladg/ffmpeg-by-example/edit/main/content/examples/" .Params.Filename) }}
-      <a href="{{$editUrl | absURL}}" target="_blank">Edit</a>
+      <button class="action-btn2" onclick="window.open('{{$editUrl | absURL}}','_blank')">Edit</button>
     {{ else }}
-      <a href="#missing-filename">Edit</a>
+      <button class="action-btn2">Edit</button>
     {{ end }}    
   </div>
 </div>

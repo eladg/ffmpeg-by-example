@@ -5,16 +5,15 @@
 </script>
 
 <article>
-    <div class="content__container">
-      {{ partial "posts/top.html" . }}
+  <div class="content__container">
+    {{ partial "posts/top.html" . }}
 
-      {{ partial "posts/main.html" . }}
-    </div>
+    {{ partial "posts/main.html" . }}
+  </div>
 
-    {{ if eq 0 0 }}
-      <hr/>
-      {{ partial "meta/comments.html" . }}
-    {{ end }}
+  <hr/>
+  {{ partial "meta/comments.html" . }}
 
-  </article>
+</article>
+
 {{ end }}
