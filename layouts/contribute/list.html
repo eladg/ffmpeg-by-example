@@ -417,8 +417,6 @@ How does it works?"
               categories: [ this.form.category ],
               tags: [ this.form.tag1, this.form.tag2, this.form.tag3 ]
             }
-
-            postData = JSON.parse(`{"id":"xxxxL2IBLY2V","version":"1.0","enabled":true,"example_type":"no-preview","example_player_data":null,"title":"Stitch two video files side by side","description":"Stitch [yoga.mp4](https://www.ffmpegbyexample.com/video/yoga.mp4) and [sharks.mp4](https://www.ffmpegbyexample.com/video/sharks.mp4) side-by-side and output to output.mp4","author_name":"Elad","author_email":null,"terminal_command":"  ffmpeg -y -i yoga.mp4 -i sharks.mp4 -filter_complex  [0:v]pad=iw+iw:ih[v1];[v1][1:v]overlay=overlay_w:0[vid] -an -map [vid]  -c:v libx264 -crf 23 -preset veryfast output.mp4","categories":["tests"],"tags":["test1",null,null]}`);
     
             const options = {
               method: "POST",
