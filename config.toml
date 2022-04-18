@@ -1,8 +1,11 @@
 title = "FFmpeg By Example"
 baseURL = "https://ffmpegbyexample.com"
+# baseURL = "http://localhost:1313"
 enableRobotsTXT = true
 
 [params]
+  apiURL = "https://ffmpegbyexample.com"
+  # apiURL = "http://localhost:8888"
   favicon = "/favicon.ico"
   description = "Explore the depth of FFmpeg with Examples"
   examplestypes = ["no-preview", "picture", "video-url", "youtube-embed", "audio"]

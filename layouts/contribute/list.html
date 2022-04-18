@@ -1,7 +1,7 @@
 {{ define "main" }}
 
-{{ $apiUrl := "https://www.ffmpegbyexample.com/" }}
-{{ $postNewExamplePath := ".netlify/functions/post_new_example" }}
+{{ $apiUrl := .Site.Params.apiURL }}
+{{ $postNewExamplePath := "/.netlify/functions/post_new_example" }}
 {{ $postSubmitUrl := $postNewExamplePath | printf "%s%s" $apiUrl | printf "%s" }}
 
 <style>
@@ -414,7 +414,7 @@ How does it works?"
               author_email: this.form.author_email,
               terminal_command: this.form.terminal_command,
               categories: [ this.form.category ],
-              tags: [ this.form.tag1, this.form.tag2, this.form.tag3 ]
+              tags: [ this.form.tag1, this.form.tag2, this.form.tag3 ],
             }
     
             const options = {
@@ -424,11 +424,7 @@ How does it works?"
             };
 
             try {
-              debugger;
-              const response = await fetch(postSubmitURL, options);              
-              console.log(response.status); // 200
-              console.log(response.statusText); // OK
-              debugger;
+              const response = await fetch(postSubmitURL, options);
 
               if (response.status === 200) {
                 let data = await response.text();
@@ -440,12 +436,13 @@ How does it works?"
                 } else {
                   console.log("======= success =======")
                   console.log(response)
-                  alert("success")
+                  alert("Successfully submitted PR on Github")
+                  window.location.href = "https://github.com/eladg/ffmpeg-by-example/pulls";
                 }
               }
             } catch (error) {
               console.error(error)
-              debugger;              
+              alert("Sorry, something went wrong. Please reach out on Discord for support!")
             }
 
           },
