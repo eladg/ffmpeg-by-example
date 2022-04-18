@@ -69,6 +69,10 @@ const handler = async (event, context) => {
   let filename, author, branchName, body;
   let ref, yamlText, resp_2, resp_3, resp_4;
 
+  if (event.httpMethod === "OPTIONS") {
+    return responses.succsess("OK")
+  }
+
   try {
     body = JSON.parse(event.body);
     validateInput(body);
