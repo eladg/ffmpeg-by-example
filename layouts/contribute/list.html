@@ -22,6 +22,11 @@
   gap: 0.5em;
 }
 
+.contribute-form {
+  padding-right: 4em;
+  padding-left: 4em;
+}
+
 #category, 
 #tag1, 
 #tag2, 
@@ -110,7 +115,7 @@ input:focus, textarea:focus {
 
 </style>  
 
-<div id="new-form" class="container column" style="padding-left: 4em; padding-right: 4em;">
+<div id="vue-root" class="container column contribute-form">
   
   <div style="margin-top: 2em;">
     <h2>
@@ -318,7 +323,7 @@ How does it works?"
 
       new window.Vue({
         delimiters: ['[[', ']]'],
-        el: '#new-form',
+        el: '#vue-root',
         data: {
           currentStep: 1,
           form: {
