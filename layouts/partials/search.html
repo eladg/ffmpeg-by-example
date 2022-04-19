@@ -32,7 +32,9 @@
       input: {
         selection: (event) => {
           const selection = event.detail.selection.value;
-          window.location = searchData[selection];
+          if (selection) {
+            window.location = searchData[selection];            
+          }
         }
       }
     }
