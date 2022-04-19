@@ -10,7 +10,7 @@
   }
 
   vds-video-player {
-    width: 512px;
+    
   }
 
 </style>
@@ -20,7 +20,7 @@
       display: none;
     {{ end }}
 ">
-  <div style="max-width: 512px;">
+  <div>
     {{ if (eq .Params.example_type "no-preview") }}
       {{ partial "posts/players/no-preview.html" . }}
     {{ end }}

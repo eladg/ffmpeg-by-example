@@ -50,8 +50,20 @@ body {
     flex-direction: column;
   }
 
-  .menubar-container {
-    min-width: 480px;
+  .search-container {
+    display: none !important;
+  }
+
+  .menubar {
+    justify-content: space-between !important;
+  }
+
+  .content__actions {
+    display: none !important;
+  }
+
+  .content__voting {
+    display: none !important;
   }
 
   .content-container {
@@ -60,7 +72,10 @@ body {
   }
 
   article {
-    min-width: 480px;
-    width: 100%;
-  }  
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 22px
+  }
 }
