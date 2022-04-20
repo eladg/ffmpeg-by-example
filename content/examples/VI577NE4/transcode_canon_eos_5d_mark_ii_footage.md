@@ -14,7 +14,7 @@ description: >-
 categories:
   - video
 tags:
-  - '#canon5d'
+  - 'canon5d'
 thumbnail_url: null
 terminal_command: >
   ffmpeg -i MVI_9648.MOV -c:v libx265 -preset slow -crf 26 -pix_fmt yuv420p
