@@ -1,16 +1,17 @@
 <div>
   {{ range first 1 .Params.example_player_data }}
-    <vds-video-player
-      src={{.}}
-      controls
-      loop
-      autoplay
-      loading="lazy"
-    >
-      <!-- `<source>` and `<track>` elements can go here. -->
-      <vds-media-ui slot="ui">
-        <!-- UI elements go here. -->
-      </vds-media-ui>
-    </vds-video-player>
+    <vds-media>
+      <vds-video controls>
+        <video
+          src={{.}}
+          loading="eager"
+          preload="none"
+          controls
+          autoplay
+          muted
+          loop
+        ></video>
+      </vds-video>
+    </vds-media>
   {{ end }}
 </div>
