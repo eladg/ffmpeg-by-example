@@ -26,22 +26,23 @@ description: >
   break down last.
 
 
-  `fontcolor=ffffff` for white color text, [see ffmpeg Color for
-  list of supported values](https://ffmpeg.org/ffmpeg-utils.html#Color)). 
-  `fontsize=64` sets the size of the font to 64px. `text=\"drawtext\" text with fade in & out` is the text
-  string to be generated. Lastly. the `x`/`y` is the position on the screen that the text layer should be overlayed. 
-  Notice that in this context, `w` and `h` is the size of the input frame and
-  `text_w` and `text_h` is the size of the text overlay.
+  `fontcolor=ffffff` for white color text, [see ffmpeg Color for list of
+  supported values](https://ffmpeg.org/ffmpeg-utils.html#Color)).  `fontsize=64`
+  sets the size of the font to 64px. `text=\"drawtext\" text with fade in & out`
+  is the text string to be generated. Lastly. the `x`/`y` is the position on the
+  screen that the text layer should be overlayed.  Notice that in this context,
+  `w` and `h` is the size of the input frame and `text_w` and `text_h` is the
+  size of the text overlay.
 
 
-  Finaly, the `alpha` param to the `drawtext` filter is where the fade in/out magic happens. 
-  The string is a set inlin 'larger than' (lt) and if conditions. For more info
-  about these Expression Evaluation functions, [please refer to the official
+  Finaly, the `alpha` param to the `drawtext` filter is where the fade in/out
+  magic happens.  The string is a set inlin 'larger than' (lt) and if
+  conditions. For more info about these Expression Evaluation functions, [please
+  refer to the official
   documentation](https://ffmpeg.org/ffmpeg-utils.html#Expression-Evaluation)
 
 
-  ```
-  if ( 
+  ``` if ( 
     lt(t\,0.3)\,          <---- X1  returns 0 if t < 0.3
     0\,                   <---- Y1
     if (                  <---- Z1
@@ -60,8 +61,9 @@ description: >
   )
 
   ```
-  
-  based on the [drawtext examples section](http://ffmpeg.org/ffmpeg-filters.html#Examples-64).
+
+  based on the [drawtext examples
+  section](http://ffmpeg.org/ffmpeg-filters.html#Examples-64).
 categories:
   - text
 tags:
@@ -78,7 +80,7 @@ example_type: youtube-embed
 example_player_data:
   - yntb4ZoysNc
 filename: 50GOWMKQ/fade_in_and_out_text_using_the_drawtext_filter.md
-views: 0
+views: 18
 likes: 0
 
 ---

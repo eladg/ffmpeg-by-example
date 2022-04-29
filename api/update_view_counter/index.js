@@ -5,27 +5,68 @@ const {
   writeExampleToFile,
 } = require("../shared/models/example")
 
-const mapEventSegmentationCSVFileToData = (csv) => {
-  let idCountsMap = {}
+const axios = require('axios');
+require('dotenv').config()
+const {
+  AMPLITUDE_API_KEY,
+  AMPLITUDE_API_SECRET,
+  AMPLITUDE_CHART_ID,
+} = process.env
 
-  const lines = csv.split("\n").splice(7)
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].split(",")
-    
-    const id = eval(line[0].replace(/\t/g, ''));
-    const counts = line.splice(1).map((t) => parseInt(eval(t)))
-    const max = Math.max(...counts)
+const fetchDataFromAmplitudeAPI = async () => {
+  return new Promise((resolve, reject) => {
+    axios({
+      method: 'get',
+      url: `https://amplitude.com/api/3/chart/${AMPLITUDE_CHART_ID}/query`,
+      responseType: 'json',
+      auth: {
+        username: AMPLITUDE_API_KEY,
+        password: AMPLITUDE_API_SECRET,
+      },      
+    })
+    .then((response) => {
+      let data = response.data.data
+      let idCountsMap = {}
+      
+      for (let i = 0; i < data["seriesLabels"].length; i++) {
+        const element = data["seriesLabels"][i];
+        const id = element[1]
+        const count = data["seriesCollapsed"][i][0]["value"]
+        idCountsMap[`${id}`] = count
+      }
 
-    if (id && id.length === 8) {
-      idCountsMap[id] = max
-    }
-  }
+      resolve(idCountsMap)
+    })
+    .catch((error) => {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+        reject(error)
 
-  return idCountsMap
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+        console.log(error.request);
+        reject(error)
+
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', error.message);
+        reject(error)
+      }
+      
+      console.log(error.config);
+      reject(error)
+    })
+  })
 }
 
-const handler = async (csvRawString) => {
-  const idCountsMap = mapEventSegmentationCSVFileToData(csvRawString)
+const handler = async () => {
+  const idCountsMap = await fetchDataFromAmplitudeAPI()
 
   for (let i = 0; i < Object.keys(idCountsMap).length; i++) {
     try {
