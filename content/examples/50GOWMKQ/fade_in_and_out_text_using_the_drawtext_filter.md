@@ -14,8 +14,6 @@ description: >
   example. 
 
 
-
-
   On top of this blank input, we use the `drawtext` filter to generate the
   overlayed text layer. To review the complete list of parameters, [please refer
   to the official
@@ -24,35 +22,25 @@ description: >
   parameters.
 
 
-
-
   By far, the most complex value is for the `alpha` parameter, which we will
   break down last.
 
 
-
-
-  * `fontcolor`: with the value `ffffff` for white color, [see ffmpeg Color for
-  list of supported values](https://ffmpeg.org/ffmpeg-utils.html#Color))
-
-  * `fontsize`: `64px` the size of the font to be generated
-
-  * `text`: with the value `\"drawtext\" text with fade in & out`. The text
-  string to be printed on the screen.
-
-  * `x`/`y`: the point on the screen that the text layer should be overlayed.
+  `fontcolor=ffffff` for white color text, [see ffmpeg Color for
+  list of supported values](https://ffmpeg.org/ffmpeg-utils.html#Color)). 
+  `fontsize=64` sets the size of the font to 64px. `text=\"drawtext\" text with fade in & out` is the text
+  string to be generated. Lastly. the `x`/`y` is the position on the screen that the text layer should be overlayed. 
   Notice that in this context, `w` and `h` is the size of the input frame and
   `text_w` and `text_h` is the size of the text overlay.
 
 
-  Lastly, the `alpha` param to the `drawtext` filter is where the magic happens.
+  Finaly, the `alpha` param to the `drawtext` filter is where the fade in/out magic happens. 
   The string is a set inlin 'larger than' (lt) and if conditions. For more info
   about these Expression Evaluation functions, [please refer to the official
   documentation](https://ffmpeg.org/ffmpeg-utils.html#Expression-Evaluation)
 
 
   ```
-
   if ( 
     lt(t\,0.3)\,          <---- X1  returns 0 if t < 0.3
     0\,                   <---- Y1
@@ -72,6 +60,8 @@ description: >
   )
 
   ```
+  
+  based on the [drawtext examples section](http://ffmpeg.org/ffmpeg-filters.html#Examples-64).
 categories:
   - text
 tags:
