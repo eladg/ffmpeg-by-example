@@ -1,7 +1,5 @@
-<div>
-  {{ range first 1 .Params.example_player_data }}
-    <iframe id="ytplayer" type="text/html"
-    src="https://www.youtube.com/embed/{{ . }}"
-    frameborder="0"></iframe>
-  {{ end }}
-</div>
+{{ range first 1 .Params.example_player_data }}
+  <iframe id="ytplayer" type="text/html"
+  src="https://www.youtube.com/embed/{{ . }}"
+  frameborder="0" height="100%" width="480px"></iframe>
+{{ end }}
