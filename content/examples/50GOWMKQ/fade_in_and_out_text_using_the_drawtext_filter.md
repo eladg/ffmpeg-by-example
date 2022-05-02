@@ -80,7 +80,7 @@ example_type: youtube-embed
 example_player_data:
   - yntb4ZoysNc
 filename: 50GOWMKQ/fade_in_and_out_text_using_the_drawtext_filter.md
-views: 18
+views: 46
 likes: 0
 
 ---

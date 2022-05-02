@@ -31,12 +31,11 @@ terminal_command: |-
 
   # RTMP 'client', will read the data the server is sending
   ffplay rtmp://127.0.0.1/live
-  
 example_type: picture
 example_player_data:
   - https://ffmpeg-by-example.s3.amazonaws.com/rtmp-server-client.jpg
 filename: YK0WT5PL/stream_local_file_to_rtmp_server_and_client.md
-views: 0
+views: 1
 likes: 0
 
 ---
