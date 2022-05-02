@@ -64,6 +64,7 @@ p, ul, li, a {
 p {
   display: block;
   line-height: 1.58;
+  overflow-wrap: break-word;
 }
 
 p img {

@@ -87,6 +87,7 @@
   justify-content: center;
   gap: 0.5em;
   width: 100%;
+  max-width: 91vw;
 }
 
 .content__example_command .actions {
@@ -103,10 +104,12 @@
   color: #f8f8f2;
 }
 
-.highlight > pre > code {
+pre > code {
   display: flex;
   flex-wrap: wrap;
   font-size: 14px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 
 pre {
