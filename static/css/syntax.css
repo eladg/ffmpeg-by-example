@@ -99,7 +99,8 @@
 .highlight > pre {
   border: 2px solid blueviolet;
   border-radius: 0.5rem;
-  white-space: normal;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
   background-color: #282a36;
   color: #f8f8f2;
 }
@@ -110,6 +111,7 @@ pre > code {
   font-size: 14px;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
+  overflow-y: clip;
 }
 
 pre {
