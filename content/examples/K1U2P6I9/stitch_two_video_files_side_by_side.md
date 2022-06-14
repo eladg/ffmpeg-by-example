@@ -47,7 +47,7 @@ example_type: youtube-embed
 example_player_data:
   - HEARpyUdNFs
 filename: K1U2P6I9/stitch_two_video_files_side_by_side.md
-views: 55
+views: 60
 likes: 0
 
 ---

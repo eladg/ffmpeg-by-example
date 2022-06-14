@@ -35,7 +35,7 @@ example_type: picture
 example_player_data:
   - https://ffmpeg-by-example.s3.amazonaws.com/rtmp-server-client.jpg
 filename: YK0WT5PL/stream_local_file_to_rtmp_server_and_client.md
-views: 1
+views: 4
 likes: 0
 
 ---

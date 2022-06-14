@@ -16,7 +16,7 @@ tags:
   - filter
 thumbnail_url: null
 terminal_command: ffmpeg -i "video.mp4" -vf "scale=640:360" "video640x360.mp4"
-views: 7
+views: 163
 likes: 0
 example_type: no-preview
 filename: 44AI1VRH/scale_input_video_to_fix_size_640x360.md

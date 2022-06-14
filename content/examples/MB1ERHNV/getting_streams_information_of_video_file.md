@@ -63,7 +63,7 @@ example_type: no-preview
 example_player_data:
   - ''
 filename: MB1ERHNV/getting_streams_information_of_video_file.md
-views: 66
+views: 68
 likes: 0
 
 ---

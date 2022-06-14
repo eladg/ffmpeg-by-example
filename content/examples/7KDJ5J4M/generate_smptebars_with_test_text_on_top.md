@@ -30,7 +30,7 @@ example_type: picture
 example_player_data:
   - https://www.ffmpegbyexample.com/video/16x9.jpg
 filename: 7KDJ5J4M/generate_smptebars_with_test_text_on_top.md
-views: 6
+views: 7
 likes: 0
 
 ---

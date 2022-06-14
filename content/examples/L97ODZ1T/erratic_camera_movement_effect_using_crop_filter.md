@@ -51,7 +51,7 @@ example_type: youtube-embed
 example_player_data:
   - EEb3hlL6L4c
 filename: L97ODZ1T/erratic_camera_movement_effect_using_crop_filter.md
-views: 0
+views: 12
 likes: 0
 
 ---
