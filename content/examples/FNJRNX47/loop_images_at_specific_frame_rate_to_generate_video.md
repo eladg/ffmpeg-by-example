@@ -36,11 +36,11 @@ description: >-
 
 
   `-r 30` Although the 'v' stream loops at 12 fps, the generated video stream is
-  at 30 fps. It is very likely that we are repeating say frame 0 a couple of
-  times on the output video. For optimization purposes, it could be wise to set
-  the frame rate to 12, however, it was important for me to show with this
-  example that these 12 variables are independent of each other.
-
+  at 30 fps. It is very likely that we are repeating frames (say the 1st frame) a couple of
+  times on the output video, since the output fps is higher than the inputs. 
+  For optimization purposes, it could be wise to set the frame rate to 12, 
+  however, it was important for me to show with this example that these two 
+  variables are independent of each other.
 
 
   `-t 3` Since our `loop` filter will repeat the same input indefinitely, we
