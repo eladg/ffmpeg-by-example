@@ -25,13 +25,13 @@ description: >
 categories:
   - frames
 tags:
-  - ''
-  - ''
-  - ''
+  - 'video-extract'
+  - 'stdin'
+  - 'pipe'
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -framerate 30 -f rawvideo -pix_fmt rgba -s:v 1280x720 -i pipe: -c:v
-  libx264 output_path.mp4 -y -hide_banner -loglevel error
+  libx264 output_path.mp4
 example_type: no-preview
 example_player_data:
   - ''
