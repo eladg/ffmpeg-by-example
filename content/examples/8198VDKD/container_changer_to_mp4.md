@@ -4,14 +4,15 @@ version: '1.0'
 enabled: true
 date: '2022-04-15T20:39:12.068Z'
 author: nimbuz
-title: container changer to mp4
-description: changing the container from a .TS, MKV file to mp4
+title: Copy audio from any input and save it to an mp4 container
+description: Given any input, copy the audio stream to a new mp4 file
 categories:
   - audio
 tags:
   - no-video
+  - audio-extract
 thumbnail_url: null
-terminal_command: ffmpeg -i %1 -c:v copy -c:a copy %1_output.mp4
+terminal_command: ffmpeg -i input.file -vn -c:a copy %1_output.mp4
 example_type: no-preview
 example_player_data:
   - ''
