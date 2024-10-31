@@ -4,7 +4,7 @@ baseURL = "https://www.ffmpegbyexample.com"
 enableRobotsTXT = true
 
 [params]
-  apiURL = "https://www.ffmpegbyexample.com"
+  apiURL = "https://ffmpegbyexample.com"
   # apiURL = "http://localhost:8888"
   favicon = "/favicon.ico"
   description = "Explore the depth of FFmpeg with Examples"
