@@ -80,7 +80,7 @@ thumbnail_url: null
 terminal_command: ffmpeg -y -i input.mp4 -vf 'sendcmd=f=sendcmd.txt,drawbox,drawtext' output.mp4
 example_type: youtube-embed
 example_player_data:
-  - https://www.youtube.com/watch?v=F-zHct-Hfbo
+  - F-zHct-Hfbo
 filename: Z1JEZI81/drawtext_and_drawbox_using_sendcmd_manifest.md
 views: 0
 likes: 0
