@@ -4,7 +4,7 @@ version: '1.0'
 enabled: true
 date: '2024-11-21T08:30:06.697Z'
 author: Elad Gariany <elad@gariany.com>
-title: 'drawtext' and 'drawbox' using 'sendcmd' manifest
+title: \'drawtext\' and \'drawbox\' using \'sendcmd\' manifest
 description: >-
   The sendcmd filter in FFmpeg allows dynamic updates to video filters (e.g.,
   drawtext and drawbox) at specific time intervals during playback or
