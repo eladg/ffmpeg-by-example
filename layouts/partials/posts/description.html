@@ -4,13 +4,25 @@
   }
 
   .content__meta_description p {
-    font-family: monospace;
     margin-bottom: 1em;
   }  
+
+  .content__meta_description ul {
+    margin-bottom: 1em;
+  }
+
+  .content__meta_description pre code {
+    border: 2px solid blueviolet;
+    background-color: #282a36;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    color: white;
+  }
+
 </style>
 
 <div class="content__meta_description">
   {{ if isset .Params "description" }}
-    {{ .Params.Description | markdownify }}
+    {{ .Params.Description | .RenderString }}
   {{ end }}
 </div>

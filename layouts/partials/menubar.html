@@ -3,8 +3,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #2d2d2d;
+    background: var(--menubar-gradient);
     height: var(--side-height);
+    border-bottom: 2px solid #e7bde2;
+    backdrop-filter: blur(2px);
   }
 
   .menubar div {
@@ -52,11 +54,17 @@
     padding-left: 0.5em;
     padding-right: 0.5em;
     text-align: center;
+    font-family: monospace;
+  }
+
+  .menubar nav ul li :hover {
+    color: var(--link-color);
+    text-decoration: underline;
   }
 
   .menubar nav span {
     font-size: 14px;
-    color: #e2e2e2;
+    color: var(--text-color);
     font-weight: 500;
   }
 
@@ -77,9 +85,9 @@
   <div class="menu-items">
     <nav>
       <ul>
-        <li><a href='https://github.com/eladg/ffmpeg-by-example'><span>Github</span></a></li>
-        <li><a href="https://discord.gg/NDZ4m9ZdqF" target="_blank" rel="noopener"><span>Community</span></a></li>
-        <li><a href='/contribute'><span>Send Yours</span></a></li>
+        <li><a href="https://github.com/eladg/ffmpeg-by-example" target="_blank"><span>github</span></a></li>
+        <li><a href="https://discord.gg/NDZ4m9ZdqF" target="_blank" rel="noopener"><span>community</span></a></li>
+        <li><a href="/contribute"><span>send yours</span></a></li>
       </ul>
     </nav>
   </div>

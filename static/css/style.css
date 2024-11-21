@@ -1,12 +1,18 @@
 :root {
+  --side-length: 16rem;
+  --side-height: 5rem;
+
   --main-color: blueviolet;
   --secondary-color: lavender;
   --third-color: #bd93f9;
   --text-color: #000000;
+  --text-size: 18px;
   --gray-color: #4e4e4e;
   --link-color: blueviolet;
+  --action-color: #e8202a;
   --mc-serif-font: "medium-content-serif-font", Georgia, Cambria, "Times New Roman", Times, serif;
   --monospace-font: monospace;
+  --menubar-gradient: linear-gradient(180deg, rgba(75,71,140,1) 0%, rgba(230,178,224,0.8) 100%);;
 }
 
 body {
@@ -15,6 +21,7 @@ body {
   margin: 0;
   padding: 0;
   color: var(--text-color);
+  font-size: var(--text-size);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -49,6 +56,7 @@ article {
 }
 
 p > code, p > a > code {
+  font-size: 14px;
   padding: 0.2rem 0.4rem;
   background: #8a2be233;
   border: 1px solid #8a2be233;
@@ -56,9 +64,8 @@ p > code, p > a > code {
 }
 
 p, ul, li, a {
-  color: #000;
+  color: var(--text-color);
   margin: 0;
-  padding-inline-start: 0;
 }
 
 p {
@@ -116,4 +123,8 @@ video {
 
 .purple-border {
   border: 2px solid var(--main-color);
+}
+
+.posts-list {
+  padding-inline-start: 0;
 }
