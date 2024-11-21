@@ -10,15 +10,15 @@ description: >
   each frame in a video file. 
 
 
-  * -i input.mp4: Specifies the input file (output.mp4) that you want to
+  * `-i input.mp4`: Specifies the input file that you want to
   process.
 
-  * -vf showinfo: The showinfo filter prints detailed information about each
+  * `-vf showinfo`: The showinfo filter prints detailed information about each
   frame to the standard output. This can include things like frame number,
   timestamp, frame type (I, P, B), resolution, and other frame-related metadata.
 
-  * -f null -: This specifies the output format. -f null means that no actual
-  output file is generated. The - directs the output to the standard output
+  * `-f null -`: This specifies the output format. `-f null` means that no actual
+  output file is generated. The `-` directs the output to the standard output
   (typically the terminal or console). In this case, you're not saving the video
   or audio, only showing information about the video frames.
 categories:
