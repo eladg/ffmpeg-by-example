@@ -107,7 +107,7 @@
 
 pre > code {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column;
   font-size: 14px;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
