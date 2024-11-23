@@ -10,7 +10,7 @@ categories:
   - video-filters
 tags: []
 thumbnail_url: null
-terminal_command: ffmpeg.exe -i input.mp4 -c:v copy -c:a copy -aspect 16:9 16x9_output.mp4
+terminal_command: ffmpeg -i input.mp4 -c:v copy -c:a copy -aspect 16:9 16x9_output.mp4
 example_type: no-preview
 example_player_data:
   - ''
