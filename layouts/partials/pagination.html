@@ -1,26 +1,3 @@
-<style>
-  .pagination {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    margin-top: 1em;
-  }
-
-  .pagination-active {
-    background-color: var(--link-color);
-  }
-  
-  .pagination-active a {
-    color: white;
-  }
-
-  .pagination-link {
-    text-decoration: none;
-    padding: 0.5em;
-  }
-
-</style>
-
 {{ with $.Paginator }}
   {{ if gt .TotalPages 1 }}
       <ul class="pagination">
