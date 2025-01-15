@@ -6,10 +6,10 @@ date: '2025-01-15T08:48:45.318Z'
 author: Moritz
 title: Recode your video with a modern codec, often saving space
 description: >-
-  Recode your video using the modern `libx265` video codec.
+  Recode your video using the modern `libx265` video codec and copy the audio stream as is.
 
 
-  You can change the `-crf` number to adjust the quality.
+  You can change the `-crf` number to adjust the quality (lower = higher quality. More info [here](https://trac.ffmpeg.org/wiki/Encode/H.265))
 
 
   If your video was captured by a smartphone, it likely uses a codec that is
@@ -22,7 +22,7 @@ tags:
   - codec
 thumbnail_url: null
 terminal_command: |
-  ffmpeg -i input.mp4 -vcodec libx265 -crf 28 output.mp4
+  ffmpeg -i input.mp4 -c:a copy -c:v libx265 -crf 28 output.mp4
 example_type: no-preview
 example_player_data:
   - null
