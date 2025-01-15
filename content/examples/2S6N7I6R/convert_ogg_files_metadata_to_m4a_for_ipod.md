@@ -33,8 +33,8 @@ tags:
   - ogg
 thumbnail_url: null
 terminal_command: >-
-  ffmpeg -i song.ogg -map_metadata 0:s:a:0 -acodec aac -b:a 320k -aac_pns 0
-  -movflags +faststart -vn song.m4a
+  ffmpeg -i song.ogg -map_metadata 0:s:a:0 -c:a aac -b:a 320k -aac_pns 0
+  -vn song.m4a
 example_type: no-preview
 example_player_data:
   - null
