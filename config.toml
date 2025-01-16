@@ -1,5 +1,6 @@
 title = "FFmpeg By Example"
-baseURL = "https://www.ffmpegbyexample.com"
+baseURL = "/"
+# baseURL = "https://www.ffmpegbyexample.com"
 # baseURL = "http://localhost:1313"
 enableRobotsTXT = true
 
