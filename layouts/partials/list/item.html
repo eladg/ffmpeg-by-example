@@ -12,7 +12,7 @@
           {{ range $value := .Params.tags }}
           {{ $tagUrl := (printf "/%s/%s" "tags" $value) }}
 
-            <a class="posts-list-tags" href="{{ $tagUrl | absURL }}">#{{ $value }}</a>
+            <a class="posts-list-tags" href="{{ $tagUrl | relURL }}">#{{ $value }}</a>
             {{ end }}
         {{ end }}
       {{ end }}
