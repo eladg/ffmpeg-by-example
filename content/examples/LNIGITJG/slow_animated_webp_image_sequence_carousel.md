@@ -58,7 +58,7 @@ terminal_command: >-
   0 -r 1 output.webp
 example_type: no-preview
 example_player_data:
-  - https://genuary.dedovic.com/render.c35b9a4f.webp
+  - https://ffmpeg-by-example.s3.us-east-1.amazonaws.com/LNIGITJG.webp
 filename: LNIGITJG/slow_animated_webp_image_sequence_carousel.md
 views: 0
 likes: 0
