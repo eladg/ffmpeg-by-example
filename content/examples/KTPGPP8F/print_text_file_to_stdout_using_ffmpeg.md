@@ -36,7 +36,7 @@ tags:
   - meme
   - stdout
 thumbnail_url: null
-terminal_command: ffmpeg -v quiet -f data -i input.txt -map 0:0 -c text -f data -
+terminal_command: ffmpeg -v quiet -f data -i input.txt -map 0:0 -f data pipe:1
 example_type: no-preview
 example_player_data:
   - ''
