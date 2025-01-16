@@ -48,7 +48,7 @@ terminal_command: >-
   720:720 -quality 50 output.webp
 example_type: picture
 example_player_data:
-  - https://genuary.dedovic.com/render.0b9a3998.webp
+  - https://ffmpeg-by-example.s3.us-east-1.amazonaws.com/8NBZPBL5.webp
 filename: >-
   8NBZPBL5/generate_looping_webp_animation_from_image_sequence_with_variable_quality.md
 views: 0
