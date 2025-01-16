@@ -4,7 +4,7 @@ version: '1.0'
 enabled: true
 date: '2025-01-15T07:45:48.252Z'
 author: Raghu <ffmpegwaifu@saxrag.com>
-title: Convert OGG files w/ metadata to m4a for iPod
+title: Convert OGG files with metadata to m4a for iPod
 description: >-
   `-c:a aac song.m4a`
 
