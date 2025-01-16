@@ -56,7 +56,7 @@ thumbnail_url: null
 terminal_command: >-
   ffmpeg -r 1 -i /path/to/sequence/%d.png -vcodec libwebp -pix_fmt yuv420p -loop
   0 -r 1 output.webp
-example_type: no-preview
+example_type: picture
 example_player_data:
   - https://ffmpeg-by-example.s3.us-east-1.amazonaws.com/LNIGITJG.webp
 filename: LNIGITJG/slow_animated_webp_image_sequence_carousel.md
