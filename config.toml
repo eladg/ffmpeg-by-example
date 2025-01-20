@@ -3,6 +3,7 @@ baseURL = "/"
 # baseURL = "https://www.ffmpegbyexample.com"
 # baseURL = "http://localhost:1313"
 enableRobotsTXT = true
+paginate = 50
 
 [params]
   apiURL = "https://ffmpegbyexample.com"
