@@ -1,0 +1,9 @@
+<iframe width="100%" height="600" crossorigin allow="cross-origin-isolated"></iframe>
+<script>
+const origin = "https://ffmpeg.wide.video";
+const iframe = document.querySelector("iframe");
+const commands = [];
+const params = {command:commands.join("\n"), placeholder:commands[1]};
+const hash = encodeURIComponent(JSON.stringify(params));
+iframe.src = `${origin}/#${hash}`;
+</script>
