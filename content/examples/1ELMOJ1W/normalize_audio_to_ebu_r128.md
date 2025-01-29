@@ -4,12 +4,11 @@ version: '1.0'
 enabled: true
 date: '2025-01-29T10:46:32.257Z'
 author: Coen Spoor <coen.spoor@ambassadors.com>
-title: "Normalize" audio to EBU R128
+title: '"Normalize" audio to EBU R128'
 description: >-
   [EBU R128 standard](https://en.wikipedia.org/wiki/EBU_R_128) is recommendation for loudness normalisation and maximum level of audio signals. The following command will take `audio.wav`, process it once to find the 'true peak' and process it a second time to adjust `audio.wav` using the [`volume`](https://ffmpeg.org/ffmpeg-filters.html#volume) filter.
 
   In addition, set `output.wav` to 48 kHz samplerate & 24 bit depth (Raw PCM audio) by setting `-ar 48000 -c:a pcm_s24le`.
-  
 categories:
   - audio
 tags:
@@ -27,5 +26,4 @@ example_player_data:
 filename: 1ELMOJ1W/normalize_audio_to_ebu_r128.md
 views: 0
 likes: 0
-
 ---
