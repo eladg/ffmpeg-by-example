@@ -5,7 +5,9 @@ enabled: true
 date: '2025-01-17T04:40:08.615Z'
 author: AndrewWang
 title: Recode Your Video To Match Telegram Video Sticker Spec
-description: >-
+description: >
+  The following command will help you resize your video to match Telegram's specification, one side must be exactly 512 pixels in size – the other side can be 512 pixels or less.
+  
   - `-vf
   "scale='if(eq(a,1),512,if(gt(a,1),512,-2))':'if(eq(a,1),512,if(gt(a,1),-2,512))'"`:
   Helps to resize your video to match Telegram's specification, one side must be

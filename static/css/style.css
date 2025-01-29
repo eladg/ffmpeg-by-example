@@ -39,7 +39,8 @@ article {
   padding: 1em;
 }
 
-p > code, p > a > code {
+/* p > code, p > a > code { */
+code {
   font-size: 14px;
   padding: 0.2rem 0.4rem;
   background: #8a2be233;
