@@ -33,8 +33,11 @@ description: >-
   ### Video Explanation
 
   * 00-15: The original video clip
+  
   * 15-30: Video slowdown using `setpts=2.0*PTS` and `atempo=0.5`
+
   * 30-45: Video slowdown and `rubberband=tempo=0.5`
+  
   * 45-60: Video slowdown and `rubberband=tempo=0.5:pitch=0.5`
 
 
