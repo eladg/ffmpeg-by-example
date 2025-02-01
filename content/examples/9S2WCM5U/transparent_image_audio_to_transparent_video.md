@@ -6,9 +6,6 @@ date: '2025-01-31T10:23:18.698Z'
 author: Yoav Vainrich
 title: Transparent image + audio to transparent video
 description: >
-  # Transparent Image + Audio to Transparent Video Command Breakdown
-
-
   This FFmpeg command converts an image and audio into a WebM video.  
 
   This command is optimized for creating a web-friendly video that combines a
