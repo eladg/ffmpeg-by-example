@@ -15,7 +15,7 @@ tags:
   - 'id3v2'
 thumbnail_url: null
 terminal_command: >-
-  ffmpeg -i audio.mp3 -i metadata.mp3 -c copy -map 0 -map 1:1 -map_metadata 0 -id3v2_version 3 output.mp3
+  ffmpeg -i audio.mp3 -i metadata.mp3 -c copy -map 0 -map 1:1 -map_metadata 1 -id3v2_version 3 output.mp3
 example_type: no-preview
 example_player_data:
   - https://stackoverflow.com/a/62985832
