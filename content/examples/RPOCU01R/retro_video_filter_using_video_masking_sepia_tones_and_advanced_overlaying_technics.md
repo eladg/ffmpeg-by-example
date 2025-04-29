@@ -31,7 +31,7 @@ terminal_command: >-
 example_type: video-url
 example_player_data:
   - >-
-    https://www.gariany.com/2020/08/ffmpeg-step-by-step-retro-video-filter/result.mp4
+    https://gariany.com/2020/08/ffmpeg-a-step-by-step-guide-to-creating-a-retro-video-filter/result.mp4
 filename: >-
   RPOCU01R/retro_video_filter_using_video_masking_sepia_tones_and_advanced_overlaying_technics.md
 views: 18
