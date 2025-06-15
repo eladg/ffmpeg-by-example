@@ -5,7 +5,7 @@
     {{ highlight $command "bash" "" }}
     <div class="actions">
       <button class="action-btn" id="copy-command-btn">Copy to clipboard</button>
-      <button class="action-btn" id="wasm-try-btn">Try it online</button>  
+      <button class="action-btn" id="wasm-try-btn">Try it online</button>
     </div>
   {{ end }}
 </div>
@@ -31,8 +31,7 @@
   }
 
   var handleTryWasm = (e) => {
-    e.preventDefault()
-    alert("Our WebAssembly FFmpeg Player is currently under construction. With your support, we can make it happen sooner! ;)")
+    window.location.href = "/try";
   }
 
   copyBtn.onclick = handleCopy;
