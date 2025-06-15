@@ -13,8 +13,15 @@ enableRobotsTXT = true
     for = "/**"
     [server.headers.values]
       Cross-Origin-Embedder-Policy = "require-corp"
-      Cross-Origin-Opener-Policy = "same-origin"
+      Cross-Origin-Opener-Policy = "same-origin" 
+      Cross-Origin-Resource-Policy = "cross-origin"
+      Cross-Origin-Worker-Policy = "same-origin"
 
+      Access-Control-Allow-Origin = "*"
+      Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+      Access-Control-Allow-Headers = "*"
+
+      Content-Security-Policy = "frame-ancestors 'self' https://ffmpeg.wide.video https://ko-fi.com"
 
 [permalinks]
   posts = "/:title/"
