@@ -1,0 +1,110 @@
+{
+    "7.1.1": {
+        "name": "FFmpeg 7.1.1 \"Péter\"",
+        "description": "7.1.1 was released on 2025-03-03. It is the latest stable FFmpeg release from the 7.1 release branch, which was cut from master on 2024-09-24.",
+        "download_xz_tarball": "https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.xz",
+        "download_xz_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.xz.asc",
+        "download_bzip2_tarball": "https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.bz2",
+        "download_bzip2_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.bz2.asc",
+        "download_gzip_tarball": "https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.gz",
+        "download_gzip_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.gz.asc",
+        "changelog": "https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n7.1.1",
+        "release_notes": "https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/7.1:/RELEASE_NOTES"
+    },
+    "7.0.2": {
+        "name": "FFmpeg 7.0.2 \"Dijkstra\"",
+        "description": "7.0.2 was released on 2024-08-03. It is the latest stable FFmpeg release from the 7.0 release branch, which was cut from master on 2024-03-27.",
+        "download_xz_tarball": "https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.xz",
+        "download_xz_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.xz.asc",
+        "download_bzip2_tarball": "https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.bz2",
+        "download_bzip2_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.bz2.asc",
+        "download_gzip_tarball": "https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.gz",
+        "download_gzip_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.gz.asc",
+        "changelog": "https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n7.0.2",
+        "release_notes": "https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/7.0:/RELEASE_NOTES"
+    },
+    "6.1.2": {
+        "name": "FFmpeg 6.1.2 \"Heaviside\"",
+        "description": "6.1.2 was released on 2024-08-02. It is the latest stable FFmpeg release from the 6.1 release branch, which was cut from master on 2023-10-29.",
+        "download_xz_tarball": "https://ffmpeg.org/releases/ffmpeg-6.1.2.tar.xz",
+        "download_xz_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-6.1.2.tar.xz.asc",
+        "download_bzip2_tarball": "https://ffmpeg.org/releases/ffmpeg-6.1.2.tar.bz2",
+        "download_bzip2_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-6.1.2.tar.bz2.asc",
+        "download_gzip_tarball": "https://ffmpeg.org/releases/ffmpeg-6.1.2.tar.gz",
+        "download_gzip_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-6.1.2.tar.gz.asc",
+        "changelog": "https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n6.1.2",
+        "release_notes": "https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/6.1:/RELEASE_NOTES"
+    },
+    "5.1.6": {
+        "name": "FFmpeg 5.1.6 \"Riemann\"",
+        "description": "5.1.6 was released on 2024-08-05. It is the latest stable FFmpeg release from the 5.1 release branch, which was cut from master on 2022-07-13.",
+        "download_xz_tarball": "https://ffmpeg.org/releases/ffmpeg-5.1.6.tar.xz",
+        "download_xz_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-5.1.6.tar.xz.asc",
+        "download_bzip2_tarball": "https://ffmpeg.org/releases/ffmpeg-5.1.6.tar.bz2",
+        "download_bzip2_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-5.1.6.tar.bz2.asc",
+        "download_gzip_tarball": "https://ffmpeg.org/releases/ffmpeg-5.1.6.tar.gz",
+        "download_gzip_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-5.1.6.tar.gz.asc",
+        "changelog": "https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n5.1.6",
+        "release_notes": "https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/5.1:/RELEASE_NOTES"
+    },
+    "4.4.6": {
+        "name": "FFmpeg 4.4.6 \"Rao\"",
+        "description": "4.4.6 was released on 2025-05-17. It is the latest stable FFmpeg release from the 4.4 release branch, which was cut from master on 2021-04-08.",
+        "download_xz_tarball": "https://ffmpeg.org/releases/ffmpeg-4.4.6.tar.xz",
+        "download_xz_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-4.4.6.tar.xz.asc",
+        "download_bzip2_tarball": "https://ffmpeg.org/releases/ffmpeg-4.4.6.tar.bz2",
+        "download_bzip2_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-4.4.6.tar.bz2.asc",
+        "download_gzip_tarball": "https://ffmpeg.org/releases/ffmpeg-4.4.6.tar.gz",
+        "download_gzip_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-4.4.6.tar.gz.asc",
+        "changelog": "https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n4.4.6",
+        "release_notes": "https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/4.4:/RELEASE_NOTES"
+    },
+    "4.3.9": {
+        "name": "FFmpeg 4.3.9 \"4:3\"",
+        "description": "4.3.9 was released on 2025-03-12. It is the latest stable FFmpeg release from the 4.3 release branch, which was cut from master on 2020-06-08.",
+        "download_xz_tarball": "https://ffmpeg.org/releases/ffmpeg-4.3.9.tar.xz",
+        "download_xz_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-4.3.9.tar.xz.asc",
+        "download_bzip2_tarball": "https://ffmpeg.org/releases/ffmpeg-4.3.9.tar.bz2",
+        "download_bzip2_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-4.3.9.tar.bz2.asc",
+        "download_gzip_tarball": "https://ffmpeg.org/releases/ffmpeg-4.3.9.tar.gz",
+        "download_gzip_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-4.3.9.tar.gz.asc",
+        "changelog": "https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n4.3.9",
+        "release_notes": "https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/4.3:/RELEASE_NOTES"
+    },
+    "4.2.11": {
+        "name": "FFmpeg 4.2.11 \"Ada\"",
+        "description": "4.2.11 was released on 2025-05-17. It is the latest stable FFmpeg release from the 4.2 release branch, which was cut from master on 2019-07-21.",
+        "download_xz_tarball": "https://ffmpeg.org/releases/ffmpeg-4.2.11.tar.xz",
+        "download_xz_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-4.2.11.tar.xz.asc",
+        "download_bzip2_tarball": "https://ffmpeg.org/releases/ffmpeg-4.2.11.tar.bz2",
+        "download_bzip2_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-4.2.11.tar.bz2.asc",
+        "download_gzip_tarball": "https://ffmpeg.org/releases/ffmpeg-4.2.11.tar.gz",
+        "download_gzip_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-4.2.11.tar.gz.asc",
+        "changelog": "https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n4.2.11",
+        "release_notes": "https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/4.2:/RELEASE_NOTES"
+    },
+    "3.4.14": {
+        "name": "FFmpeg 3.4.14 \"Cantor\"",
+        "description": "3.4.14 was released on 2025-03-12. It is the latest stable FFmpeg release from the 3.4 release branch, which was cut from master on 2017-10-11.",
+        "download_xz_tarball": "https://ffmpeg.org/releases/ffmpeg-3.4.14.tar.xz",
+        "download_xz_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-3.4.14.tar.xz.asc",
+        "download_bzip2_tarball": "https://ffmpeg.org/releases/ffmpeg-3.4.14.tar.bz2",
+        "download_bzip2_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-3.4.14.tar.bz2.asc",
+        "download_gzip_tarball": "https://ffmpeg.org/releases/ffmpeg-3.4.14.tar.gz",
+        "download_gzip_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-3.4.14.tar.gz.asc",
+        "changelog": "https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n3.4.14",
+        "release_notes": "https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/3.4:/RELEASE_NOTES"
+    },
+    "2.8.22": {
+        "name": "FFmpeg 2.8.22 \"Feynman\"",
+        "description": "2.8.22 was released on 2023-10-29. It is the latest stable FFmpeg release from the 2.8 release branch, which was cut from master on 2015-09-05. Amongst lots of other changes, it includes all changes from ffmpeg-mt, libav master of 2015-08-28, libav 11 as of 2015-08-28.",
+        "download_xz_tarball": "https://ffmpeg.org/releases/ffmpeg-2.8.22.tar.xz",
+        "download_xz_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-2.8.22.tar.xz.asc",
+        "download_bzip2_tarball": "https://ffmpeg.org/releases/ffmpeg-2.8.22.tar.bz2",
+        "download_bzip2_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-2.8.22.tar.bz2.asc",
+        "download_gzip_tarball": "https://ffmpeg.org/releases/ffmpeg-2.8.22.tar.gz",
+        "download_gzip_tarball_sig": "https://ffmpeg.org/releases/ffmpeg-2.8.22.tar.gz.asc",
+        "changelog": "https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n2.8.22",
+        "release_notes": "https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/2.8:/RELEASE_NOTES"
+    }
+} 

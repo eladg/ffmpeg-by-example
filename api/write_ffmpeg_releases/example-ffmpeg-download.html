@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+Download FFmpeg</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/simple-sidebar.css" />
+    <link rel="stylesheet" href="css/style.min.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <link href="main.rss" rel="alternate" type="application/rss+xml" title="ffmpeg.org" />
+    <link rel="shortcut icon" href="favicon.ico" />
+  </head>
+  <body>
+
+    <div id="wrapper">
+
+      <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand"><a href=".">
+              <img src="img/ffmpeg3d_white_20.png" alt="FFmpeg" />
+              FFmpeg</a>
+          </li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html#news">News</a></li>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="documentation.html">Documentation</a></li>
+          <li><a href="community.html">Community</a>
+            <ul>
+              <li><a href="community.html#CodeOfConduct">Code of Conduct</a></li>
+              <li><a href="contact.html#MailingLists">Mailing Lists</a></li>
+              <li><a href="contact.html#IRCChannels">IRC</a></li>
+              <li><a href="contact.html#Forums">Forums</a></li>
+              <li><a href="bugreports.html">Bug Reports</a></li>
+              <li><a href="https://trac.ffmpeg.org">Wiki</a></li>
+              <li><a href="https://trac.ffmpeg.org/wiki/Conferences">Conferences</a></li>
+            </ul>
+          </li>
+          <li><a href="developer.html">Developers</a>
+            <ul>
+              <li><a href="download.html#get-sources">Source Code</a>
+              <li><a href="developer.html#Introduction">Contribute</a></li>
+              <li><a href="http://fate.ffmpeg.org">FATE</a></li>
+              <li><a href="http://coverage.ffmpeg.org">Code Coverage</a></li>
+              <li><a href="spi.html">Funding through SPI</a></li>
+            </ul>
+          </li>
+          <li><a href="#">More</a>
+            <ul>
+              <li><a href="donations.html">
+                  Donate<span style="color: #e55; font-size: 0.8em; margin-left: -10px"><i class="fa fa-heart"></i></span></a></li>
+              <li><a href="consulting.html">Hire Developers</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="security.html">Security</a></li>
+              <li><a href="legal.html">Legal</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div id="page-content-wrapper">
+        <header class="content-header">
+          <h1>
+            <a id="menu-toggle" href="#" class="btn btn-success"><i class="fa fa-reorder"></i></a>
+Download FFmpeg          </h1>
+        </header>
+      <div class="page-content inset">
+
+<div id="download">
+  <div class="btn-download-wrapper">
+    <a href="https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.xz" class="btn btn-success">
+      <i class="fa fa-cloud-download"></i>
+      Download Source Code
+      <small>ffmpeg-7.1.1.tar.xz</small>
+    </a>
+    <br>
+    <a href="#releases">More releases</a>
+
+  </div> <!-- btn-download-wrapper -->
+
+
+  <h4 class="first">
+    <small class="pull-right">
+        If you find FFmpeg useful, you are welcome to contribute
+        by <a href="donations.html">donating</a>.
+    </small>
+
+    <i class="fa fa-download"></i>
+    More downloading options</h4>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="well" id="get-packages">
+        <h3>
+          <i class="fa fa-download"></i>
+          Get packages &amp; executable files</h3>
+        <p>FFmpeg only provides source code. Below are some links that provide it already compiled and ready to go.</p>
+        <div class="os-selector">
+          <div class="row">
+            <div class="col-xs-4">
+              <a class="btn-build active" href="#build-linux">
+                <i class="fa fa-5x fa-fw fa-linux"></i>
+              </a>
+            </div> <!-- col -->
+            <div class="col-xs-4">
+              <a class="btn-build" href="#build-windows">
+                <i class="fa fa-5x fa-fw fa-windows"></i>
+              </a>
+            </div> <!-- col -->
+            <div class="col-xs-4">
+              <a class="btn-build" href="#build-mac">
+                <i class="fa fa-5x fa-fw fa-apple"></i>
+              </a>
+            </div> <!-- col -->
+          </div> <!-- row -->
+        </div> <!-- os-selector -->
+
+        <div class="tab-content">
+          <div id="build-linux" class="tab-pane active">
+
+            <h3>Linux Packages</h3>
+            <div class="list-group">
+              <a class="list-group-item" href="https://tracker.debian.org/pkg/ffmpeg">
+                <strong>Debian</strong> – Official packages for Stable-Backports, Testing, Unstable
+              </a>
+              <a class="list-group-item" href="https://www.deb-multimedia.org/">
+                <strong>Debian</strong> – deb-multimedia packages for Oldstable, Stable, Testing, Unstable
+              </a>
+              <a href="https://launchpad.net/ubuntu/+source/ffmpeg" class="list-group-item">
+                <strong>Ubuntu</strong> – Official packages
+              </a>
+              <a class="list-group-item" href="https://rpmfusion.org/">
+                <strong>Fedora</strong> and <strong>Red Hat Enterprise Linux</strong> packages
+              </a>
+            </div> <!-- list-group -->
+
+            <h3>Linux Static Builds</h3>
+            <div class="list-group">
+              <a class="list-group-item" href="https://johnvansickle.com/ffmpeg/">32-bit and
+                64-bit for kernel 3.2.0 and above</a>
+              <a class="list-group-item" href="https://github.com/BtbN/FFmpeg-Builds/releases">
+                64-bit static and shared builds</a>
+
+            </div> <!-- list-group -->
+
+          </div> <!-- build -->
+          <div id="build-windows" class="tab-pane active">
+
+            <h3>Windows EXE Files</h3>
+
+            <div class="list-group">
+              <a class="list-group-item" href="https://www.gyan.dev/ffmpeg/builds/">
+                Windows builds from gyan.dev
+              </a>
+              <a class="list-group-item" href="https://github.com/BtbN/FFmpeg-Builds/releases">
+                Windows builds by BtbN
+              </a>
+            </div> <!-- list-group -->
+
+          </div> <!-- build -->
+          <div id="build-mac" class="tab-pane active">
+
+            <h3>macOS</h3>
+
+            <div class="list-group">
+              <a class="list-group-item" href="https://evermeet.cx/ffmpeg/">
+                Static builds for <strong>macOS 64-bit</strong>
+              </a>
+            </div> <!-- list-group -->
+
+          </div> <!-- build -->
+
+        </div> <!-- tab-content -->
+
+      </div> <!-- well -->
+    </div> <!-- col -->
+
+    <div class="col-md-6">
+      <div class="well" id="get-sources">
+        <h3>
+          <i class="fa fa-eye"></i>
+          Get the Sources</h3>
+
+        <br><br>
+        <div class="btn-download text-center">
+          <a href="releases/ffmpeg-snapshot.tar.bz2" class="btn btn-success btn-lg">
+            <i class="fa fa-download"></i>
+            Download Snapshot
+          </a> &nbsp;
+          <a href="ffmpeg-devel.asc" class="btn btn-success btn-lg">
+            <i class="fa fa-key"></i>
+            Download PGP Signing Key
+          </a>
+        </div> <!-- text -->
+
+        <br><br>
+
+        <p>
+          You can retrieve the source code through
+          <a href="https://git-scm.com/" target="_blank">Git</a>
+          by using the command:
+        </p>
+
+        <pre>git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg</pre>
+
+        <div>
+          <div class="pull-right">
+            &nbsp;
+            <a href="releases/ffmpeg-snapshot-git.tar.bz2" class="btn btn-success">
+              <i class="fa fa-git"></i>
+              Snapshot
+            </a> &nbsp;
+            <a href="https://git.ffmpeg.org/gitweb/ffmpeg.git" class="btn btn-success">
+              Browse
+            </a>
+          </div>
+          <small>
+            Cannot access Git or wish to speed up the cloning and reduce the bandwidth usage?
+          </small>
+        </div>
+
+        <br><br>
+
+        <p class="info">
+          FFmpeg has always been a very experimental and developer-driven project. It
+          is a key component in many multimedia projects and has new features added
+          constantly.
+          Development branch snapshots work really well 99% of the
+          time so people are not afraid to use them.
+        </p>
+
+        <br><br>
+        <div class="text-center">
+          <a href="#repositories" class="btn btn-success">
+            <i class="fa fa-cubes"></i>
+            Git Repositories
+          </a>
+        </div>
+
+      </div> <!-- well -->
+    </div> <!-- col -->
+
+  </div> <!-- row -->
+
+
+  <div></div>
+  <h4 id="repositories">
+    <i class="fa fa-cubes"></i>
+    Git Repositories</h4>
+
+  <p>
+    Since FFmpeg is developed with <a href="https://git-scm.com/">Git</a>,
+    multiple repositories from developers and groups of developers are available.
+  </p>
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Clone URL</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="pull-left"><a href="https://git.ffmpeg.org/ffmpeg.git">https://git.ffmpeg.org/ffmpeg.git</a></div>
+            <div class="pull-right">
+              <a class="btn btn-success" href="https://git.ffmpeg.org/gitweb/ffmpeg.git">Browse</a>
+            </div>
+          </td>
+          <td>Main FFmpeg Git repository</td>
+        </tr>
+        <tr>
+          <td><a href="https://git.ffmpeg.org/ffmpeg-web">https://git.ffmpeg.org/ffmpeg-web</a></td>
+          <td>Main ffmpeg.org website repository</td>
+        </tr>
+        <tr>
+          <td><a href="https://git.ffmpeg.org/fateserver">https://git.ffmpeg.org/fateserver</a></td>
+          <td><a href="http://fate.ffmpeg.org">fate.ffmpeg.org</a> server software repository</td>
+        </tr>
+        <tr class="table-heading">
+          <th colspan="2">Mirrors</th>
+        </tr>
+        <tr>
+          <td>
+            <div class="pull-left">
+              <a href="https://github.com/FFmpeg/FFmpeg">https://github.com/FFmpeg/FFmpeg</a>
+            </div>
+            <div class="pull-right">
+              <a class="btn btn-success" href="https://github.com/FFmpeg/FFmpeg">Browse</a>
+              <a class="btn btn-success" href="https://github.com/FFmpeg/FFmpeg/tarball/master">Snapshot</a>
+            </div>
+          </td>
+          <td>Mirror of the main repository</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="pull-left">
+              <a href="https://github.com/FFmpeg/web">https://github.com/FFmpeg/web</a>
+            </div>
+            <div class="pull-right">
+              <a class="btn btn-success" href="https://github.com/FFmpeg/web">Browse</a>
+              <a class="btn btn-success" href="https://github.com/FFmpeg/web/tarball/master">Snapshot</a>
+            </div>
+          </td>
+          <td>Mirror of the website repository</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="pull-left">
+              <a href="https://github.com/FFmpeg/fateserver">https://github.com/FFmpeg/fateserver</a>
+            </div>
+            <div class="pull-right">
+              <a class="btn btn-success" href="https://github.com/FFmpeg/fateserver">Browse</a>
+              <a class="btn btn-success" href="https://github.com/FFmpeg/fateserver/tarball/master">Snapshot</a>
+            </div>
+          </td>
+          <td>Mirror of the FATE server repository</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> <!-- table-responsive -->
+
+  <div></div>
+  <h4 id="release-verification">
+    <i class="fa fa-lock"></i>
+    Release Verification</h4>
+
+  <p>
+    All FFmpeg releases are cryptographically signed with
+    <a href="ffmpeg-devel.asc">our public PGP key</a> and should be verified for
+    authenticity.
+  </p>
+  <pre>pub   rsa2048 2011-04-26 [SC]
+    FCF986EA15E6E293A5644F10B4322F04D67658D8
+uid           [  full  ] FFmpeg release signing key &lt;ffmpeg-devel@ffmpeg.org&gt;
+sub   rsa2048 2011-04-26 [E]</pre>
+
+  <p>
+    To verify a release:
+    <ol>
+      <li>Import our public key into your local keyring:
+        <pre>$ curl https://ffmpeg.org/ffmpeg-devel.asc | gpg --import</pre>
+      </li>
+      <li>
+        Download a release tarball and its corresponding signature.
+      </li>
+      <li>
+        Verify the signature:
+        <pre>$ gpg --verify ffmpeg-4.3.2.tar.xz.asc ffmpeg-4.3.2.tar.xz
+gpg: Signature made Sun 21 Feb 2021 06:35:15 AEST
+gpg:                using RSA key FCF986EA15E6E293A5644F10B4322F04D67658D8
+gpg:                issuer "ffmpeg-devel@ffmpeg.org"
+gpg: Good signature from "FFmpeg release signing key &lt;ffmpeg-devel@ffmpeg.org&gt;" [full]</pre>
+      </li>
+    </ol>
+    Optionally, you can verify that git and tarball match, the only differences should be the absence of .git* files in the tarball and a VERSION file in the tarball containing the version.
+    The git tags should be signed with <a href="git-tag-key.asc">EDDSA key DD1EC9E8DE085C629B3E1846B18E8928B3948D64</a>
+  </p>
+
+  <h4 id="releases">
+    <i class="fa fa-history"></i>
+    Releases</h4>
+
+  <p>
+    Approximately every 6 months the FFmpeg project makes a new major release.
+    Between major releases point releases
+    will appear that add important bug fixes but no new features.
+    Note that these releases are intended for distributors and system integrators.
+    Users that wish to compile from source themselves are strongly encouraged to
+    consider using the development branch (see above), this is the only version on
+    which FFmpeg developers actively work.  The release branches only cherry pick
+    selected changes from the development branch, which therefore receives much more
+    and much faster bug fixes such as additional features and security patches.
+  </p>
+
+  <h3 id="release_7.1">FFmpeg 7.1.1 "Péter"</h3>
+
+  <p>
+    7.1.1 was released on 2025-03-03. It is the latest stable FFmpeg release
+    from the 7.1 release branch, which was cut from master on 2024-09-24.
+  </p>
+  <p>It includes the following library versions:
+  </p>
+  <pre>
+libavutil      59. 39.100
+libavcodec     61. 19.100
+libavformat    61.  7.100
+libavdevice    61.  3.100
+libavfilter    10.  4.100
+libswscale      8.  3.100
+libswresample   5.  3.100
+libpostproc    58.  3.100</pre>
+  <div class="row">
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-7.1.1.tar.xz">Download xz tarball</a>
+      <small><a href="releases/ffmpeg-7.1.1.tar.xz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-7.1.1.tar.bz2">Download bzip2 tarball</a>
+      <small><a href="releases/ffmpeg-7.1.1.tar.bz2.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-7.1.1.tar.gz">Download gzip tarball</a>
+      <small><a href="releases/ffmpeg-7.1.1.tar.gz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3 text-right">
+      <small><a href="https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n7.1.1">Changelog</a></small>
+      <a class="btn btn-success" href="https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/7.1:/RELEASE_NOTES">Release Notes</a>
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+  <h3 id="release_7.0">FFmpeg 7.0.2 "Dijkstra"</h3>
+
+  <p>
+    7.0.2 was released on 2024-08-03. It is the latest stable FFmpeg release
+    from the 7.0 release branch, which was cut from master on 2024-03-27.
+  </p>
+  <p>It includes the following library versions:
+  </p>
+  <pre>
+libavutil      59.  8.100
+libavcodec     61.  3.100
+libavformat    61.  1.100
+libavdevice    61.  1.100
+libavfilter    10.  1.100
+libswscale      8.  1.100
+libswresample   5.  1.100
+libpostproc    58.  1.100</pre>
+  <div class="row">
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-7.0.2.tar.xz">Download xz tarball</a>
+      <small><a href="releases/ffmpeg-7.0.2.tar.xz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-7.0.2.tar.bz2">Download bzip2 tarball</a>
+      <small><a href="releases/ffmpeg-7.0.2.tar.bz2.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-7.0.2.tar.gz">Download gzip tarball</a>
+      <small><a href="releases/ffmpeg-7.0.2.tar.gz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3 text-right">
+      <small><a href="https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n7.0.2">Changelog</a></small>
+      <a class="btn btn-success" href="https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/7.0:/RELEASE_NOTES">Release Notes</a>
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+  <h3 id="release_6.1">FFmpeg 6.1.2 "Heaviside"</h3>
+
+  <p>
+    6.1.2 was released on 2024-08-02. It is the latest stable FFmpeg release
+    from the 6.1 release branch, which was cut from master on 2023-10-29.
+  </p>
+  <p>It includes the following library versions:
+  </p>
+  <pre>
+libavutil      58. 29.100
+libavcodec     60. 31.102
+libavformat    60. 16.100
+libavdevice    60.  3.100
+libavfilter     9. 12.100
+libswscale      7.  5.100
+libswresample   4. 12.100
+libpostproc    57.  3.100</pre>
+  <div class="row">
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-6.1.2.tar.xz">Download xz tarball</a>
+      <small><a href="releases/ffmpeg-6.1.2.tar.xz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-6.1.2.tar.bz2">Download bzip2 tarball</a>
+      <small><a href="releases/ffmpeg-6.1.2.tar.bz2.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-6.1.2.tar.gz">Download gzip tarball</a>
+      <small><a href="releases/ffmpeg-6.1.2.tar.gz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3 text-right">
+      <small><a href="https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n6.1.2">Changelog</a></small>
+      <a class="btn btn-success" href="https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/6.1:/RELEASE_NOTES">Release Notes</a>
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+  <h3 id="release_5.1">FFmpeg 5.1.6 "Riemann"</h3>
+
+  <p>
+    5.1.6 was released on 2024-08-05. It is the latest stable FFmpeg release
+    from the 5.1 release branch, which was cut from master on 2022-07-13.
+  </p>
+  <p>It includes the following library versions:
+  </p>
+  <pre>
+libavutil      57. 28.100
+libavcodec     59. 37.100
+libavformat    59. 27.100
+libavdevice    59.  7.100
+libavfilter     8. 44.100
+libswscale      6.  7.100
+libswresample   4.  7.100
+libpostproc    56.  6.100</pre>
+  <div class="row">
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-5.1.6.tar.xz">Download xz tarball</a>
+      <small><a href="releases/ffmpeg-5.1.6.tar.xz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-5.1.6.tar.bz2">Download bzip2 tarball</a>
+      <small><a href="releases/ffmpeg-5.1.6.tar.bz2.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-5.1.6.tar.gz">Download gzip tarball</a>
+      <small><a href="releases/ffmpeg-5.1.6.tar.gz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3 text-right">
+      <small><a href="https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n5.1.6">Changelog</a></small>
+      <a class="btn btn-success" href="https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/5.1:/RELEASE_NOTES">Release Notes</a>
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+  <h3 id="release_4.4">FFmpeg 4.4.6 "Rao"</h3>
+
+  <p>
+    4.4.6 was released on 2025-05-17. It is the latest stable FFmpeg release
+    from the 4.4 release branch, which was cut from master on 2021-04-08.
+  </p>
+  <p>It includes the following library versions:
+  </p>
+  <pre>
+libavutil      56. 70.100
+libavcodec     58.134.100
+libavformat    58. 76.100
+libavdevice    58. 13.100
+libavfilter     7.110.100
+libswscale      5.  9.100
+libswresample   3.  9.100
+libpostproc    55.  9.100</pre>
+  <div class="row">
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-4.4.6.tar.xz">Download xz tarball</a>
+      <small><a href="releases/ffmpeg-4.4.6.tar.xz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-4.4.6.tar.bz2">Download bzip2 tarball</a>
+      <small><a href="releases/ffmpeg-4.4.6.tar.bz2.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-4.4.6.tar.gz">Download gzip tarball</a>
+      <small><a href="releases/ffmpeg-4.4.6.tar.gz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3 text-right">
+      <small><a href="https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n4.4.6">Changelog</a></small>
+      <a class="btn btn-success" href="https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/4.4:/RELEASE_NOTES">Release Notes</a>
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+  <h3 id="release_4.3">FFmpeg 4.3.9 "4:3"</h3>
+
+  <p>
+    4.3.9 was released on 2025-03-12. It is the latest stable FFmpeg release
+    from the 4.3 release branch, which was cut from master on 2020-06-08.
+  </p>
+  <p>It includes the following library versions:
+  </p>
+  <pre>
+libavutil      56. 51.100
+libavcodec     58. 91.100
+libavformat    58. 45.100
+libavdevice    58. 10.100
+libavfilter     7. 85.100
+libswscale      5.  7.100
+libswresample   3.  7.100
+libpostproc    55.  7.100</pre>
+  <div class="row">
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-4.3.9.tar.xz">Download xz tarball</a>
+      <small><a href="releases/ffmpeg-4.3.9.tar.xz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-4.3.9.tar.bz2">Download bzip2 tarball</a>
+      <small><a href="releases/ffmpeg-4.3.9.tar.bz2.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-4.3.9.tar.gz">Download gzip tarball</a>
+      <small><a href="releases/ffmpeg-4.3.9.tar.gz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3 text-right">
+      <small><a href="https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n4.3.9">Changelog</a></small>
+      <a class="btn btn-success" href="https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/4.3:/RELEASE_NOTES">Release Notes</a>
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+  <h3 id="release_4.2">FFmpeg 4.2.11 "Ada"</h3>
+
+  <p>
+    4.2.11 was released on 2025-05-17. It is the latest stable FFmpeg release
+    from the 4.2 release branch, which was cut from master on 2019-07-21.
+  </p>
+  <p>It includes the following library versions:
+  </p>
+  <pre>
+libavutil      56. 31.100
+libavcodec     58. 54.100
+libavformat    58. 29.100
+libavdevice    58.  8.100
+libavfilter     7. 57.100
+libswscale      5.  5.100
+libswresample   3.  5.100
+libpostproc    55.  5.100</pre>
+
+  <div class="row">
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-4.2.11.tar.xz">Download xz tarball</a>
+      <small><a href="releases/ffmpeg-4.2.11.tar.xz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-4.2.11.tar.bz2">Download bzip2 tarball</a>
+      <small><a href="releases/ffmpeg-4.2.11.tar.bz2.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-4.2.11.tar.gz">Download gzip tarball</a>
+      <small><a href="releases/ffmpeg-4.2.11.tar.gz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3 text-right">
+      <small><a href="https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n4.2.11">Changelog</a></small>
+      <a class="btn btn-success" href="https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/4.2:/RELEASE_NOTES">Release Notes</a>
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+  <h3 id="release_3.4">FFmpeg 3.4.14 "Cantor"</h3>
+
+  <p>
+    3.4.14 was released on 2025-03-12. It is the latest stable FFmpeg release
+    from the 3.4 release branch, which was cut from master on 2017-10-11.
+  </p>
+  <p>It includes the following library versions:
+  </p>
+  <pre>
+libavutil      55. 78.100
+libavcodec     57.107.100
+libavformat    57. 83.100
+libavdevice    57. 10.100
+libavfilter     6.107.100
+libavresample   3.  7.  0
+libswscale      4.  8.100
+libswresample   2.  9.100
+libpostproc    54.  7.100</pre>
+
+  <div class="row">
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-3.4.14.tar.xz">Download xz tarball</a>
+      <small><a href="releases/ffmpeg-3.4.14.tar.xz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-3.4.14.tar.bz2">Download bzip2 tarball</a>
+      <small><a href="releases/ffmpeg-3.4.14.tar.bz2.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-3.4.14.tar.gz">Download gzip tarball</a>
+      <small><a href="releases/ffmpeg-3.4.14.tar.gz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3 text-right">
+      <small><a href="https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n3.4.14">Changelog</a></small>
+      <a class="btn btn-success" href="https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/3.4:/RELEASE_NOTES">Release Notes</a>
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+  <h3 id="release_2.8">FFmpeg 2.8.22 "Feynman"</h3>
+
+  <p>
+    2.8.22 was released on 2023-10-29. It is the latest stable FFmpeg release
+    from the 2.8 release branch, which was cut from master on 2015-09-05.
+    Amongst lots of other changes, it includes all changes from
+    ffmpeg-mt, libav master of 2015-08-28, libav 11 as of 2015-08-28.
+  </p>
+  <p>It includes the following library versions:
+  </p>
+  <pre>
+libavutil      54. 31.100
+libavcodec     56. 60.100
+libavformat    56. 40.101
+libavdevice    56.  4.100
+libavfilter     5. 40.101
+libavresample   2.  1.  0
+libswscale      3.  1.101
+libswresample   1.  2.101
+libpostproc    53.  3.100</pre>
+
+  <div class="row">
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-2.8.22.tar.xz">Download xz tarball</a>
+      <small><a href="releases/ffmpeg-2.8.22.tar.xz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-2.8.22.tar.bz2">Download bzip2 tarball</a>
+      <small><a href="releases/ffmpeg-2.8.22.tar.bz2.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3">
+      <a class="btn btn-success" href="releases/ffmpeg-2.8.22.tar.gz">Download gzip tarball</a>
+      <small><a href="releases/ffmpeg-2.8.22.tar.gz.asc">PGP signature</a></small>
+    </div> <!-- col -->
+    <div class="col-md-3 text-right">
+      <small><a href="https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n2.8.22">Changelog</a></small>
+      <a class="btn btn-success" href="https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/refs/heads/release/2.8:/RELEASE_NOTES">Release Notes</a>
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+
+
+  <h3 id="old_releases">Old Releases</h3>
+  <p>
+    Older versions are available at the <a href="olddownload.html">Old
+      Releases</a> page. Releases are usually moved there after the last
+      <a href="https://trac.ffmpeg.org/wiki/Downstreams">downstream</a>
+      drops support.
+  </p>
+  <div class="row">
+    <div class="col-md-3">
+      <a class="btn btn-success" href="olddownload.html">Get old releases</a>
+    </div> <!-- col -->
+  </div> <!-- row -->
+</div> <!-- #download -->
+
+          <p class="text-right"><small>Hosting provided by <a href="https://telepoint.bg">telepoint.bg</a></small></p>
+        </div> <!-- page-content-inset -->
+      </div> <!-- page-content-wrapper -->
+    </div> <!-- wrapper -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/download.js"></script>
+    <!-- Custom JavaScript for the Menu Toggle -->
+    <script>
+      $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("active");
+      });
+    </script>
+
+  </body>
+</html>

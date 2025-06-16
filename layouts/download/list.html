@@ -1,0 +1,70 @@
+{{ define "main" }}
+    <div class="download-page">
+        <div>
+            <h1>Download FFmpeg</h1>
+        </div>
+
+        {{ $json := resources.GetMatch "ffmpeg-releases.json" }}
+        {{ if $json }}
+            {{ $releases := $json | unmarshal }}
+            {{ $sortedReleases := slice }}
+            {{ range $version, $release := $releases }}
+                {{ $parts := split $version "." }}
+                {{ $major := int (index $parts 0) }}
+                {{ $minor := int (index $parts 1) }}
+                {{ $patch := int (index $parts 2) }}
+                {{ $sortKey := printf "%03d%03d%03d" $major $minor $patch }}
+                {{ $sortedReleases = $sortedReleases | append (dict 
+                    "version" $version 
+                    "sortKey" $sortKey
+                    "release" $release
+                ) }}
+            {{ end }}
+            {{ $sortedReleases = sort $sortedReleases "sortKey" "desc" }}
+            
+            <div>
+                <ul class="posts-list">
+                    {{ range $sortedReleases }}
+                        <li style="list-style: none; margin-bottom: 5px;">
+                            <div>
+                                ▲ <a href="{{ .release.download_xz_tarball }}">{{ .release.name }}</a>
+                            </div>
+                            <div>
+                                <span class="li-description">
+                                    {{ .release.description }}
+                                    <div class="download-links">
+                                        {{ if .release.download_xz_tarball }}
+                                            <a class="posts-list-tags" href="{{ .release.download_xz_tarball }}">#xz</a>
+                                        {{ end }}
+                                        {{ if .release.download_bzip2_tarball }}
+                                            <a class="posts-list-tags" href="{{ .release.download_bzip2_tarball }}">#bz2</a>
+                                        {{ end }}
+                                        {{ if .release.download_gzip_tarball }}
+                                            <a class="posts-list-tags" href="{{ .release.download_gzip_tarball }}">#gz</a>
+                                        {{ end }}
+                                        {{ if .release.changelog }}
+                                            <a class="posts-list-tags" href="{{ .release.changelog }}" target="_blank">#changelog</a>
+                                        {{ end }}
+                                        {{ if .release.release_notes }}
+                                            <a class="posts-list-tags" href="{{ .release.release_notes }}" target="_blank">#notes</a>
+                                        {{ end }}
+                                    </div>
+                                </span>
+                            </div>
+                        </li>
+                    {{ end }}
+                </ul>
+            </div>
+        {{ else }}
+            <div class="alert alert-info">
+                <p>Release information is currently being updated. Please check back soon.</p>
+            </div>
+        {{ end }}
+
+        <p>
+            <a href="https://ffmpeg.org/download.html" target="_blank">
+                Visit FFmpeg Download Page
+            </a>
+        </p>
+    </div>
+{{ end }}

@@ -3,11 +3,12 @@ baseURL = "/"
 # baseURL = "https://www.ffmpegbyexample.com"
 # baseURL = "http://localhost:1313"
 enableRobotsTXT = true
-paginate = 50
+[pagination]
+  pagerSize = 50
 
 [params]
-  apiURL = "https://ffmpegbyexample.com"
-  # apiURL = "http://localhost:8888"
+  # apiURL = "https://ffmpegbyexample.com"
+  apiURL = "http://localhost:5002"
   favicon = "/favicon.ico"
   description = "Explore the depth of FFmpeg with Examples"
   examplestypes = ["no-preview", "picture", "video-url", "youtube-embed", "audio"]
