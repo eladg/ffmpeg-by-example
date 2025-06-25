@@ -4,33 +4,31 @@ version: '1.0'
 enabled: true
 date: '2025-01-15T07:45:48.252Z'
 author: Raghu <ffmpegwaifu@saxrag.com>
-title: Convert OGG files with metadata to m4a for iPod
+title: 'Convert OGG to M4A with Metadata for iPod/iTunes Compatibility'
 description: >-
-  `-c:a aac song.m4a`
-
-  For iTunes / iPods, we need the AAC coded, in the M4A container.
+  Transform OGG audio files to iPod-compatible M4A format while preserving metadata and ensuring full compatibility.
 
 
-  `-map_metadata 0:s:a:0`
-
-  Metadata for OGG tracks is stored at the _stream_ level, so if you just try to
-  copy metadata it won't work, since the AAC encoder can only store global
-  metadata. That's what this bit does.
+  **Command Breakdown:**
 
 
-  `-aac_pns 0`
-
-  AAC added a feature called "perceptual noise substitution" which iPods don't
-  support, so this needs to be disabled.
-
-
-  [Source](https://ckcr4lyf.github.io/tech-notes/ogg_aac_ipod.html)
+  - `-map_metadata 0:s:a:0`: Maps stream-level metadata to global metadata since OGG stores metadata at stream level while AAC requires global metadata.
+  
+  - `-c:a aac -b:a 320k`: Converts to AAC codec at 320 kbps for high-quality audio in M4A container.
+  
+  - `-aac_pns 0`: Disables perceptual noise substitution (PNS) feature that older iPods don't support.
+  
+  - `-vn`: Removes any video streams, ensuring pure audio output.
+  
+  This conversion maintains audio quality while ensuring compatibility with iTunes and iPod devices, including proper metadata handling for music libraries.
 categories:
   - audio
 tags:
   - ipod
+  - itunes
   - m4a
   - ogg
+  - aac
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i song.ogg -map_metadata 0:s:a:0 -c:a aac -b:a 320k -aac_pns 0
