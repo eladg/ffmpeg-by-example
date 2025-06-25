@@ -4,17 +4,31 @@ version: '1.0'
 enabled: true
 date: '2025-01-29T10:46:32.257Z'
 author: Coen Spoor <coen.spoor@ambassadors.com>
-title: '"Normalize" audio to EBU R128'
+title: 'Normalize Audio to EBU R128 Loudness Standard (-23 LUFS)'
 description: >-
-  [EBU R128 standard](https://en.wikipedia.org/wiki/EBU_R_128) is recommendation for loudness normalisation and maximum level of audio signals. The following command will take `audio.wav`, process it once to find the 'true peak' and process it a second time to adjust `audio.wav` using the [`volume`](https://ffmpeg.org/ffmpeg-filters.html#volume) filter.
+  Apply [EBU R128 loudness normalization](https://en.wikipedia.org/wiki/EBU_R_128) to achieve broadcast-compliant audio levels.
 
-  In addition, set `output.wav` to 48 kHz samplerate & 24 bit depth (Raw PCM audio) by setting `-ar 48000 -c:a pcm_s24le`.
+
+  **Command Breakdown:**
+
+
+  The nested FFmpeg command first analyzes `audio.wav` using the `ebur128` filter with `peak=true` to measure integrated loudness. The output is piped through `grep 'I:'` to extract the loudness value, then `awk` calculates the required volume adjustment to reach the -23 LUFS target.
+
+
+  The main command applies this calculated volume adjustment using the `volume` filter, then converts the output to 48 kHz sample rate (`-ar 48000`) and 24-bit PCM format (`-c:a pcm_s24le`) for professional audio standards.
+
+
+  This two-pass approach ensures accurate loudness measurement and precise normalization for broadcast, streaming, and professional audio workflows.
+
+  
 categories:
   - audio
 tags:
   - audio
-  - normalize
-  - r128
+  - loudness
+  - ebu-r128
+  - normalization
+  - broadcast
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i audio.wav -af "volume=$(ffmpeg -i audio.wav -af ebur128=peak=true -f
