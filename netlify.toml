@@ -12,7 +12,23 @@
   status = 200
 
 [[headers]]
-  # Define which paths this specific [[headers]] block will cover.
   for = "/*"
     [headers.values]
+      # Enable cross-origin isolation (required for WASM)
+      Cross-Origin-Embedder-Policy = "require-corp"
+      Cross-Origin-Opener-Policy = "same-origin"
+      
+      # CORS headers for your assets
+      Access-Control-Allow-Origin = "*"
+      Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+      Access-Control-Allow-Headers = "*"
+      
+      # Required for resources to be loaded in cross-origin isolated context
+      Cross-Origin-Resource-Policy = "cross-origin"
+
+[[headers]]
+  for = "/video/*"
+    [headers.values]
+      # Specific headers for video files to allow cross-origin access
+      Cross-Origin-Resource-Policy = "cross-origin"
       Access-Control-Allow-Origin = "*"

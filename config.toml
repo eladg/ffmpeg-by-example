@@ -1,16 +1,28 @@
 title = "FFmpeg By Example"
 baseURL = "/"
-# baseURL = "https://www.ffmpegbyexample.com"
-# baseURL = "http://localhost:1313"
 enableRobotsTXT = true
-paginate = 50
 
 [params]
   apiURL = "https://ffmpegbyexample.com"
-  # apiURL = "http://localhost:8888"
   favicon = "/favicon.ico"
   description = "Explore the depth of FFmpeg with Examples"
   examplestypes = ["no-preview", "picture", "video-url", "youtube-embed", "audio"]
+
+[server]
+  [[server.headers]]
+    for = "/**"
+    [server.headers.values]
+      Cross-Origin-Embedder-Policy = "require-corp"
+      Cross-Origin-Opener-Policy = "same-origin" 
+      Cross-Origin-Resource-Policy = "cross-origin"
+      Cross-Origin-Worker-Policy = "same-origin"
+
+      Access-Control-Allow-Origin = "*"
+      Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+      Access-Control-Allow-Headers = "*"
+
+      Content-Security-Policy = "frame-ancestors 'self' https://ffmpeg.wide.video https://ko-fi.com"
+
 [permalinks]
   posts = "/:title/"
 
