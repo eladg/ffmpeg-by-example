@@ -4,23 +4,33 @@ version: '1.0'
 enabled: true
 date: '2022-04-15T18:13:38.203Z'
 author: Elad Gariany <elad@gariany.com>
-title: Generate smptebars with test text on top
+title: 'Create SMPTE Color Bars with Centered Text Overlay'
 description: >-
-  Use the `smptebars` video filter generator to generate an SMPTE test source.
-  With the simple video input in place, use the `drawtext` filter to render the
-  text '16x9' and place it in the middle of the frame.
+  Generate professional SMPTE color bars test pattern with custom text overlay for video calibration and testing purposes.
 
+
+  **Command Breakdown:**
+
+
+  - `-f lavfi -i "smptebars=s=640x360"`: Uses lavfi virtual input to generate SMPTE color bars at 640x360 resolution.
+
+  - `-vf drawtext="fontsize=220:text='16x9':x=(w-text_w)/2:y=(h-text_h)/2:fontcolor=White"`: Applies drawtext filter with 220px font size, centers text using dynamic positioning, and sets white color.
+
+  - `-frames:v 1`: Limits output to a single frame for static image generation.
+
+  - `-qscale:v 1`: Sets highest quality for JPEG output.
 
   For more info, see
   [smptebars](http://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
-  and [drawtext](http://ffmpeg.org/ffmpeg-filters.html#drawtext-1) on the
-  official ffmpeg documentation.
+  and [drawtext](http://ffmpeg.org/ffmpeg-filters.html#drawtext-1) on the official ffmpeg documentation.
 categories:
   - video-filters
 tags:
-  - generator
+  - video-source
+  - smpte-bars
+  - test-pattern
   - drawtext
-  - testsrc
+  - video-calibration
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -f lavfi -i "smptebars=s=640x360" -vf
@@ -32,5 +42,4 @@ example_player_data:
 filename: 7KDJ5J4M/generate_smptebars_with_test_text_on_top.md
 views: 7
 likes: 0
-
 ---
