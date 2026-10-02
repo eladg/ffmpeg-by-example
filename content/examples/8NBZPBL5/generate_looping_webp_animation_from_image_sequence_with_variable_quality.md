@@ -4,14 +4,13 @@ version: '1.0'
 enabled: true
 date: '2025-01-15T03:13:02.824Z'
 author: stevan
-title: Generate looping WebP animation from image sequence with variable quality
+title: Generate a looping WebP animation from an image sequence
 description: >-
   For WebP specific options and more information, see [the relevant WebP
   documentation in the ffmpeg-codecs
   page](https://ffmpeg.org/ffmpeg-codecs.html#libwebp).
 
 
-  ---
 
 
   * `-i /path/to/sequence/%d.png` - path to image sequence where each image is

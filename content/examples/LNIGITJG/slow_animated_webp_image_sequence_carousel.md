@@ -4,7 +4,7 @@ version: '1.0'
 enabled: true
 date: '2025-01-15T03:24:31.790Z'
 author: stevan
-title: Slow animated WebP image sequence (carousel)
+title: Create a slow animated WebP slideshow from images
 description: >-
   This example shows how to take a couple of images and turn them into a slowly
   changing animated WebP. This is useful for a "digital pictureframe" style
@@ -16,7 +16,6 @@ description: >-
   be skipped. And the second flag determines the speed the images are cycled.
 
 
-  ---
 
 
   For WebP specific options and more information, see [the relevant WebP
@@ -24,7 +23,6 @@ description: >-
   page](https://ffmpeg.org/ffmpeg-codecs.html#libwebp).
 
 
-  ---
 
   * `-r 1` - interpret input image sequence framerate as 1 FPS. This must be
   equal or lower than the second `-r` value.
