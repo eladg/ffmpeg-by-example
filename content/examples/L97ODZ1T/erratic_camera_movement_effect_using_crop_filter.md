@@ -4,7 +4,7 @@ version: '1.0'
 enabled: true
 date: '2022-05-09T20:54:29.628Z'
 author: Elad Gariany <elad@gariany.com>
-title: Erratic Camera Movement Effect Using Crop Filter
+title: Simulate handheld camera shake with the crop filter
 description: >-
   The following example is based on the
   [crop](https://ffmpeg.org/ffmpeg-filters.html#crop) filter

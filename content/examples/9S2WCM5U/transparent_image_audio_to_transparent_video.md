@@ -4,7 +4,7 @@ version: '1.0'
 enabled: true
 date: '2025-01-31T10:23:18.698Z'
 author: Yoav Vainrich
-title: Transparent image + audio to transparent video
+title: Combine a transparent PNG and audio into a transparent WebM video
 description: >
   This FFmpeg command converts an image and audio into a WebM video.  
 

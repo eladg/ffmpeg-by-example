@@ -4,7 +4,7 @@ version: '1.0'
 enabled: true
 date: '2025-03-27T00:17:42.423Z'
 author: Elad Gariany <elad@gariany.com>
-title: Audio noise reduction using Arnndn
+title: Remove background noise from audio using the arnndn filter
 description: >-
   FFmpeg's ARNN (Audio Recurrent Neural Network) noise reduction filter is a
   powerful tool for improving audio quality in videos.

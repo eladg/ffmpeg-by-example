@@ -4,7 +4,7 @@ version: '1.0'
 enabled: true
 date: '2025-01-17T04:40:08.615Z'
 author: AndrewWang
-title: 'Convert Video to Telegram Video Sticker Format (512px Max, 256KB Limit)'
+title: Convert video to Telegram sticker format (VP9 WebM)
 description: >-
   Transform any video into a Telegram-compatible video sticker with automatic resizing and optimization.
 

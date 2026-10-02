@@ -4,7 +4,7 @@ version: '1.0'
 enabled: true
 date: '2022-04-29T05:40:10.040Z'
 author: Elad Gariany <elad@gariany.com>
-title: >-
+title: Apply a retro film effect with sepia and grain overlays
   "Retro Video Filter" using video masking, sepia tones and advanced overlaying
   technics
 description: >-

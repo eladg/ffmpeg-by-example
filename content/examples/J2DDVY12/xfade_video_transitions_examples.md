@@ -4,7 +4,7 @@ version: '1.0'
 enabled: true
 date: '2025-02-17T04:25:59.615Z'
 author: Elad Gariany <elad@gariany.com>
-title: XFade Video Transitions Examples
+title: Crossfade between two videos with the xfade filter
 description: >-
   The following command will apply the builtin XFade video transition filter to
   two example input videos `yoga.mp4` and `sharks.mp4`

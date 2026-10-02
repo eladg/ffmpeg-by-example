@@ -4,7 +4,7 @@ version: '1.0'
 enabled: true
 date: '2022-04-01T20:40:11.893Z'
 author: Elad Gariany <elad@gariany.com>
-title: Get the duration of a audio or video file using ffmpeg / ffprobe
+title: Get the duration of an audio or video file with ffprobe
 description: >-
   Use [ffprobe](https://ffmpeg.org/ffprobe.html),
   [grep](https://ss64.com/osx/grep.html) and
