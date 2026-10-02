@@ -4,19 +4,18 @@ version: '1.0'
 enabled: true
 date: '2025-01-20T23:17:36.515Z'
 author: Marco <colemarc@gmail.com>
-title: Read blu ray local folder
+title: Read a Blu-ray folder as ffmpeg input
 description: >-
-  -i == source input follows
-
-
-  bluray:. == the source is the current folder which is structured like a blu
-  ray disk
+  Read a Blu-ray disc — or a ripped Blu-ray folder — directly as an ffmpeg
+  input, with no mounting or pre-ripping. `-map 0` takes every stream and
+  `-c copy` remuxes them into an MKV untouched.
 categories:
   - video
 tags:
-  - video-source
+  - bluray
+  - remux
 thumbnail_url: null
-terminal_command: ffmpeg -i bluray:.
+terminal_command: ffmpeg -i bluray:/path/to/disc -map 0 -c copy output.mkv
 example_type: no-preview
 example_player_data:
   - null
