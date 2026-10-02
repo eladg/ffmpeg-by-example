@@ -6,27 +6,18 @@ date: '2025-01-15T11:17:12.083Z'
 author: Eric Jacob <dev@rachasak.org>
 title: Combine video-only and audio-only file parts into single video
 description: >-
-  This is a script I used to combine video-only and audio-only file parts from
-  the download manager that cannot combine due to source error.
-
-
-  This command has no re-transcoding; just join them together using the minimum
-  media length, [set fragmentation to the beginning of the
-  file](https://ffmpeg.org/ffmpeg-formats.html#Fragmentation) for [faster
-  operation](https://superuser.com/a/856091).
-
-
-  Also, remove source file parts for tidy things up when the transcoding is
-  done.
+  Combine separate video-only and audio-only file parts (e.g. from a download
+  manager) into a single MP4. `-map 0:v -map 1:a` takes video from the first
+  input and audio from the second; `-c copy` joins them without re-encoding,
+  `-shortest` trims to the shorter stream, and `-movflags +faststart` makes the
+  file streamable.
 categories:
   - video
 tags:
-  - encoding
+  - mux
+  - combine
 thumbnail_url: null
-terminal_command: >-
-  FN="<filename_prefix>" bash -c 'ffmpeg -i "${FN}_v.ts" -i "${FN}_a.ts" -map
-  0:v -map 1:a -c copy -shortest -movflags +faststart "${FN}.mp4" && rm
-  ${FN}_v.ts && rm ${FN}_a.ts'
+terminal_command: ffmpeg -i video_v.ts -i video_a.ts -map 0:v -map 1:a -c copy -shortest -movflags +faststart output.mp4
 example_type: no-preview
 example_player_data:
   - null
