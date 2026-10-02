@@ -13,13 +13,11 @@ description: >+
 categories:
   - audio
 tags:
-  - audio
-  - audio-extract
+  - bluray
+  - flac
+  - surround
 thumbnail_url: null
-terminal_command: |-
-  for f in *.mka; do
-      ffmpeg -i "$f" -af aformat=channel_layouts="7.1|5.1|stereo" -map 0:a -c:a flac -strict experimental "${f%.mka}.flac"
-  done
+terminal_command: ffmpeg -i input.mka -af aformat=channel_layouts="7.1|5.1|stereo" -map 0:a -c:a flac output.flac
 example_type: no-preview
 example_player_data:
   - null
