@@ -51,7 +51,7 @@ tags:
   - speed
 thumbnail_url: null
 terminal_command: >-
-  ffmpeg input.mp4 -filter_complex
+  ffmpeg -i input.mp4 -filter_complex
   "[0:v]setpts=2.0*PTS[v];[0:a]rubberband=tempo=0.5:pitch=0.5[a]" -map "[v]"
   -map "[a]" output-tempo-pitch-0.5.mp4
 example_type: youtube-embed

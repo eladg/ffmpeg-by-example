@@ -4,7 +4,7 @@ version: '1.0'
 enabled: true
 date: '2022-04-15T20:34:05.013Z'
 author: nimbuz
-title: Widescreen Fix
+title: Change video aspect ratio from 4:3 to 16:9 without re-encoding
 description: changing the Display Aspect Ratio from a video from 4:3 to 16:9
 categories:
   - video-filters

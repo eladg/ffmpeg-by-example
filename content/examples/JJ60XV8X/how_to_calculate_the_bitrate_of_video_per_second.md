@@ -4,7 +4,7 @@ version: '1.0'
 enabled: true
 date: '2025-09-15T22:56:08.878Z'
 author: Elad Gariany <elad@gariany.com>
-title: How to calculate the bitrate of a video per second?
+title: Calculate per-second video bitrate with ffprobe
 description: "This ffprobe command extracts the presentation timestamp (PTS) and size of every video packet from input.mp4, saving it to a CSV file.\n\n* `-select_streams v` - Only select the video stream (v).\n* `-show_packets` - Show individual packet-level information.\n* `-show_entries packet=pts_time,size` - Only extract the pts_time (when a packet should be shown) and size (packet size in bytes).\n* `-of csv` - Output in CSV format.\n* `input.mp4` - Input video file.\n\nThe result of this command looks something like:\n```\npacket,0.000000,898\npacket,0.020854,6929\npacket,0.041708,931\npacket,0.062563,1204\npacket,0.083417,1612\n...\n```\n\nThe 2nd part of the command is a python script: `calc-bitrate.py`\n\n* `with open('packets.csv', newline='') as csvfile:` - open the `packets.csv` file for reading.\n* `time_buckets[second] += size_bytes` - Read the params and accumulate the size of packets for that second.\n* `for sec in sorted(time_buckets.keys()):` - for each second, calculate the bitrate with: `bitrate_kbps = (time_buckets[sec] * 8) / 1000` and print it out.\n\nExample output:\n```\nSecond\tBitrate (kbps)\n0\t6164.38\n1\t10688.25\n2\t10093.25\n3\t9780.40\n4\t6946.49\n5\t645.37\n...\n```"
 categories:
   - encoding

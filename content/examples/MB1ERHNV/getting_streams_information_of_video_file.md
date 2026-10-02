@@ -4,7 +4,7 @@ version: '1.0'
 enabled: true
 date: '2022-03-30T12:00:13.462Z'
 author: Elad Gariany <elad@gariany.com>
-title: Getting streams information of a video file
+title: Show all streams and metadata of a video file
 description: >-
   By calling ffmpeg on a media file such as audio, video, or image without an
   output file - ffmpeg will list the different tracks on the media container,

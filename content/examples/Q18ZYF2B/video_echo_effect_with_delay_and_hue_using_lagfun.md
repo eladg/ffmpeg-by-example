@@ -4,7 +4,7 @@ version: '1.0'
 enabled: true
 date: '2025-01-15T16:17:57.647Z'
 author: Command line magic
-title: Video Echo Effect with Delay and Hue using Lagfun
+title: Create a live video echo effect with the lagfun filter
 description: >-
   Kids bored on a rainy day, put this on and watch them play. Hook this up to a
   TV with a computer with a webcam and they can watch the effects live.
