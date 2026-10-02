@@ -4,37 +4,35 @@ version: '1.0'
 enabled: true
 date: '2025-01-17T19:00:16.521Z'
 author: navchandar
-title: Rotate videos using ffmpeg
+title: Rotate a video 90 or 180 degrees
 description: >+
-  Turn video 90 degrees to the LEFT (counterclockwise) using the command
+  Rotate 90 degrees counterclockwise:
 
 
-  ``ffmpeg -i "INPUT FILE NAME" -vf "transpose=2" -c:v h264_videotoolbox -b:v
-  5000k "OUTPUT FILE NAME"``
+  `ffmpeg -i input.mp4 -vf "transpose=2" -c:a copy output.mp4`
 
 
-  Turn video 90 degrees to the RIGHT (clockwise) using the command
+  Rotate 90 degrees clockwise:
 
 
-  ``ffmpeg -i "INPUT FILE NAME" -vf "transpose=1" -c:v h264_videotoolbox -b:v
-  5000k "OUTPUT FILE NAME"``
+  `ffmpeg -i input.mp4 -vf "transpose=1" -c:a copy output.mp4`
 
 
+  Rotate 180 degrees:
 
-  Turn video 180 degrees using the command
+
+  `ffmpeg -i input.mp4 -vf "transpose=2,transpose=2" -c:a copy output.mp4`
 
 
-  ``ffmpeg -i "INPUT FILE NAME" -vf "transpose=1,transpose=1" -c:v
-  h264_videotoolbox -b:v 5000k "OUTPUT FILE NAME"``
+  `-c:a copy` keeps the original audio untouched.
 
 categories:
   - video
 tags:
-  - '#mp4'
+  - rotate
+  - transpose
 thumbnail_url: null
-terminal_command: >-
-  ffmpeg -i input.mp4 -vf "transpose=2" -c:v h264_videotoolbox -b:v 5000k
-  output.mp4
+terminal_command: ffmpeg -i input.mp4 -vf "transpose=2" -c:a copy output.mp4
 example_type: no-preview
 example_player_data:
   - null
