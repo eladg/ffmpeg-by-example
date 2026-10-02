@@ -6,29 +6,20 @@ date: '2025-01-22T22:14:17.793Z'
 author: Chris Hallberg
 title: Add Subtitles File to MP4
 description: >-
-  This lightning fast command allows you to include a subtitles file inside an
-  MP4, removing the need for a second file. This doesn't "bake" them onto the
-  video, but will add a subtitles option in your player.
-
-
-  ```
-
-  ffmpeg.exe -i video.mp4" -i subtitles.srt
-     -c:v copy -c:a copy -c:s mov_text  (copy video, audio, subtitles)
-     -metadata:s:1 language=eng         (set language of first/default stream to English)
-     -metadata:s:s:0 language=eng       (set lang of first subtitle track to English)
-     output.mp4
-  ```
+  Embed an SRT subtitles file inside an MP4 so you don't need a second file.
+  This doesn't burn the subtitles into the video — players get a toggleable
+  subtitle track. `-c:s mov_text` encodes subtitles in MP4's native format;
+  `-c:v copy -c:a copy` leave video and audio untouched.
 categories:
-  - audio
+  - subtitles
 tags:
-  - '#subtitles'
-  - '#captions'
-  - '#accessibility'
+  - subtitles
+  - srt
+  - mov-text
 thumbnail_url: null
 terminal_command: >-
-  ffmpeg.exe -i video.mp4 -i subtitles.srt -c:v copy -c:a copy -c:s mov_text
-  -metadata:s:1 language=eng -metadata:s:s:0 language=eng output.mp4
+  ffmpeg -i video.mp4 -i subtitles.srt -c:v copy -c:a copy -c:s mov_text
+  -metadata:s:s:0 language=eng output.mp4
 example_type: no-preview
 example_player_data:
   - null
