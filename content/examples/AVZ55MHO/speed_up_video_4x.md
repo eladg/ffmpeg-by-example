@@ -9,7 +9,7 @@ description: >-
   For 4x video speed up, set 1/4 * PTS. The audio tempo maximum is 2.0, so we
   need to run it twice.
 categories:
-  - video-filters
+  - filters
 tags:
   - tempo
   - speed
