@@ -1,0 +1,80 @@
+# FFmpeg by Example
+
+> A community cookbook of FFmpeg commands: copy-paste-ready examples for common video, audio, image, and streaming tasks, each solving one task with a minimal explanation.
+
+FFmpeg by Example is a fast lookup tool for humans and AI agents. Every example shows one complete FFmpeg command for one task. Commands use generic filenames such as input.mp4 and output.mp4; substitute your own files. Browse all examples below by category, or use the site search at https://ffmpegbyexample.com/.
+
+## About this site
+
+- [About](https://ffmpegbyexample.com/about/): What FFmpeg by Example is and how the project works.
+- [Contribute](https://ffmpegbyexample.com/contribute/): How to submit a new example; submissions become GitHub pull requests for review.
+
+## Video
+
+- [Calculate per-second video bitrate with ffprobe](https://ffmpegbyexample.com/examples/jj60xv8x/how_to_calculate_the_bitrate_of_video_per_second/): Calculate per-second video bitrate with ffprobe.
+- [Combine a transparent PNG and audio into a transparent WebM video](https://ffmpegbyexample.com/examples/9s2wcm5u/transparent_image_audio_to_transparent_video/): Combine a transparent PNG and audio into a transparent WebM video.
+- [Convert video to Telegram sticker format (VP9 WebM)](https://ffmpegbyexample.com/examples/1fpqthqs/recode_your_video_to_match_telegram_video_sticker_spec/): Convert video to Telegram sticker format (VP9 WebM).
+- [Extract Multiple Video Clips from Single Input with Precise Timestamps](https://ffmpegbyexample.com/examples/3innxffe/extract_multiple_video_clips_with_one_input/): Extract multiple video clips from one input with precise timestamps.
+- [Recode your video with a modern codec, often saving space](https://ffmpegbyexample.com/examples/yx5370bz/recode_your_video_with_modern_codec_often_saving_space/): Recode video with the modern libx265 codec, often saving space.
+- [Record a video from individual frames](https://ffmpegbyexample.com/examples/twd0bmi3/record_video_from_individual_frames/): Record a video from individually generated frames, e.g. when writing a simulation.
+- [Transcode Canon EOS 5D Mark II footage](https://ffmpegbyexample.com/examples/vi577ne4/transcode_canon_eos_5d_mark_ii_footage/): Transcode Canon EOS 5D Mark II footage with correct colors (ffmpeg defaults shift them).
+- [Use Intel QuickSync Video hardware acceleration for transcoding video](https://ffmpegbyexample.com/examples/fpwszeip/use_intel_quicksync_video_hardware_acceleration_for_transcoding_video/): Transcode video using Intel QuickSync hardware acceleration.
+
+## Audio
+
+- [Convert OGG to M4A with Metadata for iPod/iTunes Compatibility](https://ffmpegbyexample.com/examples/2s6n7i6r/convert_ogg_files_metadata_to_m4a_for_ipod/): Convert OGG audio to M4A with metadata for iPod/iTunes.
+- [Convert wav to mp3 file](https://ffmpegbyexample.com/examples/9djx5f2j/convert_wav_to_mp3_file/): Convert WAV files to MP3.
+- [Copy audio from any input and save it to an mp4 container](https://ffmpegbyexample.com/examples/8198vdkd/container_changer_to_mp4/): Copy the audio stream from any input into a new MP4 file.
+- [Cut audio files by sample by atrim](https://ffmpegbyexample.com/examples/izifjfhs/cut_audio_files_by_sample_by_atrim/): Cut an audio clip by start and end samples with the atrim filter.
+- [Extract an AAC audio track from a video file](https://ffmpegbyexample.com/examples/0484nafv/extract_an_aac_audio_track_from_video_file/): Stream-copy an AAC audio track out of a video file.
+- [Extract Audio from Video Files with Stream Mapping](https://ffmpegbyexample.com/examples/5ql9p2tz/extracting_audio_from_video_source/): Extract audio from video files using stream mapping.
+- [Normalize Audio to EBU R128 Loudness Standard (-23 LUFS)](https://ffmpegbyexample.com/examples/1elmoj1w/normalize_audio_to_ebu_r128/): Normalize audio to the EBU R128 broadcast loudness standard.
+- [Remove background noise from audio using the arnndn filter](https://ffmpegbyexample.com/examples/97155ill/audio_noise_reduction_using_arnndn/): Remove background noise from audio with the arnndn neural-network filter.
+- [Timestretch Audio and Video Using 'Rubberband' Filter](https://ffmpegbyexample.com/examples/749f6u35/timestretch_audio_and_video_using_rubberband_filter/): Change playback speed of audio and video with the rubberband filter.
+
+## Images
+
+- [Convert a video file to jpeg images](https://ffmpegbyexample.com/examples/svba8srd/convert_video_file_to_jpeg_images/): Extract every frame of a video as JPEG images.
+- [Create a slow animated WebP slideshow from images](https://ffmpegbyexample.com/examples/lnigitjg/slow_animated_webp_image_sequence_carousel/): Turn a set of images into a slowly changing animated WebP.
+- [Extract raw keyframe and non keyframes out of a video](https://ffmpegbyexample.com/examples/z9psj7ih/extract_raw_keyframe_and_non_keyframes_out_of_video/): Extract raw keyframes and non-keyframes out of a video.
+- [Extract X Frames From Specific Times to JPG Files](https://ffmpegbyexample.com/examples/oer37kde/extract_frames_from_specific_times_to_jpg_files/): Extract frames at specific timestamps to JPG files.
+- [Generate a looping WebP animation from an image sequence](https://ffmpegbyexample.com/examples/8nbzpbl5/generate_looping_webp_animation_from_image_sequence_with_variable_quality/): Generate a looping WebP animation from an image sequence with variable quality.
+- [Loop images at specific frame rate to generate a video](https://ffmpegbyexample.com/examples/fnjrnx47/loop_images_at_specific_frame_rate_to_generate_video/): Loop a set of images at a specific frame rate to generate a video.
+- [Resize PNG Images While Preserving Transparency and Aspect Ratio](https://ffmpegbyexample.com/examples/6ih5ctbn/scale_png_with_transparent_background/): Resize PNG images while preserving transparency and aspect ratio.
+
+## Filters
+
+- [Analyze video frames, timecode and metadata with showinfo filter](https://ffmpegbyexample.com/examples/bv21egil/analyze_video_frames_timecode_and_metadata_with_showinfo_filter/): Analyze video frames, timecode and metadata with the showinfo filter.
+- [Animate an image using zoompan filter](https://ffmpegbyexample.com/examples/6pnzan7y/animate_an_image_using_zoompan_filter/): Animate a still image with the zoompan filter (Ken Burns effect).
+- [Animate drawtext and drawbox with the sendcmd filter](https://ffmpegbyexample.com/examples/z1jezi81/drawtext_and_drawbox_using_sendcmd_manifest/): Animate drawtext and drawbox dynamically with the sendcmd filter.
+- [Apply a retro film effect with sepia and grain overlays "Retro Video Filter" using video masking, sepia tones and advanced overlaying technics](https://ffmpegbyexample.com/examples/rpocu01r/retro_video_filter_using_video_masking_sepia_tones_and_advanced_overlaying_technics/): Apply a retro film effect with sepia tones and grain overlays.
+- [Change video aspect ratio from 4:3 to 16:9 without re-encoding](https://ffmpegbyexample.com/examples/tnm510z2/widescreenfix/): Change video aspect ratio from 4:3 to 16:9 without re-encoding.
+- [Create a live video echo effect with the lagfun filter](https://ffmpegbyexample.com/examples/q18zyf2b/video_echo_effect_with_delay_and_hue_using_lagfun/): Create a live video echo effect with the lagfun filter.
+- [Create SMPTE Color Bars with Centered Text Overlay](https://ffmpegbyexample.com/examples/7kdj5j4m/generate_smptebars_with_test_text_on_top/): Generate SMPTE color bars with centered text overlay for calibration.
+- [Crossfade between two videos with the xfade filter](https://ffmpegbyexample.com/examples/j2ddvy12/xfade_video_transitions_examples/): Crossfade between two videos with the xfade filter.
+- [Fade In and Out text using the 'drawtext' filter](https://ffmpegbyexample.com/examples/50gowmkq/fade_in_and_out_text_using_the_drawtext_filter/): Fade text in and out over video with the drawtext filter.
+- [Generate "Game of Life" Video using lavfi video source](https://ffmpegbyexample.com/examples/a4ge8hrb/generate_game_of_life_video_using_lavfi_video_source/): Generate a Conway's Game of Life cellular-automaton video from a lavfi source.
+- [Generate a 'tile' thumbnail picture every 30 frames of a video](https://ffmpegbyexample.com/examples/90permbg/generate_tile_thumbnail_picture_every_30_frames_of_video/): Generate a tiled thumbnail sheet with one picture every 30 frames of video.
+- [Generate Solid Color Video with Custom Hex Color Code](https://ffmpegbyexample.com/examples/6gzhzpjp/generate_solid_color_264_video_with_the_color_video_source_filter_color_hex_code/): Generate a solid-color video from a hex color code.
+- [Generate test video color pattern with 'testsrc' filter](https://ffmpegbyexample.com/examples/k9yvdbls/generate_test_video_color_pattern_with_testsrc_filter/): Generate a test video color pattern with the testsrc filter.
+- [Overlay a VP9 video with an alpha channel using alpha blending](https://ffmpegbyexample.com/examples/69pkspiw/overlay_vp9_video_with_an_alpha_channel_using_alpha_blending/): Overlay a VP9 video with an alpha channel using alpha blending.
+- [Scale input video to fix size (640x360)](https://ffmpegbyexample.com/examples/44ai1vrh/scale_input_video_to_fix_size_640x360/): Scale every video frame to a fixed size of 640x360 pixels.
+- [Simulate handheld camera shake with the crop filter](https://ffmpegbyexample.com/examples/l97odz1t/erratic_camera_movement_effect_using_crop_filter/): Simulate handheld camera shake with the crop filter.
+- [Stitch two video files side by side](https://ffmpegbyexample.com/examples/k1u2p6i9/stitch_two_video_files_side_by_side/): Stitch two video files side by side into one output.
+
+## Streaming
+
+- [Stream local file to RTMP Server and Client](https://ffmpegbyexample.com/examples/yk0wt5pl/stream_local_file_to_rtmp_server_and_client/): Copy a local file over the RTMP protocol to a server and client.
+
+## Metadata
+
+- [Copy metadata from one mp3 to another](https://ffmpegbyexample.com/examples/w7cxyocm/copy_metadata_from_one_mp3_to_another/): Copy metadata from one MP3 file to another without re-encoding.
+- [Get the duration of an audio or video file with ffprobe](https://ffmpegbyexample.com/examples/l1bilxyl/get_the_duration_of_audio_or_video_file_using_ffmpeg_ffprobe/): Get the duration of an audio or video file with ffprobe.
+- [Print a data channel to STDOUT using ffmpeg](https://ffmpegbyexample.com/examples/wk7c9c6q/print_data_channel_to_stdout_using_ffmpeg/): Print a data channel (e.g. from an RTSP stream) to stdout.
+- [Remove GoPro TimeCode from MP4](https://ffmpegbyexample.com/examples/absp5oxp/remove_gopro_timecode_from_mp4/): Remove the GoPro timecode track from an MP4 without re-encoding.
+- [Show all streams and metadata of a video file](https://ffmpegbyexample.com/examples/mb1erhnv/getting_streams_information_of_video_file/): Show all streams and metadata of a media file.
+
+## Utilities
+
+- [List all supported Audio/Video encoders with FFmpeg](https://ffmpegbyexample.com/examples/edkhl1r6/list_all_supported_audio_video_encoders_with_ffmpeg/): List all supported audio/video encoders in your FFmpeg build.
+- [Print a text file to STDOUT using ffmpeg](https://ffmpegbyexample.com/examples/ktpgpp8f/print_text_file_to_stdout_using_ffmpeg/): Print a text file to stdout using ffmpeg (ffmpeg as cat).
