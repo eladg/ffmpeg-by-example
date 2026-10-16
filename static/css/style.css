@@ -6,7 +6,7 @@
   --secondary-color: #0d140d;
   --third-color: #bd93f9;
   --bg-color: #232523;
-  --surface-color: #282b28;
+  --surface-color: #101d16;
   --text-color: #e8e8e8;
   --muted-color: #9a9a9a;
   --text-size: 18px;
@@ -48,9 +48,6 @@ article {
 code {
   font-size: 14px;
   padding: 0.2rem 0.4rem;
-  background: rgba(81, 184, 86, 0.10);
-  border: 1px solid rgba(81, 184, 86, 0.28);
-  border-radius: 0.4rem;
 }
 
 p, ul, li, a {

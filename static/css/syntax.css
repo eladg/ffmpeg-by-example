@@ -94,6 +94,7 @@
   display: flex;
   justify-content: end;
   gap: 0.5em;
+  margin-top: 1rem;
 }
 
 .highlight > pre {
