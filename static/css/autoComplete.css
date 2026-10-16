@@ -13,7 +13,7 @@
   border-radius: 8px;
   border: 1px solid #2c3a2c;
   outline: none;
-  background-color: #161a16;
+  background-color: #2d312d;
   background-image: none;
 }
 
@@ -37,7 +37,7 @@
   padding: 0;
   margin: 0.5rem 0 0 0;
   border-radius: 0.6rem;
-  background-color: #141714;
+  background-color: #2b2e2b;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
   border: 1px solid #2c3a2c;
   z-index: 1000;
@@ -60,7 +60,7 @@
   color: var(--text-color);
   transition: all 0.1s ease-in-out;
   border-radius: 0.35rem;
-  background-color: #141714;
+  background-color: #2b2e2b;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

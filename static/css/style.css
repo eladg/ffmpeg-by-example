@@ -5,8 +5,8 @@
   --main-color: #51b856;
   --secondary-color: #0d140d;
   --third-color: #bd93f9;
-  --bg-color: #0b0d0b;
-  --surface-color: #101310;
+  --bg-color: #232523;
+  --surface-color: #282b28;
   --text-color: #e8e8e8;
   --muted-color: #9a9a9a;
   --text-size: 18px;
@@ -16,7 +16,7 @@
   --border-color: #2c4a2e;
   --mc-serif-font: "medium-content-serif-font", Georgia, Cambria, "Times New Roman", Times, serif;
   --monospace-font: "DejaVu Sans Mono", "SFMono-Regular", Menlo, Consolas, monospace;
-  --menubar-gradient: linear-gradient(180deg, #0e150e 0%, #030303 100%);
+  --menubar-gradient: linear-gradient(180deg, #262c26 0%, #1c1c1c 100%);
   --menubar-dots: radial-gradient(rgba(81, 184, 86, 0.16) 1.5px, transparent 1.6px);
 }
 
@@ -79,7 +79,7 @@ video {
   font-size: 1em;
   font-weight: 800;
   background-color: var(--main-color);
-  color: #06130a;
+  color: #f8f8f2;
   padding: 10px;
   border: none;
   border-radius: 6px;
@@ -150,14 +150,16 @@ video {
   width: 150px;
 }
 .menubar .logo img {
-  max-width: 120px;
+  width: 120px;
+  height: auto;
+  display: block;
 }
 
 .menubar .search {
   border-radius: 10px;
   padding: 10px 10px 10px 10px;
   width: 100%;
-  background-color: #161a16;
+  background-color: #2d312d;
   border: 1px solid #2c3a2c;
   color: var(--text-color);
 }
@@ -310,7 +312,6 @@ video {
 }
 
 .content__meta_description pre code {
-  border: 2px solid #2c4a2e;
   background-color: #282a36;
   padding: 0.5em;
   border-radius: 0.5em;
