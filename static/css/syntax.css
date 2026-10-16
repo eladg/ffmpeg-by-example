@@ -97,7 +97,7 @@
 }
 
 .highlight > pre {
-  border: 2px solid blueviolet;
+  border: 2px solid var(--border-color);
   border-radius: 0.5rem;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
