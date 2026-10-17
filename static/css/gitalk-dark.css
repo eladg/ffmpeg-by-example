@@ -1,0 +1,92 @@
+/* Dark-theme overrides for Gitalk comments (loaded after gitalk.css).
+   Gitalk ships a light-only stylesheet; these rules bring it in line
+   with the site's dark-first theme. */
+.gt-container {
+  color: var(--text-color);
+}
+.gt-container a {
+  color: var(--link-color);
+}
+.gt-container a:hover {
+  color: var(--link-color);
+  border-color: var(--link-color);
+}
+.gt-container .gt-svg svg {
+  fill: var(--link-color);
+}
+.gt-container .gt-btn {
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+  color: #f8f8f2;
+}
+.gt-container .gt-btn-preview {
+  background-color: transparent;
+  color: var(--link-color);
+}
+.gt-container .gt-btn-preview:hover {
+  background-color: rgba(81, 184, 86, 0.12);
+  border-color: var(--link-color);
+}
+.gt-container .gt-btn-public:hover {
+  background-color: #3d8b40;
+  border-color: #3d8b40;
+}
+.gt-container .gt-no-init {
+  color: var(--text-color);
+}
+.gt-container .gt-meta {
+  border-bottom: 1px solid #2c3a2c;
+}
+.gt-container .gt-popup {
+  background: #232523;
+  border: 1px solid #2c3a2c;
+}
+.gt-container .gt-popup .gt-action {
+  color: var(--text-color);
+}
+.gt-container .gt-copyright {
+  border-top: 1px solid #2c3a2c;
+}
+.gt-container .gt-header-textarea {
+  background-color: #2d312d;
+  border: 1px solid #2c3a2c;
+  color: var(--text-color);
+}
+.gt-container .gt-header-textarea:hover {
+  background-color: #343834;
+}
+.gt-container .gt-header-textarea::placeholder {
+  color: #8a8f8a;
+}
+.gt-container .gt-header-preview {
+  background-color: #2d312d;
+  border: 1px solid #2c3a2c;
+  color: var(--text-color);
+}
+.gt-container .gt-header-controls-tip {
+  color: var(--link-color);
+}
+.gt-container .gt-comment-content {
+  background-color: var(--surface-color);
+  border: 1px solid #2c3a2c;
+  border-radius: 8px;
+}
+.gt-container .gt-comment-content:hover {
+  box-shadow: 0 0.625em 3.75em 0 rgba(0, 0, 0, 0.45);
+}
+.gt-container .gt-comment-admin .gt-comment-content {
+  background-color: #14231a;
+}
+.gt-container .gt-comment-body {
+  color: var(--text-color) !important;
+}
+.gt-container .gt-comment-username {
+  color: var(--link-color);
+}
+.gt-container .gt-comment-text,
+.gt-container .gt-comment-date {
+  color: #8a8f8a;
+}
+.gt-container .markdown-body {
+  color: var(--text-color);
+}

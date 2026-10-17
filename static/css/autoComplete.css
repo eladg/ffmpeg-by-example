@@ -3,27 +3,32 @@
   position: relative;
 }
 
+/* Light input on the dark header: matches the old design's visibility.
+   #autoComplete keeps the same look before the autoComplete.js wrapper kicks in,
+   so the bar never flashes unstyled white. */
+#autoComplete,
 .autoComplete_wrapper > input {
   display: block;
   width: 370px;
   height: 40px;
   padding-left: 20px;
   font-size: 1rem;
-  color: #e8e8e8;
+  color: #111;
   border-radius: 8px;
-  border: 1px solid #2c3a2c;
+  border: 0;
   outline: none;
-  background-color: #2d312d;
+  background-color: #f1f3f4;
   background-image: none;
 }
 
-.autoComplete_wrapper > input:focus { 
-  color: var(--text-color);
-  border: 0; 
+.autoComplete_wrapper > input:focus {
+  color: #111;
+  border: 0;
 }
 
+#autoComplete::placeholder,
 .autoComplete_wrapper > input::placeholder {
-  color: rgba(123, 123, 123, 0.5);
+  color: #6b7280;
   transition: all 0.3s ease;
 }
 
@@ -94,6 +99,7 @@
 }
 
 @media only screen and (max-width: 600px) {
+  #autoComplete,
   .autoComplete_wrapper > input {
     width: 18rem;
   }
