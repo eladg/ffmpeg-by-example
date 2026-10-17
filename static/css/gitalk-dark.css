@@ -90,3 +90,10 @@
 .gt-container .markdown-body {
   color: var(--text-color);
 }
+
+/* Typography: inherit the site's own font stack everywhere in the widget,
+   instead of Gitalk's built-in system-sans stack. */
+.gt-container,
+.gt-container .markdown-body {
+  font-family: inherit;
+}
