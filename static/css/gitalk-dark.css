@@ -97,3 +97,23 @@
 .gt-container .markdown-body {
   font-family: inherit;
 }
+
+/* Code blocks inside comments: Gitalk's markdown-body ships light code
+   styling (#f6f8fa); bring it in line with the site's dark code blocks. */
+.gt-container .markdown-body pre,
+.gt-container .markdown-body .highlight pre {
+  background-color: #282a36;
+  border: 1px solid #2c4a2e;
+  border-radius: 6px;
+  color: #f8f8f2;
+}
+.gt-container .markdown-body pre code {
+  background: transparent;
+  border: 0;
+  color: inherit;
+}
+.gt-container .markdown-body code {
+  background-color: rgba(81, 184, 86, 0.12);
+  color: var(--text-color);
+  border-radius: 4px;
+}
