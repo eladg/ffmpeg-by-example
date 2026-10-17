@@ -2,17 +2,22 @@
   --side-length: 16rem;
   --side-height: 5rem;
 
-  --main-color: blueviolet;
-  --secondary-color: lavender;
+  --main-color: #51b856;
+  --secondary-color: #0d140d;
   --third-color: #bd93f9;
-  --text-color: #000000;
+  --bg-color: #232523;
+  --surface-color: #101d16;
+  --text-color: #e8e8e8;
+  --muted-color: #9a9a9a;
   --text-size: 18px;
-  --gray-color: #4e4e4e;
-  --link-color: blueviolet;
+  --gray-color: #9a9a9a;
+  --link-color: #51b856;
   --action-color: #e8202a;
+  --border-color: #2c4a2e;
   --mc-serif-font: "medium-content-serif-font", Georgia, Cambria, "Times New Roman", Times, serif;
-  --monospace-font: monospace;
-  --menubar-gradient: linear-gradient(180deg, rgba(75,71,140,1) 0%, rgba(230,178,224,0.8) 100%);;
+  --monospace-font: "DejaVu Sans Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  --menubar-gradient: linear-gradient(180deg, #262c26 0%, #1c1c1c 100%);
+  --menubar-dots: radial-gradient(rgba(81, 184, 86, 0.16) 1.5px, transparent 1.6px);
 }
 
 body {
@@ -43,9 +48,6 @@ article {
 code {
   font-size: 14px;
   padding: 0.2rem 0.4rem;
-  background: #8a2be233;
-  border: 1px solid #8a2be233;
-  border-radius: 0.4rem;
 }
 
 p, ul, li, a {
@@ -73,22 +75,25 @@ video {
 .action-btn {
   font-size: 1em;
   font-weight: 800;
-  background-color: var(--third-color);
-  color: white;
+  background-color: var(--main-color);
+  color: #f8f8f2;
   padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .action-btn2 {
   font-size: 1em;
   font-weight: 800;
-  background-color: var(--secondary-color);
-  color: black;
+  background-color: var(--surface-color);
+  color: var(--text-color);
   padding: 5px 20px 5px 20px;
-  border: 1px solid black;
+  border: 1px solid var(--border-color);
 }
 
 .purple-border {
-  border: 2px solid var(--main-color);
+  border: 2px solid var(--border-color);
 }
 
 .posts-list {
@@ -109,9 +114,9 @@ video {
 .homepage-random-example {
   padding: 0em 2em 2em 2em;
 
-  background-color: var(--gray-color);
-  background-image: radial-gradient(var(--link-color) 0.5px, #e5e5f7 0.5px);
-  background-size: 10px 10px;
+  background-color: var(--surface-color);
+  background-image: var(--menubar-dots);
+  background-size: 24px 24px;
 }
 
 /* menubar.html */
@@ -119,9 +124,10 @@ video {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--menubar-gradient);
+  background-image: var(--menubar-dots), var(--menubar-gradient);
+  background-size: 24px 24px, auto;
   height: var(--side-height);
-  border-bottom: 2px solid #e7bde2;
+  border-bottom: 2px solid #1e3a20;
   backdrop-filter: blur(2px);
 }
 
@@ -141,13 +147,18 @@ video {
   width: 150px;
 }
 .menubar .logo img {
-  max-width: 120px;
+  width: 120px;
+  height: auto;
+  display: block;
 }
 
 .menubar .search {
   border-radius: 10px;
   padding: 10px 10px 10px 10px;
   width: 100%;
+  background-color: #2d312d;
+  border: 1px solid #2c3a2c;
+  color: var(--text-color);
 }
 
 .menubar .logo a {
@@ -219,7 +230,7 @@ video {
 .content__top {
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid #9d9d9d;
+  border-bottom: 1px solid var(--border-color);
   width: 100%;
   align-items: baseline;
   justify-content: space-between;
@@ -254,7 +265,7 @@ video {
 
 .voting__like {
   width: 20px;
-  fill: black;
+  fill: #9a9a9a;
   transition: all 0.3s ease-in-out;
 }
 
@@ -265,7 +276,7 @@ video {
 
 .voting__views {
   width: 20px;
-  fill: black;
+  fill: #9a9a9a;
   transition: all 0.3s ease-in-out;
 }
 
@@ -275,13 +286,37 @@ video {
 
 /* player.html */
 .content__example_video {
-  width: 99%;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   padding: 0.3em;
-  background-color: var(--gray-color);
-  background-image: radial-gradient(var(--link-color) 0.5px, #e5e5f7 0.5px);
-  background-size: 10px 10px;
+  background-color: var(--surface-color);
+  background-image: var(--menubar-dots);
+  background-size: 24px 24px;
+}
+
+/* Responsive media: video and embeds fill the well while keeping
+   their aspect ratio; the inner wrapper stretches full width. */
+.content__example_video > div {
+  width: 100%;
+}
+.content__example_video vds-media,
+.content__example_video vds-video {
+  display: block;
+  width: 100%;
+}
+.content__example_video video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.content__example_video iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
 }
 
 /* description.html */
@@ -298,7 +333,6 @@ video {
 }
 
 .content__meta_description pre code {
-  border: 2px solid blueviolet;
   background-color: #282a36;
   padding: 0.5em;
   border-radius: 0.5em;
@@ -314,7 +348,7 @@ video {
 /* item.html */
 .li-description {
   font-size: 12px;
-  color: #373636;
+  color: var(--muted-color);
   opacity: 0.8;
   font-family: var(--monospace-font);
   vertical-align: top;
@@ -406,7 +440,7 @@ input, textarea, select, datalist {
 
 .steps-indicators div {
   width: 5em;
-  color: #000;
+  color: var(--text-color);
   border-radius: 5px;
   padding: 10px;
   text-align: center;
@@ -416,7 +450,7 @@ input, textarea, select, datalist {
 
 .steps-indicators .current {
   background: var(--main-color);
-  color: #fff;
+  color: #06130a;
 }
 
 .actions-container {
@@ -447,6 +481,6 @@ input, textarea, select, datalist {
 }
 
 input:focus, textarea:focus {
-  background-color: var(--secondary-color);
+  background-color: #131a13;
   border-left: 2px solid var(--gray-color);
 }
