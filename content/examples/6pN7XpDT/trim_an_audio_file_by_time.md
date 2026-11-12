@@ -14,7 +14,8 @@ description: >-
   cut starts there.
 
 
-  `-t 00:00:45` - keeps 45 seconds from the start point.
+  `-t 00:00:45` - sits after the input, so it limits the output to 45
+  seconds from the start point.
 
 
   `-c copy` - copies the audio without re-encoding, so the trim is instant
@@ -26,7 +27,7 @@ tags:
   - audio-cut
 tested_with: null
 thumbnail_url: null
-terminal_command: ffmpeg -ss 00:00:30 -t 00:00:45 -i input.mp3 -c copy output.mp3
+terminal_command: ffmpeg -ss 00:00:30 -i input.mp3 -t 00:00:45 -c copy output.mp3
 example_type: no-preview
 example_player_data:
   - ''
