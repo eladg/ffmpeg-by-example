@@ -10,8 +10,10 @@ description: >-
   titles, labels, or captions that need to show on any player.
 
 
-  `fontfile` - points drawtext at a font file on your system; swap in any
-  .ttf or .otf you have installed.
+  `fontfile` - points drawtext at a font file on your system. The path in
+  the command is Arial, which ships with macOS; on Linux try
+  `/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf`, on Windows
+  `C:/Windows/Fonts/arial.ttf`. Any .ttf or .otf you have installed works.
 
 
   `x` and `y` - position the text; `(w-text_w)/2` and `(h-text_h)/2` center
@@ -27,7 +29,7 @@ tags:
   - text-overlay
 tested_with: null
 thumbnail_url: null
-terminal_command: ffmpeg -i input.mp4 -vf "drawtext=text='Hello World':fontfile=/path/to/font.ttf:fontsize=48:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2" -c:a copy output.mp4
+terminal_command: ffmpeg -i input.mp4 -vf "drawtext=text='Hello World':fontfile=/System/Library/Fonts/Supplemental/Arial.ttf:fontsize=48:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2" -c:a copy output.mp4
 example_type: no-preview
 example_player_data:
   - ''
