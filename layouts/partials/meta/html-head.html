@@ -31,6 +31,9 @@
   <link rel="stylesheet" href="{{ "css/syntax.css" | relURL }}" data-noprefix/>
   <link rel="stylesheet" href="{{ "css/autoComplete.css" | relURL }}">
   <link rel="stylesheet" href="{{ "css/layout.css" | relURL }}">
+  {{- if eq .Section "contribute" }}
+  <link rel="stylesheet" href="{{ "css/contribute.css" | relURL }}">
+  {{- end }}
   <script src="{{ "js/require.js" | relURL }}"></script>    
   <link href="{{ "index.xml" | relURL }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}">
 
