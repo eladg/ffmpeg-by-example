@@ -1,0 +1,35 @@
+{{- /* llms.txt (https://llmstxt.org), generated from content. Edit this template, not public/llms.txt. */ -}}
+{{- $examples := where site.RegularPages "Section" "examples" -}}
+# {{ site.Title }}
+
+> A community cookbook of FFmpeg commands: copy-paste-ready examples for common video, audio, image, and streaming tasks, each solving one task with a minimal explanation.
+
+{{ site.Title }} is a fast lookup tool for humans and AI agents. Every example shows one complete FFmpeg command for one task. Commands use generic filenames such as input.mp4 and output.mp4; substitute your own files. Browse all {{ len $examples }} examples below by category, or use the site search at {{ site.BaseURL }}.
+
+It is a not-for-profit, open source project; its content is licensed under Creative Commons Attribution 4.0 International (https://github.com/eladg/ffmpeg-by-example/blob/main/LICENSE).
+
+## About this site
+
+- [All examples in full]({{ "llms-full.txt" | absURL }}): Every example's description and complete command in one plain-text file.
+- [Contribute]({{ "contribute/" | absURL }}): How to submit a new example; submissions become GitHub pull requests for review.
+- [Source code](https://github.com/eladg/ffmpeg-by-example): The site's GitHub repository.
+{{- range site.Taxonomies.categories.ByCount }}
+{{- $category := .Name }}
+{{- $pages := slice }}
+{{- range $page := $examples }}
+{{- with $page.Params.categories }}{{ if eq (index . 0 | urlize) $category }}{{ $pages = $pages | append $page }}{{ end }}{{ end }}
+{{- end }}
+{{- with $pages }}
+
+## {{ replace ($category | humanize) "Ffmpeg" "FFmpeg" }}
+
+{{ range sort . "Title" -}}
+{{/* summary = the description's first sentence, as plain text (code spans are escaped twice) */ -}}
+{{ $text := .Description | markdownify | plainify | htmlUnescape | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace -}}
+{{ $summary := $text -}}
+{{ with findRE `^.+?[.!?](\s|$)` $text 1 }}{{ $summary = index . 0 | strings.TrimSpace }}{{ end -}}
+{{ if gt (len $summary) 200 }}{{ $summary = printf "%s…" (substr $summary 0 199 | strings.TrimSpace) }}{{ end -}}
+- [{{ strings.TrimSpace .Title }}]({{ .Permalink }}){{ with $summary }}: {{ . }}{{ end }}
+{{ end -}}
+{{- end }}
+{{- end }}

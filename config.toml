@@ -24,8 +24,22 @@ enableRobotsTXT = true
   category = "categories"
 
 [outputs]
-  home = ["HTML", "AMP", "RSS", "REDIRECTS"]
+  home = ["HTML", "AMP", "RSS", "REDIRECTS", "LLMS", "LLMSFULL"]
   page = ["HTML"]
+
+# llms.txt (index for AI agents, https://llmstxt.org) and llms-full.txt (every example in full),
+# generated from content by layouts/index.llms.txt and layouts/index.llmsfull.txt
+[outputFormats.LLMS]
+  mediaType = "text/plain"
+  baseName = "llms"
+  isPlainText = true
+  notAlternative = true
+
+[outputFormats.LLMSFULL]
+  mediaType = "text/plain"
+  baseName = "llms-full"
+  isPlainText = true
+  notAlternative = true
 
 # Netlify _redirects, generated from content by layouts/index.redirects
 [mediaTypes."text/netlify"]

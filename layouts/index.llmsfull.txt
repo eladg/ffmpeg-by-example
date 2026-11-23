@@ -1,0 +1,25 @@
+{{- /* llms-full.txt: every example in full, generated from content. Edit this template, not public/llms-full.txt. */ -}}
+{{- $examples := where site.RegularPages "Section" "examples" -}}
+# {{ site.Title }}: all examples
+
+> Every FFmpeg example on {{ site.BaseURL }} with its description and complete command. Licensed under Creative Commons Attribution 4.0 International (https://github.com/eladg/ffmpeg-by-example/blob/main/LICENSE). The index of examples is at {{ "llms.txt" | absURL }}.
+{{- range site.Taxonomies.categories.ByCount }}
+{{- $category := .Name }}
+{{- range sort $examples "Title" }}
+{{- with .Params.categories }}{{ if ne (index . 0 | urlize) $category }}{{ continue }}{{ end }}{{ end }}
+
+## {{ strings.TrimSpace .Title }}
+
+URL: {{ .Permalink }}
+Category: {{ replace ($category | humanize) "Ffmpeg" "FFmpeg" }}
+{{- with .Params.tags }}
+Tags: {{ delimit . ", " }}
+{{- end }}
+
+{{ .Description | replaceRE `(?m)^(##+) ` "#${1} " | strings.TrimSpace }}
+
+```bash
+{{ .Params.terminal_command | strings.TrimSpace }}
+```
+{{- end }}
+{{- end }}
