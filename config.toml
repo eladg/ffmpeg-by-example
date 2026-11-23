@@ -24,8 +24,18 @@ enableRobotsTXT = true
   category = "categories"
 
 [outputs]
-  home = ["HTML", "AMP", "RSS"]
+  home = ["HTML", "AMP", "RSS", "REDIRECTS"]
   page = ["HTML"]
+
+# Netlify _redirects, generated from content by layouts/index.redirects
+[mediaTypes."text/netlify"]
+  delimiter = ""
+
+[outputFormats.REDIRECTS]
+  mediaType = "text/netlify"
+  baseName = "_redirects"
+  isPlainText = true
+  notAlternative = true
 
 [examples]
 
