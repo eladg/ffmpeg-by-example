@@ -4,347 +4,172 @@
 {{ $postNewExamplePath := "/.netlify/functions/post_new_example" }}
 {{ $postSubmitUrl := $postNewExamplePath | printf "%s%s" $apiUrl | printf "%s" }}
 
-<div id="vue-root" class="container column contribute-form">
-  
-  <div style="margin-top: 2em;">
-    <h2>
-      Help our community grow by adding your example! ✌️
-    </h2>
-  </div>
+<div class="contribute">
+  <header class="cf-intro">
+    <h1>Share your FFmpeg example</h1>
+    <p>
+      Describe your command, check the preview, and we'll open a pull request on
+      <a href="https://github.com/eladg/ffmpeg-by-example/pulls" target="_blank" rel="noopener">GitHub</a>
+      for review.
+    </p>
+    <ol class="cf-steps">
+      <li id="cf-steps-details" aria-current="step"><span class="cf-step">1</span>Details</li>
+      <li id="cf-steps-review"><span class="cf-step">2</span>Preview &amp; submit</li>
+    </ol>
+  </header>
 
-  <div class="steps-top">
-    <div>
-      <div class="steps-indicators">
-        <div :class="{ current: currentStep == 1 }">FFmpeg</div>
-        <div :class="{ current: currentStep == 2 }">Post Meta</div>
-        <div :class="{ current: currentStep == 3 }">Media</div>
-        <div :class="{ current: currentStep == 4 }">Description</div>
-        <div :class="{ current: currentStep == 5 }">Preview</div>
-      </div>
-    </div>
-  
-    <div class="actions-container">
-      <div>
-        <button 
-          class="action-btn"
-          @click="goBack"
-          :disabled="currentStep <= 1"
-        >
-          < Back
-        </button>
-        <button 
-          class="action-btn"
-          @click="goNext"
-          v-if="currentStep < 5"
-        >
-          Next >
-        </button>
-        <button 
-          class="action-btn"
-          @click="submit"
-          v-if="currentStep == 5"
-        >
-          Submit PR
-        </button>        
-      </div>
-    </div>  
-  </div>
+  <form id="cf-form" class="cf-form" novalidate data-submit-url="{{ $postSubmitUrl }}">
 
-  <div class="steps-container">
-    <!-------------------- step 1 -------------------->
-    <div v-if="currentStep == 1">
-      <div>
-        <textarea 
-          id="terminalCommand"
-          placeholder="ffmpeg -i movie.mov -c copy video.mp4" 
-          style="height: 8em;"
-          v-model="form.terminal_command"
-        >
-        </textarea>
+    <!-------------------- command -------------------->
+    <fieldset class="cf-section">
+      <legend><span class="cf-step">1</span>Command</legend>
+      <div class="cf-field">
+        <label for="cf-command">FFmpeg command <span class="cf-required" aria-hidden="true">*</span></label>
+        <textarea id="cf-command" name="terminal_command" class="cf-input cf-code" rows="4"
+          spellcheck="false" autocapitalize="off" autocomplete="off"
+          placeholder="ffmpeg -i input.mp4 -c:v libx264 -crf 23 output.mp4"
+          aria-describedby="cf-command-hint cf-command-error"></textarea>
+        <p id="cf-command-hint" class="cf-hint">One complete command. Use generic file names like <code>input.mp4</code> and <code>output.mp4</code>.</p>
+        <p id="cf-command-error" class="cf-error" hidden></p>
       </div>
-      <p><b>Enter your ffmpeg command in the textfield.</b> <br/>Make sure to read our <a href="https://github.com/eladg/ffmpeg-by-example/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> community guidlines before adding your example.</p>
-      <div style="display: flex; justify-content: end;">
-        <button 
-          class="action-btn"
-          @click="tryWasmFfmpeg"
-        >
-          Try it Online
-      </button>
-      </div>
-    </div>
+    </fieldset>
 
-    <!-------------------- step 2 -------------------->
-    <div v-if="currentStep == 2">
-      <datalist id="categories">
+    <!-------------------- title & description -------------------->
+    <fieldset class="cf-section">
+      <legend><span class="cf-step">2</span>Title &amp; description</legend>
+      <div class="cf-field">
+        <label for="cf-title">Title <span class="cf-required" aria-hidden="true">*</span></label>
+        <input id="cf-title" name="title" class="cf-input" maxlength="120"
+          placeholder="Crossfade between two videos with the xfade filter"
+          aria-describedby="cf-title-hint cf-title-error">
+        <p id="cf-title-hint" class="cf-hint">Say what the command does. Search engines show this title.</p>
+        <p id="cf-title-error" class="cf-error" hidden></p>
+      </div>
+      <div class="cf-field">
+        <label for="cf-description">Description <span class="cf-required" aria-hidden="true">*</span></label>
+        <textarea id="cf-description" name="description" class="cf-input" rows="8"
+          placeholder="Explain how the command works and what each important option does."
+          aria-describedby="cf-description-hint cf-description-error"></textarea>
+        <p id="cf-description-hint" class="cf-hint">Markdown is supported: <code>`code`</code>, <code>**bold**</code>, lists and links.</p>
+        <p id="cf-description-error" class="cf-error" hidden></p>
+      </div>
+    </fieldset>
+
+    <!-------------------- category & tags -------------------->
+    <fieldset class="cf-section">
+      <legend><span class="cf-step">3</span>Category &amp; tags</legend>
+      <datalist id="cf-categories">
         {{ range $key, $value := .Site.Taxonomies.categories }}
           <option value="{{ $key }}">
         {{ end }}
       </datalist>
-      <datalist id="tags">
+      <datalist id="cf-tags">
         {{ range $key, $value := .Site.Taxonomies.tags }}
           <option value="{{ $key }}">
         {{ end }}
       </datalist>
 
-      <div class="inputs-container">
-        <div class="container row gap05em">
-          <input 
-            id="authorName" 
-            placeholder="Your Name"
-            v-model="form.author_name">
-          </input>
-          <input 
-            id="authorEmail" 
-            placeholder="Your Email (optional)"
-            v-model="form.author_email">
-          </input>  
+      <div class="cf-field">
+        <label for="cf-category">Category <span class="cf-required" aria-hidden="true">*</span></label>
+        <input id="cf-category" name="category" class="cf-input" list="cf-categories"
+          autocapitalize="off" placeholder="e.g. video, audio, filters"
+          aria-describedby="cf-category-error">
+        <p id="cf-category-error" class="cf-error" hidden></p>
+      </div>
+      <div class="cf-field">
+        <span class="cf-label" id="cf-tags-label">Tags <span class="cf-required" aria-hidden="true">*</span></span>
+        <div class="cf-row" role="group" aria-labelledby="cf-tags-label">
+          <input id="cf-tag1" name="tag1" class="cf-input" list="cf-tags" autocapitalize="off" placeholder="first tag" aria-label="First tag" aria-describedby="cf-tags-hint cf-tag1-error">
+          <input id="cf-tag2" name="tag2" class="cf-input" list="cf-tags" autocapitalize="off" placeholder="optional" aria-label="Second tag (optional)">
+          <input id="cf-tag3" name="tag3" class="cf-input" list="cf-tags" autocapitalize="off" placeholder="optional" aria-label="Third tag (optional)">
         </div>
-        <div class="container row gap05em">
-          <input 
-            id="category" 
-            list="categories" 
-            name="category" 
-            placeholder="select category"
-            v-model="form.category"
-          >
-          <input list="tags" name="tag1" id="tag1" placeholder="#tag" v-model="form.tag1">
-          <input list="tags" name="tag2" id="tag2" placeholder="#tag (optional)" v-model="form.tag2">
-          <input list="tags" name="tag3" id="tag3" placeholder="#tag (optional)" v-model="form.tag3">
-        </div>
-      </div>  
-    </div>
+        <p id="cf-tags-hint" class="cf-hint">One to three tags. Reuse existing ones where they fit.</p>
+        <p id="cf-tag1-error" class="cf-error" hidden></p>
+      </div>
+    </fieldset>
 
-    <!-------------------- step 3 -------------------->
-    <div v-if="currentStep == 3">
-      <div class="inputs-container">
-        <div>
-          <p>
-            If you would like us to host your example over on our private cloud storage, please reach out over on <a href="https://discord.gg/NDZ4m9ZdqF">discord</a><br/><br/>
-            <b>No Preview</b> - for examples that have no media assosiated with them.</br>
-            <b>Picture</b> - A URL to a picture hosted on an external source.</br>
-            <b>Video URL</b> - A URL to a video hosted on an external source.</br>
-            <b>Youtube Embed</b> - An id of a YouTube url to be embeded on the example page (e.g. 'HEARpyUdNFs')</br>
-            <b>Audio</b> - A URL to an audio file hosted on an external source.</br>
-          </p> 
-        </div>
-        <div class="container row">
-          <select id="exampleType" name="example_type" v-model="form.example_type" required style="margin-right: 1em;">
-            {{ range $key, $value := .Site.Params.examplestypes }}
-              <option value="{{ $value }}">{{ $value | humanize }}</option>
-            {{ end }}
-          </select>
-    
-          <input type="text" id="playerData" name="player_data" v-model="form.example_player_data"
-            placeholder="https://ffmpeg-by-example.s3.amazonaws.com/video.mp4"
-          >
+    <!-------------------- media -------------------->
+    <fieldset class="cf-section">
+      <legend><span class="cf-step">4</span>Media <span class="cf-optional">optional</span></legend>
+      <div class="cf-field">
+        <span class="cf-label" id="cf-type-label">Type</span>
+        <div class="cf-segmented" role="radiogroup" aria-labelledby="cf-type-label">
+          {{ range $index, $value := .Site.Params.examplestypes }}
+            <label>
+              <input type="radio" name="example_type" value="{{ $value }}" {{ if eq $index 0 }}checked{{ end }}>
+              <span>{{ $value | humanize }}</span>
+            </label>
+          {{ end }}
         </div>
       </div>
-    </div>
+      <div class="cf-field" id="cf-media-field" hidden>
+        <label for="cf-media">URL <span class="cf-required" aria-hidden="true">*</span></label>
+        <input id="cf-media" name="example_player_data" class="cf-input" type="url" inputmode="url"
+          autocapitalize="off" autocomplete="off" aria-describedby="cf-media-hint cf-media-error">
+        <p id="cf-media-hint" class="cf-hint"></p>
+        <p id="cf-media-error" class="cf-error" hidden></p>
+      </div>
+      <p class="cf-hint">
+        Want us to host your media? Ask on <a href="https://discord.gg/NDZ4m9ZdqF" target="_blank" rel="noopener">Discord</a>.
+      </p>
+    </fieldset>
 
-    <!-------------------- step 4 -------------------->
-    <div v-if="currentStep == 4">
-      <div class="inputs-container">
-        <div>
-          <p>Nail your title, it will be cached by search engines!</p>
-          <input id="title" v-model="form.title" placeholder="Title your example"></input>
+    <!-------------------- author -------------------->
+    <fieldset class="cf-section">
+      <legend><span class="cf-step">5</span>About you</legend>
+      <div class="cf-row cf-row--2">
+        <div class="cf-field">
+          <label for="cf-author-name">Name <span class="cf-required" aria-hidden="true">*</span></label>
+          <input id="cf-author-name" name="author_name" class="cf-input" autocomplete="name" aria-describedby="cf-author-name-error">
+          <p id="cf-author-name-error" class="cf-error" hidden></p>
         </div>
-
-        <div>
-          <textarea 
-            id="description" 
-            name="description" 
-            placeholder="
-Your markdown description goes here.
-Try to breakdown every parameter in your ffmpeg command. 
-
-How does it works?" 
-            v-model="form.description"
-            required
-            style="height: 16em;"
-          >
-          </textarea>
+        <div class="cf-field">
+          <label for="cf-author-email">Email <span class="cf-optional">optional</span></label>
+          <input id="cf-author-email" name="author_email" class="cf-input" type="email" autocomplete="email" aria-describedby="cf-author-email-hint cf-author-email-error">
+          <p id="cf-author-email-error" class="cf-error" hidden></p>
         </div>
       </div>
+      <p id="cf-author-email-hint" class="cf-hint">Your name, and your email if you add one, are shown publicly on the example page.</p>
+    </fieldset>
+
+    <div id="cf-form-status" class="cf-status" role="status" aria-live="polite" hidden></div>
+
+    <div class="cf-actions">
+      <button type="submit" class="cf-btn cf-btn--primary">Preview →</button>
     </div>
+  </form>
 
-    <!-------------------- step 5 -------------------->
-    <div v-if="currentStep == 5">
-      <div>
-        <div>
-          <!-- player -->
+  <!-------------------- step 2: preview & submit -------------------->
+  <section id="cf-review" class="cf-review" aria-labelledby="cf-review-label" hidden>
+    <p class="cf-review__intro">This is how your example page will look. Check it, then open the pull request.</p>
+    <div class="cf-preview">
+      <div id="cf-review-label" class="cf-preview__label">Preview</div>
+      <div class="cf-preview__card">
+        <h2 id="cf-p-title" class="cf-preview__title"></h2>
+        <div id="cf-p-media" class="cf-preview__media" hidden></div>
+        <div id="cf-p-description" class="cf-preview__description"></div>
+        <div class="content__meta_propreties">
+          <ul>
+            <li id="cf-p-author"></li>
+            <li id="cf-p-tags"></li>
+          </ul>
         </div>
-        <div style="margin-bottom: 2em;">
-          <!-- title -->
-          <h2>[[ form.title ]]</h2>
-
-          <!-- description -->
-          <div v-html="compiledDescription"></div>
-
-          <!-- post_meta -->
-        </div>
-
         <div class="content__example_command">
-          <div class="highlight" v-html="compiledTerminal"></div>
+          <div class="highlight"><pre><code id="cf-p-command" class="language-bash"></code></pre></div>
         </div>
       </div>
     </div>
-  </div>
+
+    <div id="cf-review-status" class="cf-status" role="status" aria-live="polite" hidden></div>
+
+    <div class="cf-actions">
+      <button type="button" id="cf-back" class="cf-btn cf-btn--ghost">← Back to edit</button>
+      <button type="button" id="cf-submit" class="cf-btn cf-btn--primary">Open pull request</button>
+      <button type="button" id="cf-another" class="cf-btn cf-btn--primary" hidden>Submit another example</button>
+    </div>
+  </section>
 </div>
 
-<script>
-  // globals
-  const generateNewId = () => {
-    return Math.random().toString(36).substr(2, 8).toUpperCase();
-  }
-
-  const ID = generateNewId()
-  const VERSION="1.0"
-  const BYPASS_VALIDATION=false
-
-  // this is not suppose to be pretty ...
-  //  ... this is supposed to be functional
-  //  ... and completed 🌻
-  //                            - E.G
-  require([{{ "js/vue.js" | absURL }}], (vue) => { 
-    window.Vue = vue
-    require(['https://unpkg.com/marked@0.3.6'], (marked) => {
-      window.marked = marked
-
-      new window.Vue({
-        delimiters: ['[[', ']]'],
-        el: '#vue-root',
-        data: {
-          currentStep: 1,
-          form: {
-            example_type: "no-preview",
-            example_player_data: null,
-            title: null,
-            description: null,
-            author_name: null,
-            author_email: null,
-            terminal_command: null,
-            category: null,
-            tag1: null,
-            tag2: null,
-            tag3: null,
-          }
-        },
-        computed: {
-          compiledDescription: function () {
-            if (this.form.description) {
-              return marked(this.form.description, { sanitize: true }) 
-            } else {
-              return null
-            }
-          },
-          compiledTerminal: function() {
-            if (this.form.terminal_command) {
-              const md = `\`\`\`bash\n${this.form.terminal_command}\n\`\`\``;
-              return marked(md, { sanitize: false })
-            } else {
-              return null
-            }
-          }
-        },
-        methods: {
-          validateForm () {
-            if (BYPASS_VALIDATION) {
-              return true
-            }
-            switch (this.currentStep) {
-              case 1:
-                const cmd = this.form.terminal_command
-                if (cmd && cmd.length > 10) {
-                  return true
-                } else {
-                  alert("Your FFmpeg command is too short")
-                }
-                break;
-              case 2:
-                const { author_name, category, tag1 } = this.form
-                if (author_name && category && tag1) {
-                  return true
-                } else {
-                  alert("Name, category or tag must be set for every example")
-                }
-                break;
-              case 3:
-                return true;
-              case 4:
-                const { title, description } = this.form
-                if (!title || !description) {
-                  alert("Please provide title and description for your example")
-                  return false
-                }
-                if (title.length < 10 && description.length < 30) {
-                  alert("Title or Description is too short. Follow our CONTRIBUTION.md guidelines for more info!")
-                  return false
-                }
-                return true;
-              default:
-                break;
-            }
-
-          },
-          goNext () {
-            if (this.validateForm()) {
-              this.currentStep += 1              
-            }
-          },
-          goBack () {
-            this.currentStep -= 1
-          },
-          async submit () {       
-            const postSubmitURL = {{ $postSubmitUrl }};
-            let postData = {
-              id: ID,
-              version: VERSION,
-              enabled: true,
-              example_type: this.form.example_type,
-              example_player_data: this.form.example_player_data,
-              title: this.form.title,
-              description: this.form.description,
-              author_name: this.form.author_name,
-              author_email: this.form.author_email,
-              terminal_command: this.form.terminal_command,
-              categories: [ this.form.category ],
-              tags: [ this.form.tag1, this.form.tag2, this.form.tag3 ],
-            }
-    
-            const options = {
-              method: "POST",
-              headers: { "Content-Type": "application/json;charset=UTF-8" },
-              body: JSON.stringify(postData)
-            };
-
-            try {
-              const response = await fetch(postSubmitURL, options);
-              const data = await response.json().catch(() => null);
-
-              // handle data
-              if (!response.ok) {
-                const error = (data && data.message) || response.status;
-                alert(`failed submitting data. Got error: ${error}`)
-              } else {
-                console.log("======= success =======")
-                console.log(response)
-                alert("Successfully submitted PR on Github")
-                window.location.href = "https://github.com/eladg/ffmpeg-by-example/pulls";
-              }
-            } catch (error) {
-              console.error(error)
-              alert("Sorry, something went wrong. Please reach out on Discord for support!")
-            }
-
-          },
-          tryWasmFfmpeg () {
-            alert("Our WebAssembly FFmpeg Player is currently under construction. With your support, we can make it happen sooner! ;)")            
-          }
-        }
-      });
-    })
-  });
-</script>
-
+<script type="module" src="{{ "js/contribute.js" | relURL }}"></script>
 
 {{ end }}

@@ -66,14 +66,6 @@ body {
     max-width: 100%;
   }
 
-  .contribute-form {
-    padding: 10px !important;
-  }
-
-  .steps-indicators {
-    display: none !important;
-  }
-
   article {
     padding: 10px;
   }
