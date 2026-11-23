@@ -1,5 +1,7 @@
 {{ range first 1 .Params.example_player_data }}
+  {{ with . }}
   <iframe id="ytplayer" type="text/html"
   src="https://www.youtube.com/embed/{{ . }}"
   frameborder="0" height="100%" width="480px"></iframe>
+  {{ end }}
 {{ end }}

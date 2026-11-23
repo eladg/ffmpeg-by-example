@@ -11,7 +11,29 @@
     distractionFreeMode: false  // Facebook-like distraction free mode
   }
 
-  require(['https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js'], (gitalk) => { 
+  // Gitalk builds its "N comments" link as `href="' + (issue && issue.html_url) + '"`,
+  // so pages without a GitHub issue get href="null", which resolves to <page>/null.
+  // Drop any href/src that isn't a real URL whenever Gitalk (re)renders.
+  const stripBadUrls = (root) => {
+    root.querySelectorAll('[href], [src]').forEach((el) => {
+      ['href', 'src'].forEach((attr) => {
+        const value = el.getAttribute(attr);
+        if (value !== null && ['', 'null', 'undefined'].includes(value.trim())) {
+          el.removeAttribute(attr);
+        }
+      });
+    });
+  };
+
+  const gitalkContainer = document.getElementById('gitalk-container');
+  new MutationObserver(() => stripBadUrls(gitalkContainer)).observe(gitalkContainer, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['href', 'src'],
+  });
+
+  require(['https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js'], (gitalk) => {
     window.Gitalk = new gitalk(commentsConfig)
     window.Gitalk.render('gitalk-container')
   });

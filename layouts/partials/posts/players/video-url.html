@@ -1,5 +1,6 @@
 <div>
   {{ range first 1 .Params.example_player_data }}
+  {{ with . }}
     <vds-media>
       <vds-video controls>
         <video
@@ -13,5 +14,6 @@
         ></video>
       </vds-video>
     </vds-media>
+  {{ end }}
   {{ end }}
 </div>
