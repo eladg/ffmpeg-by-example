@@ -1,11 +1,11 @@
-const responses = require('./responses');
-const repo_api = require('./repo_api');
-const yaml     = require('js-yaml');
+import yaml from "js-yaml";
+import * as responses from "./responses.mjs";
+import * as repo_api from "./repo_api.mjs";
 
 const BRANCH_PREFIX  = "examples"
 const PR_TO_BRANCH_FROM = "main";
 
-const validateInput = (params) => {
+export const validateInput = (params) => {
   if (!("id" in params)) {
     throw new Error("Invalid data given! ('id' is missing)")
   }
@@ -19,11 +19,11 @@ const validateInput = (params) => {
   if (!("author_name" in params) || (params.author_name.length < 3)) {
     throw new Error("Invalid data given! ('author_name' is missing or too short)")
   }
-  
-  if (!("categories" in params) || (params.categories.length < 0)) {
+
+  if (!Array.isArray(params.categories) || !params.categories.some(Boolean)) {
     throw new Error("Invalid data given! ('categories' array must have at least one category)")
   }
-  if (!("tags" in params) || (params.tags.length < 0)) {
+  if (!Array.isArray(params.tags) || !params.tags.some(Boolean)) {
     throw new Error("Invalid data given! ('tags' array must have at least one tag)")
   }
   if (!("terminal_command" in params) || (params.terminal_command.length < 10)) {
@@ -33,15 +33,15 @@ const validateInput = (params) => {
   return true;
 }
 
-const getFilename = (options) => {
-  const { title, id } = options  
+export const getFilename = (options) => {
+  const { title, id } = options
   let filename = title.replace(/[^a-z0-9_\-]/gi, '_').toLowerCase().split("_").filter(word => word.length > 1).join("_");
   let filepath = id + "/" + filename + ".md"
 
   return filepath;
 }
 
-const getAuthorDisplayName = (name, email) => {
+export const getAuthorDisplayName = (name, email) => {
   let author = `${name}`;
   if (email) {
     author += ` <${email}>`;
@@ -50,31 +50,53 @@ const getAuthorDisplayName = (name, email) => {
   return author;
 }
 
-const getMergeToBranchName = (id) => {
+export const getMergeToBranchName = (id) => {
   return `${BRANCH_PREFIX}/${id}`;
 }
 
-const getTags = (tags) => {
-  let exampleTags = []
-  for (let i = 0; i < tags.length; i++) {
-    if (tags[i]) {
-      exampleTags.push(tags[i])
-    }
-  }
-
-  return exampleTags
+export const getTags = (tags) => {
+  return tags.filter(Boolean)
 }
 
-const handler = async (event, context) => {
-  let filename, author, branchName, body;
-  let ref, yamlText, resp_2, resp_3, resp_4;
+export const getExampleYaml = (body, { filename, author, tags, date }) => {
+  const options = {
+    // example options
+    id: body.id,
+    version: body.version,
+    enabled: body.enabled ?? true,
+    date: date,
+    author: author,
+    title: body.title,
+    description: body.description,
+    categories: body.categories,
+    tags: tags,
+    thumbnail_url: body.thumbnail_url || null,
+    terminal_command: body.terminal_command,
+    example_type: body.example_type,
+    example_player_data: [
+      body.example_player_data
+    ],
+    filename: filename,
+    views: 0,
+    likes: 0,
+  }
 
-  if (event.httpMethod === "OPTIONS") {
+  return `---\n${yaml.dump(options)}\n---\n`;
+}
+
+export default async (req) => {
+  let filename, author, branchName, tags, body;
+  let ref, yamlText;
+
+  if (req.method === "OPTIONS") {
     return responses.succsess("OK")
+  }
+  if (req.method !== "POST") {
+    return responses.methodNotAllowed()
   }
 
   try {
-    body = JSON.parse(event.body);
+    body = await req.json();
     validateInput(body);
     console.log("valid body", body, "\n")
 
@@ -96,34 +118,12 @@ const handler = async (event, context) => {
     return responses.failedValidateDataResponse(error.message);
   }
 
-  // 
-  const options = {
-    // example options
-    id: body.id,
-    version: body.version,
-    enabled: body.enabled || true,
-    date: new Date().toISOString(),
-    author: author,
-    title: body.title,
-    description: body.description,
-    categories: body.categories,
-    tags: tags,
-    thumbnail_url: body.thumbnail_url || null,
-    terminal_command: body.terminal_command,
-    example_type: body.example_type,
-    example_player_data: [ 
-      body.example_player_data 
-    ],
-    filename: filename,
-    views: 0,
-    likes: 0,
-  }
-  yamlText = (`---\n${yaml.dump(options)}\n---\n`);
+  yamlText = getExampleYaml(body, { filename, author, tags, date: new Date().toISOString() });
 
   console.log(`== step 1: Get ref for '${PR_TO_BRANCH_FROM}' ====================`);
 
   try {
-    // step 1: Get ref for 'staging'
+    // step 1: Get ref for 'main'
     ref = await repo_api.getRefHeadOfBranch(PR_TO_BRANCH_FROM);
   } catch (error) {
     console.error(error);
@@ -134,7 +134,7 @@ const handler = async (event, context) => {
 
   try {
     // step 2: create new branch
-    resp_2 = await repo_api.createNewBranchFromRef(branchName, ref);
+    await repo_api.createNewBranchFromRef(branchName, ref);
   } catch (error) {
     console.error(error);
     return responses.failedRequestToGithub(new Error(`Could not branch to ${branchName}`));
@@ -144,23 +144,22 @@ const handler = async (event, context) => {
 
   try {
     // step 3: commit to new branch
-    const commitData = {
+    await repo_api.writeNewExampleToRepo({
       data_yaml: yamlText,
       filename: filename,
       commit_msg: `New example: ${filename} 🎉`,
       branch: branchName,
-    }
-    resp_3 = await repo_api.writeNewExampleToRepo(commitData);
+    });
   } catch (error) {
     console.error(error);
-    return responses.failedRequestToGithub(new Error(`Could not createContent to ${branchName}. Tried writing:\n${commitData}\n`));
+    return responses.failedRequestToGithub(new Error(`Could not createContent to ${branchName}`));
   }
 
   console.log("== step 4: create a new pull request on github.com ====================");
 
   try {
     // step 4: create a new pull request on github.com
-    const resp_4 = await repo_api.createNewPullRequest(filename, branchName, PR_TO_BRANCH_FROM);
+    await repo_api.createNewPullRequest(filename, branchName, PR_TO_BRANCH_FROM);
   } catch (error) {
     console.error(error);
     return responses.failedRequestToGithub(new Error(`Failed Creating from ${branchName} into ${PR_TO_BRANCH_FROM}`));
@@ -170,5 +169,3 @@ const handler = async (event, context) => {
 
   return responses.succsess("PR Created Succesfully!")
 }
-
-module.exports = { handler }

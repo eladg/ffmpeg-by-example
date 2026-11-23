@@ -49,8 +49,11 @@ To develop & test the Serverless API, install [netlify cli](https://docs.netlify
 ```shell
 $ git clone https://github.com/eladg/ffmpeg-by-example.git
 $ cd ffmpeg-by-example
+$ npm install
 $ netlify functions:serve -p 8888
 ```
+
+The function needs `FFMPEG_BY_EXAMPLE_GITHUB_TOKEN`, `FFMPEG_BY_EXAMPLE_GITHUB_REPO` and `FFMPEG_BY_EXAMPLE_EXAMPLES_PATH` (see `api/post_new_example/.env-example`). Unit tests mock GitHub and run with `npm test`.
 
 You can now test the serverless API locally using something like:
 ```bash
