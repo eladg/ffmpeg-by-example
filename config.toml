@@ -8,7 +8,8 @@ enableRobotsTXT = true
   pagerSize = 50
 
 [params]
-  apiURL = "https://ffmpegbyexample.com"
+  # empty = same origin, so production, deploy previews and branch deploys each call their own functions
+  apiURL = ""
   # apiURL = "http://localhost:8888"
   favicon = "/favicon.ico"
   description = "Explore the depth of FFmpeg with Examples"

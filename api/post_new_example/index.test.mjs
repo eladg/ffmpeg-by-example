@@ -85,9 +85,17 @@ test("creates branch, commits the example and opens a PR", async () => {
   assert.equal(frontmatter.filename, "TEST1234/scale_video_to_720p.md");
 });
 
-test("returns 403 when GitHub fails", async () => {
+test("returns 502 with GitHub's error when GitHub fails", async () => {
   globalThis.fetch = async () => new Response(JSON.stringify({ message: "Bad credentials" }), { status: 401 });
   const res = await handler(post(validBody));
-  assert.equal(res.status, 403);
-  assert.match((await res.json()).message, /Could not find main/);
+  assert.equal(res.status, 502);
+  assert.match((await res.json()).message, /Could not find main: .*\(401\): Bad credentials/);
+});
+
+test("returns 500 naming missing environment variables", async () => {
+  delete process.env.FFMPEG_BY_EXAMPLE_GITHUB_TOKEN;
+  const res = await handler(post(validBody));
+  assert.equal(res.status, 500);
+  assert.match((await res.json()).message, /FFMPEG_BY_EXAMPLE_GITHUB_TOKEN not set/);
+  assert.equal(calls.length, 0);
 });

@@ -10,6 +10,7 @@ const json = (status, message) => {
 };
 
 export const failedValidateDataResponse = (error) => json(403, error);
-export const failedRequestToGithub      = (error) => json(403, error);
+export const failedRequestToGithub      = (error) => json(502, error);
+export const serverMisconfigured        = (error) => json(500, error);
 export const methodNotAllowed           = ()      => json(405, "Method Not Allowed");
 export const succsess                   = (msg)   => json(200, msg);

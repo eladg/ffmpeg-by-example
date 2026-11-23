@@ -7,6 +7,17 @@ const getConfig = () => ({
 });
 
 /**
+ * @returns {string[]} names of required environment variables that are not set
+ */
+export const getMissingConfig = () => {
+  return [
+    "FFMPEG_BY_EXAMPLE_GITHUB_REPO",
+    "FFMPEG_BY_EXAMPLE_GITHUB_TOKEN",
+    "FFMPEG_BY_EXAMPLE_EXAMPLES_PATH",
+  ].filter(name => !process.env[name]);
+};
+
+/**
  * @param {string} method - HTTP method
  * @param {string} path - path under /repos/{owner}/{repo}
  * @param {Object} [body] - JSON body

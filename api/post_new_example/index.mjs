@@ -95,6 +95,12 @@ export default async (req) => {
     return responses.methodNotAllowed()
   }
 
+  const missingConfig = repo_api.getMissingConfig();
+  if (missingConfig.length) {
+    console.error("missing environment variables:", missingConfig);
+    return responses.serverMisconfigured(`Server misconfigured: ${missingConfig.join(", ")} not set`);
+  }
+
   try {
     body = await req.json();
     validateInput(body);
@@ -127,7 +133,7 @@ export default async (req) => {
     ref = await repo_api.getRefHeadOfBranch(PR_TO_BRANCH_FROM);
   } catch (error) {
     console.error(error);
-    return responses.failedRequestToGithub(new Error(`Could not find ${PR_TO_BRANCH_FROM}`));
+    return responses.failedRequestToGithub(new Error(`Could not find ${PR_TO_BRANCH_FROM}: ${error.message}`));
   }
 
   console.log(`== step 2: create new branch '${branchName}' ====================`);
@@ -137,7 +143,7 @@ export default async (req) => {
     await repo_api.createNewBranchFromRef(branchName, ref);
   } catch (error) {
     console.error(error);
-    return responses.failedRequestToGithub(new Error(`Could not branch to ${branchName}`));
+    return responses.failedRequestToGithub(new Error(`Could not branch to ${branchName}: ${error.message}`));
   }
 
   console.log("== step 3: commit to new branch ====================");
@@ -152,7 +158,7 @@ export default async (req) => {
     });
   } catch (error) {
     console.error(error);
-    return responses.failedRequestToGithub(new Error(`Could not createContent to ${branchName}`));
+    return responses.failedRequestToGithub(new Error(`Could not createContent to ${branchName}: ${error.message}`));
   }
 
   console.log("== step 4: create a new pull request on github.com ====================");
@@ -162,7 +168,7 @@ export default async (req) => {
     await repo_api.createNewPullRequest(filename, branchName, PR_TO_BRANCH_FROM);
   } catch (error) {
     console.error(error);
-    return responses.failedRequestToGithub(new Error(`Failed Creating from ${branchName} into ${PR_TO_BRANCH_FROM}`));
+    return responses.failedRequestToGithub(new Error(`Failed Creating from ${branchName} into ${PR_TO_BRANCH_FROM}: ${error.message}`));
   }
 
   console.log("== PR Created Succesfully! ====================");
