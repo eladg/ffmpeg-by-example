@@ -14,9 +14,16 @@
           {{ block "main" . }}
           {{ end }}  
         </div>
-      </div>  
+      </div>
+
+      <footer class="site-footer">
+        <a href="{{ "privacy/" | relURL }}">Privacy policy</a>
+        ·
+        <a href="#" data-open-consent>Cookie settings</a>
+      </footer>
     </div>
 
     {{ partial "meta/donation" . }}
+    {{ partial "consent.html" . }}
   </body>
 </html>

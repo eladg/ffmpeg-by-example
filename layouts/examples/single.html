@@ -1,9 +1,5 @@
 {{ define "main" }}
 
-<script type="text/javascript">
-  amplitude.getInstance().logEvent('example-page', { example_id: {{ .Params.id }} } );
-</script>
-
 <article>
   <div class="content__container">
     {{ partial "posts/top.html" . }}

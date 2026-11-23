@@ -1,4 +1,4 @@
-title = "FFmpeg By Example"
+title = "FFmpegByExample"
 # production URL: canonicals, sitemap and feeds must be absolute.
 # `hugo server` uses localhost, and Netlify previews override it (see netlify.toml).
 baseURL = "https://ffmpegbyexample.com/"

@@ -97,56 +97,36 @@ export default async (req) => {
 
   const missingConfig = repo_api.getMissingConfig();
   if (missingConfig.length) {
-    console.error("missing environment variables:", missingConfig);
     return responses.serverMisconfigured(`Server misconfigured: ${missingConfig.join(", ")} not set`);
   }
 
   try {
     body = await req.json();
     validateInput(body);
-    console.log("valid body", body, "\n")
 
-    // filename
     filename   = getFilename(body);
-    console.log("filename", filename, "\n")
-
     author     = getAuthorDisplayName(body.author_name, body.author_email);
-    console.log("author", author, "\n")
-
     branchName = getMergeToBranchName(body.id);
-    console.log("branchName", branchName, "\n")
-
     tags       = getTags(body.tags)
-    console.log("tags", tags, "\n")
-
   } catch (error) {
-    console.error(error);
     return responses.failedValidateDataResponse(error.message);
   }
 
   yamlText = getExampleYaml(body, { filename, author, tags, date: new Date().toISOString() });
 
-  console.log(`== step 1: Get ref for '${PR_TO_BRANCH_FROM}' ====================`);
-
   try {
     // step 1: Get ref for 'main'
     ref = await repo_api.getRefHeadOfBranch(PR_TO_BRANCH_FROM);
   } catch (error) {
-    console.error(error);
     return responses.failedRequestToGithub(new Error(`Could not find ${PR_TO_BRANCH_FROM}: ${error.message}`));
   }
-
-  console.log(`== step 2: create new branch '${branchName}' ====================`);
 
   try {
     // step 2: create new branch
     await repo_api.createNewBranchFromRef(branchName, ref);
   } catch (error) {
-    console.error(error);
     return responses.failedRequestToGithub(new Error(`Could not branch to ${branchName}: ${error.message}`));
   }
-
-  console.log("== step 3: commit to new branch ====================");
 
   try {
     // step 3: commit to new branch
@@ -157,21 +137,15 @@ export default async (req) => {
       branch: branchName,
     });
   } catch (error) {
-    console.error(error);
     return responses.failedRequestToGithub(new Error(`Could not createContent to ${branchName}: ${error.message}`));
   }
-
-  console.log("== step 4: create a new pull request on github.com ====================");
 
   try {
     // step 4: create a new pull request on github.com
     await repo_api.createNewPullRequest(filename, branchName, PR_TO_BRANCH_FROM);
   } catch (error) {
-    console.error(error);
     return responses.failedRequestToGithub(new Error(`Failed Creating from ${branchName} into ${PR_TO_BRANCH_FROM}: ${error.message}`));
   }
-
-  console.log("== PR Created Succesfully! ====================");
 
   return responses.succsess("PR Created Succesfully!")
 }

@@ -1,0 +1,62 @@
+<div id="consent-banner" class="consent-banner" role="dialog" aria-label="Cookie consent" hidden>
+  <button type="button" class="consent-close" data-consent-close aria-label="Close">×</button>
+  <p>
+    We use Google Analytics cookies to see which examples are useful.
+    <a href="{{ "privacy/" | relURL }}">Privacy policy</a>
+  </p>
+  <div class="consent-actions">
+    <button type="button" class="consent-btn" data-consent="denied">Decline</button>
+    <button type="button" class="consent-btn consent-btn--accept" data-consent="granted">Accept</button>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const KEY = 'ffmpegbyexample:consent';
+    const DISMISSED_KEY = 'ffmpegbyexample:consent-dismissed';
+    const banner = document.getElementById('consent-banner');
+
+    // show until a choice is made; closing it hides it for the rest of the session only
+    let stored = null;
+    let dismissed = null;
+    try {
+      stored = localStorage.getItem(KEY);
+      dismissed = sessionStorage.getItem(DISMISSED_KEY);
+    } catch (e) {}
+    banner.hidden = stored !== null || dismissed !== null;
+
+    // Consent Mode stops new analytics cookies but keeps existing ones, so delete them on Decline
+    const deleteAnalyticsCookies = () => {
+      const host = location.hostname;
+      const domains = ['', host, '.' + host, '.' + host.split('.').slice(-2).join('.')];
+      document.cookie.split('; ').map((c) => c.split('=')[0]).filter((name) => name.startsWith('_ga'))
+        .forEach((name) => domains.forEach((domain) => {
+          document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/` + (domain ? `; domain=${domain}` : '');
+        }));
+    };
+
+    banner.addEventListener('click', (event) => {
+      // closing makes no choice: the region's default (see html-head.html) stays in effect
+      if (event.target.closest('[data-consent-close]')) {
+        try { sessionStorage.setItem(DISMISSED_KEY, '1'); } catch (e) {}
+        banner.hidden = true;
+        return;
+      }
+
+      const choice = event.target.dataset.consent;
+      if (!choice) return;
+      gtag('consent', 'update', { analytics_storage: choice });
+      if (choice === 'denied') deleteAnalyticsCookies();
+      try { localStorage.setItem(KEY, choice); } catch (e) {}
+      banner.hidden = true;
+    });
+
+    // "Cookie settings" link in the footer
+    document.querySelectorAll('[data-open-consent]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        banner.hidden = false;
+      });
+    });
+  })();
+</script>

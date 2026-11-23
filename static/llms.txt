@@ -1,12 +1,12 @@
-# FFmpeg by Example
+# FFmpegByExample
 
 > A community cookbook of FFmpeg commands: copy-paste-ready examples for common video, audio, image, and streaming tasks, each solving one task with a minimal explanation.
 
-FFmpeg by Example is a fast lookup tool for humans and AI agents. Every example shows one complete FFmpeg command for one task. Commands use generic filenames such as input.mp4 and output.mp4; substitute your own files. Browse all examples below by category, or use the site search at https://ffmpegbyexample.com/.
+FFmpegByExample is a fast lookup tool for humans and AI agents. Every example shows one complete FFmpeg command for one task. Commands use generic filenames such as input.mp4 and output.mp4; substitute your own files. Browse all examples below by category, or use the site search at https://ffmpegbyexample.com/.
 
 ## About this site
 
-- [About](https://ffmpegbyexample.com/about/): What FFmpeg by Example is and how the project works.
+- [About](https://ffmpegbyexample.com/about/): What FFmpegByExample is and how the project works.
 - [Contribute](https://ffmpegbyexample.com/contribute/): How to submit a new example; submissions become GitHub pull requests for review.
 
 ## Video

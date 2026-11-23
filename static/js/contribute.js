@@ -117,7 +117,7 @@ const renderMedia = () => {
     el = Object.assign(document.createElement("audio"), { src: media, controls: true, preload: "metadata" });
   } else if (type === "youtube-embed") {
     el = Object.assign(document.createElement("iframe"), {
-      src: `https://www.youtube.com/embed/${media}`,
+      src: `https://www.youtube-nocookie.com/embed/${media}`,
       title: "YouTube video",
       allowFullscreen: true,
     });

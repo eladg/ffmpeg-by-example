@@ -1,6 +1,6 @@
 ![Logo of the project](https://www.ffmpegbyexample.com/img/ffmpeg-by-example-500px.png)
 
-# FFmpeg By Example dot com
+# FFmpegByExample dot com
 [![CC BY 4.0][cc-by-shield]][cc-by] [![Netlify Status](https://api.netlify.com/api/v1/badges/3b118d24-ed43-4f2f-a979-1b523b092867/deploy-status)](https://app.netlify.com/sites/ffmpeg-by-example/deploys)
 
 ffmpegbyexample.com is a documentation website to showcase all unique and different ways to use [FFmpeg](https://ffmpeg.org).
@@ -19,7 +19,7 @@ The site is staticly generated using [hugo](https://gohugo.io/) and deployed on 
 Start by setting `baseURL` and `apiURL` on `config.toml`
 
 ```toml
-title = "FFmpeg By Example"
+title = "FFmpegByExample"
 baseURL = "https://www.ffmpegbyexample.com" or "http://localhost:1313"
 enableRobotsTXT = true
 
