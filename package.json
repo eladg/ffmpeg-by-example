@@ -1,8 +1,9 @@
 {
-  "dependencies": {
-    "netlify-lambda": "^2.0.6"
-  },
+  "private": true,
   "scripts": {
-    "postinstall": "netlify-lambda install"
-  }  
+    "test": "node --test api/"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
 }
