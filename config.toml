@@ -1,7 +1,7 @@
 title = "FFmpeg By Example"
-baseURL = "/"
-# baseURL = "https://www.ffmpegbyexample.com"
-# baseURL = "http://localhost:1313"
+# production URL: canonicals, sitemap and feeds must be absolute.
+# `hugo server` uses localhost, and Netlify previews override it (see netlify.toml).
+baseURL = "https://ffmpegbyexample.com/"
 enableRobotsTXT = true
 
 [pagination]

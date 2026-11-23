@@ -3,6 +3,13 @@
   functions = "api"
   publish = "public"
 
+# previews and branch deploys link to their own URL instead of production
+[context.deploy-preview]
+  command = "hugo --baseURL $DEPLOY_PRIME_URL"
+
+[context.branch-deploy]
+  command = "hugo --baseURL $DEPLOY_PRIME_URL"
+
 [build.environment]
   HUGO_VERSION = "0.170.1"
   NODE_VERSION = "22"
