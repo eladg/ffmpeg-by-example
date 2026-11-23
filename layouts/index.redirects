@@ -10,8 +10,12 @@
 /tags/normalize         /tags/normalization/  301
 /tags/cut               /tags/video-editing/  301
 
-# placeholder content page that is never rendered
+# the unused /edit section (and its placeholder page) was removed
+/edit       /contribute/  301
 /edit/keep  /contribute/  301
+
+# paginated home pages used to link to "contribute" relatively (fixed in 5def65a)
+/page/:n/contribute  /contribute/  301
 
 # "edit this example" links used to point to /edit/<ID>, which never existed
 {{- range $page := where site.RegularPages "Section" "examples" }}
