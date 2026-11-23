@@ -2,39 +2,78 @@
 
 <div class="content__example_command">
   {{ if isset .Params "terminal_command" }}
-    {{ highlight $command "bash" "" }}
+    <div class="command-block">
+      {{ highlight $command "bash" "" }}
+      <!-- copy / check icons: GitHub Octicons copy-16 and check-16 (MIT) -->
+      <button type="button" class="copy-icon-btn" id="copy-icon-btn" aria-label="Copy command" title="Copy">
+        <span class="copy-icon-label" aria-live="polite"></span>
+        <svg class="icon-copy" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"/><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"/></svg>
+        <svg class="icon-check" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+      </button>
+    </div>
     <div class="actions">
       <button class="action-btn" id="copy-command-btn">Copy to clipboard</button>
-      <button class="action-btn" id="wasm-try-btn">Try it online</button>  
+      <button class="action-btn" id="wasm-try-btn">Try it online</button>
     </div>
   {{ end }}
 </div>
 
 <script type="application/javascript">
   var copyBtn = document.getElementById("copy-command-btn")
+  var copyIconBtn = document.getElementById("copy-icon-btn")
   var wasmBtn = document.getElementById("wasm-try-btn")
+  var exampleId = {{ .Params.id }};
+  var copiedTimer;
 
-  var copy = (text) => {
+  // GA4 events (subject to the visitor's consent choice, see partials/consent.html)
+  var track = (name, params) => {
+    if (typeof gtag === "function") {
+      gtag("event", name, Object.assign({ example_id: exampleId }, params));
+    }
+  }
+
+  // the icon turns into a green tick and says "Copied!" for 2 seconds
+  var showCopied = () => {
+    copyIconBtn.classList.add("is-copied");
+    copyIconBtn.querySelector(".copy-icon-label").textContent = "Copied!";
+    copyBtn.textContent = "Copied!";
+    clearTimeout(copiedTimer);
+    copiedTimer = setTimeout(() => {
+      copyIconBtn.classList.remove("is-copied");
+      copyIconBtn.querySelector(".copy-icon-label").textContent = "";
+      copyBtn.textContent = "Copy to clipboard";
+    }, 2000);
+  }
+
+  var copy = (text, method) => {
     window.navigator.clipboard.writeText(text)
     .then(() => {
-      alert("Copied to clipboard!");
+      track("copy_command", { method: method });
+      showCopied();
     })
     .catch(err => {
       console.log('Something went wrong', err);
     });
   }
 
-  var handleCopy = (e) => {
+  // copying by selecting the command text counts too
+  document.querySelector(".content__example_command .highlight")?.addEventListener("copy", () => {
+    track("copy_command", { method: "selection" });
+  });
+
+  var handleCopy = (method) => (e) => {
     e.preventDefault()
     const cmd = {{ $command }};
-    copy(cmd)
+    copy(cmd, method)
   }
 
   var handleTryWasm = (e) => {
     e.preventDefault()
+    track("try_online_click", {});
     alert("Our WebAssembly FFmpeg Player is currently under construction. With your support, we can make it happen sooner! ;)")
   }
 
-  copyBtn.onclick = handleCopy;
+  copyBtn.onclick = handleCopy("button");
+  copyIconBtn.onclick = handleCopy("icon");
   wasmBtn.onclick = handleTryWasm;
-</script> 
+</script>

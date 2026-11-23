@@ -123,3 +123,57 @@ pre {
 pre a {
   color: #c57d7d;
 }
+
+/* copy icon in the top-right corner of the command (terminal/highlight.html) */
+.command-block {
+  position: relative;
+}
+
+.command-block .highlight > pre {
+  padding-right: 3rem;
+}
+
+.copy-icon-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  color: #8b8fa7;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.copy-icon-btn:hover,
+.copy-icon-btn:focus-visible,
+.copy-icon-btn.is-copied {
+  color: #f8f8f2;
+  background: #343746;
+  border-color: #44475a;
+  outline: none;
+}
+
+.copy-icon-btn .icon-check,
+.copy-icon-btn.is-copied .icon-copy {
+  display: none;
+}
+
+.copy-icon-btn.is-copied .icon-check {
+  display: block;
+  color: #3fb950;
+}
+
+.copy-icon-label {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #3fb950;
+}
+
+.copy-icon-label:empty {
+  display: none;
+}
