@@ -1,5 +1,5 @@
 <div class="content__meta_description">
-  {{ if isset .Params "description" }}
-    {{ .Params.Description | .RenderString }}
+  {{ with .Description }}
+    {{ . | $.RenderString }}
   {{ end }}
 </div>

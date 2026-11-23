@@ -32,7 +32,7 @@ This project has two main components:
 
 ### Static Website
 
-The run the static site generator [install hugo](https://gohugo.io/getting-started/installing), and run the following commands:
+The run the static site generator [install hugo](https://gohugo.io/getting-started/installing) (the version pinned as `HUGO_VERSION` in `netlify.toml`), and run the following commands:
 
 ```shell
 $ git clone https://github.com/eladg/ffmpeg-by-example.git
