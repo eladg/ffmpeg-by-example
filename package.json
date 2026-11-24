@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "test": "node --test api/"
+    "test": "node --test api/ scripts/",
+    "build": "node scripts/build.mjs"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"

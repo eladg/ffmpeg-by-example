@@ -1,14 +1,16 @@
+# npm run build (scripts/build.mjs) runs the data steps (e.g. refreshing data/ffmpeg/changelog.json),
+# then hugo with any arguments given after --
 [build]
-  command = "hugo"
+  command = "npm run build"
   functions = "api"
   publish = "public"
 
 # previews and branch deploys link to their own URL instead of production
 [context.deploy-preview]
-  command = "hugo --baseURL $DEPLOY_PRIME_URL"
+  command = "npm run build -- --baseURL $DEPLOY_PRIME_URL"
 
 [context.branch-deploy]
-  command = "hugo --baseURL $DEPLOY_PRIME_URL"
+  command = "npm run build -- --baseURL $DEPLOY_PRIME_URL"
 
 [build.environment]
   HUGO_VERSION = "0.170.1"
