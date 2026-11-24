@@ -1,6 +1,5 @@
 ---
 id: JD45D51F
-version: '1.0'
 enabled: true
 date: '2026-11-20T14:48:44.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -21,6 +20,8 @@ tags:
   - adelay
   - lip-sync
   - audio-delay
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -af "adelay=500:all=1" -c:v copy -c:a aac output.mp4
 example_type: no-preview
