@@ -27,8 +27,6 @@ tags:
   - cut
   - stream-copy
 tested_with: null
-versions:
-  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -ss 00:00:30 -to 00:01:00 -c copy output.mp4
 example_type: no-preview
