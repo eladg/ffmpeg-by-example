@@ -1,6 +1,5 @@
 ---
 id: 8YGJLNJS
-version: '1.0'
 enabled: true
 date: '2026-11-21T14:45:21.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -22,6 +21,8 @@ tags:
   - dts
   - ac3
   - aac
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mkv -map 0 -c:v copy -c:a aac -b:a 192k output.mkv
 example_type: no-preview
