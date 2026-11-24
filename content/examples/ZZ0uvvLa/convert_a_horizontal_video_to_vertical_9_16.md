@@ -1,6 +1,5 @@
 ---
 id: ZZ0uvvLa
-version: '1.0'
 enabled: true
 date: '2026-11-15T14:47:13.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -19,6 +18,8 @@ tags:
   - vertical-video
   - 9-16
   - crop
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -vf "crop=ih*9/16:ih,scale=1080:1920,setsar=1" output.mp4
 example_type: no-preview
