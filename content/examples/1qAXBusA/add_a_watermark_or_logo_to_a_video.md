@@ -1,6 +1,5 @@
 ---
 id: 1qAXBusA
-version: '1.0'
 enabled: true
 date: '2026-11-08T17:46:00.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -24,6 +23,8 @@ tags:
   - logo
   - overlay
 tested_with: null
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -i logo.png -filter_complex "overlay=10:10" -c:a copy output.mp4
 example_type: no-preview
