@@ -1,0 +1,31 @@
+{{- /*
+  /versions/: every version in data/ffmpeg/changelog.json, newest first. Reads the
+  data, not site.Taxonomies.versions (which only has versions that examples use).
+*/ -}}
+{{ define "main" }}
+  {{- $changelog := hugo.Data.ffmpeg.changelog }}
+  <article class="list">
+    <h1>{{ .Title }}</h1>
+    <p>
+      Every FFmpeg release from the <a href="https://github.com/FFmpeg/FFmpeg/blob/master/Changelog">official Changelog</a>, newest first.
+      The latest release is <a href="{{ (site.GetPage (printf "/versions/%s" $changelog.latest)).RelPermalink }}">FFmpeg {{ $changelog.latest }}</a>.
+    </p>
+
+    <ul class="posts-list">
+      {{- range $v := $changelog.versions }}
+        {{- $term := site.GetPage (printf "/versions/%s" $v.slug) }}
+        {{- $examples := len (index site.Taxonomies.versions $v.slug) }}
+        <li style="list-style: none; margin-bottom: 5px;">
+          <div>▲ <a href="{{ $term.RelPermalink }}">{{ $term.Title }}</a></div>
+          <div>
+            <span class="li-description">
+              {{- with $v.note }}{{ . }} · {{ end -}}
+              {{ partial "versions/count.html" $v }} Changelog entries ·
+              {{ if $examples }}<a class="posts-list-tags" href="{{ $term.RelPermalink }}#examples">{{ $examples }} example{{ if ne $examples 1 }}s{{ end }}</a>{{ else }}no examples yet{{ end }}
+            </span>
+          </div>
+        </li>
+      {{- end }}
+    </ul>
+  </article>
+{{ end }}

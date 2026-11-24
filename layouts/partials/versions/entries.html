@@ -1,0 +1,24 @@
+{{- /*
+  Changelog entries as a list. Each entry is an anchor (#entry-<slug>); the examples
+  linked to it through their `changelog:` front matter are listed under it. An entry
+  without examples gets a quiet "+ add an example" link to the contribute page,
+  shown on hover/focus (always, faintly, on touch screens): see style.css.
+  Context: dict "entries" (list of {text, slug}) "release" (e.g. "4.3").
+*/ -}}
+{{- $examples := partialCached "versions/examples-by-entry.html" . "examples-by-entry" }}
+{{- $release := .release }}
+<ul class="version-entries">
+  {{- range .entries }}
+  <li id="entry-{{ .slug }}">{{ .text }}
+    {{- with index $examples .slug }}
+    <ul class="version-entry-examples">
+      {{- range $p := . }}
+      <li>Example: <a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></li>
+      {{- end }}
+    </ul>
+    {{- else }}
+    <a class="version-entry-cta" href="{{ "contribute/" | relURL }}?entry={{ .slug | urlquery }}&amp;version={{ $release | urlquery }}" aria-label="Add an example for: {{ .text }}">+ add an example</a>
+    {{- end }}
+  </li>
+  {{- end }}
+</ul>

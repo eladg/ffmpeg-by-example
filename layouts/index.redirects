@@ -17,6 +17,10 @@
 # paginated home pages used to link to "contribute" relatively (fixed in 5def65a)
 /page/:n/contribute  /contribute/  301
 
+# stable URL for the newest FFmpeg release in data/ffmpeg/changelog.json (302: it moves).
+# Forced (!) so the alias page Hugo writes there (for hugo server) never shadows it.
+/versions/latest  /versions/{{ hugo.Data.ffmpeg.changelog.latest }}/  302!
+
 # "edit this example" links used to point to /edit/<ID>, which never existed
 {{- range $page := where site.RegularPages "Section" "examples" }}
 {{- with $page.Params.id }}

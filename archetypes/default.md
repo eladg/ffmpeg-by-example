@@ -6,6 +6,8 @@ categories = [""]
 tags = [""]
 # FFmpeg releases this exact command was verified on (quoted slugs from data/ffmpeg/changelog.json, e.g. ["7.1"]; "0.x" = before 1.0). Not a minimum version.
 versions = []
+# Slugs of FFmpeg Changelog entries this example demonstrates (`slug` in data/ffmpeg/changelog.json, e.g. ["xfade-video-filter"]).
+changelog = []
 author = ""
 date = {{ .Date }}
 enabled = true

@@ -1,0 +1,8 @@
+{{- /* Changelog entry slug -> examples whose `changelog:` lists it (use partialCached). */ -}}
+{{- $s := newScratch }}
+{{- range $page := site.RegularPages }}
+  {{- range $slug := $page.Params.changelog }}
+    {{- $s.Add $slug (slice $page) }}
+  {{- end }}
+{{- end }}
+{{- return $s.Values }}

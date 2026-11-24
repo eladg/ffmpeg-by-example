@@ -1,0 +1,15 @@
+{{- /*
+  Changelog entry slug -> list of {page, release, text}, built once per build
+  (use partialCached). `page` is the version slug whose page shows the entry
+  ("0.x" for releases before 1.0), `release` the FFmpeg release it's listed under.
+  A slug can map to more than one entry when the same text is in two versions.
+*/ -}}
+{{- $s := newScratch }}
+{{- range $v := hugo.Data.ffmpeg.changelog.versions }}
+  {{- range $r := $v.releases | default (slice $v) }}
+    {{- range $r.entries }}
+      {{- $s.Add .slug (slice (dict "page" $v.slug "release" $r.version "text" .text)) }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- return $s.Values }}
