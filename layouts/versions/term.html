@@ -1,5 +1,6 @@
 {{- /*
-  /versions/<slug>/: the version's Changelog entries, then the examples that list it.
+  /versions/<slug>/: the version's Changelog entries, then its examples: those verified
+  on it (`versions:`) and those linked to one of its entries (`changelog:`).
   0.x shows each release before 1.0 as its own section.
 */ -}}
 {{ define "main" }}
@@ -22,15 +23,16 @@
     {{- end }}
     {{- end }}
 
-    <h2 id="examples">Examples verified on {{ .Title }}</h2>
-    {{- with .Pages }}
+    <h2 id="examples">Examples for {{ .Title }}</h2>
+    {{- with and $v (partialCached "versions/examples-for.html" $v $v.slug) }}
+    <p>Examples verified on this release, or using something it added.</p>
     <ul class="posts-list">
       {{- range $page := . }}
         {{ partial "list/item.html" $page }}
       {{- end }}
     </ul>
     {{- else }}
-    <p>No examples list this version yet. <a href="{{ "contribute/" | relURL }}">Contribute one</a>.</p>
+    <p>No examples for this version yet. <a href="{{ "contribute/" | relURL }}">Contribute one</a>.</p>
     {{- end }}
   </article>
 {{ end }}
