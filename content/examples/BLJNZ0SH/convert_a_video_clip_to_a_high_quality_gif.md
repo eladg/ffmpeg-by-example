@@ -29,8 +29,8 @@ tags:
   - palettegen
   - paletteuse
 tested_with: null
-versions:
-  - '8.1'
+changelog:
+  - palettegen-and-paletteuse-filters
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -vf "fps=15,scale=640:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" output.gif
 example_type: no-preview
