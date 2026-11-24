@@ -40,6 +40,9 @@ categories:
 tags:
   - webp
   - loop
+changelog:
+  - webp-encoding-via-libwebp
+  - webp-muxer-with-animated-webp-support
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i /path/to/sequence/%d.png -vcodec libwebp -pix_fmt yuv420p -loop 0 -s

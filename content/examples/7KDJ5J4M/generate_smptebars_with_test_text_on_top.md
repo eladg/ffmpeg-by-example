@@ -30,6 +30,9 @@ tags:
   - test-pattern
   - drawtext
   - video-calibration
+changelog:
+  - smptebars-source
+  - drawtext-video-filter-fontconfig-support
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -f lavfi -i "smptebars=s=640x360" -vf

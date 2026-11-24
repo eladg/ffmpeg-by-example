@@ -41,6 +41,8 @@ tags:
   - testsrc
   - camera
   - crop
+changelog:
+  - make-the-crop-filter-accept-parametric-expressions
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -f lavfi -i testsrc=duration=30:size=1280x720:rate=30 -vf

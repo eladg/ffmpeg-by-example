@@ -22,6 +22,8 @@ tags:
   - m3u8
   - stream-download
 tested_with: null
+changelog:
+  - apple-http-live-streaming-demuxer
 thumbnail_url: null
 terminal_command: ffmpeg -i https://example.com/stream.m3u8 -c copy output.mp4
 example_type: no-preview

@@ -75,6 +75,8 @@ tags:
   - sendcmd
   - drawtext
   - drawbox
+changelog:
+  - sendcmd-and-asendcmd-filters
 thumbnail_url: null
 terminal_command: ffmpeg -y -i input.mp4 -vf 'sendcmd=f=sendcmd.txt,drawbox,drawtext' output.mp4
 example_type: youtube-embed

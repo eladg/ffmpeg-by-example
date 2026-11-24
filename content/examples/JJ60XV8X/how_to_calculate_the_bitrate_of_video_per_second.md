@@ -11,6 +11,10 @@ tags:
   - bitrate
   - encoding
   - python
+changelog:
+  - ffprobe-select-streams-option
+  - ffprobe-show-packets-option-added
+  - ffprobe-show-entries-option
 thumbnail_url: null
 terminal_command: >-
   # extract the packet size into packets.csv

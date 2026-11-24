@@ -27,6 +27,8 @@ categories:
 tags:
   - video-source
   - lavfi
+changelog:
+  - life-source
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -f lavfi -i

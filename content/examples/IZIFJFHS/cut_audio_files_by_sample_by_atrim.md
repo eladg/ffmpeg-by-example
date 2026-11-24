@@ -11,6 +11,8 @@ categories:
   - audio
 tags:
   - mp3
+changelog:
+  - trim-and-atrim-filters
 thumbnail_url: null
 terminal_command: ffmpeg -i input.wav -af atrim=start_sample=44200:end_sample=120000 output.wav
 example_type: picture

@@ -28,6 +28,8 @@ tags:
   - m4a
   - ogg
   - aac
+changelog:
+  - extensive-native-aac-encoder-improvements-and-removal-of-experimental-flag
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i song.ogg -map_metadata 0:s:a:0 -c:a aac -b:a 320k -aac_pns 0

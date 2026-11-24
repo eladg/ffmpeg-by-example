@@ -45,6 +45,9 @@ categories:
 tags:
   - extract-thumbnails
   - video-extract
+changelog:
+  - select-filter-added
+  - setpts-filter-added
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i video.mp4 -vf

@@ -16,6 +16,10 @@ categories:
 tags:
   - filter
   - lagfun
+changelog:
+  - lagfun-filter
+  - hue-filter
+  - avfoundation-input-device
 thumbnail_url: null
 terminal_command: >-
   # linux

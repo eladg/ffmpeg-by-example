@@ -23,6 +23,8 @@ categories:
 tags:
   - server
   - rtmp
+changelog:
+  - rtmp-support-in-libavformat
 thumbnail_url: null
 terminal_command: |-
   # RTMP 'server', will wait for a client to connect

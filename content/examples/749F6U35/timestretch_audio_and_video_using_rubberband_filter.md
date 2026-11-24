@@ -48,6 +48,9 @@ tags:
   - timestrech
   - rubberband
   - speed
+changelog:
+  - rubberband-filter
+  - setpts-filter-added
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i input.mp4 -filter_complex

@@ -109,6 +109,10 @@ categories:
   - video-filters
 tags:
   - zoompan
+changelog:
+  - zoompan-filter
+  - overlay-filter-added
+  - add-fps-filter
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -loop 1 -i "image.png" -filter_complex

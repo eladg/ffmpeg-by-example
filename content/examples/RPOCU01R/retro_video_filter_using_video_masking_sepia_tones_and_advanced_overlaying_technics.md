@@ -16,6 +16,10 @@ tags:
   - filter
   - sepia
   - art
+changelog:
+  - movie-source-added
+  - chromakey-filter
+  - colorchannelmixer-filter
 thumbnail_url: null
 terminal_command: >-
   # take input.mp4, square.png mask file and '9v9VVN1RE84.mp4' grit/film

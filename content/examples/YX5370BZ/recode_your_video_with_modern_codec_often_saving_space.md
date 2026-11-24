@@ -19,6 +19,8 @@ categories:
 tags:
   - 'h265'
   - 'encoding'
+changelog:
+  - libx265-encoder
 thumbnail_url: null
 terminal_command: |
   ffmpeg -i input.mp4 -c:a copy -c:v libx265 -crf 28 output.mp4

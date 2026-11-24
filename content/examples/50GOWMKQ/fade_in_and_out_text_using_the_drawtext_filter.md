@@ -69,6 +69,8 @@ tags:
   - generator
   - filter
   - subtitles
+changelog:
+  - drawtext-video-filter-fontconfig-support
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -f lavfi -i "color=c=black:s=1920x1080" -vf

@@ -24,6 +24,8 @@ tags:
   - burn-in
   - srt
 tested_with: null
+changelog:
+  - subtitles-filter
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -vf "subtitles=subtitles.srt" -c:a copy output.mp4
 example_type: no-preview

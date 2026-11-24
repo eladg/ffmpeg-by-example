@@ -30,6 +30,8 @@ categories:
   - video-filters
 tags:
   - overlay
+changelog:
+  - overlay-filter-added
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i background-video.mp4 -c:v libvpx-vp9 -i

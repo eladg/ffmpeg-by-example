@@ -161,6 +161,8 @@ categories:
   - metadata
 tags:
   - ffprobe
+changelog:
+  - ffprobe-select-streams-option
 thumbnail_url: null
 terminal_command: >-
   ffprobe -show_streams -select_streams v -v quiet video.mp4 | grep "duration="

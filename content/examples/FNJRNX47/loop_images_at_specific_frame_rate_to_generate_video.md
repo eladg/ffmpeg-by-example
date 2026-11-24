@@ -50,6 +50,9 @@ categories:
 tags:
   - gif
   - meme
+changelog:
+  - add-fps-filter
+  - loop-video-filter-and-aloop-audio-filter
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i gif/%d.png -vf '[in]fps=12[v];[v]loop=loop=-1:size=9:start=0[out]'

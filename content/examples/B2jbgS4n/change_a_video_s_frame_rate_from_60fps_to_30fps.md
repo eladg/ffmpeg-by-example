@@ -25,6 +25,8 @@ tags:
   - frame-rate
   - fps
 tested_with: null
+changelog:
+  - add-fps-filter
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -vf fps=30 -c:a copy output.mp4
 example_type: no-preview

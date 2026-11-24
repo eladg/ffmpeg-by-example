@@ -26,6 +26,9 @@ categories:
 tags:
   - filter
   - extract-thumbnails
+changelog:
+  - select-filter-added
+  - tile-video-filter
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i bunny.webm -vf select='not(mod(n\,30))',scale=160:90,tile -frames:v

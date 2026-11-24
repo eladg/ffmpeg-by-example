@@ -26,6 +26,8 @@ tags:
   - showinfo
   - metadata
   - frames
+changelog:
+  - showinfo-filter-added
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -vf showinfo -f null -
 example_type: youtube-embed

@@ -20,6 +20,10 @@ tags:
   - ffprobe
   - frame-count
   - nb-read-frames
+changelog:
+  - ffprobe-count-packets-and-count-frames-options
+  - ffprobe-select-streams-option
+  - ffprobe-show-entries-option
 thumbnail_url: null
 terminal_command: ffprobe -v error -select_streams v:0 -count_frames -show_entries stream=nb_read_frames -of default=noprint_wrappers=1:nokey=1 input.mp4
 example_type: no-preview

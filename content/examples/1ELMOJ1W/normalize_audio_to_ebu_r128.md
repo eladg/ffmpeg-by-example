@@ -28,6 +28,9 @@ tags:
   - ebu-r128
   - normalization
   - broadcast
+changelog:
+  - filter-for-loudness-analysis-following-ebu-r128
+  - volume-audio-filter-added
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i audio.wav -af "volume=$(ffmpeg -i audio.wav -af ebur128=peak=true -f
