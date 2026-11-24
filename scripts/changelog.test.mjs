@@ -86,3 +86,32 @@ test("entry slugs: from the text only, URL-safe, capped on a word boundary", () 
   assert.deepEqual(Object.keys(bySlug["7.0"].entries[0]), ["text", "slug"]);
   assert.match(validateChangelog(parseChangelog("version 7.1:\n- ...\n"), { minReleases: 1 }).join("\n"), /no slug/);
 });
+
+test("upstream changes that break example links are caught, with a suggestion", async () => {
+  const { unresolvedLinks, linksBrokenByUpdate } = await import("./example-links.mjs");
+  const committed = parseChangelog(sample);
+  const reworded = parseChangelog(sample.replace("- seven zero entry", "- seven zero entry, reworded"));
+  const examples = [
+    { file: "A/a.md", versions: ["7.0"], changelog: ["seven-zero-entry"] },
+    { file: "B/b.md", versions: ["7.l"], changelog: ["first-entry"] },          // already broken: left to Hugo
+  ];
+  assert.deepEqual(unresolvedLinks(committed, examples), [{ file: "B/b.md", field: "versions", value: "7.l" }]);
+  assert.deepEqual(linksBrokenByUpdate(committed, committed, examples), []);
+  const broken = linksBrokenByUpdate(committed, reworded, examples);
+  assert.equal(broken.length, 1);
+  assert.deepEqual([broken[0].file, broken[0].field, broken[0].value], ["A/a.md", "changelog", "seven-zero-entry"]);
+  assert.equal(broken[0].suggestion.slug, "seven-zero-entry-reworded");
+  assert.equal(broken[0].suggestion.version, "7.0");
+  assert.deepEqual(linksBrokenByUpdate(null, reworded, examples), []);          // no committed file: nothing to keep
+  const versionGone = parseChangelog(sample.replace("version 7.0:", "version 7.0.1:"));
+  assert.deepEqual(linksBrokenByUpdate(committed, versionGone, examples).map(l => l.field + ":" + l.value), ["versions:7.0"]);
+});
+
+test("readExampleLinks reads versions and changelog from the real examples", async () => {
+  const { readExampleLinks } = await import("./example-links.mjs");
+  const examples = await readExampleLinks(new URL("../content/examples", import.meta.url).pathname);
+  assert.ok(examples.length >= 50);
+  const xfade = examples.find(e => e.file.startsWith("J2DDVY12/"));
+  assert.deepEqual(xfade.changelog, ["xfade-video-filter"]);
+  assert.ok(examples.every(e => e.versions.every(v => typeof v === "string")));
+});
