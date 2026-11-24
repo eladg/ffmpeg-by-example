@@ -1,6 +1,5 @@
 ---
 id: 6pN7XpDT
-version: '1.0'
 enabled: true
 date: '2026-11-10T17:43:00.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -26,6 +25,8 @@ tags:
   - trim
   - audio-cut
 tested_with: null
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -ss 00:00:30 -i input.mp3 -t 00:00:45 -c copy output.mp3
 example_type: no-preview
