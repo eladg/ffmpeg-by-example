@@ -18,8 +18,8 @@ tags:
   - reverse
   - areverse
   - playback
-versions:
-  - '8.1'
+changelog:
+  - reverse-video-and-areverse-audio-filter
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -vf reverse -af areverse output.mp4
 example_type: no-preview
