@@ -1,6 +1,5 @@
 ---
 id: U6J2DG6Y
-version: '1.0'
 enabled: true
 date: '2026-10-11T16:45:05.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -28,6 +27,8 @@ tags:
   - cut
   - stream-copy
 tested_with: null
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -ss 00:00:30 -to 00:01:00 -c copy output.mp4
 example_type: no-preview
