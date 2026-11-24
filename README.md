@@ -7,7 +7,7 @@
 
 ## Contributing an example
 
-The easiest way is the form at **[ffmpegbyexample.com/contribute](https://ffmpegbyexample.com/contribute/)**: fill in the command, title, description, category and tags, check the preview, and the site opens a pull request on this repository for review.
+The easiest way is the form at **[ffmpegbyexample.com/contribute](https://ffmpegbyexample.com/contribute/)**: fill in the command, title, description, category and tags (and, optionally, the FFmpeg Changelog entries the command relies on), check the preview, and the site opens a pull request on this repository for review.
 
 You can also open a pull request directly: add `content/examples/<ID>/<slug>.md`, using an existing example as a template for the front matter (`id`, `title`, `description` in Markdown, `categories`, `tags`, `terminal_command`, `example_type`, `example_player_data`, `filename`, `author`, `date`). Use generic file names such as `input.mp4` and `output.mp4` in commands.
 
@@ -89,6 +89,7 @@ curl 'http://localhost:8888/.netlify/functions/post_new_example' \
     "terminal_command": "ffmpeg -i input.mp4 -vn -c:a aac -q:a 1 output.aac",
     "categories": ["audio"],
     "tags": ["aac"],
+    "changelog": [],
     "example_type": "no-preview",
     "example_player_data": null
   }'

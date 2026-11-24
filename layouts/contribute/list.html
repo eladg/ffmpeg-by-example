@@ -77,14 +77,39 @@
         <p id="cf-category-error" class="cf-error" hidden></p>
       </div>
       <div class="cf-field">
-        <span class="cf-label" id="cf-tags-label">Tags <span class="cf-required" aria-hidden="true">*</span></span>
-        <div class="cf-row" role="group" aria-labelledby="cf-tags-label">
-          <input id="cf-tag1" name="tag1" class="cf-input" list="cf-tags" autocapitalize="off" placeholder="first tag" aria-label="First tag" aria-describedby="cf-tags-hint cf-tag1-error">
-          <input id="cf-tag2" name="tag2" class="cf-input" list="cf-tags" autocapitalize="off" placeholder="optional" aria-label="Second tag (optional)">
-          <input id="cf-tag3" name="tag3" class="cf-input" list="cf-tags" autocapitalize="off" placeholder="optional" aria-label="Third tag (optional)">
-        </div>
-        <p id="cf-tags-hint" class="cf-hint">One to three tags. Reuse existing ones where they fit.</p>
-        <p id="cf-tag1-error" class="cf-error" hidden></p>
+        <label for="cf-tag">Tags <span class="cf-required" aria-hidden="true">*</span></label>
+        <ul id="cf-tags-chosen" class="cf-chips" aria-label="Chosen tags" hidden></ul>
+        <input id="cf-tag" name="tag_search" class="cf-input" list="cf-tags"
+          autocapitalize="off" autocomplete="off" spellcheck="false"
+          placeholder="Add a tag, e.g. scale"
+          aria-describedby="cf-tag-hint cf-tag-error">
+        <p id="cf-tag-hint" class="cf-hint">One to three tags. Press Enter or a comma after each; reuse existing ones where they fit.</p>
+        <p id="cf-tag-error" class="cf-error" hidden></p>
+      </div>
+
+      {{- /* Changelog entries for the picker, published as one fingerprinted JSON file
+             ([{s: slug, v: release, t: text}], newest first) that contribute.js fetches
+             only when the field is used, instead of ~2,000 <option>s in this page. */}}
+      {{- $s := newScratch }}
+      {{- range $v := hugo.Data.ffmpeg.changelog.versions }}
+        {{- range $r := $v.releases | default (slice $v) }}
+          {{- range $r.entries }}{{ $s.Add "rows" (slice (dict "s" .slug "v" $r.version "t" .text)) }}{{ end }}
+        {{- end }}
+      {{- end }}
+      {{- $entriesJson := $s.Get "rows" | jsonify | resources.FromString "contribute/changelog-entries.json" | fingerprint }}
+      <datalist id="cf-changelog-options"></datalist>
+      <div class="cf-field" id="cf-changelog-field" data-entries-url="{{ $entriesJson.RelPermalink }}">
+        <label for="cf-changelog">FFmpeg Changelog entry <span class="cf-optional">optional</span></label>
+        <ul id="cf-changelog-chosen" class="cf-chips" aria-label="Chosen Changelog entries" hidden></ul>
+        <input id="cf-changelog" name="changelog_search" class="cf-input" list="cf-changelog-options"
+          autocapitalize="off" autocomplete="off" spellcheck="false"
+          placeholder="Search the Changelog, e.g. xfade"
+          aria-describedby="cf-changelog-hint cf-changelog-error">
+        <p id="cf-changelog-hint" class="cf-hint">
+          If your command uses something a release added (a new filter, codec or option), pick its
+          <a href="{{ "versions/" | relURL }}">Changelog</a> entry. Up to three.
+        </p>
+        <p id="cf-changelog-error" class="cf-error" hidden></p>
       </div>
     </fieldset>
 
@@ -152,6 +177,7 @@
           <ul>
             <li id="cf-p-author"></li>
             <li id="cf-p-tags"></li>
+            <li id="cf-p-changelog" hidden></li>
           </ul>
         </div>
         <div class="content__example_command">

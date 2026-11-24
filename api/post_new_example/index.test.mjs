@@ -84,6 +84,34 @@ test("creates branch, commits the example and opens a PR", async () => {
   assert.deepEqual(frontmatter.tags, ["scale"]);
   assert.equal(frontmatter.filename, "TEST1234/scale_video_to_720p.md");
   assert.equal("version" in frontmatter, false);
+  assert.equal("changelog" in frontmatter, false);
+});
+
+const writtenFrontmatter = () =>
+  yaml.load(Buffer.from(calls[2].body.content, "base64").toString("utf8").split("---\n")[1]);
+
+test("writes the Changelog entries, deduplicated, right after the tags", async () => {
+  const res = await handler(post({ ...validBody, changelog: ["xfade-video-filter", "arnndn-filter", "xfade-video-filter"] }));
+  assert.equal(res.status, 200);
+  const frontmatter = writtenFrontmatter();
+  assert.deepEqual(frontmatter.changelog, ["xfade-video-filter", "arnndn-filter"]);
+  const keys = Object.keys(frontmatter);
+  assert.equal(keys.indexOf("changelog"), keys.indexOf("tags") + 1);
+});
+
+test("an empty changelog list writes nothing", async () => {
+  const res = await handler(post({ ...validBody, changelog: [] }));
+  assert.equal(res.status, 200);
+  assert.equal("changelog" in writtenFrontmatter(), false);
+});
+
+test("rejects a malformed changelog with 403", async () => {
+  for (const changelog of ["xfade-video-filter", ["Xfade Video Filter"], ["a", "b", "c", "d"], ["x".repeat(81)], [7]]) {
+    const res = await handler(post({ ...validBody, changelog }));
+    assert.equal(res.status, 403, JSON.stringify(changelog));
+    assert.match((await res.json()).message, /changelog/);
+  }
+  assert.equal(calls.length, 0);
 });
 
 test("returns 502 with GitHub's error when GitHub fails", async () => {
