@@ -18,8 +18,6 @@ tags:
   - metadata
   - ffmetadata
   - text
-versions:
-  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -f ffmetadata metadata.txt
 example_type: no-preview
