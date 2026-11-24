@@ -1,7 +1,6 @@
 import { marked } from "./vendor/marked.esm.js";
 import DOMPurify from "./vendor/purify.es.mjs";
 
-const VERSION = "1.0";
 const DRAFT_KEY = "ffmpegbyexample:contribute-draft";
 const PULLS_URL = "https://github.com/eladg/ffmpeg-by-example/pulls";
 
@@ -259,7 +258,6 @@ const escapeHtml = (text) => {
 const submit = async () => {
   const postData = {
     id: generateNewId(),
-    version: VERSION,
     enabled: true,
     example_type: exampleType(),
     example_player_data: mediaValue(),
