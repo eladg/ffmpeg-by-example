@@ -18,8 +18,6 @@ tags:
   - subtitles
   - srt
   - mkv
-versions:
-  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mkv -map 0:s:0 subtitles.srt
 example_type: no-preview
