@@ -36,6 +36,8 @@ categories:
 tags:
   - filter
   - noise
+changelog:
+  - arnndn-filter
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i input.mp4 -af 'arnndn=model=./arnndn-models/std.rnnn:mix=0.8' -c:a

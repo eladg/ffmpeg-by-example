@@ -37,6 +37,8 @@ tags:
   - transitions
   - filter
   - xfade
+changelog:
+  - xfade-video-filter
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i yoga.mp4 -i sharks.mp4 -filter_complex
