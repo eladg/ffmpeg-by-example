@@ -1,6 +1,5 @@
 ---
 id: W7CXYOCM
-version: '1.0'
 enabled: true
 date: '2025-01-15T00:36:57.318Z'
 author: Drew

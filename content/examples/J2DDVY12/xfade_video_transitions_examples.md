@@ -1,6 +1,5 @@
 ---
 id: J2DDVY12
-version: '1.0'
 enabled: true
 date: '2025-02-17T04:25:59.615Z'
 author: Elad Gariany <elad@gariany.com>

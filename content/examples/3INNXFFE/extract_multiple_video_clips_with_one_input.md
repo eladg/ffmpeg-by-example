@@ -1,6 +1,5 @@
 ---
 id: 3INNXFFE
-version: '1.0'
 enabled: true
 date: '2024-11-23T16:20:39.209Z'
 author: Elad Gariany <elad@gariany.com>

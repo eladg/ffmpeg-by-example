@@ -1,6 +1,5 @@
 ---
 id: 69PKSPIW
-version: '1.0'
 enabled: true
 date: '2025-01-16T09:30:47.448Z'
 author: rna

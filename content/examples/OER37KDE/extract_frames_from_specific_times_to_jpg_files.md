@@ -1,6 +1,5 @@
 ---
 id: OER37KDE
-version: '1.0'
 enabled: true
 date: '2022-06-23T18:10:35.937Z'
 author: Elad Gariany <elad@gariany.com>

@@ -1,6 +1,5 @@
 ---
 id: FPWSZEIP
-version: '1.0'
 enabled: true
 date: '2025-01-21T13:49:09.283Z'
 author: niutech

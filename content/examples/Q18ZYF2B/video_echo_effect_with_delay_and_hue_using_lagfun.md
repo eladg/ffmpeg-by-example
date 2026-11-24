@@ -1,6 +1,5 @@
 ---
 id: Q18ZYF2B
-version: '1.0'
 enabled: true
 date: '2025-01-15T16:17:57.647Z'
 author: Command line magic

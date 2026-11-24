@@ -1,6 +1,5 @@
 ---
 id: VI577NE4
-version: '1.0'
 enabled: true
 date: '2022-04-20T17:51:34.144Z'
 author: Borek Lupoměský

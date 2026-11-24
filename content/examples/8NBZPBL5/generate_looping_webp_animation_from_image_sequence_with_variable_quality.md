@@ -1,6 +1,5 @@
 ---
 id: 8NBZPBL5
-version: '1.0'
 enabled: true
 date: '2025-01-15T03:13:02.824Z'
 author: stevan

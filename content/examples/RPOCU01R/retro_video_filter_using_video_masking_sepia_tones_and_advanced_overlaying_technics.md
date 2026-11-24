@@ -1,6 +1,5 @@
 ---
 id: RPOCU01R
-version: '1.0'
 enabled: true
 date: '2022-04-29T05:40:10.040Z'
 author: Elad Gariany <elad@gariany.com>

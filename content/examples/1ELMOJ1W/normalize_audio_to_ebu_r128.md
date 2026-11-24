@@ -1,6 +1,5 @@
 ---
 id: 1ELMOJ1W
-version: '1.0'
 enabled: true
 date: '2025-01-29T10:46:32.257Z'
 author: Coen Spoor <coen.spoor@ambassadors.com>

@@ -1,6 +1,5 @@
 ---
 id: 50GOWMKQ
-version: '1.0'
 enabled: true
 date: '2022-04-28T23:43:40.070Z'
 author: Elad Gariany <elad@gariany.com>

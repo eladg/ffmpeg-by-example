@@ -1,6 +1,5 @@
 ---
 id: k9fQiUp4
-version: '1.0'
 enabled: true
 date: '2026-10-14T16:45:00.000Z'
 author: Elad Gariany <elad@gariany.com>

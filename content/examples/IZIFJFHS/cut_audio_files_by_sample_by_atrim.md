@@ -1,6 +1,5 @@
 ---
 id: IZIFJFHS
-version: '1.0'
 enabled: true
 date: '2022-08-17T02:15:37.840Z'
 author: elsy

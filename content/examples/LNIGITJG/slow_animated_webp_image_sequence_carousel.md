@@ -1,6 +1,5 @@
 ---
 id: LNIGITJG
-version: '1.0'
 enabled: true
 date: '2025-01-15T03:24:31.790Z'
 author: stevan

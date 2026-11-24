@@ -1,6 +1,5 @@
 ---
 id: FNJRNX47
-version: '1.0'
 enabled: true
 date: '2022-06-14T23:14:46.382Z'
 author: Elad Gariany <elad@gariany.com>

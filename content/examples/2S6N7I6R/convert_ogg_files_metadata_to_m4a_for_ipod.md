@@ -1,6 +1,5 @@
 ---
 id: 2S6N7I6R
-version: '1.0'
 enabled: true
 date: '2025-01-15T07:45:48.252Z'
 author: Raghu <ffmpegwaifu@saxrag.com>

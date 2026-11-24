@@ -1,6 +1,5 @@
 ---
 id: EDKHL1R6
-version: '1.0'
 enabled: true
 date: '2024-11-22T08:31:05.354Z'
 author: Elad Gariany <elad@gariany.com>

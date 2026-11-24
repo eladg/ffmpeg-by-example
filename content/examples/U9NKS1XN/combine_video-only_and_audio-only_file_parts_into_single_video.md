@@ -1,6 +1,5 @@
 ---
 id: U9NKS1XN
-version: '1.0'
 enabled: true
 date: '2025-01-15T11:17:12.083Z'
 author: Eric Jacob <dev@rachasak.org>

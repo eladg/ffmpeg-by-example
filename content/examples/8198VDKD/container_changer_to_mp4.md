@@ -1,6 +1,5 @@
 ---
 id: 8198VDKD
-version: '1.0'
 enabled: true
 date: '2022-04-15T20:39:12.068Z'
 author: nimbuz

@@ -1,6 +1,5 @@
 ---
 id: YX5370BZ
-version: '1.0'
 enabled: true
 date: '2025-01-15T08:48:45.318Z'
 author: Moritz

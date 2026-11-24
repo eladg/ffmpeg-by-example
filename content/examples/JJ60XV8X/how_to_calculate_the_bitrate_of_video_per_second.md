@@ -1,6 +1,5 @@
 ---
 id: JJ60XV8X
-version: '1.0'
 enabled: true
 date: '2025-09-15T22:56:08.878Z'
 author: Elad Gariany <elad@gariany.com>

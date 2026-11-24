@@ -1,6 +1,5 @@
 ---
 id: L1BILXYL
-version: '1.0'
 enabled: true
 date: '2022-04-01T20:40:11.893Z'
 author: Elad Gariany <elad@gariany.com>

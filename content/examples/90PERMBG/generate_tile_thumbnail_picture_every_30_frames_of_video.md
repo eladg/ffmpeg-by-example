@@ -1,6 +1,5 @@
 ---
 id: 90PERMBG
-version: '1.0'
 enabled: true
 date: '2022-04-12T04:36:02.368Z'
 author: Elad Gariany <elad@gariany.com>

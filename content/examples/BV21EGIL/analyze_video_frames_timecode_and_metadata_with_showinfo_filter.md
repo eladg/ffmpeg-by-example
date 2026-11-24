@@ -1,6 +1,5 @@
 ---
 id: BV21EGIL
-version: '1.0'
 enabled: true
 date: '2024-11-21T17:20:49.022Z'
 author: Elad Gariany <elad@gariany.com>

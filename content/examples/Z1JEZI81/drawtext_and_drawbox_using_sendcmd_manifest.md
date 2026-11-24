@@ -1,6 +1,5 @@
 ---
 id: Z1JEZI81
-version: '1.0'
 enabled: true
 date: '2024-11-21T08:30:06.697Z'
 author: Elad Gariany <elad@gariany.com>

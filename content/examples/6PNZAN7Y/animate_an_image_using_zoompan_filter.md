@@ -1,6 +1,5 @@
 ---
 id: 6PNZAN7Y
-version: '1.0'
 enabled: true
 date: '2025-03-05T22:55:37.699Z'
 author: Elad Gariany <elad@gariany.com>

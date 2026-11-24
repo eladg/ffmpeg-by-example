@@ -1,6 +1,5 @@
 ---
 id: A4GE8HRB
-version: '1.0'
 enabled: true
 date: '2022-03-22T10:52:26.576Z'
 author: Elad Gariany <elad@gariany.com>
