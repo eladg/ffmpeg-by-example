@@ -1,6 +1,5 @@
 ---
 id: YX5370BZ
-version: '1.0'
 enabled: true
 date: '2025-01-15T08:48:45.318Z'
 author: Moritz
@@ -20,6 +19,8 @@ categories:
 tags:
   - 'h265'
   - 'encoding'
+changelog:
+  - libx265-encoder
 thumbnail_url: null
 terminal_command: |
   ffmpeg -i input.mp4 -c:a copy -c:v libx265 -crf 28 output.mp4

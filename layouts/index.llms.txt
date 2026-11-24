@@ -13,6 +13,19 @@ It is a not-for-profit, open source project; its content is licensed under Creat
 - [All examples in full]({{ "llms-full.txt" | absURL }}): Every example's description and complete command in one plain-text file.
 - [Contribute]({{ "contribute/" | absURL }}): How to submit a new example; submissions become GitHub pull requests for review.
 - [Source code](https://github.com/eladg/ffmpeg-by-example): The site's GitHub repository.
+{{- $changelog := hugo.Data.ffmpeg.changelog }}
+
+## FFmpeg versions
+
+Every FFmpeg release from the official Changelog (https://github.com/FFmpeg/FFmpeg/blob/master/Changelog), with what it added and the examples that use it or were verified on it.
+
+- [All FFmpeg versions]({{ "versions/" | absURL }}): Every release, newest first.
+- [Latest release]({{ "versions/latest/" | absURL }}): Always redirects to the newest release, currently FFmpeg {{ $changelog.latest }}.
+{{- range $v := $changelog.versions }}
+{{- $page := site.GetPage (printf "/versions/%s" $v.slug) }}
+{{- $examples := len (partialCached "versions/examples-for.html" $v $v.slug) }}
+- [{{ $page.Title }}]({{ $page.Permalink }}): {{ partial "versions/count.html" $v }} Changelog entries{{ with $v.note }}, {{ . }}{{ end }}; {{ if $examples }}{{ $examples }} example{{ if ne $examples 1 }}s{{ end }}{{ else }}no examples yet{{ end }}.
+{{- end }}
 {{- range site.Taxonomies.categories.ByCount }}
 {{- $category := .Name }}
 {{- $pages := slice }}

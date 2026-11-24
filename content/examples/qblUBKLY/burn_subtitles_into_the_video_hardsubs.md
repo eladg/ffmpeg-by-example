@@ -1,6 +1,5 @@
 ---
 id: qblUBKLY
-version: '1.0'
 enabled: true
 date: '2026-10-15T16:45:45.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -25,6 +24,8 @@ tags:
   - burn-in
   - srt
 tested_with: null
+changelog:
+  - subtitles-filter
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -vf "subtitles=subtitles.srt" -c:a copy output.mp4
 example_type: no-preview

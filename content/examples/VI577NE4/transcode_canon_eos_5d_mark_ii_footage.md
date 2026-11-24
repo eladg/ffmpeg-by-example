@@ -1,6 +1,5 @@
 ---
 id: VI577NE4
-version: '1.0'
 enabled: true
 date: '2022-04-20T17:51:34.144Z'
 author: Borek Lupoměský
@@ -15,6 +14,9 @@ categories:
   - video
 tags:
   - 'canon5d'
+changelog:
+  - libx265-encoder
+  - opus-encoder-using-libopus
 thumbnail_url: null
 terminal_command: >
   ffmpeg -i MVI_9648.MOV -c:v libx265 -preset slow -crf 26 -pix_fmt yuv420p

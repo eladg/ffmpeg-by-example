@@ -1,0 +1,41 @@
+{{- /*
+  Fails the build when an example's `versions:` isn't a list of version slugs from
+  data/ffmpeg/changelog.json, so a typo ("7.l") or an unquoted number (7.0, which
+  YAML reads as 7) can't create a stray /versions/ page, or when its `changelog:`
+  lists an entry slug that isn't in that file. Called once, from the home page.
+*/ -}}
+{{- $changelog := hugo.Data.ffmpeg.changelog }}
+{{- if not $changelog.versions }}
+  {{- errorf "data/ffmpeg/changelog.json is missing or has no versions: run `npm run build`" }}
+{{- end }}
+{{- $known := slice }}
+{{- range $changelog.versions }}{{ $known = $known | append .slug }}{{ end }}
+{{- $entries := partialCached "versions/entry-index.html" . "entry-index" }}
+{{- range $page := site.RegularPages }}
+  {{- with $page.Params.changelog }}
+    {{- if not (reflect.IsSlice .) }}
+      {{- errorf "%s: `changelog` must be a list of entry slugs, e.g. changelog: [\"vulkan-h-264-encoder\"]" $page.File.Path }}
+    {{- else }}
+      {{- range $slug := . }}
+        {{- if not (index $entries (printf "%v" $slug)) }}
+          {{- errorf "%s: unknown Changelog entry %q in `changelog`. Use an entry `slug` from data/ffmpeg/changelog.json (FFmpeg may have reworded the entry: find the new slug)" $page.File.Path $slug }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+  {{- with $page.Params.versions }}
+    {{- if not (reflect.IsSlice .) }}
+      {{- errorf "%s: `versions` must be a list, e.g. versions: [\"7.1\"]" $page.File.Path }}
+    {{- else }}
+      {{- range $v := . }}
+        {{- $type := printf "%T" $v }}
+        {{- if ne $type "string" }}
+          {{- $hint := cond (eq $type "float64") (printf "%.1f" $v) (printf "%v" $v) }}
+          {{- errorf "%s: version %v must be a quoted string, e.g. versions: [\"%s\"] (YAML reads an unquoted 7.0 as the number 7)" $page.File.Path $v $hint }}
+        {{- else if not (in $known $v) }}
+          {{- errorf "%s: unknown FFmpeg version %q in `versions`. Use a quoted version from data/ffmpeg/changelog.json, e.g. \"7.1\" (releases before 1.0 are all \"0.x\"; \"latest\" is a redirect, not a version)" $page.File.Path $v }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}

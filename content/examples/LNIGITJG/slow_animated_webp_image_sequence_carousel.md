@@ -1,6 +1,5 @@
 ---
 id: LNIGITJG
-version: '1.0'
 enabled: true
 date: '2025-01-15T03:24:31.790Z'
 author: stevan
@@ -50,6 +49,9 @@ tags:
   - webp
   - loop
   - animated
+changelog:
+  - webp-encoding-via-libwebp
+  - webp-muxer-with-animated-webp-support
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -r 1 -i /path/to/sequence/%d.png -vcodec libwebp -pix_fmt yuv420p -loop

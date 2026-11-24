@@ -1,6 +1,5 @@
 ---
 id: 7KDJ5J4M
-version: '1.0'
 enabled: true
 date: '2022-04-15T18:13:38.203Z'
 author: Elad Gariany <elad@gariany.com>
@@ -31,6 +30,9 @@ tags:
   - test-pattern
   - drawtext
   - video-calibration
+changelog:
+  - smptebars-source
+  - drawtext-video-filter-fontconfig-support
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -f lavfi -i "smptebars=s=640x360" -vf

@@ -1,6 +1,5 @@
 ---
 id: B2jbgS4n
-version: '1.0'
 enabled: true
 date: '2026-11-08T16:57:07.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -26,6 +25,8 @@ tags:
   - frame-rate
   - fps
 tested_with: null
+changelog:
+  - add-fps-filter
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -vf fps=30 -c:a copy output.mp4
 example_type: no-preview

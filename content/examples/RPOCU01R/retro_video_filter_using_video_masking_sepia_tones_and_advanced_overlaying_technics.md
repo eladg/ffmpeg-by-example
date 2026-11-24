@@ -1,6 +1,5 @@
 ---
 id: RPOCU01R
-version: '1.0'
 enabled: true
 date: '2022-04-29T05:40:10.040Z'
 author: Elad Gariany <elad@gariany.com>
@@ -17,6 +16,10 @@ tags:
   - filter
   - sepia
   - art
+changelog:
+  - movie-source-added
+  - chromakey-filter
+  - colorchannelmixer-filter
 thumbnail_url: null
 terminal_command: >-
   # take input.mp4, square.png mask file and '9v9VVN1RE84.mp4' grit/film

@@ -1,6 +1,5 @@
 ---
 id: TWD0BMI3
-version: '1.0'
 enabled: true
 date: '2022-03-30T22:45:17.324Z'
 author: ConfusedReptile

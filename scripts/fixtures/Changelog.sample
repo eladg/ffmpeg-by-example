@@ -1,0 +1,49 @@
+Entries are sorted chronologically from oldest to youngest within each release,
+releases are sorted from youngest to oldest.
+
+version <next>:
+- unreleased thing
+
+
+version 7.1:
+- first entry
+- a long entry that wraps
+  onto a second line
+  and a third
+- minor stream specifier syntax changes:
+    - first sub-item that
+      wraps
+    - second sub-item
+- entry right after the sub-items
+
+# codespell:off
+
+version 7.0:
+- seven zero entry
+
+
+version 1.0:
+- one zero entry
+
+
+version 0.9:
+
+- added avconv, except
+for a few changes. The changes are:
+    * first star item.
+    * second star item.
+
+.. And lots more new enhancements and fixes.
+
+
+version 0.4.9-pre1:
+
+- pre-release entry
+
+
+version 0.3.2: small fixes
+
+- ASF fixes
+
+
+version 0.3: initial public release

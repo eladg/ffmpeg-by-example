@@ -1,6 +1,5 @@
 ---
 id: U9NKS1XN
-version: '1.0'
 enabled: true
 date: '2025-01-15T11:17:12.083Z'
 author: Eric Jacob <dev@rachasak.org>
@@ -16,6 +15,8 @@ categories:
 tags:
   - mux
   - combine
+changelog:
+  - faststart-option-in-the-mov-mp4-muxer
 thumbnail_url: null
 terminal_command: ffmpeg -i video_v.ts -i video_a.ts -map 0:v -map 1:a -c copy -shortest -movflags +faststart output.mp4
 example_type: no-preview

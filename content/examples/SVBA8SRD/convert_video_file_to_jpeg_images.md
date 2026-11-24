@@ -1,6 +1,5 @@
 ---
 id: SVBA8SRD
-version: '1.0'
 enabled: true
 date: '2022-03-30T12:31:39.825Z'
 author: Elad Gariany <elad@gariany.com>

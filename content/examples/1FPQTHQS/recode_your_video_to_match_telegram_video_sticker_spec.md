@@ -1,6 +1,5 @@
 ---
 id: 1FPQTHQS
-version: '1.0'
 enabled: true
 date: '2025-01-17T04:40:08.615Z'
 author: AndrewWang

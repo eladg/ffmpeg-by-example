@@ -1,6 +1,5 @@
 ---
 id: 6PNZAN7Y
-version: '1.0'
 enabled: true
 date: '2025-03-05T22:55:37.699Z'
 author: Elad Gariany <elad@gariany.com>
@@ -110,6 +109,10 @@ categories:
   - video-filters
 tags:
   - zoompan
+changelog:
+  - zoompan-filter
+  - overlay-filter-added
+  - add-fps-filter
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -loop 1 -i "image.png" -filter_complex

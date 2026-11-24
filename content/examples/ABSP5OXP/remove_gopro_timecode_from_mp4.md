@@ -1,6 +1,5 @@
 ---
 id: ABSP5OXP
-version: '1.0'
 enabled: true
 date: '2025-01-15T14:08:43.902Z'
 author: MrChrisWeinert <10633787+MrChrisWeinert@users.noreply.github.com>

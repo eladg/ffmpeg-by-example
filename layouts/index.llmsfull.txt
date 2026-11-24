@@ -2,7 +2,7 @@
 {{- $examples := where site.RegularPages "Section" "examples" -}}
 # {{ site.Title }}: all examples
 
-> Every FFmpeg example on {{ site.BaseURL }} with its description and complete command. Licensed under Creative Commons Attribution 4.0 International (https://github.com/eladg/ffmpeg-by-example/blob/main/LICENSE). The index of examples is at {{ "llms.txt" | absURL }}.
+> Every FFmpeg example on {{ site.BaseURL }} with its description and complete command. Licensed under Creative Commons Attribution 4.0 International (https://github.com/eladg/ffmpeg-by-example/blob/main/LICENSE). The index of examples is at {{ "llms.txt" | absURL }}; FFmpeg releases and their Changelogs are at {{ "versions/" | absURL }}.
 {{- range site.Taxonomies.categories.ByCount }}
 {{- $category := .Name }}
 {{- range sort $examples "Title" }}
@@ -14,6 +14,15 @@ URL: {{ .Permalink }}
 Category: {{ replace ($category | humanize) "Ffmpeg" "FFmpeg" }}
 {{- with .Params.tags }}
 Tags: {{ delimit . ", " }}
+{{- end }}
+{{- with .Params.changelog }}
+{{- $entries := partialCached "versions/entry-index.html" . "entry-index" }}
+{{- $links := slice }}
+{{- range $slug := . }}{{ range index $entries $slug }}{{ $links = $links | append (printf "FFmpeg %s: %s (%s)" .release .text (printf "versions/%s/#entry-%s" .page $slug | absURL)) }}{{ end }}{{ end }}
+Uses from the FFmpeg Changelog: {{ delimit $links "; " }}
+{{- end }}
+{{- with .Params.versions }}
+Verified on FFmpeg: {{ delimit . ", " }}
 {{- end }}
 
 {{ .Description | replaceRE `(?m)^(##+) ` "#${1} " | strings.TrimSpace }}

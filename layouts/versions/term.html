@@ -1,0 +1,38 @@
+{{- /*
+  /versions/<slug>/: the version's Changelog entries, then its examples: those verified
+  on it (`versions:`) and those linked to one of its entries (`changelog:`).
+  0.x shows each release before 1.0 as its own section.
+*/ -}}
+{{ define "main" }}
+  {{- $slug := .Params.version | default .Data.Term }}
+  {{- $v := index (where hugo.Data.ffmpeg.changelog.versions "slug" $slug) 0 }}
+  <article class="list">
+    <h1>{{ .Title }}</h1>
+    <p><a href="{{ "versions/" | relURL }}">All FFmpeg versions</a></p>
+
+    {{- with $v }}
+    <h2 id="changelog">Changelog</h2>
+    {{- with .note }}<p>{{ . }}</p>{{ end }}
+    {{- if .releases }}
+      {{- range .releases }}
+      <h3 id="v{{ .slug }}">FFmpeg {{ .version }}{{ with .note }}: {{ . }}{{ end }}</h3>
+      {{- if .entries }}{{ partial "versions/entries.html" (dict "entries" .entries "release" .version) }}{{ else }}<p>No Changelog entries.</p>{{ end }}
+      {{- end }}
+    {{- else }}
+      {{ partial "versions/entries.html" (dict "entries" .entries "release" .version) }}
+    {{- end }}
+    {{- end }}
+
+    <h2 id="examples">Examples for {{ .Title }}</h2>
+    {{- with and $v (partialCached "versions/examples-for.html" $v $v.slug) }}
+    <p>Examples verified on this release, or using something it added.</p>
+    <ul class="posts-list">
+      {{- range $page := . }}
+        {{ partial "list/item.html" $page }}
+      {{- end }}
+    </ul>
+    {{- else }}
+    <p>No examples for this version yet. <a href="{{ "contribute/" | relURL }}">Contribute one</a>.</p>
+    {{- end }}
+  </article>
+{{ end }}

@@ -1,6 +1,5 @@
 ---
 id: 50GOWMKQ
-version: '1.0'
 enabled: true
 date: '2022-04-28T23:43:40.070Z'
 author: Elad Gariany <elad@gariany.com>
@@ -70,6 +69,8 @@ tags:
   - generator
   - filter
   - subtitles
+changelog:
+  - drawtext-video-filter-fontconfig-support
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -f lavfi -i "color=c=black:s=1920x1080" -vf

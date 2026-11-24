@@ -22,6 +22,9 @@ enableRobotsTXT = true
 [taxonomies]
   tag = "tags"
   category = "categories"
+  # FFmpeg releases an example was verified on; terms come from data/ffmpeg/changelog.json
+  # (content/versions/_content.gotmpl creates a page for every release, used or not)
+  version = "versions"
 
 [outputs]
   home = ["HTML", "AMP", "RSS", "REDIRECTS", "LLMS", "LLMSFULL"]

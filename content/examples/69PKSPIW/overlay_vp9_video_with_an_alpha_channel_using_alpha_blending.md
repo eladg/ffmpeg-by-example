@@ -1,6 +1,5 @@
 ---
 id: 69PKSPIW
-version: '1.0'
 enabled: true
 date: '2025-01-16T09:30:47.448Z'
 author: rna
@@ -31,6 +30,8 @@ categories:
   - video-filters
 tags:
   - overlay
+changelog:
+  - overlay-filter-added
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i background-video.mp4 -c:v libvpx-vp9 -i

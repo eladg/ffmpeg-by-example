@@ -1,6 +1,5 @@
 ---
 id: FNJRNX47
-version: '1.0'
 enabled: true
 date: '2022-06-14T23:14:46.382Z'
 author: Elad Gariany <elad@gariany.com>
@@ -51,6 +50,9 @@ categories:
 tags:
   - gif
   - meme
+changelog:
+  - add-fps-filter
+  - loop-video-filter-and-aloop-audio-filter
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i gif/%d.png -vf '[in]fps=12[v];[v]loop=loop=-1:size=9:start=0[out]'

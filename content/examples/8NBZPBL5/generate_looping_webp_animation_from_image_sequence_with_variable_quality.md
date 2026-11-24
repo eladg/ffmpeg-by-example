@@ -1,6 +1,5 @@
 ---
 id: 8NBZPBL5
-version: '1.0'
 enabled: true
 date: '2025-01-15T03:13:02.824Z'
 author: stevan
@@ -41,6 +40,9 @@ categories:
 tags:
   - webp
   - loop
+changelog:
+  - webp-encoding-via-libwebp
+  - webp-muxer-with-animated-webp-support
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i /path/to/sequence/%d.png -vcodec libwebp -pix_fmt yuv420p -loop 0 -s

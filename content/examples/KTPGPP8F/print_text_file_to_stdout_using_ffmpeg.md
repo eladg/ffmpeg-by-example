@@ -1,6 +1,5 @@
 ---
 id: KTPGPP8F
-version: '1.0'
 enabled: true
 date: '2022-04-12T11:01:45.110Z'
 author: Elad Gariany <elad@gariany.com>

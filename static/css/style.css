@@ -475,3 +475,51 @@ input:focus, textarea:focus {
     max-width: none;
   }
 }
+
+/* /versions/<X.Y>/: examples linked to a Changelog entry, on their own line under it */
+.version-entry-examples {
+  list-style: none;
+  margin: 0.15em 0 0.5em;
+  padding-left: 0;
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--gray-color);
+}
+
+.version-entry-examples li:before {
+  content: "↳";
+  padding-right: 0.4em;
+}
+
+.version-entry-examples a {
+  color: var(--gray-color);
+}
+
+/* "+ add an example" on Changelog entries without one: a soft nudge, not a button.
+   Hidden until the entry is hovered or the link is focused; on touch screens
+   (no hover) it stays visible but faint. */
+.version-entry-cta {
+  margin-left: 0.6em;
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--gray-color);
+  text-decoration: none;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s ease-in;
+}
+
+.version-entries > li:hover > .version-entry-cta,
+.version-entry-cta:focus-visible {
+  opacity: 1;
+}
+
+.version-entry-cta:hover {
+  text-decoration: underline;
+}
+
+@media (hover: none) {
+  .version-entry-cta {
+    opacity: 0.6;
+  }
+}

@@ -1,6 +1,5 @@
 ---
 id: L97ODZ1T
-version: '1.0'
 enabled: true
 date: '2022-05-09T20:54:29.628Z'
 author: Elad Gariany <elad@gariany.com>
@@ -42,6 +41,8 @@ tags:
   - testsrc
   - camera
   - crop
+changelog:
+  - make-the-crop-filter-accept-parametric-expressions
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -f lavfi -i testsrc=duration=30:size=1280x720:rate=30 -vf

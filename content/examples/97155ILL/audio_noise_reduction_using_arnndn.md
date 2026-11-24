@@ -1,6 +1,5 @@
 ---
 id: 97155ILL
-version: '1.0'
 enabled: true
 date: '2025-03-27T00:17:42.423Z'
 author: Elad Gariany <elad@gariany.com>
@@ -37,6 +36,8 @@ categories:
 tags:
   - filter
   - noise
+changelog:
+  - arnndn-filter
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i input.mp4 -af 'arnndn=model=./arnndn-models/std.rnnn:mix=0.8' -c:a

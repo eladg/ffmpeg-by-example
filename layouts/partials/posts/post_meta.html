@@ -9,5 +9,22 @@
         <a href="{{ $tagUrl | absURL }}">#{{ $value | lower }}</a>
       {{ end }}
     </li>
+    {{- with .Params.changelog }}
+    {{- $entries := partialCached "versions/entry-index.html" . "entry-index" }}
+    <li>in the FFmpeg Changelog:
+      {{ range $slug := . }}
+        {{- range index $entries $slug }}
+        <a href="{{ printf "versions/%s/#entry-%s" .page $slug | relURL }}" title="{{ .text }}">{{ .release }}: {{ .text | truncate 60 }}</a>
+        {{- end }}
+      {{ end }}
+    </li>
+    {{- end }}
+    {{- with .GetTerms "versions" }}
+    <li>verified on FFmpeg:
+      {{ range . }}
+        <a href="{{ .RelPermalink }}">{{ .Params.version | default .Data.Term }}</a>
+      {{ end }}
+    </li>
+    {{- end }}
   </ul>
 </div>

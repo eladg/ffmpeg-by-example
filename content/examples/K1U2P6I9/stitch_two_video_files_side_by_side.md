@@ -1,6 +1,5 @@
 ---
 id: K1U2P6I9
-version: '1.0'
 enabled: true
 date: '2022-03-30T17:07:22.021Z'
 author: Simply <simplybladom@gmail.com>

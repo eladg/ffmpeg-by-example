@@ -1,6 +1,5 @@
 ---
 id: 0484NAFV
-version: '1.0'
 enabled: true
 date: '2022-03-30T12:41:27.252Z'
 author: Elad Gariany <elad@gariany.com>
@@ -15,6 +14,8 @@ categories:
 tags:
   - audio-extract
   - no-video
+versions:
+  - '9.0'
 thumbnail_url: null
 terminal_command: ffmpeg -i video.mp4 -c:a copy -vn audio.aac
 example_type: no-preview

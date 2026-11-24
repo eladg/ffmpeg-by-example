@@ -1,0 +1,18 @@
+{{- /*
+  The examples that belong to a version (context: its data/ffmpeg/changelog.json
+  object): those that list it in `versions:` (verified on it) and those whose
+  `changelog:` links one of its entries (for 0.x, any pre-1.0 release's entries).
+  Distinct, sorted by title. Use partialCached with the version slug as the key.
+*/ -}}
+{{- $v := . }}
+{{- $byEntry := partialCached "versions/examples-by-entry.html" . "examples-by-entry" }}
+{{- $pages := slice }}
+{{- with site.GetPage (printf "/versions/%s" $v.slug) }}
+  {{- range .Pages }}{{ $pages = $pages | append . }}{{ end }}
+{{- end }}
+{{- range $r := $v.releases | default (slice $v) }}
+  {{- range $r.entries }}
+    {{- range index $byEntry .slug }}{{ $pages = $pages | append . }}{{ end }}
+  {{- end }}
+{{- end }}
+{{- return sort ($pages | uniq) "Title" }}

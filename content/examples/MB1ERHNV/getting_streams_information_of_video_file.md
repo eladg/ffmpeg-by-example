@@ -1,6 +1,5 @@
 ---
 id: MB1ERHNV
-version: '1.0'
 enabled: true
 date: '2022-03-30T12:00:13.462Z'
 author: Elad Gariany <elad@gariany.com>

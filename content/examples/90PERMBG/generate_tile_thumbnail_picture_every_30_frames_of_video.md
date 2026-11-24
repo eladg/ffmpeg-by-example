@@ -1,6 +1,5 @@
 ---
 id: 90PERMBG
-version: '1.0'
 enabled: true
 date: '2022-04-12T04:36:02.368Z'
 author: Elad Gariany <elad@gariany.com>
@@ -27,6 +26,9 @@ categories:
 tags:
   - filter
   - extract-thumbnails
+changelog:
+  - select-filter-added
+  - tile-video-filter
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i bunny.webm -vf select='not(mod(n\,30))',scale=160:90,tile -frames:v

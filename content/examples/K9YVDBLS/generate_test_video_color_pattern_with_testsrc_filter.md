@@ -1,6 +1,5 @@
 ---
 id: K9YVDBLS
-version: '1.0'
 enabled: true
 date: '2022-03-22T16:34:07.714Z'
 author: Elad Gariany <elad@gariany.com>

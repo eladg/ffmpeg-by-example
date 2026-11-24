@@ -1,6 +1,5 @@
 ---
 id: 9S2WCM5U
-version: '1.0'
 enabled: true
 date: '2025-01-31T10:23:18.698Z'
 author: Yoav Vainrich

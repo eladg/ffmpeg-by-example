@@ -1,6 +1,5 @@
 ---
 id: 2S6N7I6R
-version: '1.0'
 enabled: true
 date: '2025-01-15T07:45:48.252Z'
 author: Raghu <ffmpegwaifu@saxrag.com>
@@ -29,6 +28,8 @@ tags:
   - m4a
   - ogg
   - aac
+changelog:
+  - extensive-native-aac-encoder-improvements-and-removal-of-experimental-flag
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i song.ogg -map_metadata 0:s:a:0 -c:a aac -b:a 320k -aac_pns 0

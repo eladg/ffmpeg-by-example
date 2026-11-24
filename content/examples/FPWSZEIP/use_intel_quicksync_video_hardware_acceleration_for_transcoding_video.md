@@ -1,6 +1,5 @@
 ---
 id: FPWSZEIP
-version: '1.0'
 enabled: true
 date: '2025-01-21T13:49:09.283Z'
 author: niutech
@@ -10,6 +9,10 @@ categories:
   - video
 tags:
   - acceleration
+changelog:
+  - intel-qsv-accelerated-h-264-decoding
+  - intel-qsv-accelerated-h-264-encoding
+  - intel-qsv-accelerated-mpeg-2-video-and-hevc-encoding
 thumbnail_url: null
 terminal_command: >-
   # For H264:

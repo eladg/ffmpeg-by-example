@@ -1,6 +1,5 @@
 ---
 id: TNM510Z2
-version: '1.0'
 enabled: true
 date: '2022-04-15T20:34:05.013Z'
 author: nimbuz

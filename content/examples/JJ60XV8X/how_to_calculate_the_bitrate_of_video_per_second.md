@@ -1,6 +1,5 @@
 ---
 id: JJ60XV8X
-version: '1.0'
 enabled: true
 date: '2025-09-15T22:56:08.878Z'
 author: Elad Gariany <elad@gariany.com>
@@ -12,6 +11,10 @@ tags:
   - bitrate
   - encoding
   - python
+changelog:
+  - ffprobe-select-streams-option
+  - ffprobe-show-packets-option-added
+  - ffprobe-show-entries-option
 thumbnail_url: null
 terminal_command: >-
   # extract the packet size into packets.csv

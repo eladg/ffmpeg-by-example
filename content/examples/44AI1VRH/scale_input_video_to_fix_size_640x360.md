@@ -1,6 +1,5 @@
 ---
 id: 44AI1VRH
-version: '1.0'
 enabled: true
 date: '2022-03-22T08:19:51.875Z'
 author: Elad Gariany <elad@gariany.com>

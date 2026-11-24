@@ -1,0 +1,27 @@
+{{- /*
+  One term page per FFmpeg version in data/ffmpeg/changelog.json (written by
+  scripts/fetch-changelog.mjs), so a version gets /versions/<slug>/ even when no
+  example lists it. Examples that list it in `versions:` merge into the same page.
+  Releases before 1.0 share one page, "0.x". /versions/latest/ is never a version:
+  it's an alias of the newest version's page (so `hugo server` follows it), and
+  Netlify serves it as a forced 302 (layouts/index.redirects).
+*/ -}}
+{{- $latest := hugo.Data.ffmpeg.changelog.latest }}
+{{- range $v := hugo.Data.ffmpeg.changelog.versions }}
+  {{- $count := len $v.entries }}
+  {{- range $v.releases }}{{ $count = add $count (len .entries) }}{{ end }}
+  {{- $title := printf "FFmpeg %s" $v.version }}
+  {{- $description := printf "What's new in FFmpeg %s (%d Changelog entries), and FFmpeg examples verified on it." $v.version $count }}
+  {{- if $v.releases }}
+    {{- $title = "FFmpeg 0.x (releases before 1.0)" }}
+    {{- $description = printf "Changelog of every FFmpeg release before 1.0, from %s to %s (%d entries)." (index (last 1 $v.releases) 0).version (index $v.releases 0).version $count }}
+  {{- end }}
+  {{- $.AddPage (dict
+    "kind" "term"
+    "path" $v.slug
+    "title" $title
+    "description" $description
+    "params" (dict "version" $v.slug)
+    "aliases" (cond (eq $v.slug $latest) (slice "/versions/latest/") slice)
+  ) }}
+{{- end }}

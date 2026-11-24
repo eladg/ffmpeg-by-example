@@ -5,6 +5,13 @@ import * as repo_api from "./repo_api.mjs";
 const BRANCH_PREFIX  = "examples"
 const PR_TO_BRANCH_FROM = "main";
 
+// optional `changelog`: slugs of FFmpeg Changelog entries (data/ffmpeg/changelog.json).
+// Only the format is checked here; the site build fails on a slug that doesn't exist,
+// so a bad one shows up in the pull request's deploy preview.
+const MAX_CHANGELOG = 3;
+const ENTRY_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const ENTRY_SLUG_MAX = 80;
+
 export const validateInput = (params) => {
   if (!("id" in params)) {
     throw new Error("Invalid data given! ('id' is missing)")
@@ -28,6 +35,12 @@ export const validateInput = (params) => {
   }
   if (!("terminal_command" in params) || (params.terminal_command.length < 10)) {
     throw new Error("Invalid data given! ('terminal_command' is missing or too short)")
+  }
+  if (params.changelog != null && (
+      !Array.isArray(params.changelog) ||
+      params.changelog.length > MAX_CHANGELOG ||
+      !params.changelog.every(slug => typeof slug === "string" && slug.length <= ENTRY_SLUG_MAX && ENTRY_SLUG.test(slug)))) {
+    throw new Error(`Invalid data given! ('changelog' must be a list of up to ${MAX_CHANGELOG} Changelog entry slugs)`)
   }
 
   return true;
@@ -54,15 +67,18 @@ export const getMergeToBranchName = (id) => {
   return `${BRANCH_PREFIX}/${id}`;
 }
 
+export const getChangelog = (changelog) => {
+  return [...new Set(changelog || [])]
+}
+
 export const getTags = (tags) => {
   return tags.filter(Boolean)
 }
 
-export const getExampleYaml = (body, { filename, author, tags, date }) => {
+export const getExampleYaml = (body, { filename, author, tags, changelog = [], date }) => {
   const options = {
     // example options
     id: body.id,
-    version: body.version,
     enabled: body.enabled ?? true,
     date: date,
     author: author,
@@ -70,6 +86,7 @@ export const getExampleYaml = (body, { filename, author, tags, date }) => {
     description: body.description,
     categories: body.categories,
     tags: tags,
+    ...(changelog.length ? { changelog } : {}),
     thumbnail_url: body.thumbnail_url || null,
     terminal_command: body.terminal_command,
     example_type: body.example_type,
@@ -85,7 +102,7 @@ export const getExampleYaml = (body, { filename, author, tags, date }) => {
 }
 
 export default async (req) => {
-  let filename, author, branchName, tags, body;
+  let filename, author, branchName, tags, changelog, body;
   let ref, yamlText;
 
   if (req.method === "OPTIONS") {
@@ -108,11 +125,12 @@ export default async (req) => {
     author     = getAuthorDisplayName(body.author_name, body.author_email);
     branchName = getMergeToBranchName(body.id);
     tags       = getTags(body.tags)
+    changelog  = getChangelog(body.changelog)
   } catch (error) {
     return responses.failedValidateDataResponse(error.message);
   }
 
-  yamlText = getExampleYaml(body, { filename, author, tags, date: new Date().toISOString() });
+  yamlText = getExampleYaml(body, { filename, author, tags, changelog, date: new Date().toISOString() });
 
   try {
     // step 1: Get ref for 'main'

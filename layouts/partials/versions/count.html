@@ -1,0 +1,4 @@
+{{- /* Number of Changelog entries in a version, 0.x releases included. */ -}}
+{{- $count := len .entries }}
+{{- range .releases }}{{ $count = add $count (len .entries) }}{{ end }}
+{{- return $count }}

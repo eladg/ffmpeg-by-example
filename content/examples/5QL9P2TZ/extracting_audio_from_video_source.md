@@ -1,6 +1,5 @@
 ---
 id: 5QL9P2TZ
-version: '1.0'
 enabled: true
 date: '2025-02-08T05:52:17.079Z'
 author: David Munoz <ffmpeg-by-example@josemunoz.dev>

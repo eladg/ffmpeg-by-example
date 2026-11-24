@@ -1,6 +1,5 @@
 ---
 id: L1BILXYL
-version: '1.0'
 enabled: true
 date: '2022-04-01T20:40:11.893Z'
 author: Elad Gariany <elad@gariany.com>
@@ -162,6 +161,8 @@ categories:
   - metadata
 tags:
   - ffprobe
+changelog:
+  - ffprobe-select-streams-option
 thumbnail_url: null
 terminal_command: >-
   ffprobe -show_streams -select_streams v -v quiet video.mp4 | grep "duration="
