@@ -1,6 +1,5 @@
 ---
 id: ENlhWvzG
-version: '1.0'
 enabled: true
 date: '2026-10-17T16:45:43.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -28,6 +27,8 @@ tags:
   - mp4
   - h264
 tested_with: null
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.webm -c:v libx264 -crf 23 -c:a aac output.mp4
 example_type: no-preview
