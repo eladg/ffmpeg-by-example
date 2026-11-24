@@ -1,6 +1,5 @@
 ---
 id: 73JKOhmH
-version: '1.0'
 enabled: true
 date: '2026-10-18T16:43:00.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -28,6 +27,8 @@ tags:
   - m4a
   - mp3
 tested_with: null
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.m4a -c:a libmp3lame -q:a 2 output.mp3
 example_type: no-preview
