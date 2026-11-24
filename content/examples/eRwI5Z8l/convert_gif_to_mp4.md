@@ -22,8 +22,8 @@ tags:
   - gif
   - mp4
 tested_with: null
-versions:
-  - '8.1'
+changelog:
+  - animated-gif-decoder-and-demuxer
 thumbnail_url: null
 terminal_command: ffmpeg -i input.gif -movflags +faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" output.mp4
 example_type: no-preview
