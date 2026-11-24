@@ -33,21 +33,19 @@ export function entrySlug(text) {
   return dash > ENTRY_SLUG_MAX / 2 ? cut.slice(0, dash) : cut;
 }
 
-// Entries are flat. A sub-item ("    - x" / "    * x", only under 7.1 and 0.9)
-// is appended to its entry's text: after a space when the text so far ends a
-// sentence or clause, otherwise after "; ".
-const appendSubitem = (text, sub) => /[.:;!?]$/.test(text) ? `${text} ${sub}` : `${text}; ${sub}`;
-
 // parseChangelog(text) -> { next_version, versions, ignored }
 //   versions: every release in file order (newest first), 0.x releases
 //             collapsed into one LEGACY_SLUG version at the end
-//   entries:  [{ text, slug }], one per "- " line, wrapped lines and sub-items joined in
+//   entries:  [{ text, slug }], one per "- " line, with its wrapped lines joined in.
+//             Entries are flat: indented sub-items ("    - x" / "    * x", only under
+//             7.1 and 0.9) and their wrapped lines are skipped (owner's decision).
 //   ignored:  lines that were neither headers, entries nor continuations
 export function parseChangelog(text) {
   const raw = [];        // every "version X:" block, file order
   const ignored = [];
   let current = null;    // current version block
-  let entry = null;      // entry that continuation lines and sub-items extend
+  let entry = null;      // entry that continuation lines extend
+  let inSubitem = false; // inside a skipped sub-item (its wrapped lines are skipped too)
 
   for (const line of text.replace(/\r\n?/g, "\n").split("\n")) {
     const header = line.match(HEADER);
@@ -59,21 +57,21 @@ export function parseChangelog(text) {
     }
     if (!current) continue;                  // preamble before the first header
 
-    if (line.trim() === "") { entry = null; continue; }  // a blank line ends an entry
+    if (line.trim() === "") { entry = null; inSubitem = false; continue; }  // a blank line ends an entry
 
     const e = line.match(ENTRY);
     if (e) {
       entry = { text: squash(e[1]) };
       current.entries.push(entry);
+      inSubitem = false;
       continue;
     }
-    const sub = line.match(SUBITEM);
-    if (sub && entry) {
-      entry.text = appendSubitem(entry.text, squash(sub[1]));
+    if (entry && SUBITEM.test(line)) {       // sub-item: skipped
+      inSubitem = true;
       continue;
     }
     if (entry) {                             // wrapped line, at any indent (0.9 has unindented ones)
-      entry.text = squash(`${entry.text} ${line}`);
+      if (!inSubitem) entry.text = squash(`${entry.text} ${line}`);
       continue;
     }
     ignored.push(line);                      // e.g. "# codespell:off", ".. And lots more ..."

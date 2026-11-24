@@ -31,17 +31,18 @@ test("numeric fields, pre-release and trailing note", () => {
   assert.deepEqual(legacy.releases.at(-1).entries, []);
 });
 
-test("entries are flat: wrapped lines and '-' sub-items join their entry, order kept", () => {
+test("entries are flat: wrapped lines joined, '-' sub-items and their wrapped lines skipped", () => {
   assert.deepEqual(bySlug["7.1"].entries.map(e => e.text), [
     "first entry",
     "a long entry that wraps onto a second line and a third",
-    "minor stream specifier syntax changes: first sub-item that wraps; second sub-item",
+    "minor stream specifier syntax changes:",
+    "entry right after the sub-items",
   ]);
 });
 
-test("unindented continuation and '*' sub-items (0.9's avconv entry)", () => {
+test("unindented continuation kept, '*' sub-items skipped (0.9's avconv entry)", () => {
   assert.deepEqual(legacy.releases[0].entries.map(e => e.text), [
-    "added avconv, except for a few changes. The changes are: first star item. second star item.",
+    "added avconv, except for a few changes. The changes are:",
   ]);
 });
 
