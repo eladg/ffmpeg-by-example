@@ -1,86 +1,93 @@
-![Logo of the project](https://www.ffmpegbyexample.com/img/ffmpeg-by-example-500px.png)
+![FFmpegByExample logo](https://ffmpegbyexample.com/img/ffmpeg-by-example-500px.png)
 
-# FFmpegByExample dot com
+# FFmpegByExample
 [![CC BY 4.0][cc-by-shield]][cc-by] [![Netlify Status](https://api.netlify.com/api/v1/badges/3b118d24-ed43-4f2f-a979-1b523b092867/deploy-status)](https://app.netlify.com/sites/ffmpeg-by-example/deploys)
 
-ffmpegbyexample.com is a documentation website to showcase all unique and different ways to use [FFmpeg](https://ffmpeg.org).
+[ffmpegbyexample.com](https://ffmpegbyexample.com) is an open source documentation website of copy-paste-ready [FFmpeg](https://ffmpeg.org) examples. Every example shows one complete command for one task, with a short explanation.
 
-## Contributing
+## Contributing an example
 
-#### Add Your Examples
-One of the best and easy ways to contribute to the project is to showcase your ffmpeg script on the site. Send your contribution over at https://ffmpegbyexample.com/contribute
+The easiest way is the form at **[ffmpegbyexample.com/contribute](https://ffmpegbyexample.com/contribute/)**: fill in the command, title, description, category and tags, check the preview, and the site opens a pull request on this repository for review.
 
-#### Building The Site Locally
+You can also open a pull request directly: add `content/examples/<ID>/<slug>.md`, using an existing example as a template for the front matter (`id`, `title`, `description` in Markdown, `categories`, `tags`, `terminal_command`, `example_type`, `example_player_data`, `filename`, `author`, `date`). Use generic file names such as `input.mp4` and `output.mp4` in commands.
 
-The site is staticly generated using [hugo](https://gohugo.io/) and deployed on [netlify](https://www.netlify.com/). The serverless API is based on [Netlify Functions](https://www.netlify.com/products/functions/). 
+Your name, and your email if you add one, are published with the example. See the [privacy policy](https://ffmpegbyexample.com/privacy/).
 
-### Initial Configuration
+## How the site works
 
-Start by setting `baseURL` and `apiURL` on `config.toml`
+| Part | Technology |
+|---|---|
+| Static site | [Hugo](https://gohugo.io/), version pinned as `HUGO_VERSION` in `netlify.toml` |
+| Hosting and deploys | [Netlify](https://www.netlify.com/); every push to `main` deploys to production, and pull requests get a deploy preview |
+| Contribute API | A [Netlify Function](https://docs.netlify.com/functions/overview/) (`api/post_new_example`, Node 22) that turns a form submission into a GitHub pull request |
+| Comments | [Gitalk](https://github.com/gitalk/gitalk), stored as issues in this repository |
 
-```toml
-title = "FFmpegByExample"
-baseURL = "https://www.ffmpegbyexample.com" or "http://localhost:1313"
-enableRobotsTXT = true
+Generated at build time from the content, so they never need editing by hand:
 
-[params]
-  apiURL = "https://www.ffmpegbyexample.com" or "http://localhost:8888"
-```
+- `sitemap.xml` and `robots.txt` (`layouts/robots.txt`; AI crawlers are explicitly allowed)
+- `llms.txt` and `llms-full.txt` for AI agents (`layouts/index.llms.txt`, `layouts/index.llmsfull.txt`)
+- Netlify `_redirects` (`layouts/index.redirects`)
+
 ## Developing
 
-This project has two main components:
+### Website
 
-### Static Website
-
-The run the static site generator [install hugo](https://gohugo.io/getting-started/installing) (the version pinned as `HUGO_VERSION` in `netlify.toml`), and run the following commands:
+[Install Hugo](https://gohugo.io/installation/) (the version in `netlify.toml`), then:
 
 ```shell
-$ git clone https://github.com/eladg/ffmpeg-by-example.git
-$ cd ffmpeg-by-example
-$ hugo server --disableFastRender --port 1313
+git clone https://github.com/eladg/ffmpeg-by-example.git
+cd ffmpeg-by-example
+hugo server --disableFastRender --port 1313
 ```
 
-You can now test the site locally by opening your browser at: http://localhost:1313
+Open http://localhost:1313. No configuration is needed: `hugo server` replaces the production `baseURL` with localhost automatically. Note that `hugo server` doesn't apply `_redirects` or run the contribute function, so submitting the form locally returns an HTTP 404.
 
-### Serverless API
-
-To develop & test the Serverless API, install [netlify cli](https://docs.netlify.com/cli/get-started) and run the following commands:
+### Contribute API
 
 ```shell
-$ git clone https://github.com/eladg/ffmpeg-by-example.git
-$ cd ffmpeg-by-example
-$ npm install
-$ netlify functions:serve -p 8888
+npm install
+npm test                          # unit tests; GitHub is mocked
+netlify functions:serve -p 8888   # needs the Netlify CLI and the variables below
 ```
 
-The function needs `FFMPEG_BY_EXAMPLE_GITHUB_TOKEN`, `FFMPEG_BY_EXAMPLE_GITHUB_REPO` and `FFMPEG_BY_EXAMPLE_EXAMPLES_PATH` (see `api/post_new_example/.env-example`). Unit tests mock GitHub and run with `npm test`.
+The function reads three environment variables (see `api/post_new_example/.env-example`):
 
-You can now test the serverless API locally using something like:
+| Variable | Value |
+|---|---|
+| `FFMPEG_BY_EXAMPLE_GITHUB_TOKEN` | A classic GitHub token with the `public_repo` scope, for the account that opens the pull requests |
+| `FFMPEG_BY_EXAMPLE_GITHUB_REPO` | `eladg/ffmpeg-by-example` |
+| `FFMPEG_BY_EXAMPLE_EXAMPLES_PATH` | `content/examples` |
+
+To call it locally:
+
 ```bash
 curl 'http://localhost:8888/.netlify/functions/post_new_example' \
-  -X POST 
+  -X POST \
+  -H 'Content-Type: application/json' \
   --data-raw '{
-    "id":"JYU1IMXO",
+    "id": "TEST1234",
     "version": "1.0",
     "enabled": true,
-    "title": "Convert mp4 to aac file",
-    "description": "A command to convert an mp4 video to aac audio",
-    "author_name": "Elad Gariany",
-    "author_email": "elad@gariany.com",
+    "title": "Convert an MP4 video to AAC audio",
+    "description": "Extract the audio track of an MP4 file and encode it as AAC.",
+    "author_name": "Your Name",
+    "author_email": null,
     "terminal_command": "ffmpeg -i input.mp4 -vn -c:a aac -q:a 1 output.aac",
-    "categories": ["audio"], 
+    "categories": ["audio"],
     "tags": ["aac"],
     "example_type": "no-preview",
-    "example_player_data": "",
+    "example_player_data": null
   }'
-``` 
+```
 
-### Deploying / Publishing
+This opens a real pull request on the repository set in `FFMPEG_BY_EXAMPLE_GITHUB_REPO`, so point it at a fork while testing.
 
-the `main` branch is set to auto deploy to https://ffmpeg-by-example.netlify.app for every successful build. Submit your PR to the `main` branch, once approved, it will be release automatically. 
+## Deploying
 
+Pull requests to `main` get a Netlify deploy preview. Once a pull request is merged, `main` deploys to https://ffmpegbyexample.com automatically.
 
 ## Licensing
+
 This work is licensed under a
 [Creative Commons Attribution 4.0 International License][cc-by].
 

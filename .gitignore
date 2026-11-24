@@ -1,19 +1,8 @@
-# Node.js
-node_modules/
-
-# Hugo default output directory
 resources/
 public/
-
-# OSX
 .DS_Store
-
-# Local Netlify folder
 .netlify
 public-api/
-
-# node modules
 *node_modules*
-
-# dotEnv
 *.env
+.claude
