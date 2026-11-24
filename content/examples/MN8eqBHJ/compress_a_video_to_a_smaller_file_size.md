@@ -27,8 +27,6 @@ tags:
   - crf
   - file-size
 tested_with: null
-versions:
-  - '8.1'
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i input.mp4 -c:v libx264 -crf 28 -preset medium -c:a copy output.mp4
