@@ -1,10 +1,11 @@
 +++
 {{ $seed := "89E97CAC6268A46CCC3F7EB9D75E4041AB64B9A8779218D473" }}
 {{ $post_id := delimit (shuffle (split (md5 $seed) "" )) "" }}
-version = 1
 description = ""
 categories = [""]
 tags = [""]
+# FFmpeg releases this exact command was verified on (quoted slugs from data/ffmpeg/changelog.json, e.g. ["7.1"]; "0.x" = before 1.0). Not a minimum version.
+versions = []
 author = ""
 date = {{ .Date }}
 enabled = true
