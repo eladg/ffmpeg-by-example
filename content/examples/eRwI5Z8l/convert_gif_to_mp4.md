@@ -1,6 +1,5 @@
 ---
 id: eRwI5Z8l
-version: '1.0'
 enabled: true
 date: '2026-10-16T16:48:32.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -23,6 +22,8 @@ tags:
   - gif
   - mp4
 tested_with: null
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.gif -movflags +faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" output.mp4
 example_type: no-preview
