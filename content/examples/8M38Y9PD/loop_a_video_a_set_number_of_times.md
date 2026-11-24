@@ -24,8 +24,6 @@ tags:
   - loop
   - stream-loop
 tested_with: null
-versions:
-  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -stream_loop 3 -i input.mp4 -c copy output.mp4
 example_type: no-preview
