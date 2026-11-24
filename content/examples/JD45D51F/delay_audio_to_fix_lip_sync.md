@@ -20,8 +20,8 @@ tags:
   - adelay
   - lip-sync
   - audio-delay
-versions:
-  - '8.1'
+changelog:
+  - adelay-filter
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -af "adelay=500:all=1" -c:v copy -c:a aac output.mp4
 example_type: no-preview
