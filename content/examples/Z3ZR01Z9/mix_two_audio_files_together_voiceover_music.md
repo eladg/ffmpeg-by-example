@@ -18,8 +18,6 @@ tags:
   - amix
   - voiceover
   - mix
-versions:
-  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i voiceover.mp3 -i music.mp3 -filter_complex "[0:a][1:a]amix=inputs=2:duration=longest" output.mp3
 example_type: no-preview
