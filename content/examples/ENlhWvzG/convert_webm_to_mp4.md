@@ -27,8 +27,6 @@ tags:
   - mp4
   - h264
 tested_with: null
-versions:
-  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.webm -c:v libx264 -crf 23 -c:a aac output.mp4
 example_type: no-preview
