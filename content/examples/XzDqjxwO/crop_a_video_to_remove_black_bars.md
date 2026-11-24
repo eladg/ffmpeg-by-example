@@ -19,8 +19,6 @@ categories:
 tags:
   - crop
   - black-bars
-versions:
-  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -vf "crop=1920:800:0:140" output.mp4
 example_type: no-preview
