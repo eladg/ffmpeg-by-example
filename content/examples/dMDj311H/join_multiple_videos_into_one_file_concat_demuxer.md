@@ -18,8 +18,8 @@ tags:
   - concat
   - merge-videos
   - no-reencode
-versions:
-  - '8.1'
+changelog:
+  - virtual-concatenation-demuxer
 thumbnail_url: null
 terminal_command: ffmpeg -f concat -safe 0 -i filelist.txt -c copy output.mp4
 example_type: no-preview
