@@ -27,8 +27,6 @@ tags:
   - afade
   - volume
 tested_with: null
-versions:
-  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp3 -af "afade=t=in:st=0:d=3,afade=t=out:st=57:d=3" output.mp3
 example_type: no-preview
