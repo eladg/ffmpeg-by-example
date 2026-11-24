@@ -18,8 +18,6 @@ tags:
   - vertical-video
   - 9-16
   - crop
-versions:
-  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -vf "crop=ih*9/16:ih,scale=1080:1920,setsar=1" output.mp4
 example_type: no-preview
