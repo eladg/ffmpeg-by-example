@@ -3,7 +3,7 @@
   position: relative;
 }
 
-.autoComplete_wrapper > input {
+#autoComplete {
   display: block;
   width: 370px;
   height: 40px;
@@ -17,12 +17,18 @@
   background-image: none;
 }
 
-.autoComplete_wrapper > input:focus { 
+/* search.html loads the library on first use; until it wraps the input in .autoComplete_wrapper,
+   match the 1em side padding that `.menubar div` gives that wrapper so the box doesn't move */
+.search-container > #autoComplete {
+  margin: 0 var(--text-size);
+}
+
+#autoComplete:focus {
   color: var(--text-color);
   border: 0; 
 }
 
-.autoComplete_wrapper > input::placeholder {
+#autoComplete::placeholder {
   color: rgba(123, 123, 123, 0.5);
   transition: all 0.3s ease;
 }
@@ -94,7 +100,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .autoComplete_wrapper > input {
+  #autoComplete {
     width: 18rem;
   }
 }

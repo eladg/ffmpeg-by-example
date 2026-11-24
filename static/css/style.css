@@ -466,13 +466,57 @@ input:focus, textarea:focus {
   border-color: var(--main-color);
 }
 
-/* on phones, sit above the Ko-fi button */
+/* on phones: a full-width bottom sheet, covering the Ko-fi button while open
+   (Ko-fi's stylesheet forces z-index: 99999999 !important on it) */
 @media screen and (max-width: 560px) {
   .consent-banner {
-    left: 0.75rem;
-    right: 0.75rem;
-    bottom: 5rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2147483647;
     max-width: none;
+    /* one row: text | Decline Accept | × */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 2rem calc(0.5rem + env(safe-area-inset-bottom)) 0.75rem;
+    border-width: 1px 0 0;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15);
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  .consent-banner p {
+    flex: 1;
+    margin: 0;
+    padding-right: 0;
+  }
+
+  .consent-banner a {
+    white-space: nowrap;
+  }
+
+  .consent-close {
+    top: 50%;
+    right: 0;
+    width: 32px;
+    height: 36px;
+    padding: 0;
+    font-size: 1.2rem;
+    transform: translateY(-50%);
+  }
+
+  .consent-actions {
+    flex: none;
+    gap: 0.35rem;
+    margin-top: 0;
+  }
+
+  .consent-btn {
+    min-height: 34px;
+    padding: 0.25rem 0.6rem;
+    font-size: 13px;
   }
 }
 

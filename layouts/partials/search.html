@@ -41,15 +41,38 @@
     }
   }
 
-  require(['/js/autoComplete.min.js'], (autoComplete) => { 
-    window.autoComplete = new autoComplete(config)
-  });
 </script>
 
 <div class="search-container">
-  <input 
-    id="autoComplete" type="search" 
-    dir="ltr" spellcheck=false autocorrect="on" 
+  <input
+    id="autoComplete" type="search" placeholder="Search an example..."
+    dir="ltr" spellcheck=false autocorrect="on"
     autocomplete="on" autocapitalize="off"
   >
 </div>
+
+<script>
+  // load autoComplete only when someone is about to search (the box is hidden on phones, so it never loads there)
+  (() => {
+    const input = document.getElementById('autoComplete');
+    const triggers = ['pointerenter', 'focus', 'touchstart'];
+    let loading = false;
+
+    const load = () => {
+      if (loading) return;
+      loading = true;
+      triggers.forEach((type) => input.removeEventListener(type, load));
+
+      const script = document.createElement('script');
+      script.src = {{ "js/autoComplete.min.js" | relURL }};
+      script.onload = () => {
+        const search = new window.autoComplete(config);
+        // the visitor may have typed while the script was loading
+        if (input.value) search.start(input.value);
+      };
+      document.head.appendChild(script);
+    };
+
+    triggers.forEach((type) => input.addEventListener(type, load, { passive: true }));
+  })();
+</script>
