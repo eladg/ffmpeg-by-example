@@ -15,8 +15,6 @@ tags:
   - mkv
   - mp4
   - remux
-versions:
-  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mkv -c copy %1_output.mp4
 example_type: no-preview
