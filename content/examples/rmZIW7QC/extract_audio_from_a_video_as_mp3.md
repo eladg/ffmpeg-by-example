@@ -1,6 +1,5 @@
 ---
 id: rmZIW7QC
-version: '1.0'
 enabled: true
 date: '2026-10-13T16:45:28.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -26,6 +25,8 @@ tags:
   - mp3
   - extract-audio
 tested_with: null
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -vn -c:a libmp3lame -q:a 4 output.mp3
 example_type: no-preview
