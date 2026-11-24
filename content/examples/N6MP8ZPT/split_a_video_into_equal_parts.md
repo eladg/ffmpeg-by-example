@@ -23,8 +23,6 @@ tags:
   - split
   - segment
   - chapters
-versions:
-  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -c copy -f segment -segment_time 60 -reset_timestamps 1 part_%03d.mp4
 example_type: no-preview
