@@ -1,6 +1,5 @@
 ---
 id: N6MP8ZPT
-version: '1.0'
 enabled: true
 date: '2026-11-11T17:46:16.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -24,6 +23,8 @@ tags:
   - split
   - segment
   - chapters
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -c copy -f segment -segment_time 60 -reset_timestamps 1 part_%03d.mp4
 example_type: no-preview
