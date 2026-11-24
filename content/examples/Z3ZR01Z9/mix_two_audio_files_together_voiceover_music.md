@@ -1,6 +1,5 @@
 ---
 id: Z3ZR01Z9
-version: '1.0'
 enabled: true
 date: '2026-11-18T14:47:37.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -19,6 +18,8 @@ tags:
   - amix
   - voiceover
   - mix
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i voiceover.mp3 -i music.mp3 -filter_complex "[0:a][1:a]amix=inputs=2:duration=longest" output.mp3
 example_type: no-preview
