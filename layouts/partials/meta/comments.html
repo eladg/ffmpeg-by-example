@@ -33,10 +33,28 @@
     attributeFilter: ['href', 'src'],
   });
 
-  require(['https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js'], (gitalk) => {
-    window.Gitalk = new gitalk(commentsConfig)
-    window.Gitalk.render('gitalk-container')
-  });
-</script>
+  // Gitalk is large (~790 KB): load it and its stylesheet only when the comments are about to scroll into view
+  const loadGitalk = () => {
+    const style = document.createElement('link');
+    style.rel = 'stylesheet';
+    style.href = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css';
+    document.head.appendChild(style);
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js';
+    script.onload = () => new window.Gitalk(commentsConfig).render('gitalk-container');
+    document.head.appendChild(script);
+  };
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        observer.disconnect();
+        loadGitalk();
+      }
+    }, { rootMargin: '600px 0px' });
+    observer.observe(gitalkContainer);
+  } else {
+    loadGitalk();
+  }
+</script>
