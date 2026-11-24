@@ -1,6 +1,5 @@
 ---
 id: A9NBDGH2
-version: '1.0'
 enabled: true
 date: '2026-10-07T17:26:31.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -16,6 +15,8 @@ tags:
   - mkv
   - mp4
   - remux
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mkv -c copy %1_output.mp4
 example_type: no-preview
