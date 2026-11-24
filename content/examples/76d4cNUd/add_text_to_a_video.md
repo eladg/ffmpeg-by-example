@@ -27,8 +27,6 @@ tags:
   - drawtext
   - text-overlay
 tested_with: null
-versions:
-  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -vf "drawtext=text='Hello World':fontfile=/System/Library/Fonts/Supplemental/Arial.ttf:fontsize=48:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2" -c:a copy output.mp4
 example_type: no-preview
