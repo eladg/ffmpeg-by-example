@@ -1,6 +1,5 @@
 ---
 id: 98R7E43A
-version: '1.0'
 enabled: true
 date: '2026-11-24T17:46:11.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -19,6 +18,8 @@ tags:
   - reverse
   - areverse
   - playback
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -vf reverse -af areverse output.mp4
 example_type: no-preview
