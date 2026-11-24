@@ -5,7 +5,7 @@ import handler, { getFilename, getTags } from "./index.mjs";
 
 const validBody = {
   id: "TEST1234",
-  version: "1.0",
+  version: "1.0", // sent by forms cached before the field was dropped; must be ignored
   enabled: true,
   example_type: "no-preview",
   example_player_data: null,
@@ -83,6 +83,7 @@ test("creates branch, commits the example and opens a PR", async () => {
   assert.equal(frontmatter.author, "Test Author");
   assert.deepEqual(frontmatter.tags, ["scale"]);
   assert.equal(frontmatter.filename, "TEST1234/scale_video_to_720p.md");
+  assert.equal("version" in frontmatter, false);
 });
 
 test("returns 502 with GitHub's error when GitHub fails", async () => {

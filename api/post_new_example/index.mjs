@@ -62,7 +62,6 @@ export const getExampleYaml = (body, { filename, author, tags, date }) => {
   const options = {
     // example options
     id: body.id,
-    version: body.version,
     enabled: body.enabled ?? true,
     date: date,
     author: author,
