@@ -1,6 +1,5 @@
 ---
 id: 81RASPMX
-version: '1.0'
 enabled: true
 date: '2026-11-16T14:46:22.000Z'
 author: Elad Gariany <elad@gariany.com>
@@ -19,6 +18,8 @@ tags:
   - subtitles
   - srt
   - mkv
+versions:
+  - '8.1'
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mkv -map 0:s:0 subtitles.srt
 example_type: no-preview
