@@ -11,6 +11,7 @@
     <title>{{ .Site.Title }}</title>
     <meta name="description" content="{{ .Site.Params.description }}" />
     <meta name="og:description" content="{{ .Site.Params.description }}" />
+<meta property="og:image" content="{{ "img/share-card.png" | absURL }}" />
   {{- else -}}
     <title>{{ .Title }} - {{ .Site.Title }}</title>
     <meta name="description" content="{{ default .Summary .Description }}" />

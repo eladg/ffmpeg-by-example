@@ -8,6 +8,9 @@
 {{ if .Params.image }}
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="{{ .Permalink }}{{ .Params.image }}" />
+{{ else }}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="{{ "img/share-card.png" | absURL }}" />
 {{ end }}
 
 {{ else }}
