@@ -7,7 +7,14 @@
   </div>
 
   <div class="purple-border homepage-random-example">
-    {{ range first 1 ((where .Site.RegularPages "Type" "examples") | shuffle) }}
+    {{/* The hero only shows examples with a preview (picture, video, YouTube, audio) whose first media entry is set */}}
+    {{ $heroCandidates := slice }}
+    {{ range $example := where (where .Site.RegularPages "Type" "examples") "Params.example_type" "ne" "no-preview" }}
+      {{ with $example.Params.example_player_data }}{{ with index . 0 }}
+        {{ $heroCandidates = $heroCandidates | append $example }}
+      {{ end }}{{ end }}
+    {{ end }}
+    {{ range first 1 ($heroCandidates | shuffle) }}
       <a href="{{ .Permalink }}"><h3>{{ .Title }}</h3></a>
       <div style="display: flex; flex-direction: column;">
         {{ partial "posts/players/player.html" . }}
