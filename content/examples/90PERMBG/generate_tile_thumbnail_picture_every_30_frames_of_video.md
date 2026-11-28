@@ -24,7 +24,6 @@ description: >-
 categories:
   - video-filters
 tags:
-  - filter
   - extract-thumbnails
 changelog:
   - select-filter-added

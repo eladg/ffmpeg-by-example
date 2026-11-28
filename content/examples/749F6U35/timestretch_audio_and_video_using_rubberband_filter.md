@@ -45,9 +45,7 @@ description: >-
 categories:
   - audio
 tags:
-  - timestrech
   - rubberband
-  - speed
 changelog:
   - rubberband-filter
   - setpts-filter-added

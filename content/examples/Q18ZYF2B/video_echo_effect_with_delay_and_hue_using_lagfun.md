@@ -14,7 +14,6 @@ description: >-
 categories:
   - video-filters
 tags:
-  - filter
   - lagfun
 changelog:
   - lagfun-filter

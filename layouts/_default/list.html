@@ -2,6 +2,14 @@
   <article class="list">
     <div>
       <h1>List of examples with: <code>'{{ .Name }}'</code></h1>
+      {{- /* a tag's written summary (content/tags/<tag>/_index.md); see meta/indexable.html.
+             Without a title that file blanks the tag's name in lists, <title> and feeds. */}}
+      {{- if and .File (eq .Kind "term") (not .Title) }}
+        {{- errorf "%s: add the tag's name as its title (title: %q)" .File.Path (.Data.Term | title) }}
+      {{- end }}
+      {{- with .Params.summary }}
+      <div class="term-summary">{{ . | markdownify }}</div>
+      {{- end }}
     </div>
 
     {{- /* every entry on one page, with the first sentence of each example's description (thin

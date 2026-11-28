@@ -25,7 +25,6 @@ categories:
 tags:
   - showinfo
   - metadata
-  - frames
 changelog:
   - showinfo-filter-added
 thumbnail_url: null

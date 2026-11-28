@@ -21,7 +21,6 @@ categories:
   - subtitles
 tags:
   - hardsubs
-  - burn-in
   - srt
 tested_with: null
 changelog:

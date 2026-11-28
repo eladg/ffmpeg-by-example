@@ -19,7 +19,6 @@ categories:
   - streaming
 tags:
   - hls
-  - m3u8
   - stream-download
 tested_with: null
 changelog:

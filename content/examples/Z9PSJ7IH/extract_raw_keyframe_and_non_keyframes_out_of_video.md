@@ -17,7 +17,7 @@ description: >-
 categories:
   - frames
 tags:
-  - video-extract
+  - extract-frames
 thumbnail_url: null
 terminal_command: ffmpeg -y -i video.mp4 -c copy -break_non_keyframes 1 "frame-%04d.jpg"
 example_type: no-preview

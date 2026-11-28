@@ -19,7 +19,6 @@ categories:
 tags:
   - ffprobe
   - frame-count
-  - nb-read-frames
 changelog:
   - ffprobe-count-packets-and-count-frames-options
   - ffprobe-select-streams-option

@@ -14,7 +14,6 @@ categories:
   - video
 tags:
   - mux
-  - combine
 changelog:
   - faststart-option-in-the-mov-mp4-muxer
 thumbnail_url: null

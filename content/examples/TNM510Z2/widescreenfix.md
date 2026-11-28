@@ -8,8 +8,7 @@ description: changing the Display Aspect Ratio from a video from 4:3 to 16:9
 categories:
   - video-filters
 tags:
-  - aspectratio
-  - video
+  - aspect-ratio
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -c:v copy -c:a copy -aspect 16:9 16x9_output.mp4
 example_type: no-preview

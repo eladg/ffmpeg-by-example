@@ -39,7 +39,6 @@ categories:
   - video-filters
 tags:
   - testsrc
-  - camera
   - crop
 changelog:
   - make-the-crop-filter-accept-parametric-expressions

@@ -27,9 +27,7 @@ categories:
 tags:
   - video-source
   - smpte-bars
-  - test-pattern
   - drawtext
-  - video-calibration
 changelog:
   - smptebars-source
   - drawtext-video-filter-fontconfig-support

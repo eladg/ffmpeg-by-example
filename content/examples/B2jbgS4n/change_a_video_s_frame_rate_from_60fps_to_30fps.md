@@ -23,7 +23,6 @@ categories:
   - video
 tags:
   - frame-rate
-  - fps
 tested_with: null
 changelog:
   - add-fps-filter

@@ -15,7 +15,7 @@ categories:
   - video-filters
 tags:
   - lavfi
-  - testings
+  - testsrc
 thumbnail_url: https://www.bogotobogo.com/FFMpeg/images/test_patterns/testsrc010.png
 terminal_command: ffmpeg -f lavfi -i testsrc=duration=10:size=1280x720:rate=30 testsrc.mpg
 example_type: video-url

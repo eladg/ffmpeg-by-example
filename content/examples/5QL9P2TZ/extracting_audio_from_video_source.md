@@ -29,11 +29,10 @@ description: >-
 categories:
   - ffmpeg
 tags:
-  - audio-extraction
+  - audio-extract
   - stream-mapping
   - wav
   - mp3
-  - video-processing
 thumbnail_url: null
 terminal_command: |-
   // uncompressed (faster)

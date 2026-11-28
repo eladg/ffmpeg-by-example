@@ -1,0 +1,19 @@
+{{- /*
+  Whether search engines should index a page. A page that shouldn't gets
+  <meta name="robots" content="noindex, follow"> (meta/html-head.html) and is left out of
+  sitemap.xml, but still works for visitors, and crawlers still follow its links.
+
+  - Category pages (and /categories/): never. 0 clicks in 16 months of Search Console data
+    (Nov 2026), and the "Browse by task" grid will replace them.
+  - Tag pages: only with a written summary (content/tags/<tag>/_index.md, front matter
+    `summary`). No summary, no index (owner's rule): thin tag pages were flagged by Bing, while
+    tags named after a filter rank for it ("ffmpeg testsrc") once the page says what it is.
+  - Everything else: yes.
+*/ -}}
+{{- $index := true -}}
+{{- if eq .Type "categories" -}}
+  {{- $index = false -}}
+{{- else if and (eq .Type "tags") (eq .Kind "term") -}}
+  {{- $index = ne (.Params.summary | default "") "" -}}
+{{- end -}}
+{{- return $index -}}

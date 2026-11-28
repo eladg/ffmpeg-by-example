@@ -66,9 +66,8 @@ description: >
 categories:
   - text
 tags:
-  - generator
-  - filter
   - subtitles
+  - drawtext
 changelog:
   - drawtext-video-filter-fontconfig-support
 thumbnail_url: null

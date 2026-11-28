@@ -27,7 +27,6 @@ categories:
 tags:
   - timestamps
   - h264
-  - video-editing
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i input.mp4 -c:a copy -c:v libx264 -crf 18 -ss 00:00:05 -t 10

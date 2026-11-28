@@ -36,7 +36,6 @@ tags:
   - telegram
   - webm
   - vp9
-  - compression
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -i video.mp4 -vf

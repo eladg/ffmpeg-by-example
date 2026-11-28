@@ -13,9 +13,7 @@ description: >-
 categories:
   - video-filters
 tags:
-  - filter
   - sepia
-  - art
 changelog:
   - movie-source-added
   - chromakey-filter

@@ -23,7 +23,6 @@ description: >-
 categories:
   - audio
 tags:
-  - ipod
   - itunes
   - m4a
   - ogg

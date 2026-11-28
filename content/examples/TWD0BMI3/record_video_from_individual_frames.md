@@ -24,9 +24,7 @@ description: >
 categories:
   - frames
 tags:
-  - 'video-extract'
-  - 'stdin'
-  - 'pipe'
+  - pipe
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -framerate 30 -f rawvideo -pix_fmt rgba -s:v 1280x720 -i pipe: -c:v

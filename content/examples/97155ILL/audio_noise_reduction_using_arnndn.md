@@ -34,7 +34,6 @@ description: >-
 categories:
   - audio
 tags:
-  - filter
   - noise
 changelog:
   - arnndn-filter

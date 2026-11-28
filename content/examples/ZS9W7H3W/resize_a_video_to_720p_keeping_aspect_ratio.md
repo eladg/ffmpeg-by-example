@@ -16,9 +16,8 @@ description: >-
 categories:
   - video
 tags:
-  - resize
-  - 720p
   - scale
+  - 720p
 thumbnail_url: null
 terminal_command: ffmpeg -i input.mp4 -vf "scale=1280:-2" output.mp4
 example_type: no-preview

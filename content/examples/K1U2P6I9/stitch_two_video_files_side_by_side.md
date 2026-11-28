@@ -35,7 +35,6 @@ categories:
   - video-filters
 tags:
   - pad
-  - filter
   - overlay
 thumbnail_url: null
 terminal_command: >-

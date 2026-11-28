@@ -12,7 +12,7 @@ description: >-
 categories:
   - video-filters
 tags:
-  - filter
+  - scale
 thumbnail_url: null
 terminal_command: ffmpeg -i "video.mp4" -vf "scale=640:360" "video640x360.mp4"
 views: 163

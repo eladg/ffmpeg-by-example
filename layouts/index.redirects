@@ -5,10 +5,49 @@
 # failed, which crawlers resolved to <example>/null
 /examples/:id/:slug/null  /examples/:id/:slug/  301
 
-# tags that were renamed or removed
-/tags/r128              /tags/ebu-r128/       301
-/tags/normalize         /tags/normalization/  301
-/tags/cut               /tags/video-editing/  301
+# tags that were merged into another tag (Nov 2026 tag cleanup; see "Tag rules" in .claude/CLAUDE.md)
+/tags/r128               /tags/ebu-r128/  301
+/tags/normalize          /tags/ebu-r128/  301
+/tags/loudness           /tags/ebu-r128/  301
+/tags/normalization      /tags/ebu-r128/  301
+/tags/video-generation   /tags/video-source/  301
+/tags/audio-extraction   /tags/audio-extract/  301
+/tags/testings           /tags/testsrc/  301
+/tags/test-pattern       /tags/smpte-bars/  301
+/tags/video-calibration  /tags/smpte-bars/  301
+/tags/fps                /tags/frame-rate/  301
+/tags/resize             /tags/scale/  301
+/tags/image-scaling      /tags/scale/  301
+/tags/alpha-channel      /tags/transparency/  301
+/tags/ipod               /tags/itunes/  301
+/tags/timestrech         /tags/rubberband/  301
+/tags/speed              /tags/rubberband/  301
+/tags/xfade              /tags/transitions/  301
+/tags/combine            /tags/mux/  301
+/tags/nb-read-frames     /tags/frame-count/  301
+/tags/burn-in            /tags/hardsubs/  301
+/tags/m3u8               /tags/hls/  301
+/tags/video-extract      /tags/extract-frames/  301
+/tags/frames             /tags/extract-frames/  301
+/tags/stdin              /tags/pipe/  301
+/tags/stdout             /tags/pipe/  301
+/tags/image+audiovideo   /tags/image-to-video/  301
+/tags/image+audio=video  /tags/image-to-video/  301
+/tags/aspectratio        /tags/aspect-ratio/  301
+
+# generic tags that were removed
+/tags/cut                /tags/  301
+/tags/filter             /tags/  301
+/tags/video              /tags/  301
+/tags/audio              /tags/  301
+/tags/generator          /tags/  301
+/tags/art                /tags/  301
+/tags/camera             /tags/  301
+/tags/broadcast          /tags/  301
+/tags/compression        /tags/  301
+/tags/web-graphics       /tags/  301
+/tags/video-processing   /tags/  301
+/tags/video-editing      /tags/  301
 
 # the unused /edit section (and its placeholder page) was removed
 /edit       /contribute/  301

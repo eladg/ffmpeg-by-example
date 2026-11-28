@@ -65,7 +65,7 @@ categories:
   - video
 tags:
   - encoding
-  - image+audio=video
+  - image-to-video
 thumbnail_url: null
 terminal_command: >-
   ffmpeg -loop 1 -i image.png -i audio.mp3 -c:a libvorbis -b:a 128k -c:v

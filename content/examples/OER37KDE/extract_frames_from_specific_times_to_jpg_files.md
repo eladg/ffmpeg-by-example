@@ -44,7 +44,7 @@ categories:
   - images
 tags:
   - extract-thumbnails
-  - video-extract
+  - extract-frames
 changelog:
   - select-filter-added
   - setpts-filter-added

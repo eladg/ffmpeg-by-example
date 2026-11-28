@@ -35,8 +35,6 @@ categories:
   - transitions
 tags:
   - transitions
-  - filter
-  - xfade
 changelog:
   - xfade-video-filter
 thumbnail_url: null

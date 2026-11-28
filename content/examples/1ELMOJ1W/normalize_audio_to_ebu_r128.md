@@ -23,11 +23,7 @@ description: >-
 categories:
   - audio
 tags:
-  - audio
-  - loudness
   - ebu-r128
-  - normalization
-  - broadcast
 changelog:
   - filter-for-loudness-analysis-following-ebu-r128
   - volume-audio-filter-added

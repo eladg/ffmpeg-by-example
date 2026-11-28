@@ -27,10 +27,8 @@ categories:
   - images
 tags:
   - png
-  - alpha-channel
   - transparency
-  - image-scaling
-  - web-graphics
+  - scale
 thumbnail_url: null
 terminal_command: ffmpeg -i original.png -vf scale="160:-1" -c:v png -pix_fmt rgba scaled.png
 example_type: picture

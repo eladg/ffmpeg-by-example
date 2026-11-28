@@ -27,10 +27,9 @@ description: >-
 categories:
   - video-filters
 tags:
-  - Video-source
+  - video-source
   - colors
   - h264
-  - video-generation
   - lavfi
 thumbnail_url: null
 terminal_command: >-

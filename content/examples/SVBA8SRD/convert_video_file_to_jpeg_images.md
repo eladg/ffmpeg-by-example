@@ -14,8 +14,7 @@ description: >-
 categories:
   - images
 tags:
-  - frames
-  - video-extract
+  - extract-frames
   - extract-thumbnails
 thumbnail_url: null
 terminal_command: ffmpeg -i video.mp4 folder/image%03d.jpg
