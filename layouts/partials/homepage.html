@@ -7,28 +7,18 @@
   </div>
 
   <div class="purple-border homepage-random-example">
-    {{ range first 1 ((where .Site.RegularPages "Type" "examples") | shuffle) }}
-      <a href="{{ .Permalink }}"><h3>{{ .Title }}</h3></a>
-      <div style="display: flex; flex-direction: column;">
-        {{ partial "posts/players/player.html" . }}
-        {{ partial "posts/terminal/highlight.html" . }}  
-      </div>
-    {{ end }}
-
+    {{ partial "homepage/hero.html" . }}
   </div>
 
   <div class="homepage-recent">
     <h4>All Examples</h4>
 
-    {{ $paginator := .Paginate (where .Site.RegularPages "Type" "examples") }}
-
-    {{ range $index, $page := .Paginator.Pages }}
+    {{- /* one list of every example, no pagination: /page/N redirects here (layouts/index.redirects) */}}
+    {{ range $page := where site.RegularPages "Type" "examples" }}
       <ul class="posts-list">
-        {{ partial "list/item.html" $page }}
+        {{ partial "list/item.html" (dict "page" $page "summary" true) }}
       </ul>
     {{ end }}
-
-    {{ partial "pagination.html" $ }}
   </div>
 
   <div class="footer" style="margin-top: 4em;">

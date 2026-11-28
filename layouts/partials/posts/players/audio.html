@@ -260,7 +260,9 @@
 <div class="container">
   <audio id="audio" preload="none" tabindex="0">
     {{ range $index, $data := .Params.example_player_data }} 
-      <source src="{{ $data }}" data-track-number="{{ add $index 1 }}" />
+      {{ with $data }}
+	<source src="{{ . }}" data-track-number="{{ add $index 1 }}" />
+      {{ end }}
     {{ end }}
     Your browser does not support HTML5 audio.
   </audio>
@@ -305,6 +307,7 @@
   <!-- /.player -->
   <div class="play-list">
     {{ range $index, $data := .Params.example_player_data }} 
+      {{ with $data }}
       <div class="play-list-row" data-track-row="{{ add $index 1 }}">
         <div class="small-toggle-btn">
           <i class="small-play-btn"><span class="screen-reader-text">Small toggle button</span></i>
@@ -313,9 +316,10 @@
           {{ add $index 1 }}.
         </div>
         <div class="track-title">
-          <a class="playlist-track" href="#" data-play-track="{{ add $index 1 }}">{{ path.Base $data }}</a>
+	  <a class="playlist-track" href="#" data-play-track="{{ add $index 1 }}">{{ path.Base . }}</a>
         </div>
       </div>
+      {{ end }}
     {{ end }}
   </div>
 </div>

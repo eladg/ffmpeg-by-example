@@ -10,11 +10,11 @@
   {{- if .IsHome -}}
     <title>{{ .Site.Title }}</title>
     <meta name="description" content="{{ .Site.Params.description }}" />
-    <meta name="og:description" content="{{ .Site.Params.description }}" />
+    <meta property="og:description" content="{{ .Site.Params.description }}" />
   {{- else -}}
     <title>{{ .Title }} - {{ .Site.Title }}</title>
     <meta name="description" content="{{ default .Summary .Description }}" />
-    <meta name="og:description" content="{{ default .Summary .Description }}" />
+    <meta property="og:description" content="{{ default .Summary .Description }}" />
   {{- end }}
 
   <!-- favicon -->

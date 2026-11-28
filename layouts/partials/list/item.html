@@ -1,21 +1,31 @@
+{{- /* A list entry. Pass a page, or dict "page" <page> "summary" true to add the first
+       sentence of its description under the title (home page and list pages). */ -}}
+{{- $page := . -}}
+{{- $showSummary := false -}}
+{{- if reflect.IsMap . }}{{ $page = .page }}{{ $showSummary = .summary }}{{ end -}}
 <li style="list-style: none; margin-bottom: 5px;">
   <div>
-    ▲ <a href="{{ .Permalink | absURL }}">{{ .Title | title }}</a>
+    ▲ <a href="{{ $page.Permalink | absURL }}">{{ $page.Title | title }}</a>
   </div>
+  {{- if $showSummary }}
+    {{- with partial "list/summary.html" $page }}
+  <div class="li-summary">{{ . }}</div>
+    {{- end }}
+  {{- end }}
 
   <div>
     <span class="li-description">
-      {{ if isset .Params "tags" }}
-        {{ if gt (len .Params.tags) 0 }}
-        
-        tags:    
-          {{ range $value := .Params.tags }}
+      {{ if isset $page.Params "tags" }}
+        {{ if gt (len $page.Params.tags) 0 }}
+
+        tags:
+          {{ range $value := $page.Params.tags }}
           {{ $tagUrl := (printf "/%s/%s" "tags" $value) }}
 
             <a class="posts-list-tags" href="{{ $tagUrl | relURL }}">#{{ $value }}</a>
             {{ end }}
         {{ end }}
       {{ end }}
-    </span>    
+    </span>
   </div>
 </li>

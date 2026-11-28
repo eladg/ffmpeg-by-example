@@ -1,0 +1,52 @@
+{{- /*
+  Homepage hero: a random example from the hand-picked list in data/hero.json, a new pick on
+  every page load.
+
+  The build renders one pick normally (what crawlers and no-JS visitors see) and puts the others
+  in inert <template>s, which load no media. The script at the end swaps a random one in before
+  the first paint.
+
+  A missing or empty list, an unknown id, or an example without a preview fails the build.
+*/ -}}
+{{ $examples := where site.RegularPages "Type" "examples" }}
+{{ $picks := slice }}
+{{ range $entry := (hugo.Data.hero.examples | default slice) }}
+  {{ with where $examples "Params.id" $entry.id }}
+    {{ $page := index . 0 }}
+    {{ if eq $page.Params.example_type "no-preview" }}
+      {{ errorf "data/hero.json: example %q (%s) has no preview, so it can't be the homepage hero" $entry.id $page.File.Path }}
+    {{ end }}
+    {{ $picks = $picks | append $page }}
+  {{ else }}
+    {{ errorf "data/hero.json: no example has id %q" $entry.id }}
+  {{ end }}
+{{ end }}
+{{ if not $picks }}
+  {{ errorf "data/hero.json: no examples listed for the homepage hero" }}
+{{ end }}
+
+{{ range $i, $page := $picks | shuffle }}
+  {{ if eq $i 0 }}<div id="hero-slot">{{ else }}<template class="hero-option">{{ end }}
+    <a href="{{ $page.Permalink }}"><h3>{{ $page.Title }}</h3></a>
+    <div style="display: flex; flex-direction: column;">
+      {{ partial "posts/players/player.html" $page }}
+      {{ partial "posts/terminal/highlight.html" $page }}
+    </div>
+  {{ if eq $i 0 }}</div>{{ else }}</template>{{ end }}
+{{ end }}
+
+<script>
+  (() => {
+    const options = document.querySelectorAll("template.hero-option");
+    const pick = Math.floor(Math.random() * (options.length + 1));
+    if (pick === options.length) return; // keep the one already rendered
+    const fragment = options[pick].content.cloneNode(true);
+    // recreate the cloned scripts so each runs exactly once when inserted (wires up the copy buttons)
+    fragment.querySelectorAll("script").forEach((old) => {
+      const script = document.createElement("script");
+      script.textContent = old.textContent;
+      old.replaceWith(script);
+    });
+    document.getElementById("hero-slot").replaceChildren(fragment);
+  })();
+</script>

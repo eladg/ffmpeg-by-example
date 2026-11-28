@@ -17,6 +17,21 @@
 # paginated home pages used to link to "contribute" relatively (fixed in 5def65a)
 /page/:n/contribute  /contribute/  301
 
+# the home page used to be paginated (/page/2/ ...); it now lists every example.
+# Must stay after the contribute rule above (Netlify uses the first match).
+/page/*      /      301
+/amp/page/*  /amp/  301
+
+# list pages used to be paginated too; they now list every entry on one page
+/examples/page/*           /examples/           301
+/tags/page/*               /tags/               301
+/tags/:tag/page/*          /tags/:tag/          301
+/categories/page/*         /categories/         301
+/categories/:cat/page/*    /categories/:cat/    301
+
+# the About page was an empty placeholder and was removed
+/about  /  301
+
 # stable URL for the newest FFmpeg release in data/ffmpeg/changelog.json (302: it moves).
 # Forced (!) so the alias page Hugo writes there (for hugo server) never shadows it.
 /versions/latest  /versions/{{ hugo.Data.ffmpeg.changelog.latest }}/  302!

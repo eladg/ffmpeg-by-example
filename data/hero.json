@@ -1,0 +1,13 @@
+{
+  "source": "hand-curated",
+  "updated": "2026-11-24",
+  "examples": [
+    { "id": "Q18ZYF2B", "title": "Create a live video echo effect with the lagfun filter" },
+    { "id": "Z1JEZI81", "title": "Animate drawtext and drawbox with the sendcmd filter" },
+    { "id": "L97ODZ1T", "title": "Simulate handheld camera shake with the crop filter" },
+    { "id": "97155ILL", "title": "Remove background noise from audio using the arnndn filter" },
+    { "id": "BV21EGIL", "title": "Analyze video frames, timecode and metadata with showinfo filter" },
+    { "id": "RPOCU01R", "title": "Apply a retro film effect with sepia and grain overlays" },
+    { "id": "K1U2P6I9", "title": "Stitch two video files side by side" }
+  ]
+}
