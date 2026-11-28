@@ -17,7 +17,7 @@
 
     {{ range $index, $page := .Paginator.Pages }}
       <ul class="posts-list">
-        {{ partial "list/item.html" $page }}
+        {{ partial "list/item.html" (dict "page" $page "summary" true) }}
       </ul>
     {{ end }}
 

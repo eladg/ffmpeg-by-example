@@ -7,7 +7,7 @@
   --third-color: #bd93f9;
   --text-color: #000000;
   --text-size: 18px;
-  --gray-color: #4e4e4e;
+  --gray-color: #acabab;
   --link-color: blueviolet;
   --action-color: #e8202a;
   --mc-serif-font: "medium-content-serif-font", Georgia, Cambria, "Times New Roman", Times, serif;
@@ -312,13 +312,21 @@ video {
 }
 
 /* item.html */
+/* homepage list: first sentence of the description, under the title */
+.li-summary {
+  font-size: 15px;
+  color: var(--gray-color);
+  margin: 0.15em 0 0.1em 1.5em;
+}
+
 .li-description {
   font-size: 12px;
-  color: #373636;
+  color: var(--gray-color);
   opacity: 0.8;
   font-family: var(--monospace-font);
   vertical-align: top;
   padding-inline-start: 0;
+  margin: 0.15em 0 0.1em 2em;
 }
 
 /* pagination.html */

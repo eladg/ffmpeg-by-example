@@ -37,11 +37,7 @@ Every FFmpeg release from the official Changelog (https://github.com/FFmpeg/FFmp
 ## {{ replace ($category | humanize) "Ffmpeg" "FFmpeg" }}
 
 {{ range sort . "Title" -}}
-{{/* summary = the description's first sentence, as plain text (code spans are escaped twice) */ -}}
-{{ $text := .Description | markdownify | plainify | htmlUnescape | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace -}}
-{{ $summary := $text -}}
-{{ with findRE `^.+?[.!?](\s|$)` $text 1 }}{{ $summary = index . 0 | strings.TrimSpace }}{{ end -}}
-{{ if gt (len $summary) 200 }}{{ $summary = printf "%s…" (substr $summary 0 199 | strings.TrimSpace) }}{{ end -}}
+{{ $summary := partial "list/summary.html" . -}}
 - [{{ strings.TrimSpace .Title }}]({{ .Permalink }}){{ with $summary }}: {{ . }}{{ end }}
 {{ end -}}
 {{- end }}
