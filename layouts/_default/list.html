@@ -19,5 +19,33 @@
         {{ partial "list/item.html" (dict "page" $page "summary" true) }}
       {{ end }}
     </ul>
+
+    {{- if and (eq .Type "tags") (eq .Kind "term") }}
+      {{- with partial "tags/related.html" . }}
+    <nav class="related-tags" aria-label="Related tags">
+      <h2>Related tags</h2>
+      <ul>
+        {{- range . }}
+        <li>
+          <a class="posts-list-tags" href="{{ .RelPermalink }}">#{{ .Data.Term }}</a> <span class="related-tags-count">{{ len .Pages }} example{{ if ne (len .Pages) 1 }}s{{ end }}</span>
+          {{- with .Params.summary }}
+          <div class="related-tags-summary">{{ . | markdownify }}</div>
+          {{- end }}
+        </li>
+        {{- end }}
+      </ul>
+    </nav>
+      {{- end }}
+
+      {{- /* one of the homepage's hand-picked examples (data/hero.json), never one listed above */}}
+      {{- with partial "homepage/hero.html" (dict "exclude" .Pages) | strings.TrimSpace }}
+    <section class="featured-example">
+      <h2>Featured example</h2>
+      <div class="purple-border homepage-random-example">
+        {{ . | safeHTML }}
+      </div>
+    </section>
+      {{- end }}
+    {{- end }}
   </article>
 {{ end }}

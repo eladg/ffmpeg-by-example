@@ -319,6 +319,51 @@ video {
   margin: 0.15em 0 0.1em 1.5em;
 }
 
+/* tag pages: related tags under the example list (_default/list.html) */
+.related-tags {
+  margin-top: 2.5em;
+}
+
+.related-tags h2 {
+  font-size: 1.1em;
+  margin-bottom: 0.4em;
+}
+
+.related-tags ul {
+  list-style: none;
+  padding-inline-start: 0;
+  margin: 0;
+}
+
+.related-tags li {
+  margin-bottom: 0.6em;
+  font-family: var(--monospace-font);
+  font-size: 13px;
+}
+
+/* the related tag's one-sentence summary, styled like the list summaries (.li-summary) */
+.related-tags-summary {
+  font-family: var(--mc-serif-font);
+  font-size: 15px;
+  color: var(--gray-color);
+  margin-top: 0.1em;
+}
+
+.related-tags-count {
+  color: var(--gray-color);
+  opacity: 0.8;
+}
+
+/* tag pages: one of the homepage's hand-picked examples, under the related tags */
+.featured-example {
+  margin-top: 2.5em;
+}
+
+.featured-example h2 {
+  font-size: 1.1em;
+  margin-bottom: 0.6em;
+}
+
 .li-description {
   font-size: 12px;
   color: var(--gray-color);

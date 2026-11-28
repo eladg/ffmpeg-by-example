@@ -1,0 +1,60 @@
+{{- /*
+  Related tags for a tag page, so a tag with one example still leads somewhere: up to 6 tag
+  pages, best first. Returns a slice of pages.
+
+  1. Curated: `related` in content/tags/<tag>/_index.md (a list of tag names, kept in order).
+     An unknown tag fails the build.
+  2. Tags that share an example with this one (most shared examples first).
+  3. Tags of the other examples in the same categories (most frequent first).
+  4. Any other tag, most examples first, so a tag whose example shares nothing still gets a list.
+
+  Ties go to the tag with more examples, then alphabetically, so the list is the same on every
+  build.
+*/ -}}
+{{- $self := .Data.Term -}}
+{{- $max := 6 -}}
+{{- $scores := dict -}}
+{{- range $key, $_ := site.Taxonomies.tags }}{{ $scores = merge $scores (dict $key 0) }}{{ end -}}
+
+{{- /* 2. tags on the same examples, 3. tags on other examples in the same categories */ -}}
+{{- range $page := .Pages -}}
+  {{- range $page.Params.tags -}}
+    {{- $key := . | urlize -}}
+    {{- $scores = merge $scores (dict $key (add (index $scores $key | default 0) 1000)) -}}
+  {{- end -}}
+  {{- range $page.Params.categories -}}
+    {{- range $other := (index site.Taxonomies.categories (. | urlize)).Pages -}}
+      {{- range $other.Params.tags -}}
+        {{- $key := . | urlize -}}
+        {{- $scores = merge $scores (dict $key (add (index $scores $key | default 0) 1)) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 1. curated, applied last so its scores replace the computed ones and its order holds */ -}}
+{{- range $i, $name := .Params.related | default slice -}}
+  {{- $key := $name | urlize -}}
+  {{- if not (index site.Taxonomies.tags $key) -}}
+    {{- errorf "%s: related tag %q doesn't exist" $.File.Path $name -}}
+  {{- end -}}
+  {{- $scores = merge $scores (dict $key (sub 1000000000 $i)) -}}
+{{- end -}}
+
+{{- $ranked := slice -}}
+{{- range $key, $score := $scores -}}
+  {{- if ne $key $self -}}
+    {{- with site.GetPage (printf "/tags/%s" $key) -}}
+      {{- $ranked = $ranked | append (dict "page" . "score" $score "count" (len .Pages) "name" $key) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* sort is stable: sort by the weakest key first */ -}}
+{{- $ranked = sort $ranked "name" -}}
+{{- $ranked = sort $ranked "count" "desc" -}}
+{{- $ranked = sort $ranked "score" "desc" -}}
+
+{{- $related := slice -}}
+{{- range first $max $ranked }}{{ $related = $related | append .page }}{{ end -}}
+{{- return $related -}}

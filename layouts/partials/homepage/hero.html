@@ -7,7 +7,13 @@
   the first paint.
 
   A missing or empty list, an unknown id, or an example without a preview fails the build.
+
+  Also the "Featured example" on tag pages (_default/list.html), called with
+  dict "exclude" <pages> so it never repeats an example that page already lists. It renders
+  nothing when every pick is excluded.
 */ -}}
+{{ $exclude := slice }}
+{{ if reflect.IsMap . }}{{ $exclude = .exclude | default slice }}{{ end }}
 {{ $examples := where site.RegularPages "Type" "examples" }}
 {{ $picks := slice }}
 {{ range $entry := (hugo.Data.hero.examples | default slice) }}
@@ -25,7 +31,10 @@
   {{ errorf "data/hero.json: no examples listed for the homepage hero" }}
 {{ end }}
 
-{{ range $i, $page := $picks | shuffle }}
+{{ $picks = complement $exclude $picks }}
+
+{{ with $picks }}
+{{ range $i, $page := . | shuffle }}
   {{ if eq $i 0 }}<div id="hero-slot">{{ else }}<template class="hero-option">{{ end }}
     <a href="{{ $page.Permalink }}"><h3>{{ $page.Title }}</h3></a>
     <div style="display: flex; flex-direction: column;">
@@ -50,3 +59,4 @@
     document.getElementById("hero-slot").replaceChildren(fragment);
   })();
 </script>
+{{ end }}
