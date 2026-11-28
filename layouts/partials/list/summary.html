@@ -2,7 +2,10 @@
        at most 200 characters. Used by the homepage list and llms.txt. */ -}}
 {{- /* code spans are escaped twice, so unescape twice */ -}}
 {{- $text := .Description | markdownify | plainify | htmlUnescape | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace -}}
+
+{{- $text = replaceRE `(?i)\b(e\.g|i\.e|vs|cf)\.` "${1}\u2024" $text -}}
 {{- $summary := $text -}}
 {{- with findRE `^.+?[.!?](\s|$)` $text 1 }}{{ $summary = index . 0 | strings.TrimSpace }}{{ end -}}
+{{- $summary = replace $summary "\u2024" "." -}}
 {{- if gt (len $summary) 200 }}{{ $summary = printf "%s…" (substr $summary 0 199 | strings.TrimSpace) }}{{ end -}}
 {{- return $summary -}}

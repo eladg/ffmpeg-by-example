@@ -1,5 +1,5 @@
-{{- /* A list entry. Pass a page, or (homepage) dict "page" <page> "summary" true to add the
-       first sentence of its description under the title. */ -}}
+{{- /* A list entry. Pass a page, or dict "page" <page> "summary" true to add the first
+       sentence of its description under the title (home page and list pages). */ -}}
 {{- $page := . -}}
 {{- $showSummary := false -}}
 {{- if reflect.IsMap . }}{{ $page = .page }}{{ $showSummary = .summary }}{{ end -}}

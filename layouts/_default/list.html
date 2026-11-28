@@ -4,12 +4,12 @@
       <h1>List of examples with: <code>'{{ .Name }}'</code></h1>
     </div>
 
+    {{- /* every entry on one page, with the first sentence of each example's description (thin
+           tag pages were flagged by Bing). No pagination: /<section>/page/N redirects here. */}}
     <ul class="posts-list">
-      {{ range $index, $page := .Paginator.Pages }}
-        {{ partial "list/item.html" $page }}
+      {{ range $page := .Pages }}
+        {{ partial "list/item.html" (dict "page" $page "summary" true) }}
       {{ end }}
     </ul>
-
-    {{ partial "pagination.html" $ }}
   </article>
 {{ end }}

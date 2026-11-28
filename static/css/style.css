@@ -329,27 +329,6 @@ video {
   margin: 0.15em 0 0.1em 2em;
 }
 
-/* pagination.html */
-.pagination {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  margin-top: 1em;
-}
-
-.pagination-active {
-  background-color: var(--link-color);
-}
-
-.pagination-active a {
-  color: white;
-}
-
-.pagination-link {
-  text-decoration: none;
-  padding: 0.5em;
-}
-
 /* list.html */
 .container {
   display: flex;
